@@ -47,6 +47,48 @@
 
     .work-toolbar{display:flex;flex-wrap:wrap;gap:9px;margin-top:32px}.filter-btn{border:1px solid var(--line);background:rgba(255,255,255,.025);color:#c9bdd8;border-radius:30px;padding:10px 15px;font:10px 'DM Mono',monospace;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;transition:.25s}.filter-btn:hover,.filter-btn.active{background:linear-gradient(120deg,#7427d8,#a855f7);border-color:#b887ff;color:white;box-shadow:0 0 24px #852cff44}.work-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}.work-card.project-card{padding:0;min-height:0;display:block;border-radius:16px;background:#100a1b;transform-style:preserve-3d}.project-image{height:230px;overflow:hidden;background:radial-gradient(circle at 50% 40%,#51218b,#100a1b 70%)}.project-image img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .65s cubic-bezier(.2,.7,.2,1),filter .5s}.project-card:hover .project-image img{transform:scale(1.07);filter:saturate(1.15)}.project-meta{padding:18px 19px 20px}.project-meta .number{display:block;margin-bottom:10px}.project-meta h3{font-size:17px;line-height:1.35;letter-spacing:-.035em}.project-meta p{margin-top:8px;font:9px 'DM Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:#ad8bda}.project-card[hidden]{display:none!important}.project-card .card-arrow{position:absolute;right:17px;bottom:17px}.work-count{margin-top:18px;color:#9385a6;font:10px 'DM Mono',monospace;letter-spacing:.1em}
 
+
+    /* Split portfolio: Design / Video */
+    .space-section{padding:120px clamp(22px,3.4vw,64px) 95px;position:relative;overflow:hidden}
+    .space-head{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;margin-bottom:38px}
+    .space-head .section-title{margin:0;font-size:clamp(48px,6.2vw,82px)}
+    .space-note{max-width:290px;color:#b9a8d0;font-size:12px;line-height:1.8}
+    .space-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    .space-card{min-height:365px;position:relative;overflow:hidden;border:1px solid rgba(205,174,255,.2);padding:30px;background:radial-gradient(ellipse at 75% 25%,rgba(127,49,221,.2),transparent 48%),linear-gradient(135deg,#100a1c,#0b0712);display:flex;flex-direction:column;align-items:flex-start;justify-content:space-between;transition:transform .4s,border-color .4s,box-shadow .4s}
+    .space-card.video{background:radial-gradient(ellipse at 75% 25%,rgba(226,69,107,.17),transparent 50%),linear-gradient(135deg,#140b19,#0b0712)}
+    .space-card:hover{transform:translateY(-7px);border-color:rgba(184,132,255,.65);box-shadow:0 25px 70px rgba(91,35,151,.18)}
+    .space-card .space-index{font:10px 'DM Mono',monospace;letter-spacing:.14em;color:#c7a9f5;text-transform:uppercase}
+    .space-symbol{position:absolute;right:32px;top:25px;font-size:42px;color:#b58aff;transition:transform .5s}
+    .space-card.video .space-symbol{color:#f16a83}
+    .space-card:hover .space-symbol{transform:rotate(35deg) scale(1.15)}
+    .space-card h3{font-size:clamp(42px,4.3vw,66px);line-height:.91;letter-spacing:-.075em;text-transform:uppercase;margin:38px 0 20px}
+    .space-card h3 span{display:block;color:#a984f5}
+    .space-card.video h3 span{color:#f16a83}
+    .space-card p{max-width:390px;color:#b5a7c7;font-size:13px;line-height:1.9}
+    .space-link{margin-top:28px;font:10px 'DM Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:#f5edff;display:inline-flex;gap:18px;align-items:center}
+    .space-link b{font-size:19px;color:#b58aff;transition:transform .25s}
+    .space-card.video .space-link b{color:#f16a83}
+    .space-card:hover .space-link b{transform:translate(4px,-4px)}
+    .video-section{background:linear-gradient(180deg,rgba(33,12,51,.12),transparent)}
+    .video-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:44px}
+    .video-placeholder{min-height:245px;border:1px solid var(--line);background:radial-gradient(circle at 50% 30%,rgba(220,64,106,.17),transparent 55%),#100a1b;padding:22px;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden}
+    .video-placeholder .video-play{width:50px;height:50px;border-radius:50%;display:grid;place-items:center;background:#ef6680;color:#fff;font-size:17px;box-shadow:0 0 35px rgba(239,102,128,.3)}
+    .video-card-link{display:inline-block;margin-top:15px;color:#f18ba0;font:10px "DM Mono",monospace;letter-spacing:.09em;text-transform:uppercase;border-bottom:1px solid rgba(241,139,160,.4);padding-bottom:5px}.video-card-link:hover{color:#fff;border-color:#fff}
+    .video-placeholder h3{font-size:19px;letter-spacing:-.04em}
+    .video-placeholder p{font-size:11px;color:#aa9cb9;line-height:1.7;margin-top:7px}
+    .video-instructions{margin-top:24px;padding:17px 20px;border:1px dashed rgba(239,102,128,.35);color:#b9a8c6;font-size:12px;line-height:1.8}
+    .video-channel-cta{margin-top:28px;padding:clamp(22px,4vw,38px);border:1px solid rgba(239,102,128,.28);background:radial-gradient(ellipse at 80% 50%,rgba(239,102,128,.13),transparent 48%),linear-gradient(120deg,#170c1c,#100a1b);display:flex;align-items:center;justify-content:space-between;gap:24px}
+    .video-channel-cta .mono{font-size:9px;color:#f18ba0;letter-spacing:.16em}
+    .video-channel-cta h3{font-size:clamp(27px,4vw,43px);letter-spacing:-.06em;margin-top:10px}
+    .video-channel-cta h3 span{color:#f16a83}
+    .video-channel-cta p{font-size:12px;color:#b5a7c7;line-height:1.8;margin-top:8px;max-width:440px}
+    .video-channel-cta .primary-btn{border-color:#ed6b83;box-shadow:0 0 25px rgba(239,102,128,.12);flex-shrink:0}
+    .video-channel-cta .primary-btn:hover{background:#d94c69;box-shadow:0 0 35px rgba(239,102,128,.35)}
+    .video-channel-cta .round-arrow{border-color:rgba(255,255,255,.65)}
+
+    @media(max-width:900px){.space-grid{grid-template-columns:1fr}.space-card{min-height:320px}.video-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.space-head{align-items:flex-start;flex-direction:column}}
+    @media(max-width:620px){.video-channel-cta{align-items:flex-start;flex-direction:column}.video-channel-cta .primary-btn{white-space:normal}.space-section{padding:100px 22px 70px}.space-card{min-height:300px;padding:23px}.space-card h3{font-size:49px}.video-grid{grid-template-columns:1fr}.video-placeholder{min-height:210px}}
+
     @media(max-width:900px){.hero{grid-template-columns:1fr;min-height:900px;padding-top:150px;align-items:start}.hero-copy{max-width:600px}.side-label{display:none}.assistant-chip{right:5%;bottom:7%}.scroll-cue{left:2%;bottom:22%}.work-grid{grid-template-columns:repeat(2,1fr)}.project-image{height:210px}.about-wrap{grid-template-columns:1fr;gap:28px}.process-grid{grid-template-columns:repeat(2,1fr)}}
     @media(max-width:620px){.site-header{height:66px}.nav{display:none;position:absolute;top:66px;left:0;right:0;padding:22px;background:rgba(8,5,16,.96);border-bottom:1px solid var(--line);flex-direction:column}.nav.open{display:flex}.availability{display:none}.menu-toggle{display:block}.hero{min-height:850px;height:auto;padding:145px 24px 180px}.hero-copy{padding-top:0}h1{font-size:clamp(57px,15vw,86px)}.intro{font-size:13px}.hero-stats{gap:18px}.stat strong{font-size:19px}.stat span{font-size:9px}.assistant-chip{bottom:35px;left:24px;right:auto}.scroll-cue{display:none}.work-grid{grid-template-columns:1fr}.project-image{height:230px}.work-card{min-height:190px}.process-grid{grid-template-columns:1fr 1fr}.process-item{padding:16px}.contact-panel{align-items:flex-start;flex-direction:column}.contact-btn{white-space:normal}footer{flex-direction:column}.hero-actions{gap:16px}}
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
@@ -59,7 +101,7 @@
   <header class="site-header">
     <a class="logo" href="#home" aria-label="MD Fahim home">MF<span>.</span></a>
     <nav class="nav" id="mainNav" aria-label="Main navigation">
-      <a href="#work">Portfolio</a><a href="#about">About</a><a href="#process">Process</a><a href="#contact">Contact</a>
+      <a href="#spaces">Portfolio</a><a href="#about">About</a><a href="#process">Process</a><a href="#contact">Contact</a>
     </nav>
     <div class="availability"><i class="status-dot"></i> Available for work</div>
     <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">☰</button>
@@ -73,7 +115,7 @@
         <h1><span>Imagine</span><span>Create</span><span class="gradient-text">Inspire.</span></h1>
         <p class="intro">I’m <strong>MD Fahim</strong> — a graphic and motion designer creating visual identities, digital experiences and memorable visual stories.</p>
         <div class="hero-actions">
-          <a class="primary-btn" href="#work">Explore My Work <span class="round-arrow">↗</span></a>
+          <a class="primary-btn" href="#spaces">Explore My Work <span class="round-arrow">↗</span></a>
           <a class="watch-link" href="#work"><span class="play">▶</span> Watch Reel</a>
         </div>
         <div class="hero-stats">
@@ -87,8 +129,26 @@
       <a class="assistant-chip" href="#contact"><span class="assistant-icon">✦</span><span><b>Hello! 👋</b><small>How can I help you today?</small></span><span>↗</span></a>
     </section>
 
-    <section class="content-section" id="work">
-      <div class="reveal"><div class="section-kicker">Selected work / 001—029</div><h2 class="section-title">Made to make<br><span class="gradient-text">an impact.</span></h2><p class="section-desc">A curated collection of my real projects across motion design, brand identity, social media, posters, print and digital design. Select a category or open any project on Behance.</p></div>
+
+    <section class="space-section" id="spaces">
+      <div class="space-head reveal">
+        <div><div class="section-kicker">Explore my creative world</div><h2 class="section-title">Choose your <span class="gradient-text">space.</span></h2></div>
+        <p class="space-note">Two collections, one creative portfolio.<br>Choose a section to explore the work.</p>
+      </div>
+      <div class="space-grid">
+        <a class="space-card reveal" href="#design-portfolio">
+          <span class="space-index">01 / Design portfolio</span><span class="space-symbol" aria-hidden="true">✳</span>
+          <div><h3>Behance<span>Projects.</span></h3><p>Brand identity, graphic design, posters, social media, print and digital visuals.</p><span class="space-link">Explore projects <b>↗</b></span></div>
+        </a>
+        <a class="space-card video reveal" href="#youtube-work">
+          <span class="space-index">02 / Video portfolio</span><span class="space-symbol" aria-hidden="true">▶</span>
+          <div><h3>YouTube<span>Projects.</span></h3><p>Video editing, motion graphics, product ads, animations and YouTube content.</p><span class="space-link">Explore videos <b>↗</b></span></div>
+        </a>
+      </div>
+    </section>
+
+    <section class="content-section" id="design-portfolio">
+      <div class="reveal"><div class="section-kicker">Selected work / 001—029</div><h2 class="section-title">Made to make<br><span class="gradient-text">an impact.</span></h2><p class="section-desc">A curated collection of my real graphic design projects across brand identity, social media, posters, print and digital design. Select a category or open any project on Behance.</p></div>
       <div class="work-toolbar" role="group" aria-label="Filter projects"><button class="filter-btn active" type="button" data-filter="all" aria-pressed="true">All Work</button><button class="filter-btn" type="button" data-filter="motion design" aria-pressed="false">Motion Design</button><button class="filter-btn" type="button" data-filter="branding" aria-pressed="false">Branding</button><button class="filter-btn" type="button" data-filter="social media" aria-pressed="false">Social Media</button><button class="filter-btn" type="button" data-filter="poster" aria-pressed="false">Poster</button><button class="filter-btn" type="button" data-filter="print design" aria-pressed="false">Print Design</button><button class="filter-btn" type="button" data-filter="digital art" aria-pressed="false">Digital Art</button><button class="filter-btn" type="button" data-filter="web & ui" aria-pressed="false">Web & UI</button><button class="filter-btn" type="button" data-filter="packaging" aria-pressed="false">Packaging</button><button class="filter-btn" type="button" data-filter="apparel" aria-pressed="false">Apparel</button><button class="filter-btn" type="button" data-filter="photo editing" aria-pressed="false">Photo Editing</button></div>
       <div class="work-count" id="workCount">29 PROJECTS</div>
       <div class="work-grid" id="projectGrid">
@@ -121,6 +181,30 @@
         <a class="work-card project-card reveal" data-category="branding" href="https://www.behance.net/gallery/244930127/Fexora-Global-Business-Letterhead-Design" target="_blank" rel="noopener noreferrer" aria-label="Open Fexora Global – Business Letterhead Design on Behance"><div class="project-image"><img src="https://mir-s3-cdn-cf.behance.net/projects/404/a8cea8244930127.Y3JvcCwyNTU2LDIwMDAsMjIxLDA.jpg" alt="Fexora Global – Business Letterhead Design project cover" loading="lazy" decoding="async" onerror="this.style.display='none'"></div><div class="project-meta"><span class="number">27 / BRANDING</span><h3>Fexora Global – Business Letterhead Design</h3><p>View project on Behance ↗</p></div></a>
         <a class="work-card project-card reveal" data-category="digital art" href="https://www.behance.net/gallery/247386393/Colorful-Abstract-Gradient-Background-Design" target="_blank" rel="noopener noreferrer" aria-label="Open Colorful Abstract Gradient Background Design on Behance"><div class="project-image"><img src="https://mir-s3-cdn-cf.behance.net/projects/404/7bab17247386393.Y3JvcCw1NzUzLDQ1MDAsMTEyNSww.jpg" alt="Colorful Abstract Gradient Background Design project cover" loading="lazy" decoding="async" onerror="this.style.display='none'"></div><div class="project-meta"><span class="number">28 / DIGITAL ART</span><h3>Colorful Abstract Gradient Background Design</h3><p>View project on Behance ↗</p></div></a>
         <a class="work-card project-card reveal" data-category="photo editing" href="https://www.behance.net/gallery/247382521/Jewelry-Background-Removal-Photo-Editing" target="_blank" rel="noopener noreferrer" aria-label="Open Jewelry Background Removal & Photo Editing on Behance"><div class="project-image"><img src="https://mir-s3-cdn-cf.behance.net/projects/404/cfcae4247382521.Y3JvcCwzODM1LDMwMDAsMTE3Nyww.jpg" alt="Jewelry Background Removal & Photo Editing project cover" loading="lazy" decoding="async" onerror="this.style.display='none'"></div><div class="project-meta"><span class="number">29 / PHOTO EDITING</span><h3>Jewelry Background Removal & Photo Editing</h3><p>View project on Behance ↗</p></div></a>
+      </div>
+    </section>
+
+
+    <section class="content-section video-section" id="youtube-work">
+      <div class="reveal">
+        <div class="section-kicker">Video portfolio / motion & storytelling</div>
+        <h2 class="section-title">Motion that <span class="gradient-text">moves.</span></h2>
+        <p class="section-desc">A dedicated space for video editing, motion graphics, product promos, logo animation, kinetic typography and YouTube content.</p>
+      </div>
+      <div class="video-grid">
+        <article class="video-placeholder reveal"><span class="video-play">▶</span><div><h3>Motion Graphics & Animation</h3><p>Showreels, animated visuals, logo animation and kinetic typography.</p><a class="video-card-link" href="https://www.youtube.com/@motion-nest0.1" target="_blank" rel="noopener noreferrer">Watch on Motion Nest ↗</a></div></article>
+        <article class="video-placeholder reveal"><span class="video-play">▶</span><div><h3>Product Ads & Promos</h3><p>Product-focused storytelling, SaaS animation and promotional videos.</p><a class="video-card-link" href="https://www.youtube.com/@motion-nest0.1" target="_blank" rel="noopener noreferrer">Watch on Motion Nest ↗</a></div></article>
+        <article class="video-placeholder reveal"><span class="video-play">▶</span><div><h3>Video Editing & YouTube</h3><p>Edited videos, social content, thumbnails and channel projects.</p><a class="video-card-link" href="https://www.youtube.com/@motion-nest0.1" target="_blank" rel="noopener noreferrer">Watch on Motion Nest ↗</a></div></article>
+      </div>
+      <div class="video-channel-cta reveal">
+        <div>
+          <span class="mono">Official video channel</span>
+          <h3>Explore <span>Motion Nest.</span></h3>
+          <p>Watch my motion design, video editing and creative video projects on YouTube.</p>
+        </div>
+        <a class="primary-btn" href="https://www.youtube.com/@motion-nest0.1" target="_blank" rel="noopener noreferrer" aria-label="Visit Motion Nest YouTube channel">
+          Visit YouTube Channel <span class="round-arrow">↗</span>
+        </a>
       </div>
     </section>
 
