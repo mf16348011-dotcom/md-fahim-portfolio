@@ -1,196 +1,183 @@
-<!doctype html>
-<html lang="en"><head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#080711">
-<meta name="description" content="MD Fahim — Graphic Designer, Brand Identity Designer and Motion Graphics Artist. Explore immersive visual experiences and selected creative work.">
-<meta property="og:title" content="MD FAHIM — Immersive Creative Portfolio">
-<meta property="og:description" content="Imagine. Create. Inspire. Graphic design, branding and motion graphics by MD Fahim.">
-<meta property="og:type" content="website">
-<meta name="color-scheme" content="dark"><meta name="description" content="MD Fahim — Graphic Designer, Brand Identity Designer and Motion Graphics Artist.">
-<title>MD FAHIM — Creative Portfolio</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
-<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.185.0/build/three.module.js"}}</script></head><body>
-<div class="page-progress" aria-hidden="true"><span id="progress-bar"></span></div>
-<div class="cursor-glow" aria-hidden="true"></div>
-<div class="noise"></div>
-<header class="topbar"><a class="brand" href="#home">MF<span>.</span></a><nav><a href="#portfolio">PORTFOLIO</a><a href="#about">ABOUT</a><a href="#process">PROCESS</a><a href="#contact">CONTACT</a></nav><a class="availability" href="#contact"><i></i> AVAILABLE FOR WORK</a><button class="menu-toggle" aria-label="Toggle menu">☰</button></header>
-<main>
-<section class="hero" id="home">
-<canvas id="hero-canvas" aria-label="Interactive 3D abstract orbital sculpture"></canvas>
-<div class="hero-vignette" aria-hidden="true"></div><div class="hero-copy"><p class="eyebrow"><b></b> INDEPENDENT CREATIVE PORTFOLIO · 2026</p>
-<h1>IMAGINE<span class="outline">.</span><br>CREATE<span class="violet">.</span><br><em>INSPIRE.</em></h1>
-<div class="hero-bottom"><p class="intro">I'm <strong>MD Fahim</strong> — a graphic and motion designer creating visual identities, digital experiences and memorable visual stories.</p><a class="circle-link" href="#behance-work" aria-label="Explore work">↘</a></div></div>
-<div class="hero-art" aria-hidden="true"><div class="core-glow"></div><div class="ring ring-a"></div><div class="ring ring-b"></div><div class="ring ring-c"></div><div class="core">MF<span>✳</span></div><small class="art-label label-top">CREATIVE<br>ENERGY / 001</small><small class="art-label label-bottom">DESIGN<br>BEYOND LIMITS</small></div>
-<div class="hero-index"><span>01 / 04</span><span>SCROLL TO EXPLORE ↓</span></div></section>
-<div class="marquee"><div>BRAND IDENTITY <b>✳</b> MOTION DESIGN <b>✳</b> DIGITAL EXPERIENCES <b>✳</b> SOCIAL MEDIA DESIGN <b>✳</b> VISUAL STORYTELLING <b>✳</b></div></div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#080510" />
+  <meta name="description" content="MD Fahim — Graphic Designer & Motion Designer. Imagine. Create. Inspire." />
+  <title>MD FAHIM — Immersive Creative Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#080510;--panel:#100a1c;--white:#f6f1ff;--muted:#aaa0bc;--purple:#a855f7;--violet:#7025f5;--line:rgba(205,174,255,.16)}
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth;scroll-padding-top:90px}
+    body{background:var(--bg);color:var(--white);font-family:Manrope,system-ui,sans-serif;overflow-x:hidden}
+    body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:5;opacity:.12;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.2'/%3E%3C/svg%3E")}
+    a{color:inherit;text-decoration:none}.mono{font-family:'DM Mono',monospace;letter-spacing:.12em;text-transform:uppercase}
+    .site-header{height:76px;position:fixed;top:0;left:0;width:100%;z-index:20;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(22px,6vw,100px);border-bottom:1px solid var(--line);background:rgba(8,5,16,.68);backdrop-filter:blur(18px)}
+    .logo{font-weight:900;font-size:27px;letter-spacing:-.09em}.logo span{color:#b78aff}
+    .nav{display:flex;gap:clamp(18px,3vw,48px);align-items:center}.nav a,.availability{font:500 10px 'DM Mono',monospace;letter-spacing:.12em;color:#c7bed5;text-transform:uppercase;transition:.25s}.nav a:hover{color:#c18cff}
+    .availability{display:flex;align-items:center;gap:10px}.status-dot{width:7px;height:7px;border-radius:50%;background:#6cffad;box-shadow:0 0 14px #6cffad}
+    .menu-toggle{display:none;background:none;border:1px solid var(--line);color:white;border-radius:50%;width:42px;height:42px;font-size:20px}
+    .hero{min-height:850px;height:100svh;max-height:1100px;position:relative;isolation:isolate;display:grid;grid-template-columns:1fr 1.1fr;align-items:center;padding:120px clamp(22px,12vw,220px) 80px;overflow:hidden}
+    .hero:before{content:"";position:absolute;inset:0;z-index:-2;background:radial-gradient(ellipse at 67% 49%,rgba(112,37,245,.22),transparent 34%),radial-gradient(ellipse at 80% 80%,rgba(139,44,255,.12),transparent 35%),linear-gradient(110deg,#080510 10%,#0b0615 60%,#10071d)}
+    .hero:after{content:"";position:absolute;inset:auto 0 0;height:22%;z-index:-1;background:linear-gradient(transparent,#080510)}
+    #scene{position:absolute;inset:0;width:100%;height:100%;z-index:-1;pointer-events:auto}
+    .hero-copy{position:relative;z-index:2;max-width:590px;padding-top:30px}
+    .eyebrow{font:500 11px 'DM Mono',monospace;color:#c5b8d7;letter-spacing:.16em;text-transform:uppercase;display:flex;align-items:center;gap:15px;margin-bottom:28px}.eyebrow:before{content:"";width:28px;height:1px;background:#b78aff}
+    h1{font-size:clamp(62px,7.3vw,112px);line-height:.84;letter-spacing:-.085em;font-weight:900;text-transform:uppercase;margin-bottom:34px}
+    h1 span{display:block}.gradient-text{background:linear-gradient(105deg,#c8a5ff 0%,#8c42ff 45%,#d9baff 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+    .intro{max-width:440px;color:#b7adc5;font-size:14px;line-height:1.9}.intro strong{color:#fff}
+    .hero-actions{display:flex;align-items:center;gap:28px;margin-top:28px;flex-wrap:wrap}
+    .primary-btn{display:inline-flex;align-items:center;gap:22px;padding:12px 14px 12px 22px;border:1px solid #9b50ff;border-radius:40px;box-shadow:0 0 28px rgba(143,54,255,.18);font-size:12px;font-weight:800;transition:.3s}.primary-btn:hover{background:#8c35f5;transform:translateY(-3px);box-shadow:0 0 35px rgba(143,54,255,.5)}
+    .round-arrow{width:30px;height:30px;border:1px solid rgba(255,255,255,.5);border-radius:50%;display:grid;place-items:center;font-size:17px}
+    .watch-link{display:flex;align-items:center;gap:12px;font-size:12px;color:#ddd4e9}.play{width:43px;height:43px;border:1px solid #a66bff;border-radius:50%;display:grid;place-items:center;padding-left:2px}
+    .hero-stats{display:flex;gap:34px;margin-top:36px;padding-top:24px;border-top:1px solid var(--line);max-width:530px}.stat strong{display:block;font-size:22px;letter-spacing:-.05em}.stat span{font-size:11px;color:#aaa0bc}
+    .side-label{position:absolute;right:5.5%;top:32%;font:10px 'DM Mono',monospace;letter-spacing:.16em;line-height:1.9;color:#b9a8d0;text-transform:uppercase;z-index:2}.scroll-cue{position:absolute;left:3%;bottom:16%;writing-mode:vertical-rl;transform:rotate(180deg);font:10px 'DM Mono',monospace;letter-spacing:.2em;color:#d0c5dd;z-index:2}
+    .assistant-chip{position:absolute;right:5.5%;bottom:13%;z-index:3;display:flex;align-items:center;gap:13px;padding:14px 18px;border:1px solid rgba(190,139,255,.25);border-radius:16px;background:rgba(21,10,39,.78);box-shadow:0 12px 40px rgba(0,0,0,.3);backdrop-filter:blur(14px);font-size:12px}.assistant-icon{width:32px;height:32px;border-radius:10px;background:linear-gradient(135deg,#a855f7,#5420c9);display:grid;place-items:center}.assistant-chip small{display:block;color:#a99db8;margin-top:3px}
+    section.content-section{padding:110px clamp(22px,9vw,150px);position:relative}.section-kicker{font:10px 'DM Mono',monospace;letter-spacing:.17em;color:#b58aff;text-transform:uppercase;margin-bottom:18px}.section-title{font-size:clamp(38px,6vw,76px);line-height:.95;letter-spacing:-.07em;margin-bottom:24px}.section-desc{color:var(--muted);line-height:1.8;max-width:580px;font-size:14px}
+    .work-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:48px}.work-card{min-height:240px;border:1px solid var(--line);border-radius:18px;padding:24px;background:radial-gradient(circle at 80% 20%,rgba(135,61,255,.2),transparent 45%),linear-gradient(145deg,#171023,#0d0915);display:flex;flex-direction:column;justify-content:space-between;transition:.35s;overflow:hidden;position:relative}.work-card:hover{transform:translateY(-8px);border-color:rgba(185,131,255,.55);box-shadow:0 18px 50px rgba(69,24,130,.2)}.work-card .number{font:10px 'DM Mono',monospace;color:#9e8db2}.work-card h3{font-size:23px;letter-spacing:-.05em}.work-card p{color:#a99eb7;font-size:12px;line-height:1.7;margin-top:8px}.work-card .card-arrow{align-self:flex-end;color:#c69bff;font-size:24px}
+    .about-wrap{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center}.about-panel{border:1px solid var(--line);border-radius:22px;padding:34px;background:radial-gradient(circle at 80% 0%,rgba(139,65,255,.2),transparent 50%),#100a1b}.skill-list{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}.skill-list span{border:1px solid var(--line);padding:9px 13px;border-radius:30px;color:#d4c8e3;font:10px 'DM Mono',monospace}
+    .process-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:42px}.process-item{padding:23px;border-top:1px solid #8050ba;background:linear-gradient(180deg,rgba(117,50,194,.1),transparent)}.process-item b{font:11px 'DM Mono',monospace;color:#b98aff}.process-item h3{margin:24px 0 10px;font-size:18px}.process-item p{font-size:12px;color:#a99eb7;line-height:1.7}
+    .contact-panel{padding:clamp(28px,6vw,70px);border:1px solid rgba(177,120,255,.3);border-radius:24px;background:radial-gradient(ellipse at 80% 50%,rgba(111,38,211,.25),transparent 45%),#100a1b;display:flex;align-items:center;justify-content:space-between;gap:30px}.contact-panel h2{font-size:clamp(38px,6vw,70px);letter-spacing:-.07em;line-height:.95}.contact-panel p{color:var(--muted);margin-top:15px;font-size:13px}.contact-btn{white-space:nowrap}
+    footer{padding:28px clamp(22px,9vw,150px);border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:20px;color:#92869f;font:10px 'DM Mono',monospace;letter-spacing:.08em}
+    .reveal{opacity:0;transform:translateY(25px);transition:opacity .8s ease,transform .8s ease}.reveal.visible{opacity:1;transform:translateY(0)}
+    @media(max-width:900px){.hero{grid-template-columns:1fr;min-height:900px;padding-top:150px;align-items:start}.hero-copy{max-width:600px}.side-label{display:none}.assistant-chip{right:5%;bottom:7%}.scroll-cue{left:2%;bottom:22%}.work-grid{grid-template-columns:repeat(2,1fr)}.about-wrap{grid-template-columns:1fr;gap:28px}.process-grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:620px){.site-header{height:66px}.nav{display:none;position:absolute;top:66px;left:0;right:0;padding:22px;background:rgba(8,5,16,.96);border-bottom:1px solid var(--line);flex-direction:column}.nav.open{display:flex}.availability{display:none}.menu-toggle{display:block}.hero{min-height:850px;height:auto;padding:145px 24px 180px}.hero-copy{padding-top:0}h1{font-size:clamp(57px,15vw,86px)}.intro{font-size:13px}.hero-stats{gap:18px}.stat strong{font-size:19px}.stat span{font-size:9px}.assistant-chip{bottom:35px;left:24px;right:auto}.scroll-cue{display:none}.work-grid{grid-template-columns:1fr}.work-card{min-height:190px}.process-grid{grid-template-columns:1fr 1fr}.process-item{padding:16px}.contact-panel{align-items:flex-start;flex-direction:column}.contact-btn{white-space:normal}footer{flex-direction:column}.hero-actions{gap:16px}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+  </style>
+  <script type="importmap">
+    {"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js"}}
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="logo" href="#home" aria-label="MD Fahim home">MF<span>.</span></a>
+    <nav class="nav" id="mainNav" aria-label="Main navigation">
+      <a href="#work">Portfolio</a><a href="#about">About</a><a href="#process">Process</a><a href="#contact">Contact</a>
+    </nav>
+    <div class="availability"><i class="status-dot"></i> Available for work</div>
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">☰</button>
+  </header>
 
-<section class="section portfolio-hub" id="portfolio">
-  <div class="section-head"><div><p class="eyebrow">EXPLORE MY CREATIVE WORLD</p><h2>CHOOSE YOUR <em>SPACE.</em></h2></div>
-  <p class="section-note">Two collections, one creative portfolio.<br>Choose a section to explore the work.</p></div>
-  <div class="hub-grid">
-    <a class="hub-card behance-hub" href="#behance-work">
-      <span class="hub-number">01 / DESIGN PORTFOLIO</span>
-      <span class="hub-icon">✳</span>
-      <span class="hub-title">BEHANCE<br><em>PROJECTS.</em></span>
-      <span class="hub-description">Brand identity, graphic design, posters, social media and digital visuals.</span>
-      <span class="hub-enter">EXPLORE PROJECTS <b>↗</b></span>
-    </a>
-    <a class="hub-card youtube-hub" href="#youtube-work">
-      <span class="hub-number">02 / VIDEO PORTFOLIO</span>
-      <span class="hub-icon">▶</span>
-      <span class="hub-title">YOUTUBE<br><em>PROJECTS.</em></span>
-      <span class="hub-description">Video editing, motion graphics, product ads, animations and YouTube content.</span>
-      <span class="hub-enter">EXPLORE VIDEOS <b>↗</b></span>
-    </a>
-  </div>
-</section>
-<section class="section work-section" id="behance-work"><div class="section-head"><div><p class="eyebrow">BEHANCE COLLECTION / 2025—2026</p><h2>BEHANCE <em>PROJECTS.</em></h2></div><p class="section-note">Explore my graphic design and branding projects.<br>Select any project to open its Behance case study.</p></div>
-<div class="filters" role="group" aria-label="Filter projects"><button class="filter active" data-filter="All">ALL <span>29</span></button><button class="filter" data-filter="Motion">MOTION</button><button class="filter" data-filter="Branding">BRANDING</button><button class="filter" data-filter="Social">SOCIAL</button><button class="filter" data-filter="Poster">POSTERS</button><button class="filter" data-filter="Print">PRINT</button><button class="filter" data-filter="Other">OTHER</button></div>
-<div class="project-grid">
-<a class="project-card" data-category="Motion" href="https://www.behance.net/gallery/257466427/Claude-AI-Cinematic-SaaS-Animation-UI-Showcase" target="_blank" rel="noreferrer">
-      <div class="card-image"><img src="https://mir-s3-cdn-cf.behance.net/projects/404/77445c257466427.Y3JvcCwxMjAzLDk0MSw3Nyww.png" alt="Claude AI — Cinematic SaaS Animation & UI Showcase" loading="lazy"><span class="card-category">Motion</span><span class="card-arrow">↗</span></div>
-      <div class="card-title"><h3>Claude AI — Cinematic SaaS Animation & UI Showcase</h3><span>↗</span></div>
-    </a>
-<a class="project-card" data-category="Motion" href="https://www.behance.net/gallery/256395897/ChatGPT-SaaS-UI-Animation-Motion-Design" target="_blank" rel="noreferrer">
-      <div class="card-image"><img src="https://mir-s3-cdn-cf.behance.net/projects/404/22f6c2256395897.Y3JvcCwxMjAzLDk0MSwyMzgsMA.png" alt="ChatGPT SaaS UI Animation | Motion Design" loading="lazy"><span class="card-category">Motion</span><span class="card-arrow">↗</span></div>
-      <div class="card-title"><h3>ChatGPT SaaS UI Animation | Motion Design</h3><span>↗</span></div>
-    </a>
-<a class="project-card" data-category="Branding" href="https://www.behance.net/gallery/241934761/FEXORA-GLOBAL-Modern-F-Monogram-Logo-Brand-Identity" target="_blank" rel="noreferrer">
-      <div class="card-image"><img src="https://mir-s3-cdn-cf.behance.net/projects/404/ce107c241934761.Y3JvcCw0MjYxLDMzMzMsNzkxLDA.jpg" alt="FEXORA GLOBAL — Modern F Monogram Logo & Brand Identity" loading="lazy"><span class="card-category">Branding</span><span class="card-arrow">↗</span></div>
-      <div class="card-title"><h3>FEXORA GLOBAL — Modern F Monogram Logo & Brand Identity</h3><span>↗</span></div>
-    </a>
-<a class="project-card" data-category="Branding" href="https://www.behance.net/gallery/249855995/NEXORA-AI-Futuristic-AI-Brand-Identity" target="_blank" rel="noreferrer">
-      <div class="card-image"><img src="https://mir-s3-cdn-cf.behance.net/projects/404/e656ee249855995.Y3JvcCwxMDIyLDgwMCwxODcsMA.jpg" alt="NEXORA AI — Futuristic AI Brand Identity" loading="lazy"><span class="card-category">Branding</span><span class="card-arrow">↗</span></div>
-      <div class="card-title"><h3>NEXORA AI — Futuristic AI Brand Identity</h3><span>↗</span></div>
-    </a>
-<a class="project-card" data-category="Social" href="https://www.behance.net/gallery/251219691/Premium-Burger-Social-Media-Design-Concept" target="_blank" rel="noreferrer">
-      <div class="card-image"><img src="https://mir-s3-cdn-cf.behance.net/projects/404/3f83f2251219691.Y3JvcCwxMDgwLDg0NCwwLDExNw.jpg" alt="Premium Burger Social Media Design Concept" loading="lazy"><span class="card-category">Social</span><span class="card-arrow">↗</span></div>
-      <div class="card-title"><h3>Premium Burger Social Media Design Concept</h3><span>↗</span></div>
-    </a>
-<a class="project-card" data-category="Social" href="https://www.behance.net/gallery/249305851/Vision-of-Future-Arabian-Luxury-Social-Media-Design" target="_blank" rel="noreferrer">
-      <div class="card-image"><img src="https://mir-s3-cdn-cf.behance.net/projects/404/63a614249305851.Y3JvcCwxNDAyLDEwOTYsMCwxMw.jpg" alt="Vision of Future | Arabian Luxury Social Media Design" loading="lazy"><span class="card-category">Social</span><span class="card-arrow">↗</span></div>
-      <div class="card-title"><h3>Vision of Future | Arabian Luxury Social Media Design</h3><span>↗</span></div>
-    </a>
-<a class="project-card" data-category="Poster" href="https://www.behance.net/gallery/248637103/Solo-Leveling-Inspired-Self-Model-Anime-Poster-Design" target="_blank" rel="noreferrer">
-      <div class="card-image"><img src="https://mir-s3-cdn-cf.behance.net/projects/404/44853a248637103.Y3JvcCwzNjAwLDI4MTUsMCw5ODk.jpg" alt="Solo Leveling Inspired Self Model — Anime Poster Design" loading="lazy"><span class="card-category">Poster</span><span class="card-arrow">↗</span></div>
-      <div class="card-title"><h3>Solo Leveling Inspired Self Model — Anime Poster Design</h3><span>↗</span></div>
-    </a>
-<a class="project-card" data-category="Thumbnail" href="https://www.behance.net/gallery/248101115/Gaming-YouTube-Thumbnail-Design-Collection" target="_blank" rel="noreferrer">
-      <div class="card-image"><img src="https://mir-s3-cdn-cf.behance.net/projects/404/bad8f2248101115.Y3JvcCwxOTIwLDE1MDEsMCwzMzM2.jpg" alt="Gaming YouTube Thumbnail Design Collection" loading="lazy"><span class="card-category">Thumbnail</span><span class="card-arrow">↗</span></div>
-      <div class="card-title"><h3>Gaming YouTube Thumbnail Design Collection</h3><span>↗</span></div>
-    </a>
-<a class="project-card" data-category="Poster" href="https://www.behance.net/gallery/247380863/Spider-Man-Marvel-Inspired-Poster-Design" target="_blank" rel="noreferrer">
-      <div class="card-image"><img src="https://mir-s3-cdn-cf.behance.net/projects/404/37ce17247380863.Y3JvcCwyNTUwLDE5OTQsMCw2NTA.jpg" alt="Spider-Man Marvel Inspired Poster Design" loading="lazy"><span class="card-category">Poster</span><span class="card-arrow">↗</span></div>
-      <div class="card-title"><h3>Spider-Man Marvel Inspired Poster Design</h3><span>↗</span></div>
-    </a>
-<a class="project-card" data-category="Poster" href="https://www.behance.net/gallery/249048811/Jujutsu-Kaisen-Inspired-Anime-Character-Poster" target="_blank" rel="noreferrer">
-      <div class="card-image"><img src="https://mir-s3-cdn-cf.behance.net/projects/404/89fc13249048811.Y3JvcCwyNTUwLDE5OTQsMCw2NTA.jpg" alt="Jujutsu Kaisen Inspired Anime Character Poster" loading="lazy"><span class="card-category">Poster</span><span class="card-arrow">↗</span></div>
-      <div class="card-title"><h3>Jujutsu Kaisen Inspired Anime Character Poster</h3><span>↗</span></div>
-    </a>
-<a class="project-card" data-category="Photo Manipulation" href="https://www.behance.net/gallery/246917267/Surreal-Photo-Manipulation-Collection-2026" target="_blank" rel="noreferrer">
-      <div class="card-image"><img src="https://mir-s3-cdn-cf.behance.net/projects/404/05b233246917267.Y3JvcCwxMDIyLDgwMCwxODcsMA.jpg" alt="Surreal Photo Manipulation Collection 2026" loading="lazy"><span class="card-category">Photo Manipulation</span><span class="card-arrow">↗</span></div>
-      <div class="card-title"><h3>Surreal Photo Manipulation Collection 2026</h3><span>↗</span></div>
-    </a>
-<a class="project-card" data-category="Social" href="https://www.behance.net/gallery/245628247/Modern-Creative-Social-Media-Design-MD-Fahim" target="_blank" rel="noreferrer">
-      <div class="card-image"><img src="https://mir-s3-cdn-cf.behance.net/projects/404/604cd5245628247.Y3JvcCwxOTk5LDE1NjQsMCwyMTc.jpg" alt="Modern Creative Social Media Design | MD. Fahim" loading="lazy"><span class="card-category">Social</span><span class="card-arrow">↗</span></div>
-      <div class="card-title"><h3>Modern Creative Social Media Design | MD. Fahim</h3><span>↗</span></div>
-    </a>
-<a class="project-card" data-category="Web UI" href="https://www.behance.net/gallery/248639603/Modern-Furniture-Website-UI-Design-Web-Template" target="_blank" rel="noreferrer">
-      <div class="card-image"><img src="https://mir-s3-cdn-cf.behance.net/projects/404/97f99a248639603.Y3JvcCwxMzY2LDEwNjgsMCw4NTU.jpg" alt="Modern Furniture Website UI Design | Web Template" loading="lazy"><span class="card-category">Web UI</span><span class="card-arrow">↗</span></div>
-      <div class="card-title"><h3>Modern Furniture Website UI Design | Web Template</h3><span>↗</span></div>
-    </a>
-<a class="project-card" data-category="Poster" href="https://www.behance.net/gallery/244955471/Landscape-Silhouette-Art-Collection" target="_blank" rel="noreferrer">
-      <div class="card-image"><img src="https://mir-s3-cdn-cf.behance.net/projects/404/8f6e4d244955471.Y3JvcCwzODM1LDMwMDAsNDg0LDA.jpg" alt="Landscape Silhouette Art Collection" loading="lazy"><span class="card-category">Poster</span><span class="card-arrow">↗</span></div>
-      <div class="card-title"><h3>Landscape Silhouette Art Collection</h3><span>↗</span></div>
-    </a>
-<a class="project-card" data-category="Print" href="https://www.behance.net/gallery/244091845/Elegant-Italian-Cuisine-Promotional-Flyer-Design" target="_blank" rel="noreferrer">
-      <div class="card-image"><img src="https://mir-s3-cdn-cf.behance.net/projects/404/db35f5244091845.Y3JvcCwyNTU2LDIwMDAsMjIxLDA.jpg" alt="Elegant Italian Cuisine Promotional Flyer Design" loading="lazy"><span class="card-category">Print</span><span class="card-arrow">↗</span></div>
-      <div class="card-title"><h3>Elegant Italian Cuisine Promotional Flyer Design</h3><span>↗</span></div>
-    </a>
-<a class="project-card" data-category="Branding" href="https://www.behance.net/gallery/244443527/Cake-Shop-Brand-Identity-Premium-Tri-Fold-Brochure" target="_blank" rel="noreferrer">
-      <div class="card-image"><img src="https://mir-s3-cdn-cf.behance.net/projects/404/cbbfc7244443527.Y3JvcCwyNDQxLDE5MTAsMjA1LDA.jpg" alt="Cake Shop Brand Identity & Premium Tri-Fold Brochure" loading="lazy"><span class="card-category">Branding</span><span class="card-arrow">↗</span></div>
-      <div class="card-title"><h3>Cake Shop Brand Identity & Premium Tri-Fold Brochure</h3><span>↗</span></div>
-    </a>
-<a class="project-card" data-category="Social" href="https://www.behance.net/gallery/247382073/LIVELY-Social-Media-Promotional-Banner-Design" target="_blank" rel="noreferrer">
-      <div class="card-image"><img src="https://mir-s3-cdn-cf.behance.net/projects/404/5cf341247382073.Y3JvcCw0NDc0LDM1MDAsMjY1LDA.jpg" alt="LIVELY Social Media Promotional Banner Design" loading="lazy"><span class="card-category">Social</span><span class="card-arrow">↗</span></div>
-      <div class="card-title"><h3>LIVELY Social Media Promotional Banner Design</h3><span>↗</span></div>
-    </a>
-<a class="project-card" data-category="Packaging" href="https://www.behance.net/gallery/247382865/Potato-Chips-Packaging-Design-Mockup" target="_blank" rel="noreferrer">
-      <div class="card-image"><img src="https://mir-s3-cdn-cf.behance.net/projects/404/8a025c247382865.Y3JvcCwzODM1LDMwMDAsODUsMA.jpg" alt="Potato Chips Packaging Design Mockup" loading="lazy"><span class="card-category">Packaging</span><span class="card-arrow">↗</span></div>
-      <div class="card-title"><h3>Potato Chips Packaging Design Mockup</h3><span>↗</span></div>
-    </a>
-<a class="project-card" data-category="Packaging" href="https://www.behance.net/gallery/248103201/Elegant-Wine-Label-Design-Bottle-Mockup" target="_blank" rel="noreferrer">
-      <div class="card-image"><img src="https://mir-s3-cdn-cf.behance.net/projects/404/73c5d8248103201.Y3JvcCwzODM1LDMwMDAsODUsMA.jpg" alt="Elegant Wine Label Design & Bottle Mockup" loading="lazy"><span class="card-category">Packaging</span><span class="card-arrow">↗</span></div>
-      <div class="card-title"><h3>Elegant Wine Label Design & Bottle Mockup</h3><span>↗</span></div>
-    </a>
-<a class="project-card" data-category="Book Cover" href="https://www.behance.net/gallery/245057439/Death-Note-Dark-Fantasy-Book-Cover-Design" target="_blank" rel="noreferrer">
-      <div class="card-image"><img src="https://mir-s3-cdn-cf.behance.net/projects/404/544d57245057439.Y3JvcCwzNTc5LDI4MDAsMjEyLDA.jpg" alt="Death Note — Dark Fantasy Book Cover Design" loading="lazy"><span class="card-category">Book Cover</span><span class="card-arrow">↗</span></div>
-      <div class="card-title"><h3>Death Note — Dark Fantasy Book Cover Design</h3><span>↗</span></div>
-    </a>
-<a class="project-card" data-category="Apparel" href="https://www.behance.net/gallery/247315267/Creative-Streetwear-T-Shirt-Design" target="_blank" rel="noreferrer">
-      <div class="card-image"><img src="https://mir-s3-cdn-cf.behance.net/projects/404/9e545e247315267.Y3JvcCwyMDQ4LDE2MDEsMCwyMDI.jpg" alt="Creative Streetwear T-Shirt Design" loading="lazy"><span class="card-category">Apparel</span><span class="card-arrow">↗</span></div>
-      <div class="card-title"><h3>Creative Streetwear T-Shirt Design</h3><span>↗</span></div>
-    </a>
-<a class="project-card" data-category="Print" href="https://www.behance.net/gallery/247379015/Modern-12-Month-Calendar-Design-2026" target="_blank" rel="noreferrer">
-      <div class="card-image"><img src="https://mir-s3-cdn-cf.behance.net/projects/404/f45176247379015.Y3JvcCwzODM1LDMwMDAsMzMyLDA.jpg" alt="Modern 12 Month Calendar Design 2026" loading="lazy"><span class="card-category">Print</span><span class="card-arrow">↗</span></div>
-      <div class="card-title"><h3>Modern 12 Month Calendar Design 2026</h3><span>↗</span></div>
-    </a>
-<a class="project-card" data-category="Print" href="https://www.behance.net/gallery/245398657/Professional-Certificate-Design-MD-Fahim" target="_blank" rel="noreferrer">
-      <div class="card-image"><img src="https://mir-s3-cdn-cf.behance.net/projects/404/62c40d245398657.Y3JvcCwyNTU2LDIwMDAsMjIxLDA.jpg" alt="Professional Certificate Design | MD. Fahim" loading="lazy"><span class="card-category">Print</span><span class="card-arrow">↗</span></div>
-      <div class="card-title"><h3>Professional Certificate Design | MD. Fahim</h3><span>↗</span></div>
-    </a>
-<a class="project-card" data-category="Print" href="https://www.behance.net/gallery/247310175/Modern-Corporate-Invoice-Design" target="_blank" rel="noreferrer">
-      <div class="card-image"><img src="https://mir-s3-cdn-cf.behance.net/projects/404/1c1a76247310175.Y3JvcCwyNTU2LDIwMDAsMjIxLDA.jpg" alt="Modern Corporate Invoice Design" loading="lazy"><span class="card-category">Print</span><span class="card-arrow">↗</span></div>
-      <div class="card-title"><h3>Modern Corporate Invoice Design</h3><span>↗</span></div>
-    </a>
-<a class="project-card" data-category="Print" href="https://www.behance.net/gallery/247313631/Modern-Corporate-ID-Card-Design" target="_blank" rel="noreferrer">
-      <div class="card-image"><img src="https://mir-s3-cdn-cf.behance.net/projects/404/b8b7b5247313631.Y3JvcCwzODM1LDMwMDAsMzMyLDA.jpg" alt="Modern Corporate ID Card Design" loading="lazy"><span class="card-category">Print</span><span class="card-arrow">↗</span></div>
-      <div class="card-title"><h3>Modern Corporate ID Card Design</h3><span>↗</span></div>
-    </a>
-<a class="project-card" data-category="Print" href="https://www.behance.net/gallery/247314677/Minimal-Corporate-Envelope-Design" target="_blank" rel="noreferrer">
-      <div class="card-image"><img src="https://mir-s3-cdn-cf.behance.net/projects/404/104c52247314677.Y3JvcCwyNTU2LDIwMDAsMjIxLDA.jpg" alt="Minimal Corporate Envelope Design" loading="lazy"><span class="card-category">Print</span><span class="card-arrow">↗</span></div>
-      <div class="card-title"><h3>Minimal Corporate Envelope Design</h3><span>↗</span></div>
-    </a>
-<a class="project-card" data-category="Branding" href="https://www.behance.net/gallery/244930127/Fexora-Global-Business-Letterhead-Design" target="_blank" rel="noreferrer">
-      <div class="card-image"><img src="https://mir-s3-cdn-cf.behance.net/projects/404/a8cea8244930127.Y3JvcCwyNTU2LDIwMDAsMjIxLDA.jpg" alt="Fexora Global — Business Letterhead Design" loading="lazy"><span class="card-category">Branding</span><span class="card-arrow">↗</span></div>
-      <div class="card-title"><h3>Fexora Global — Business Letterhead Design</h3><span>↗</span></div>
-    </a>
-<a class="project-card" data-category="Background" href="https://www.behance.net/gallery/247386393/Colorful-Abstract-Gradient-Background-Design" target="_blank" rel="noreferrer">
-      <div class="card-image"><img src="https://mir-s3-cdn-cf.behance.net/projects/404/7bab17247386393.Y3JvcCw1NzUzLDQ1MDAsMTEyNSww.jpg" alt="Colorful Abstract Gradient Background Design" loading="lazy"><span class="card-category">Background</span><span class="card-arrow">↗</span></div>
-      <div class="card-title"><h3>Colorful Abstract Gradient Background Design</h3><span>↗</span></div>
-    </a>
-<a class="project-card" data-category="Photo Editing" href="https://www.behance.net/gallery/247382521/Jewelry-Background-Removal-Photo-Editing" target="_blank" rel="noreferrer">
-      <div class="card-image"><img src="https://mir-s3-cdn-cf.behance.net/projects/404/cfcae4247382521.Y3JvcCwzODM1LDMwMDAsMTE3Nyww.jpg" alt="Jewelry Background Removal & Photo Editing" loading="lazy"><span class="card-category">Photo Editing</span><span class="card-arrow">↗</span></div>
-      <div class="card-title"><h3>Jewelry Background Removal & Photo Editing</h3><span>↗</span></div>
-    </a>
-</div><div class="work-footer"><span>29 BEHANCE PROJECTS · VIDEO SECTION READY</span><a class="text-link" href="https://www.behance.net/mdfahim2528" target="_blank" rel="noreferrer">OPEN BEHANCE PROFILE <span>↗</span></a></div></section>
+  <main>
+    <section class="hero" id="home">
+      <canvas id="scene" aria-label="Interactive 3D purple energy core"></canvas>
+      <div class="hero-copy">
+        <div class="eyebrow">Independent creative portfolio · 2026</div>
+        <h1><span>Imagine</span><span>Create</span><span class="gradient-text">Inspire.</span></h1>
+        <p class="intro">I’m <strong>MD Fahim</strong> — a graphic and motion designer creating visual identities, digital experiences and memorable visual stories.</p>
+        <div class="hero-actions">
+          <a class="primary-btn" href="#work">Explore My Work <span class="round-arrow">↗</span></a>
+          <a class="watch-link" href="#work"><span class="play">▶</span> Watch Reel</a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat"><strong>29+</strong><span>Projects</span></div>
+          <div class="stat"><strong>5K+</strong><span>Happy Clients*</span></div>
+          <div class="stat"><strong>3+</strong><span>Years Experience*</span></div>
+        </div>
+      </div>
+      <div class="side-label">Creative<br>Energy / 001</div>
+      <div class="scroll-cue">SCROLL DOWN　↓</div>
+      <a class="assistant-chip" href="#contact"><span class="assistant-icon">✦</span><span><b>Hello! 👋</b><small>How can I help you today?</small></span><span>↗</span></a>
+    </section>
 
-<section class="section youtube-section" id="youtube-work">
-  <div class="section-head"><div><p class="eyebrow">VIDEO & MOTION PORTFOLIO</p><h2>YOUTUBE <em>PROJECTS.</em></h2></div>
-  <p class="section-note">Video editing, motion graphics,<br>promotional films and creative experiments.</p></div>
-  <div class="channel-feature">
-    <div class="channel-mark" aria-hidden="true">▶</div>
-    <div class="channel-copy">
-      <p class="eyebrow">MY VIDEO CHANNEL</p>
-      <h3>MOTION <em>NEST.</em></h3>
-      <p>Explore my video work, motion design, visual storytelling and creative projects on Motion Nest.</p>
-      <span class="channel-handle">@motion-nest0.1</span>
-      <a class="channel-button" href="https://www.youtube.com/@motion-nest0.1" target="_blank" rel="noopener noreferrer">VISIT YOUTUBE CHANNEL <span>↗</span></a>
-    </div>
-    <div class="channel-orbit" aria-hidden="true"></div>
-  </div>
-</section>
+    <section class="content-section" id="work">
+      <div class="reveal"><div class="section-kicker">Selected work / 001—029</div><h2 class="section-title">Made to make<br><span class="gradient-text">an impact.</span></h2><p class="section-desc">A selection of visual identities, graphic design and motion experiments. Replace the sample cards below with your original Behance and YouTube project links.</p></div>
+      <div class="work-grid">
+        <a class="work-card reveal" href="https://www.behance.net/" target="_blank" rel="noreferrer"><span class="number">01 / BRAND IDENTITY</span><div><h3>Visual Identity</h3><p>Brand systems, logos and visual direction.</p></div><span class="card-arrow">↗</span></a>
+        <a class="work-card reveal" href="https://www.behance.net/" target="_blank" rel="noreferrer"><span class="number">02 / MOTION DESIGN</span><div><h3>Motion Stories</h3><p>Animation, kinetic typography and visual storytelling.</p></div><span class="card-arrow">↗</span></a>
+        <a class="work-card reveal" href="https://www.behance.net/" target="_blank" rel="noreferrer"><span class="number">03 / DIGITAL DESIGN</span><div><h3>Digital Campaigns</h3><p>Social media visuals and campaign creatives.</p></div><span class="card-arrow">↗</span></a>
+      </div>
+    </section>
 
-<section class="section process-section" id="process">
- <div class="section-head"><div><p class="eyebrow">FROM CONCEPT TO IMPACT</p><h2>THE CREATIVE <em>PROCESS.</em></h2></div><p class="section-note">A thoughtful workflow that turns<br>ideas into meaningful visuals.</p></div>
- <div class="process-grid">
-  <article class="process-card"><span>01 / DISCOVER</span><div class="process-symbol">⌕</div><h3>Understand the idea.</h3><p>Research, direction and a clear understanding of the audience and goal.</p></article>
-  <article class="process-card"><span>02 / DESIGN</span><div class="process-symbol">✳</div><h3>Shape the visual.</h3><p>Build a strong visual language through concept, composition and craft.</p></article>
-  <article class="process-card"><span>03 / MOTION</span><div class="process-symbol">↗</div><h3>Bring it to life.</h3><p>Add rhythm, movement and detail to create a memorable experience.</p></article>
- </div>
-</section>
-<section class="about-section section" id="about"><div><p class="eyebrow">A LITTLE INTRODUCTION</p><h2>CREATIVITY<br>MEETS <em>TECH.</em></h2></div><div class="about-right"><p class="about-lead">I turn ideas into visuals that make people stop, look and feel.</p><p class="about-body">I'm MD Fahim, a graphic designer and motion graphics designer focused on brand identity, logo design, social media design, print design, posters, flyers, and cinematic digital experiences.</p><div class="skills"><span>BRAND IDENTITY</span><span>LOGO DESIGN</span><span>MOTION GRAPHICS</span><span>SOCIAL MEDIA</span><span>PRINT DESIGN</span><span>POSTER DESIGN</span><span>AI VISUALS</span></div><a class="text-link" href="https://www.behance.net/mdfahim2528" target="_blank" rel="noreferrer">VIEW MY BEHANCE PROFILE <span>↗</span></a></div></section>
-<section class="contact-section" id="contact"><p class="eyebrow">HAVE A PROJECT IN MIND?</p><h2>LET'S MAKE<br><em>IT REAL.</em></h2><a class="contact-button" href="https://www.behance.net/mdfahim2528" target="_blank" rel="noreferrer">LET'S CONNECT <span>↗</span></a><div class="contact-orb"></div></section>
-</main><footer><a class="brand" href="#home">MF<span>.</span></a><p>© 2026 MD FAHIM · DESIGNED WITH INTENTION.</p><a href="#home">BACK TO TOP ↑</a></footer><script type="module" src="script.js"></script></body></html>
+    <section class="content-section" id="about">
+      <div class="about-wrap">
+        <div class="reveal"><div class="section-kicker">A little about me</div><h2 class="section-title">Design with<br><span class="gradient-text">purpose.</span></h2><p class="section-desc">I’m MD Fahim, a graphic and motion designer focused on turning ideas into clear, memorable visual experiences. I combine design thinking, visual storytelling and motion to help brands communicate with impact.</p></div>
+        <div class="about-panel reveal"><div class="section-kicker">Creative toolkit</div><h3 style="font-size:26px;letter-spacing:-.05em">Ideas into visuals.</h3><div class="skill-list"><span>PHOTOSHOP</span><span>ILLUSTRATOR</span><span>AFTER EFFECTS</span><span>PREMIERE PRO</span><span>BRANDING</span><span>MOTION GRAPHICS</span><span>VISUAL STORYTELLING</span></div></div>
+      </div>
+    </section>
+
+    <section class="content-section" id="process">
+      <div class="reveal"><div class="section-kicker">How I work</div><h2 class="section-title">From idea to<br><span class="gradient-text">experience.</span></h2></div>
+      <div class="process-grid">
+        <article class="process-item reveal"><b>01 / DISCOVER</b><h3>Understand</h3><p>Explore the brief, audience and goals before shaping the direction.</p></article>
+        <article class="process-item reveal"><b>02 / DEFINE</b><h3>Concept</h3><p>Build a visual idea, mood and creative system for the project.</p></article>
+        <article class="process-item reveal"><b>03 / CREATE</b><h3>Design</h3><p>Craft the visuals, refine details and bring the story to life.</p></article>
+        <article class="process-item reveal"><b>04 / DELIVER</b><h3>Launch</h3><p>Prepare polished assets and deliver a consistent final experience.</p></article>
+      </div>
+    </section>
+
+    <section class="content-section" id="contact">
+      <div class="contact-panel reveal"><div><div class="section-kicker">Have a project in mind?</div><h2>Let’s create<br><span class="gradient-text">something bold.</span></h2><p>Have an idea? Let’s turn it into something memorable.</p></div><a class="primary-btn contact-btn" href="mailto:hello@example.com">Start a conversation <span class="round-arrow">↗</span></a></div>
+    </section>
+  </main>
+  <footer><span>© 2026 MD FAHIM — IMAGINE. CREATE. INSPIRE.</span><span>DESIGNED WITH CREATIVE ENERGY</span></footer>
+
+  <script type="module">
+    import * as THREE from 'three';
+    const canvas = document.querySelector('#scene');
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let renderer, scene, camera, core, coreWire, ringGroup, particles, crystalGroup;
+    let pointerX = 0, pointerY = 0, targetX = 0, targetY = 0;
+    try {
+      renderer = new THREE.WebGLRenderer({canvas, antialias:true, alpha:true});
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.7));
+      renderer.setSize(canvas.clientWidth, canvas.clientHeight, false);
+      renderer.outputColorSpace = THREE.SRGBColorSpace;
+      renderer.toneMapping = THREE.ACESFilmicToneMapping;
+      renderer.toneMappingExposure = 1.25;
+      scene = new THREE.Scene();
+      camera = new THREE.PerspectiveCamera(38, canvas.clientWidth/canvas.clientHeight, .1, 100);
+      camera.position.set(0,0,10);
+      const ambient = new THREE.AmbientLight(0x9e72ff, 1.2); scene.add(ambient);
+      const key = new THREE.PointLight(0xb76aff, 95, 20); key.position.set(2,2,4); scene.add(key);
+      const blue = new THREE.PointLight(0x4a1aff, 65, 18); blue.position.set(-4,-2,1); scene.add(blue);
+      const group = new THREE.Group(); group.position.set(2.1,.05,0); scene.add(group);
+      const coreGeo = new THREE.IcosahedronGeometry(1.48, 5);
+      const coreMat = new THREE.MeshStandardMaterial({color:0x21103d, roughness:.38, metalness:.72, emissive:0x2a075b, emissiveIntensity:.85, flatShading:true});
+      core = new THREE.Mesh(coreGeo, coreMat); group.add(core);
+      const wireGeo = new THREE.IcosahedronGeometry(1.53, 2);
+      coreWire = new THREE.Mesh(wireGeo,new THREE.MeshBasicMaterial({color:0x9b4cff,wireframe:true,transparent:true,opacity:.17})); group.add(coreWire);
+      ringGroup = new THREE.Group(); group.add(ringGroup);
+      const ringColors=[0xc9a0ff,0x8c3dff,0xe2caff];
+      for(let i=0;i<3;i++){
+        const ring=new THREE.Mesh(new THREE.TorusGeometry(2.12+i*.12,.018,8,220),new THREE.MeshStandardMaterial({color:ringColors[i],metalness:.85,roughness:.22,emissive:ringColors[i],emissiveIntensity:.6}));
+        ring.rotation.set(.75+i*.58,.2+i*.45,.25+i*.6); ringGroup.add(ring);
+      }
+      const glow=new THREE.Mesh(new THREE.SphereGeometry(1.7,40,40),new THREE.MeshBasicMaterial({color:0x772bff,transparent:true,opacity:.075}));group.add(glow);
+      // Small floating faceted crystals around the energy core.
+      crystalGroup=new THREE.Group();group.add(crystalGroup);
+      for(let i=0;i<13;i++){
+        const size=.055+Math.random()*.13;
+        const crystal=new THREE.Mesh(new THREE.OctahedronGeometry(size,0),new THREE.MeshStandardMaterial({color:0x9d5cff,metalness:.8,roughness:.18,emissive:0x4b0c99,emissiveIntensity:.7}));
+        const angle=i/13*Math.PI*2, radius=2.6+Math.random()*.8;
+        crystal.position.set(Math.cos(angle)*radius,(Math.random()-.5)*3,Math.sin(angle)*radius*.45);
+        crystal.userData={speed:.3+Math.random()*.8,offset:Math.random()*6};crystalGroup.add(crystal);
+      }
+      const count=1300, positions=new Float32Array(count*3);
+      for(let i=0;i<count;i++){positions[i*3]=(Math.random()-.5)*15;positions[i*3+1]=(Math.random()-.5)*9;positions[i*3+2]=(Math.random()-.5)*8-1;}
+      const pGeo=new THREE.BufferGeometry();pGeo.setAttribute('position',new THREE.BufferAttribute(positions,3));
+      particles=new THREE.Points(pGeo,new THREE.PointsMaterial({color:0xb78aff,size:.018,transparent:true,opacity:.72,depthWrite:false}));scene.add(particles);
+      const clock=new THREE.Clock();
+      function animate(){
+        requestAnimationFrame(animate);const t=clock.getElapsedTime();
+        if(!reducedMotion){targetX+=(pointerX-targetX)*.035;targetY+=(pointerY-targetY)*.035;group.rotation.y=targetX*.18+Math.sin(t*.18)*.08;group.rotation.x=targetY*.12+Math.sin(t*.23)*.04;core.rotation.y=t*.12;core.rotation.x=Math.sin(t*.2)*.12;ringGroup.rotation.z=t*.055;crystalGroup.children.forEach(c=>{c.rotation.x=t*c.userData.speed*.25;c.rotation.y=t*c.userData.speed*.3;c.position.y+=Math.sin(t*c.userData.speed+c.userData.offset)*.0009});particles.rotation.y=t*.008;}
+        renderer.render(scene,camera);
+      }
+      animate();
+      function resize(){const w=canvas.clientWidth,h=canvas.clientHeight;if(!w||!h)return;camera.aspect=w/h;camera.updateProjectionMatrix();renderer.setSize(w,h,false);renderer.setPixelRatio(Math.min(window.devicePixelRatio,1.7));}
+      new ResizeObserver(resize).observe(canvas);
+      window.addEventListener('pointermove',e=>{pointerX=(e.clientX/window.innerWidth-.5)*2;pointerY=(e.clientY/window.innerHeight-.5)*2;},{passive:true});
+    } catch(error) { console.warn('3D scene could not start:',error); }
+
+    const toggle=document.querySelector('#menuToggle'),nav=document.querySelector('#mainNav');
+    toggle.addEventListener('click',()=>nav.classList.toggle('open'));
+    nav.querySelectorAll('a').forEach(link=>link.addEventListener('click',()=>nav.classList.remove('open')));
+    const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target)}}),{threshold:.12});
+    document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+  </script>
+</body>
+</html>
