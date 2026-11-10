@@ -149,6 +149,119 @@
       footer{padding-bottom:max(24px,env(safe-area-inset-bottom))}
     }
 
+
+    /* Final mobile hero correction: prevent 3D artwork from covering content */
+    html,body{width:100%;max-width:100%;overflow-x:hidden}
+    #scene{display:block;max-width:100%;overflow:hidden}
+    @media(max-width:620px){
+      .hero{
+        display:block;
+        width:100%;
+        min-height:0;
+        height:auto;
+        max-height:none;
+        padding:118px 22px 170px;
+        overflow:hidden;
+        isolation:isolate;
+      }
+      .hero-copy{
+        width:100%;
+        max-width:100%;
+        padding:0;
+        margin:0;
+        position:relative;
+        z-index:3;
+      }
+      .eyebrow{
+        max-width:100%;
+        width:100%;
+        font-size:9px;
+        line-height:1.7;
+        letter-spacing:.09em;
+        gap:10px;
+        align-items:flex-start;
+        white-space:normal;
+        overflow-wrap:anywhere;
+        margin-bottom:30px;
+      }
+      .eyebrow:before{flex:0 0 22px;margin-top:7px}
+      .hero h1{
+        position:relative;
+        z-index:3;
+        width:100%;
+        max-width:100%;
+        font-size:clamp(48px,13.4vw,76px);
+        line-height:.88;
+        letter-spacing:-.085em;
+        margin-bottom:30px;
+        overflow-wrap:normal;
+      }
+      .hero h1 span{white-space:nowrap}
+      .intro{
+        max-width:100%;
+        width:100%;
+        font-size:14px;
+        line-height:1.85;
+        position:relative;
+        z-index:3;
+      }
+      .hero-actions{
+        width:100%;
+        gap:14px;
+        align-items:center;
+        flex-wrap:wrap;
+        position:relative;
+        z-index:4;
+        margin-top:26px;
+      }
+      .primary-btn{
+        min-height:52px;
+        max-width:100%;
+        padding:10px 12px 10px 18px;
+        gap:12px;
+        font-size:12px;
+      }
+      .watch-link{min-height:48px;gap:9px;font-size:12px}
+      .play{width:42px;height:42px;flex:0 0 42px}
+      .hero-stats{
+        width:100%;
+        max-width:100%;
+        display:grid;
+        grid-template-columns:repeat(3,minmax(0,1fr));
+        gap:8px;
+        margin-top:30px;
+        padding-top:20px;
+        position:relative;
+        z-index:3;
+      }
+      .stat{min-width:0}
+      .stat strong{font-size:clamp(18px,5vw,23px)}
+      .stat span{font-size:10px;line-height:1.4;display:block}
+      .assistant-chip{
+        left:22px;
+        right:22px;
+        bottom:24px;
+        max-width:none;
+        width:auto;
+        z-index:5;
+        padding:12px 14px;
+      }
+      .side-label,.scroll-cue{display:none}
+      /* The 3D core remains visible as a small atmospheric accent on the lower-right. */
+      #scene{position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:.62}
+    }
+    @media(max-width:390px){
+      .hero{padding-left:18px;padding-right:18px}
+      .hero h1{font-size:clamp(44px,12.8vw,56px)}
+      .eyebrow{font-size:8px;letter-spacing:.07em}
+      .hero-actions{gap:10px}
+      .primary-btn{padding-left:13px;gap:8px}
+      .assistant-chip{left:18px;right:18px}
+    }
+    @media(orientation:landscape) and (max-height:500px) and (max-width:900px){
+      .hero{min-height:680px}
+    }
+
   </style>
   <script type="importmap">
     {"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js"}}
@@ -173,7 +286,7 @@
         <p class="intro">I’m <strong>MD Fahim</strong> — a graphic and motion designer creating visual identities, digital experiences and memorable visual stories.</p>
         <div class="hero-actions">
           <a class="primary-btn" href="#spaces">Explore My Work <span class="round-arrow">↗</span></a>
-          <a class="watch-link" href="#work"><span class="play">▶</span> Watch Reel</a>
+          <a class="watch-link" href="#youtube-work"><span class="play">▶</span> Watch Reel</a>
         </div>
         <div class="hero-stats">
           <div class="stat"><strong>29</strong><span>Projects</span></div>
@@ -307,7 +420,11 @@
       const ambient = new THREE.AmbientLight(0x9e72ff, 1.2); scene.add(ambient);
       const key = new THREE.PointLight(0xb76aff, 95, 20); key.position.set(2,2,4); scene.add(key);
       const blue = new THREE.PointLight(0x4a1aff, 65, 18); blue.position.set(-4,-2,1); scene.add(blue);
-      const group = new THREE.Group(); group.position.set(2.1,.05,0); scene.add(group);
+      const group = new THREE.Group();
+      const isCompact = window.matchMedia('(max-width: 620px)').matches;
+      if(isCompact){group.position.set(1.05,-1.45,0);group.scale.setScalar(.52);}
+      else{group.position.set(2.1,.05,0);}
+      scene.add(group);
       const coreGeo = new THREE.IcosahedronGeometry(1.48, 5);
       const coreMat = new THREE.MeshStandardMaterial({color:0x21103d, roughness:.38, metalness:.72, emissive:0x2a075b, emissiveIntensity:.85, flatShading:true});
       core = new THREE.Mesh(coreGeo, coreMat); group.add(core);
@@ -340,7 +457,14 @@
         renderer.render(scene,camera);
       }
       animate();
-      function resize(){const w=canvas.clientWidth,h=canvas.clientHeight;if(!w||!h)return;camera.aspect=w/h;camera.updateProjectionMatrix();renderer.setSize(w,h,false);renderer.setPixelRatio(Math.min(window.devicePixelRatio,1.7));}
+      function resize(){
+        const w=canvas.clientWidth,h=canvas.clientHeight;if(!w||!h)return;
+        const compact=window.matchMedia('(max-width: 620px)').matches;
+        if(compact){group.position.set(1.05,-1.45,0);group.scale.setScalar(.52);}
+        else{group.position.set(2.1,.05,0);group.scale.setScalar(1);}
+        camera.aspect=w/h;camera.updateProjectionMatrix();renderer.setSize(w,h,false);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,compact?1.1:1.6));
+      }
       if('ResizeObserver' in window){new ResizeObserver(resize).observe(canvas);}else{window.addEventListener('resize',resize,{passive:true});}
       window.addEventListener('orientationchange',()=>setTimeout(resize,180),{passive:true});
       window.addEventListener('pointermove',e=>{pointerX=(e.clientX/window.innerWidth-.5)*2;pointerY=(e.clientY/window.innerHeight-.5)*2;},{passive:true});
