@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="color-scheme" content="dark" />
-  <meta name="theme-color" content="#090514" />
+  <meta name="theme-color" content="#07040d" />
   
   <title>MD FAHIM — Creative Portfolio | Graphic & Motion Designer</title>
   <meta name="description" content="MD Fahim — Graphic Designer & Motion Designer. Guided by Aria, your cute anime AI copilot." />
@@ -16,7 +16,7 @@
   
   <style>
     /* ========================================================
-       THEME COLORS: WHITE, PURPLE & BLACK (GLOBAL)
+       THEME 1: WHITE, PURPLE & BLACK (GLOBAL WEBSITE THEME)
        ======================================================== */
     :root{
       --bg:#07040d;
@@ -28,9 +28,9 @@
       --purple-light:#c084fc;
       --violet:#7928ca;
       --purple-glow:rgba(168,85,247,0.35);
+      --line:rgba(168,85,247,0.18);
       --yt-red:#ff0033;
       --yt-red-glow:rgba(255,0,51,0.35);
-      --line:rgba(168,85,247,0.18);
     }
     *{box-sizing:border-box;margin:0;padding:0}
     html{scroll-behavior:smooth;scroll-padding-top:90px}
@@ -96,20 +96,20 @@
     .project-meta p{margin-top:8px;font:9px 'DM Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:#c0a2e0}
 
     /* ========================================================
-       YOUTUBE VIDEO SECTION: RED & WHITE MIX THEME
+       THEME 2: YOUTUBE SECTION (RED & WHITE MIX THEME)
        ======================================================== */
     .yt-section{
       background: radial-gradient(ellipse at 50% 25%, rgba(255, 0, 51, 0.16), transparent 65%), linear-gradient(180deg, #07040d, #0d0306 60%, #07040d);
-      border-top: 1px solid rgba(255,0,51,0.2);
-      border-bottom: 1px solid rgba(255,0,51,0.2);
+      border-top: 1px solid rgba(255,0,51,0.22);
+      border-bottom: 1px solid rgba(255,0,51,0.22);
     }
     .yt-section .section-kicker{color:var(--yt-red)}
     .yt-gradient{background:linear-gradient(105deg,#ffffff 0%,#ff3355 45%,#ff0033 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
     .video-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:44px}
     .video-card-yt{
       min-height:245px;
-      border:1px solid rgba(255,0,51,0.28);
-      background:radial-gradient(circle at 50% 25%,rgba(255,0,51,0.16),transparent 60%),#120408;
+      border:1px solid rgba(255,0,51,0.3);
+      background:radial-gradient(circle at 50% 25%,rgba(255,0,51,0.18),transparent 60%),#120408;
       padding:24px;
       display:flex;
       flex-direction:column;
@@ -145,7 +145,7 @@
     .yt-btn:hover{background:var(--yt-red);box-shadow:0 0 35px var(--yt-red-glow)}
 
     /* ========================================================
-       CUTE ANIME AI GIRL "ARIA" (INTERACTIVE AVATAR & CHAT)
+       LIVE ANIME AI CHARACTER "ARIA" (WAN AI VIDEO AVATAR)
        ======================================================== */
     .ai-section{
       background: radial-gradient(ellipse at 50% 20%, rgba(168,85,247,0.18), transparent 60%), #07040d;
@@ -155,7 +155,7 @@
     .ai-character-card{
       border: 1px solid var(--panel-border);
       border-radius: 24px;
-      background: radial-gradient(circle at 50% 35%, #180928, #0a0412);
+      background: #0d0617;
       position: relative;
       overflow: hidden;
       min-height: 520px;
@@ -165,8 +165,8 @@
       box-shadow: 0 25px 70px rgba(0,0,0,.6), 0 0 35px var(--purple-glow);
     }
     
-    /* Interactive Cute Anime Girl Stage */
-    .anime-avatar-stage{
+    /* Dedicated Video Avatar Container */
+    .anime-video-stage{
       position: absolute;
       inset: 0;
       width: 100%;
@@ -175,45 +175,41 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      pointer-events: none;
+      background: #090312;
+      overflow: hidden;
     }
     
-    .anime-girl-svg{
-      width: 320px;
-      height: 440px;
-      filter: drop-shadow(0 15px 35px rgba(168,85,247,0.3));
-      transition: transform 0.1s ease-out;
+    .anime-video-player{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 20%;
+      transform: scale(1.02);
+      transition: filter 0.4s ease, transform 0.4s ease;
     }
     
-    /* Anime Eyes & Mouth Animations */
-    .eye-pupil{
-      transition: transform 0.12s ease-out;
+    /* Speaking Glow Effect */
+    .anime-video-player.speaking{
+      filter: drop-shadow(0 0 30px rgba(192,132,252,0.7)) saturate(1.15);
+      transform: scale(1.05);
     }
-    .eye-lid{
-      transform-origin: center;
-      transition: transform 0.08s ease;
+
+    .video-uploader-btn{
+      position: absolute;
+      right: 18px;
+      top: 65px;
+      z-index: 4;
+      background: rgba(17,10,31,0.75);
+      border: 1px solid var(--purple);
+      color: var(--purple-light);
+      padding: 6px 12px;
+      border-radius: 20px;
+      font: 10px 'DM Mono', monospace;
+      cursor: pointer;
+      backdrop-filter: blur(8px);
+      transition: .25s;
     }
-    .blinking .eye-lid{
-      transform: scaleY(0.08);
-    }
-    .anime-mouth{
-      transform-origin: 160px 235px;
-      transition: transform 0.1s ease;
-    }
-    .speaking-mouth{
-      animation: animeLipSync 0.22s infinite alternate ease-in-out;
-    }
-    @keyframes animeLipSync{
-      0%{ transform: scaleY(0.4) scaleX(0.9); }
-      100%{ transform: scaleY(2.2) scaleX(1.15); }
-    }
-    .floating-girl{
-      animation: animeBreathe 3.5s infinite ease-in-out;
-    }
-    @keyframes animeBreathe{
-      0%,100%{ transform: translateY(0); }
-      50%{ transform: translateY(-7px); }
-    }
+    .video-uploader-btn:hover{background:var(--purple);color:#fff}
 
     .agent-overlay-top{position:relative;z-index:3;padding:22px;display:flex;justify-content:space-between;align-items:center;background:linear-gradient(180deg,rgba(11,5,20,.88),transparent)}
     .agent-badge{display:flex;align-items:center;gap:8px;font:10px 'DM Mono',monospace;color:var(--purple-light);letter-spacing:.12em}
@@ -317,7 +313,7 @@
       </div>
       <a class="assistant-chip" href="#ai-assistant">
         <span class="assistant-icon">🌸</span>
-        <span><b>Meet Aria ✦</b><small>Cute Anime AI Companion</small></span>
+        <span><b>Meet Aria ✦</b><small>Live Anime AI Companion</small></span>
         <span>↓</span>
       </a>
     </section>
@@ -427,105 +423,37 @@
       <div>
         <div class="section-kicker">Interactive Studio / Cute Anime AI Copilot</div>
         <h2 class="section-title">Meet Aria, your <span class="gradient-text">companion.</span></h2>
-        <p class="section-desc">Aria is your cute anime companion. She speaks with a sweet human girl voice in বাংলা, English or Banglish, and executes commands to control this portfolio!</p>
+        <p class="section-desc">Aria is your cute anime AI companion. She speaks with a sweet human girl voice in বাংলা or English and executes commands to control this portfolio!</p>
       </div>
 
       <div class="ai-layout">
-        <!-- Cute Anime Girl Interactive Card -->
-        <div class="ai-character-card" id="animeCardContainer">
+        <!-- Live Anime Video Card -->
+        <div class="ai-character-card">
           <div class="agent-overlay-top">
             <div class="agent-badge">
               <span class="pulse-light"></span>
-              <span>ARIA · CUTE ANIME COMPANION</span>
+              <span>ARIA · LIVE ANIME AVATAR</span>
             </div>
             <div class="agent-mood-tag" id="agentMood">MOOD: HAPPY 🌸</div>
           </div>
 
-          <!-- Interactive Illustrated Anime Girl Stage -->
-          <div class="anime-avatar-stage">
-            <div class="floating-girl" id="animeGirlWrap">
-              <svg class="anime-girl-svg" viewBox="0 0 320 440" xmlns="http://www.w3.org/2000/svg">
-                <!-- Hair Back -->
-                <path d="M70,120 C50,220 30,320 45,390 C60,420 100,430 110,380 C115,310 110,240 110,210 Z" fill="#0d111d"/>
-                <path d="M250,120 C270,220 290,320 275,390 C260,420 220,430 210,380 C205,310 210,240 210,210 Z" fill="#0d111d"/>
-                <path d="M60,110 C50,260 80,380 160,395 C240,380 270,260 260,110 Z" fill="#131929"/>
-                
-                <!-- Shoulders / School Uniform Vest -->
-                <path d="M110,270 L80,380 L240,380 L210,270 Z" fill="#151b2e"/>
-                <!-- White Shirt Collar -->
-                <polygon points="160,270 125,230 150,230 160,250 170,230 195,230" fill="#f8fafc"/>
-                <!-- Blue Uniform Tie -->
-                <polygon points="156,252 164,252 168,320 160,335 152,320" fill="#2563eb"/>
+          <!-- Video Upload / Switch Button -->
+          <label class="video-uploader-btn" for="videoFileInput" title="Select your anime video from computer">
+            📁 Select Video
+          </label>
+          <input type="file" id="videoFileInput" accept="video/*" style="display:none;" />
 
-                <!-- Neck -->
-                <rect x="146" y="215" width="28" height="30" rx="6" fill="#fcd9cc"/>
-
-                <!-- Head / Anime Face -->
-                <path d="M100,140 C100,85 220,85 220,140 C220,195 185,235 160,238 C135,235 100,195 100,140 Z" fill="#ffe5dc"/>
-
-                <!-- Blushing Cheeks -->
-                <ellipse cx="122" cy="184" rx="14" ry="7" fill="#ff7096" opacity="0.45"/>
-                <ellipse cx="198" cy="184" rx="14" ry="7" fill="#ff7096" opacity="0.45"/>
-
-                <!-- Anime Nose -->
-                <circle cx="160" cy="188" r="1.5" fill="#e09585"/>
-
-                <!-- Anime Mouth (Animated) -->
-                <g class="anime-mouth" id="animeMouth">
-                  <path d="M154,204 Q160,208 166,204" stroke="#c03958" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-                </g>
-
-                <!-- Left Eye -->
-                <g id="leftEyeGroup">
-                  <!-- Eye White -->
-                  <ellipse cx="132" cy="162" rx="15" ry="17" fill="#ffffff"/>
-                  <!-- Pupil (Tracks Mouse) -->
-                  <g class="eye-pupil" id="leftPupil">
-                    <ellipse cx="132" cy="163" rx="10" ry="13" fill="#0284c7"/>
-                    <ellipse cx="132" cy="165" rx="7" ry="9" fill="#082f49"/>
-                    <!-- Sparkles -->
-                    <circle cx="129" cy="158" r="3.5" fill="#ffffff"/>
-                    <circle cx="135" cy="168" r="1.8" fill="#ffffff"/>
-                  </g>
-                  <!-- Eyelid for Blinking -->
-                  <path class="eye-lid" d="M115,145 Q132,143 149,145 Q132,185 115,145 Z" fill="#ffe5dc"/>
-                  <!-- Top Lash Line -->
-                  <path d="M115,152 Q132,142 149,152" stroke="#111827" stroke-width="3.5" fill="none" stroke-linecap="round"/>
-                </g>
-
-                <!-- Right Eye -->
-                <g id="rightEyeGroup">
-                  <!-- Eye White -->
-                  <ellipse cx="188" cy="162" rx="15" ry="17" fill="#ffffff"/>
-                  <!-- Pupil (Tracks Mouse) -->
-                  <g class="eye-pupil" id="rightPupil">
-                    <ellipse cx="188" cy="163" rx="10" ry="13" fill="#0284c7"/>
-                    <ellipse cx="188" cy="165" rx="7" ry="9" fill="#082f49"/>
-                    <!-- Sparkles -->
-                    <circle cx="185" cy="158" r="3.5" fill="#ffffff"/>
-                    <circle cx="191" cy="168" r="1.8" fill="#ffffff"/>
-                  </g>
-                  <!-- Eyelid for Blinking -->
-                  <path class="eye-lid" d="M171,145 Q188,143 205,145 Q188,185 171,145 Z" fill="#ffe5dc"/>
-                  <!-- Top Lash Line -->
-                  <path d="M171,152 Q188,142 205,152" stroke="#111827" stroke-width="3.5" fill="none" stroke-linecap="round"/>
-                </g>
-
-                <!-- Forehead Bangs & Side Locks (Cute Anime Hair) -->
-                <path d="M92,130 C85,200 95,250 102,280 C106,280 110,240 108,180 Z" fill="#1e2638"/>
-                <path d="M228,130 C235,200 225,250 218,280 C214,280 210,240 212,180 Z" fill="#1e2638"/>
-                
-                <!-- Bangs -->
-                <path d="M96,115 C115,140 125,142 135,125 C145,148 165,148 175,122 C185,145 205,140 224,115 C215,85 105,85 96,115 Z" fill="#1a2233"/>
-                <!-- Hair Highlights -->
-                <path d="M110,105 Q160,118 210,105" stroke="rgba(192,132,252,0.4)" stroke-width="4" fill="none" stroke-linecap="round"/>
-              </svg>
-            </div>
+          <!-- Interactive Video Stage -->
+          <div class="anime-video-stage">
+            <video class="anime-video-player" id="ariaVideo" autoplay loop muted playsinline>
+              <!-- Put your downloaded video in the same folder as aria.mp4 -->
+              <source src="aria.mp4" type="video/mp4">
+            </video>
           </div>
 
           <div class="agent-overlay-bottom">
             <h4 style="font-size:17px;color:#fff;margin-bottom:4px">Aria — Cute Anime Copilot</h4>
-            <p style="font-size:11px;color:var(--text-muted)">Moves her eyes with your cursor! Ask: <em>"Hi Aria, kemon acho?"</em> or <em>"Motion design dekhao"</em>.</p>
+            <p style="font-size:11px;color:var(--text-muted)">Live anime companion! Try asking: <em>"Hi Aria, kemon acho?"</em> or <em>"Motion design dekhao"</em>.</p>
           </div>
         </div>
 
@@ -614,7 +542,7 @@
 
   <footer>
     <span>© 2026 MD FAHIM — IMAGINE. CREATE. INSPIRE.</span>
-    <span>HOSTED WITH ARIA CUTE ANIME AI</span>
+    <span>HOSTED WITH ARIA LIVE ANIME AI</span>
   </footer>
 
   <div id="actionToast">✨ <span>Command Executed</span></div>
@@ -779,42 +707,20 @@
     }
 
     /* ========================================================
-       3. CUTE ANIME AVATAR (ARIA) INTERACTIVE LOGIC
+       3. VIDEO FILE SWITCHER / DRAG-AND-DROP LOGIC
        ======================================================== */
-    const leftPupil = document.getElementById('leftPupil');
-    const rightPupil = document.getElementById('rightPupil');
-    const leftEyeGroup = document.getElementById('leftEyeGroup');
-    const rightEyeGroup = document.getElementById('rightEyeGroup');
-    const animeMouth = document.getElementById('animeMouth');
-    const animeGirlWrap = document.getElementById('animeGirlWrap');
+    const ariaVideo = document.getElementById('ariaVideo');
+    const videoFileInput = document.getElementById('videoFileInput');
 
-    // Natural Eye Tracking with Cursor
-    window.addEventListener('pointermove', (e) => {
-      const x = (e.clientX / window.innerWidth - 0.5) * 8;
-      const y = (e.clientY / window.innerHeight - 0.5) * 6;
-      
-      if (leftPupil && rightPupil) {
-        leftPupil.style.transform = `translate(${x}px, ${y}px)`;
-        rightPupil.style.transform = `translate(${x}px, ${y}px)`;
+    videoFileInput.addEventListener('change', (e) => {
+      const file = e.target.files[0];
+      if (file) {
+        const fileURL = URL.createObjectURL(file);
+        ariaVideo.src = fileURL;
+        ariaVideo.play();
+        toast("Video Loaded Successfully! 🌸");
       }
-      if (animeGirlWrap) {
-        animeGirlWrap.style.transform = `translate(${x * 0.4}px, ${y * 0.3}px)`;
-      }
-    }, { passive: true });
-
-    // Natural Anime Double-Blink Timer
-    function triggerBlink() {
-      if (leftEyeGroup && rightEyeGroup) {
-        leftEyeGroup.classList.add('blinking');
-        rightEyeGroup.classList.add('blinking');
-        setTimeout(() => {
-          leftEyeGroup.classList.remove('blinking');
-          rightEyeGroup.classList.remove('blinking');
-        }, 140);
-      }
-      setTimeout(triggerBlink, 3000 + Math.random() * 4000);
-    }
-    setTimeout(triggerBlink, 2000);
+    });
 
     /* ========================================================
        4. ARIA CHAT & HUMAN GIRL VOICE SYNTHESIS
@@ -863,18 +769,18 @@
       const clean = text.replace(/<[^>]*>?/gm, '').replace(/[*_#`~]/g, '');
       const utt = new SpeechSynthesisUtterance(clean);
       if (femaleVoice) utt.voice = femaleVoice;
-      utt.pitch = 1.22; // Sweet, high, human girl cadence
+      utt.pitch = 1.22; // Sweet, natural human girl cadence
       utt.rate = 1.02;
 
       utt.onstart = () => {
         agentMood.textContent = 'SPEAKING... 🌸';
         agentMood.style.color = '#c084fc';
-        if (animeMouth) animeMouth.classList.add('speaking-mouth');
+        if (ariaVideo) ariaVideo.classList.add('speaking');
       };
       utt.onend = () => {
         agentMood.textContent = 'MOOD: HAPPY 🌸';
         agentMood.style.color = '#fff';
-        if (animeMouth) animeMouth.classList.remove('speaking-mouth');
+        if (ariaVideo) ariaVideo.classList.remove('speaking');
       };
       window.speechSynthesis.speak(utt);
     }
