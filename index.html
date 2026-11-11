@@ -16,7 +16,7 @@
   
   <style>
     /* ========================================================
-       THEME 1: WHITE, PURPLE & BLACK (GLOBAL)
+       CROSS-DEVICE SYSTEM & THEME PALETTE
        ======================================================== */
     :root{
       --bg:#06030a;
@@ -34,251 +34,257 @@
       --yt-red:#ff0033;
       --yt-red-glow:rgba(255,0,51,0.35);
     }
-    *{box-sizing:border-box;margin:0;padding:0}
-    html{scroll-behavior:smooth;scroll-padding-top:90px}
-    body{background:var(--bg);color:var(--white);font-family:Manrope,system-ui,sans-serif;overflow-x:hidden}
-    body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:5;opacity:.12;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.2'/%3E%3C/svg%3E")}
-    a{color:inherit;text-decoration:none}.mono{font-family:'DM Mono',monospace;letter-spacing:.12em;text-transform:uppercase}
     
-    /* Header */
-    .site-header{height:76px;position:fixed;top:0;left:0;width:100%;z-index:20;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(22px,6vw,100px);border-bottom:1px solid var(--line);background:rgba(6,3,10,.82);backdrop-filter:blur(18px)}
-    .logo{font-weight:900;font-size:27px;letter-spacing:-.09em;color:var(--white)}.logo span{color:var(--gold)}
-    .nav{display:flex;gap:clamp(14px,2.5vw,36px);align-items:center}.nav a{font:500 10px 'DM Mono',monospace;letter-spacing:.12em;color:#c7bed5;text-transform:uppercase;transition:.25s}
+    *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+    html{scroll-behavior:smooth;scroll-padding-top:85px;width:100%;overflow-x:hidden}
+    body{
+      background:var(--bg);color:var(--white);font-family:Manrope,system-ui,sans-serif;
+      width:100%;overflow-x:hidden;min-height:100vh;
+      padding-bottom:env(safe-area-inset-bottom);
+    }
+    body:before{
+      content:"";position:fixed;inset:0;pointer-events:none;z-index:5;opacity:.1;
+      background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.2'/%3E%3C/svg%3E")
+    }
+    a{color:inherit;text-decoration:none}
+    button{font-family:inherit;touch-action:manipulation}
+    img,svg{max-width:100%;height:auto;display:block}
+    .mono{font-family:'DM Mono',monospace;letter-spacing:.12em;text-transform:uppercase}
+    
+    /* Header & Navigation (Responsive drawer for phones) */
+    .site-header{
+      height:74px;position:fixed;top:0;left:0;width:100%;z-index:40;
+      display:flex;align-items:center;justify-content:space-between;
+      padding:0 clamp(16px,5vw,80px);border-bottom:1px solid var(--line);
+      background:rgba(6,3,10,.85);backdrop-filter:blur(18px);
+      padding-top:env(safe-area-inset-top);
+    }
+    .logo{font-weight:900;font-size:clamp(22px,5vw,27px);letter-spacing:-.09em;color:var(--white)}.logo span{color:var(--gold)}
+    .nav{display:flex;gap:clamp(14px,2.5vw,36px);align-items:center}
+    .nav a{font:500 11px 'DM Mono',monospace;letter-spacing:.12em;color:#c7bed5;text-transform:uppercase;transition:.25s}
     .nav a:hover,.nav a.ai-nav{color:var(--gold);font-weight:700}
     .availability{display:flex;align-items:center;gap:10px;font:500 10px 'DM Mono',monospace;color:#c7bed5;text-transform:uppercase}
     .status-dot{width:7px;height:7px;border-radius:50%;background:#ffd700;box-shadow:0 0 14px #ffd700}
-    .menu-toggle{display:none;background:none;border:1px solid var(--line);color:white;border-radius:50%;width:42px;height:42px;font-size:20px;cursor:pointer}
+    .menu-toggle{
+      display:none;background:rgba(255,255,255,0.06);border:1px solid var(--line);
+      color:white;border-radius:12px;width:44px;height:44px;font-size:22px;cursor:pointer;
+    }
     
-    /* Hero */
-    .hero{min-height:850px;height:100svh;max-height:1100px;position:relative;isolation:isolate;display:grid;grid-template-columns:1fr 1.1fr;align-items:center;padding:120px clamp(22px,12vw,220px) 80px;overflow:hidden}
-    .hero:before{content:"";position:absolute;inset:0;z-index:-2;background:radial-gradient(ellipse at 65% 45%,rgba(168,85,247,.22),transparent 45%),radial-gradient(ellipse at 80% 80%,rgba(255,215,0,.08),transparent 40%),linear-gradient(110deg,#06030a 15%,#0b0416 65%,#130624)}
-    #scene{position:absolute;inset:0;width:100%;height:100%;z-index:-1}
+    /* Hero Section (Cross-device Grid) */
+    .hero{
+      min-height:max(720px,100svh);position:relative;isolation:isolate;
+      display:grid;grid-template-columns:1.1fr 0.9fr;align-items:center;
+      padding:110px clamp(18px,6vw,120px) 60px;overflow:hidden;
+    }
+    .hero:before{
+      content:"";position:absolute;inset:0;z-index:-2;
+      background:radial-gradient(ellipse at 70% 45%,rgba(168,85,247,.22),transparent 50%),
+                 radial-gradient(ellipse at 85% 85%,rgba(255,215,0,.08),transparent 45%),
+                 linear-gradient(110deg,#06030a 15%,#0b0416 65%,#130624);
+    }
+    #scene{position:absolute;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none}
     .hero-copy{position:relative;z-index:2;max-width:590px}
-    .eyebrow{font:500 11px 'DM Mono',monospace;color:#d8cde9;letter-spacing:.16em;text-transform:uppercase;display:flex;align-items:center;gap:15px;margin-bottom:28px}.eyebrow:before{content:"";width:28px;height:1px;background:var(--gold)}
-    h1{font-size:clamp(62px,7.3vw,112px);line-height:.84;letter-spacing:-.085em;font-weight:900;text-transform:uppercase;margin-bottom:34px;color:var(--white)}
+    .eyebrow{font:500 clamp(10px,2vw,11px) 'DM Mono',monospace;color:#d8cde9;letter-spacing:.16em;text-transform:uppercase;display:flex;align-items:center;gap:15px;margin-bottom:24px}
+    .eyebrow:before{content:"";width:28px;height:1px;background:var(--gold)}
+    h1{font-size:clamp(44px,7.5vw,108px);line-height:.88;letter-spacing:-.08em;font-weight:900;text-transform:uppercase;margin-bottom:28px;color:var(--white)}
     .gradient-text{background:linear-gradient(105deg,#ffffff 0%,#ffd700 45%,#a855f7 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
-    .intro{max-width:440px;color:var(--text-muted);font-size:14px;line-height:1.9}
-    .hero-actions{display:flex;align-items:center;gap:28px;margin-top:28px;flex-wrap:wrap}
-    .primary-btn{display:inline-flex;align-items:center;gap:18px;padding:12px 24px;border:1px solid var(--gold);border-radius:40px;background:rgba(255,215,0,.12);box-shadow:0 0 28px var(--gold-glow);font-size:12px;font-weight:800;color:var(--white);cursor:pointer;transition:.3s}
-    .primary-btn:hover{background:var(--purple);border-color:var(--purple-light);transform:translateY(-3px);box-shadow:0 0 35px var(--purple-glow);color:#fff}
-    .round-arrow{width:30px;height:30px;border:1px solid rgba(255,255,255,.5);border-radius:50%;display:grid;place-items:center}
-    .watch-link{display:flex;align-items:center;gap:12px;font-size:12px;color:#ddd4e9;cursor:pointer;background:none;border:none;font-family:inherit}
-    .play{width:43px;height:43px;border:1px solid var(--purple-light);border-radius:50%;display:grid;place-items:center;color:var(--white)}
-    .hero-stats{display:flex;gap:34px;margin-top:36px;padding-top:24px;border-top:1px solid var(--line);max-width:530px}
-    .stat strong{display:block;font-size:22px;letter-spacing:-.05em;color:var(--white)}.stat span{font-size:11px;color:var(--text-muted)}
-    .assistant-chip{position:absolute;right:5.5%;bottom:13%;z-index:3;display:flex;align-items:center;gap:13px;padding:14px 20px;border:1px solid var(--gold);border-radius:16px;background:rgba(18,7,30,.88);backdrop-filter:blur(14px);font-size:12px;transition:.3s}
-    .assistant-chip:hover{border-color:var(--purple-light);transform:translateY(-3px);box-shadow:0 0 25px var(--purple-glow)}
+    .intro{max-width:440px;color:var(--text-muted);font-size:clamp(13px,2vw,14px);line-height:1.8}
+    .hero-actions{display:flex;align-items:center;gap:18px;margin-top:28px;flex-wrap:wrap}
+    .primary-btn{
+      display:inline-flex;align-items:center;gap:16px;padding:12px 24px;min-height:48px;
+      border:1px solid var(--gold);border-radius:40px;background:rgba(255,215,0,.12);
+      box-shadow:0 0 28px var(--gold-glow);font-size:12px;font-weight:800;color:var(--white);cursor:pointer;transition:.3s;
+    }
+    .primary-btn:hover{background:var(--purple);border-color:var(--purple-light);transform:translateY(-2px);box-shadow:0 0 35px var(--purple-glow)}
+    .round-arrow{width:28px;height:28px;border:1px solid rgba(255,255,255,.5);border-radius:50%;display:grid;place-items:center}
+    .watch-link{display:flex;align-items:center;gap:12px;font-size:12px;color:#ddd4e9;cursor:pointer;background:none;border:none;min-height:48px}
+    .play{width:42px;height:42px;border:1px solid var(--purple-light);border-radius:50%;display:grid;place-items:center;color:var(--white)}
+    .hero-stats{display:flex;gap:clamp(18px,4vw,34px);margin-top:32px;padding-top:22px;border-top:1px solid var(--line);max-width:530px}
+    .stat strong{display:block;font-size:clamp(18px,4vw,22px);letter-spacing:-.05em;color:var(--white)}.stat span{font-size:10px;color:var(--text-muted)}
+    
+    .assistant-chip{
+      position:absolute;right:5%;bottom:12%;z-index:3;
+      display:flex;align-items:center;gap:12px;padding:12px 18px;
+      border:1px solid var(--gold);border-radius:16px;background:rgba(18,7,30,.88);
+      backdrop-filter:blur(14px);font-size:12px;transition:.3s;
+    }
     .assistant-icon{width:32px;height:32px;border-radius:10px;background:linear-gradient(135deg,var(--gold),#a855f7);display:grid;place-items:center}
     
     /* Content Sections */
-    section.content-section{padding:110px clamp(22px,9vw,150px);position:relative}
-    .section-kicker{font:10px 'DM Mono',monospace;letter-spacing:.17em;color:var(--gold);text-transform:uppercase;margin-bottom:18px}
-    .section-title{font-size:clamp(38px,6vw,76px);line-height:.95;letter-spacing:-.07em;margin-bottom:24px;color:var(--white)}
-    .section-desc{color:var(--text-muted);line-height:1.8;max-width:580px;font-size:14px}
+    section.content-section{padding:clamp(60px,10vw,110px) clamp(16px,5vw,80px);position:relative}
+    .section-kicker{font:10px 'DM Mono',monospace;letter-spacing:.17em;color:var(--gold);text-transform:uppercase;margin-bottom:14px}
+    .section-title{font-size:clamp(32px,6vw,72px);line-height:.96;letter-spacing:-.06em;margin-bottom:20px;color:var(--white)}
+    .section-desc{color:var(--text-muted);line-height:1.75;max-width:580px;font-size:clamp(13px,2vw,14px)}
     
     /* Spaces */
-    .space-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-    .space-card{min-height:365px;border:1px solid var(--line);padding:30px;background:radial-gradient(circle at 80% 20%,rgba(168,85,247,.18),transparent 50%),linear-gradient(145deg,#120721,#07020d);display:flex;flex-direction:column;justify-content:space-between;transition:.4s;border-radius:18px}
-    .space-card:hover{transform:translateY(-7px);border-color:var(--purple);box-shadow:0 25px 70px var(--purple-glow)}
-    .space-card h3{font-size:clamp(42px,4.3vw,66px);line-height:.91;margin:38px 0 20px;text-transform:uppercase}
+    .space-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;margin-top:28px}
+    .space-card{
+      min-height:300px;border:1px solid var(--line);padding:clamp(20px,4vw,30px);
+      background:radial-gradient(circle at 80% 20%,rgba(168,85,247,.18),transparent 50%),linear-gradient(145deg,#120721,#07020d);
+      display:flex;flex-direction:column;justify-content:space-between;transition:.35s;border-radius:18px;
+    }
+    .space-card:hover{transform:translateY(-5px);border-color:var(--purple);box-shadow:0 20px 50px var(--purple-glow)}
+    .space-card h3{font-size:clamp(34px,5vw,56px);line-height:.94;margin:28px 0 16px;text-transform:uppercase}
     
-    /* Projects Grid */
-    .work-toolbar{display:flex;flex-wrap:wrap;gap:9px;margin-top:32px}
-    .filter-btn{border:1px solid var(--line);background:rgba(255,255,255,.03);color:#d0c4e4;border-radius:30px;padding:10px 15px;font:10px 'DM Mono',monospace;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;transition:.25s}
-    .filter-btn:hover,.filter-btn.active{background:linear-gradient(120deg,var(--purple),var(--violet));border-color:var(--purple-light);color:white;box-shadow:0 0 24px var(--purple-glow)}
-    .work-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin-top:40px}
-    .work-card.project-card{display:block;border-radius:16px;background:var(--panel);border:1px solid var(--line);position:relative;overflow:hidden;transition:transform .35s,border-color .35s}
-    .work-card.project-card:hover{transform:translateY(-8px);border-color:var(--gold);box-shadow:0 18px 50px rgba(255,215,0,.25)}
-    .project-image{height:230px;overflow:hidden;background:#150d26}
-    .project-image img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .65s ease}
-    .project-card:hover .project-image img{transform:scale(1.07)}
-    .project-meta{padding:18px 19px 20px}
-    .project-meta .number{display:block;margin-bottom:8px;font:10px 'DM Mono',monospace;color:var(--gold)}
-    .project-meta h3{font-size:16px;line-height:1.35;letter-spacing:-.03em;color:var(--white)}
+    /* Project Filters & Cards */
+    .work-toolbar{display:flex;flex-wrap:wrap;gap:8px;margin-top:28px}
+    .filter-btn{
+      border:1px solid var(--line);background:rgba(255,255,255,.03);color:#d0c4e4;
+      border-radius:30px;padding:9px 14px;min-height:38px;font:10px 'DM Mono',monospace;
+      letter-spacing:.08em;text-transform:uppercase;cursor:pointer;transition:.25s;
+    }
+    .filter-btn:hover,.filter-btn.active{background:linear-gradient(120deg,var(--purple),var(--violet));border-color:var(--purple-light);color:white;box-shadow:0 0 20px var(--purple-glow)}
+    .work-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px;margin-top:34px}
+    .work-card.project-card{
+      display:block;border-radius:16px;background:var(--panel);border:1px solid var(--line);
+      position:relative;overflow:hidden;transition:transform .3s,border-color .3s;
+    }
+    .work-card.project-card:hover{transform:translateY(-6px);border-color:var(--gold);box-shadow:0 15px 40px rgba(255,215,0,.2)}
+    .project-image{height:210px;overflow:hidden;background:#150d26}
+    .project-image img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+    .project-card:hover .project-image img{transform:scale(1.06)}
+    .project-meta{padding:16px 18px 18px}
+    .project-meta .number{display:block;margin-bottom:6px;font:10px 'DM Mono',monospace;color:var(--gold)}
+    .project-meta h3{font-size:15px;line-height:1.4;letter-spacing:-.02em;color:var(--white)}
     .project-meta p{margin-top:8px;font:9px 'DM Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:#c0a2e0}
 
-    /* ========================================================
-       THEME 2: YOUTUBE SECTION (RED & WHITE MIX)
-       ======================================================== */
+    /* YouTube Section (Red & White) */
     .yt-section{
       background: radial-gradient(ellipse at 50% 25%, rgba(255, 0, 51, 0.16), transparent 65%), linear-gradient(180deg, #06030a, #0d0205 60%, #06030a);
-      border-top: 1px solid rgba(255,0,51,0.22);
-      border-bottom: 1px solid rgba(255,0,51,0.22);
+      border-top: 1px solid rgba(255,0,51,0.22);border-bottom: 1px solid rgba(255,0,51,0.22);
     }
     .yt-section .section-kicker{color:var(--yt-red)}
     .yt-gradient{background:linear-gradient(105deg,#ffffff 0%,#ff3355 45%,#ff0033 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
-    .video-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:44px}
+    .video-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-top:34px}
     .video-card-yt{
-      min-height:245px;
-      border:1px solid rgba(255,0,51,0.3);
+      min-height:220px;border:1px solid rgba(255,0,51,0.3);
       background:radial-gradient(circle at 50% 25%,rgba(255,0,51,0.18),transparent 60%),#120408;
-      padding:24px;
-      display:flex;
-      flex-direction:column;
-      justify-content:space-between;
-      border-radius:18px;
-      cursor:pointer;
-      transition:.35s;
+      padding:22px;display:flex;flex-direction:column;justify-content:space-between;border-radius:18px;cursor:pointer;transition:.35s;
     }
-    .video-card-yt:hover{transform:translateY(-6px);border-color:var(--yt-red);box-shadow:0 20px 50px var(--yt-red-glow)}
-    .video-play-yt{width:52px;height:52px;border-radius:50%;display:grid;place-items:center;background:var(--yt-red);color:#fff;font-size:17px;box-shadow:0 0 25px rgba(255,0,51,.5);transition:.3s}
-    .video-card-yt:hover .video-play-yt{transform:scale(1.1);background:#ff1a40}
-    .video-card-yt h3{color:#ffffff;font-size:18px;margin-top:14px}
+    .video-card-yt:hover{transform:translateY(-5px);border-color:var(--yt-red);box-shadow:0 15px 40px var(--yt-red-glow)}
+    .video-play-yt{width:46px;height:46px;border-radius:50%;display:grid;place-items:center;background:var(--yt-red);color:#fff;font-size:16px}
+    .video-card-yt h3{color:#ffffff;font-size:17px;margin-top:12px}
     .video-card-yt p{color:#e2c5cb;font-size:12px;margin-top:6px;line-height:1.6}
-    
     .yt-banner-cta{
-      margin-top:35px;padding:clamp(22px,4vw,38px);border:1px solid rgba(255,0,51,0.35);border-radius:20px;
+      margin-top:32px;padding:clamp(20px,4vw,34px);border:1px solid rgba(255,0,51,0.35);border-radius:20px;
       background:radial-gradient(ellipse at 80% 50%,rgba(255,0,51,0.2),transparent 50%),linear-gradient(120deg,#1c060c,#100306);
-      display:flex;align-items:center;justify-content:space-between;gap:24px;
+      display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;
     }
     .yt-btn{border-color:var(--yt-red);background:rgba(255,0,51,0.15);box-shadow:0 0 25px var(--yt-red-glow)}
-    .yt-btn:hover{background:var(--yt-red);box-shadow:0 0 35px var(--yt-red-glow)}
+    .yt-btn:hover{background:var(--yt-red)}
 
-    /* ========================================================
-       QUEEN MEDUSA (BTTH) IMPERIAL AI SANCTUM
-       ======================================================== */
-    .ai-section{
-      background: radial-gradient(ellipse at 50% 20%, rgba(168,85,247,0.2), transparent 60%), #06030a;
-    }
-    .ai-layout{display:grid;grid-template-columns:0.95fr 1.05fr;gap:24px;margin-top:36px;align-items:stretch}
+    /* Queen Medusa (BTTH) AI Sanctum (Adaptive Layout) */
+    .ai-section{background: radial-gradient(ellipse at 50% 20%, rgba(168,85,247,0.2), transparent 60%), #06030a}
+    .ai-layout{display:grid;grid-template-columns:1fr 1.15fr;gap:22px;margin-top:32px;align-items:stretch}
     
     .medusa-card{
-      border: 1px solid rgba(255,215,0,0.4);
-      border-radius: 24px;
+      border: 1px solid rgba(255,215,0,0.4);border-radius:24px;
       background: radial-gradient(circle at 50% 30%, #1c0828, #08020d);
-      position: relative;
-      overflow: hidden;
-      min-height: 540px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
+      position: relative;overflow: hidden;min-height:480px;
+      display: flex;flex-direction: column;justify-content: space-between;
       box-shadow: 0 25px 70px rgba(0,0,0,.7), 0 0 35px var(--gold-glow);
     }
+    .medusa-stage{position:absolute;inset:0;width:100%;height:100%;z-index:1;display:flex;align-items:center;justify-content:center;pointer-events:none}
+    .medusa-svg{width:min(320px,85%);height:auto;max-height:450px;filter:drop-shadow(0 20px 45px rgba(255,215,0,0.25))}
     
-    /* Interactive Queen Medusa Visual Stage */
-    .medusa-stage{
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      pointer-events: none;
-    }
-    
-    .medusa-svg{
-      width: 330px;
-      height: 460px;
-      filter: drop-shadow(0 20px 45px rgba(255,215,0,0.25));
-      transition: transform 0.1s ease-out;
-    }
-
-    /* Serpent Eyes Tracking & Breathing */
     .serpent-pupil{transition: transform 0.12s ease-out;}
     .serpent-lid{transform-origin: center; transition: transform 0.08s ease;}
     .blinking .serpent-lid{transform: scaleY(0.08);}
     .medusa-mouth{transform-origin: 165px 230px; transition: transform 0.1s ease;}
     .speaking-mouth{animation: medusaSpeak 0.22s infinite alternate ease-in-out;}
-    @keyframes medusaSpeak{
-      0%{ transform: scaleY(0.4) scaleX(0.9); }
-      100%{ transform: scaleY(2.2) scaleX(1.15); }
-    }
+    @keyframes medusaSpeak{0%{transform:scaleY(0.4) scaleX(0.9)}100%{transform:scaleY(2.2) scaleX(1.15)}}
     .floating-empress{animation: empressAura 3.8s infinite ease-in-out;}
-    @keyframes empressAura{
-      0%,100%{ transform: translateY(0); }
-      50%{ transform: translateY(-8px); }
-    }
+    @keyframes empressAura{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
 
-    .agent-overlay-top{position:relative;z-index:3;padding:22px;display:flex;justify-content:space-between;align-items:center;background:linear-gradient(180deg,rgba(9,2,14,.92),transparent)}
+    .agent-overlay-top{position:relative;z-index:3;padding:18px 20px;display:flex;justify-content:space-between;align-items:center;background:linear-gradient(180deg,rgba(9,2,14,.92),transparent)}
     .agent-badge{display:flex;align-items:center;gap:8px;font:10px 'DM Mono',monospace;color:var(--gold);letter-spacing:.14em}
     .pulse-light{width:8px;height:8px;border-radius:50%;background:var(--gold);box-shadow:0 0 14px var(--gold)}
-    .agent-mood-tag{font:9px 'DM Mono',monospace;letter-spacing:.14em;padding:4px 12px;border-radius:12px;background:rgba(255,215,0,.18);border:1px solid var(--gold);color:#fff}
-    .agent-overlay-bottom{position:relative;z-index:3;padding:22px;background:linear-gradient(0deg,rgba(9,2,14,.95) 40%,transparent)}
+    .agent-mood-tag{font:9px 'DM Mono',monospace;letter-spacing:.14em;padding:4px 10px;border-radius:12px;background:rgba(255,215,0,.18);border:1px solid var(--gold);color:#fff}
+    .agent-overlay-bottom{position:relative;z-index:3;padding:18px 20px;background:linear-gradient(0deg,rgba(9,2,14,.95) 40%,transparent)}
     
     /* AI Chat Card */
-    .ai-chat-card{border:1px solid var(--panel-border);border-radius:24px;background:linear-gradient(145deg,#12061e,#07020d);overflow:hidden;display:flex;flex-direction:column;justify-content:space-between;min-height:540px}
-    .ai-topbar{padding:16px 22px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;background:rgba(15,7,26,.7)}
-    
-    .voice-toggle-btn{background:rgba(255,255,255,.06);border:1px solid var(--gold);color:var(--gold);border-radius:20px;padding:5px 12px;font:9px 'DM Mono',monospace;cursor:pointer;transition:.25s}
+    .ai-chat-card{border:1px solid var(--panel-border);border-radius:24px;background:linear-gradient(145deg,#12061e,#07020d);overflow:hidden;display:flex;flex-direction:column;justify-content:space-between;min-height:480px}
+    .ai-topbar{padding:14px 18px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;background:rgba(15,7,26,.7);gap:10px}
+    .voice-toggle-btn{background:rgba(255,255,255,.06);border:1px solid var(--gold);color:var(--gold);border-radius:20px;padding:6px 12px;font:9px 'DM Mono',monospace;cursor:pointer;white-space:nowrap}
     .voice-toggle-btn.active{background:rgba(255,215,0,.2);box-shadow:0 0 16px var(--gold-glow)}
     
-    .ai-chat-window{flex:1;height:310px;overflow-y:auto;padding:22px;display:flex;flex-direction:column;gap:16px}
-    .chat-bubble{max-width:85%;padding:13px 17px;border-radius:18px;font-size:13px;line-height:1.7;display:flex;gap:12px}
+    .ai-chat-window{flex:1;max-height:300px;min-height:220px;overflow-y:auto;padding:18px;display:flex;flex-direction:column;gap:14px}
+    .chat-bubble{max-width:90%;padding:12px 16px;border-radius:18px;font-size:clamp(12px,2vw,13px);line-height:1.65;display:flex;gap:12px}
     .chat-bubble.bot{align-self:flex-start;background:rgba(28,11,42,.88);border:1px solid rgba(255,215,0,.3);color:#f5ebfa}
     .chat-bubble.user{align-self:flex-end;background:linear-gradient(135deg,var(--purple),#581c87);color:#fff}
-    .chat-avatar{width:30px;height:30px;border-radius:8px;background:linear-gradient(135deg,var(--gold),#a855f7);display:grid;place-items:center;font-size:14px;flex-shrink:0;color:#000;font-weight:900}
+    .chat-avatar{width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,var(--gold),#a855f7);display:grid;place-items:center;font-size:13px;flex-shrink:0;color:#000;font-weight:900}
     .action-chip-pill{display:inline-block;margin-top:6px;padding:3px 8px;border-radius:8px;font:10px 'DM Mono',monospace;background:rgba(255,215,0,.2);border:1px solid var(--gold);color:#ffd700}
     
-    .quick-prompts{display:flex;flex-wrap:wrap;gap:8px;padding:12px 22px;border-top:1px solid rgba(168,85,247,.1);background:rgba(12,4,20,.5)}
-    .quick-chip{font:10px 'DM Mono',monospace;letter-spacing:.08em;color:#e2d4f5;background:rgba(255,255,255,.03);border:1px solid var(--line);padding:7px 12px;border-radius:20px;cursor:pointer;transition:.25s}
+    .quick-prompts{display:flex;flex-wrap:wrap;gap:6px;padding:10px 18px;border-top:1px solid rgba(168,85,247,.1);background:rgba(12,4,20,.5)}
+    .quick-chip{font:10px 'DM Mono',monospace;letter-spacing:.06em;color:#e2d4f5;background:rgba(255,255,255,.03);border:1px solid var(--line);padding:7px 12px;min-height:36px;border-radius:20px;cursor:pointer;transition:.2s}
     .quick-chip:hover{color:#fff;border-color:var(--gold);background:rgba(255,215,0,.15)}
     
-    .ai-input-wrap{padding:16px 22px;border-top:1px solid var(--line);display:flex;gap:10px;background:rgba(12,4,20,.8);align-items:center}
-    .ai-input{flex:1;background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:30px;padding:12px 20px;color:#fff;outline:none;font-family:inherit}
+    .ai-input-wrap{padding:14px 18px;border-top:1px solid var(--line);display:flex;gap:10px;background:rgba(12,4,20,.8);align-items:center}
+    .ai-input{flex:1;background:rgba(255,255,255,.05);border:1px solid var(--line);border-radius:30px;padding:12px 18px;min-height:46px;color:#fff;outline:none;font-size:13px}
     
     .mic-btn{
-      border: 1px solid var(--gold);
-      background: rgba(255,215,0,0.1);
-      color: var(--gold);
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      cursor: pointer;
-      display: grid;
-      place-items: center;
-      font-size: 16px;
-      transition: .3s;
+      border:1px solid var(--gold);background:rgba(255,215,0,0.1);color:var(--gold);
+      width:44px;height:44px;min-width:44px;border-radius:50%;cursor:pointer;display:grid;place-items:center;font-size:16px;
     }
-    .mic-btn.listening{
-      background: #ff0033;
-      border-color: #ff0033;
-      color: #fff;
-      animation: micPulse 1.2s infinite;
-    }
-    @keyframes micPulse{
-      0%,100%{ box-shadow: 0 0 0 0 rgba(255,0,51,0.6); }
-      50%{ box-shadow: 0 0 0 10px rgba(255,0,51,0); }
-    }
-
-    .ai-send-btn{border:none;background:linear-gradient(120deg,var(--gold),var(--purple));color:#000;font-weight:900;width:44px;height:44px;border-radius:50%;cursor:pointer;display:grid;place-items:center}
+    .mic-btn.listening{background:#ff0033;border-color:#ff0033;color:#fff;animation:micPulse 1.2s infinite}
+    @keyframes micPulse{0%,100%{box-shadow:0 0 0 0 rgba(255,0,51,0.6)}50%{box-shadow:0 0 0 10px rgba(255,0,51,0)}}
+    .ai-send-btn{border:none;background:linear-gradient(120deg,var(--gold),var(--purple));color:#000;font-weight:900;width:44px;height:44px;min-width:44px;border-radius:50%;cursor:pointer;display:grid;place-items:center}
 
     /* About, Process, Contact, Modals */
-    .about-wrap{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center}
-    .about-panel{border:1px solid var(--line);border-radius:22px;padding:34px;background:var(--panel)}
-    .skill-list{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}.skill-list span{border:1px solid var(--line);padding:9px 13px;border-radius:30px;font:10px 'DM Mono',monospace;color:#dfd6ed}
-    .process-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:42px}
-    .process-item{padding:23px;border-top:1px solid var(--purple);background:rgba(168,85,247,.06)}
-    .contact-panel{padding:clamp(28px,6vw,70px);border:1px solid var(--panel-border);border-radius:24px;background:radial-gradient(circle at 80% 50%,rgba(168,85,247,.2),transparent 50%),var(--panel);display:flex;align-items:center;justify-content:space-between;gap:30px}
-    .contact-actions{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
-    .secondary-link{font:500 11px 'DM Mono',monospace;padding:12px 18px;border:1px solid var(--line);border-radius:40px;transition:.3s;color:#dfd6ed}
-    .secondary-link:hover{border-color:var(--gold);color:#fff}
-    footer{padding:28px clamp(22px,9vw,150px);border-top:1px solid var(--line);display:flex;justify-content:space-between;color:#92869f;font:10px 'DM Mono',monospace}
+    .about-wrap{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:34px;align-items:center}
+    .about-panel{border:1px solid var(--line);border-radius:22px;padding:clamp(20px,4vw,34px);background:var(--panel)}
+    .skill-list{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}.skill-list span{border:1px solid var(--line);padding:8px 12px;border-radius:30px;font:10px 'DM Mono',monospace;color:#dfd6ed}
+    .process-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:34px}
+    .process-item{padding:20px;border-top:1px solid var(--purple);background:rgba(168,85,247,.06);border-radius:0 0 12px 12px}
+    .contact-panel{
+      padding:clamp(24px,5vw,60px);border:1px solid var(--panel-border);border-radius:24px;
+      background:radial-gradient(circle at 80% 50%,rgba(168,85,247,.2),transparent 50%),var(--panel);
+      display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;
+    }
+    .contact-actions{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+    .secondary-link{font:500 11px 'DM Mono',monospace;padding:12px 18px;min-height:44px;display:inline-flex;align-items:center;border:1px solid var(--line);border-radius:40px;color:#dfd6ed}
+    footer{padding:24px clamp(16px,5vw,80px);border-top:1px solid var(--line);display:flex;justify-content:space-between;color:#92869f;font:10px 'DM Mono',monospace;flex-wrap:wrap;gap:12px}
     
     #actionToast{position:fixed;bottom:85px;left:50%;transform:translateX(-50%) translateY(30px);background:rgba(18,7,30,.96);border:1px solid var(--gold);color:#fff;padding:10px 22px;border-radius:30px;font:500 11px 'DM Mono',monospace;opacity:0;pointer-events:none;transition:.35s;z-index:105}
     #actionToast.show{opacity:1;transform:translateX(-50%) translateY(0)}
-    #backToTop{position:fixed;bottom:26px;right:26px;z-index:90;width:46px;height:46px;border-radius:50%;background:#130b24;border:1px solid var(--purple);color:#fff;display:none;place-items:center;cursor:pointer}
-    .video-modal{position:fixed;inset:0;z-index:100;background:rgba(6,3,10,.88);display:none;align-items:center;justify-content:center;padding:20px}
+    #backToTop{position:fixed;bottom:24px;right:20px;z-index:90;width:44px;height:44px;border-radius:50%;background:#130b24;border:1px solid var(--purple);color:#fff;display:none;place-items:center;cursor:pointer}
+    .video-modal{position:fixed;inset:0;z-index:100;background:rgba(6,3,10,.88);display:none;align-items:center;justify-content:center;padding:16px}
     .video-modal.active{display:flex}
     .video-modal-content{width:100%;max-width:850px;background:#100a1c;border-radius:20px;overflow:hidden;position:relative}
-    .video-modal-close{position:absolute;top:14px;right:16px;z-index:2;background:rgba(255,255,255,.1);border:none;color:#fff;width:36px;height:36px;border-radius:50%;cursor:pointer}
+    .video-modal-close{position:absolute;top:12px;right:14px;z-index:2;background:rgba(255,255,255,.1);border:none;color:#fff;width:38px;height:38px;border-radius:50%;cursor:pointer}
     .video-wrapper{position:relative;padding-bottom:56.25%;height:0}.video-wrapper iframe{position:absolute;inset:0;width:100%;height:100%;border:none}
 
+    /* ========================================================
+       MEDIA QUERIES (TABLETS, PHONES & NOTCH DEVICES)
+       ======================================================== */
     @media(max-width:960px){
-      .ai-layout,.hero,.about-wrap{grid-template-columns:1fr}
-      .medusa-card{min-height:450px}
-      .work-grid,.video-grid{grid-template-columns:repeat(2,1fr)}
-      .space-grid{grid-template-columns:1fr}
+      .hero{grid-template-columns:1fr;min-height:auto;padding-top:110px}
+      .ai-layout{grid-template-columns:1fr}
+      .medusa-card{min-height:420px}
+      .assistant-chip{display:none}
     }
-    @media(max-width:620px){
-      .work-grid,.video-grid,.process-grid{grid-template-columns:1fr}
-      .site-header{height:66px;padding:0 18px}
-      .nav{display:none;position:absolute;top:66px;left:0;right:0;padding:22px;background:rgba(6,3,10,.98);flex-direction:column}
-      .nav.open{display:flex}
+    
+    @media(max-width:768px){
+      .site-header{height:66px}
       .menu-toggle{display:block}
-      .contact-panel,.yt-banner-cta{flex-direction:column;align-items:flex-start}
-      .hero{padding:120px 22px 140px;height:auto}
+      .nav{
+        display:none;position:absolute;top:66px;left:0;right:0;
+        background:rgba(6,3,10,.98);border-bottom:1px solid var(--line);
+        flex-direction:column;padding:24px;gap:18px;align-items:flex-start;
+      }
+      .nav.open{display:flex}
+      .availability{display:none}
+      .hero-stats{flex-wrap:wrap;gap:16px}
+      .work-grid{grid-template-columns:repeat(auto-fill,minmax(240px,1fr))}
+    }
+    
+    @media(max-width:480px){
+      .hero-actions{flex-direction:column;align-items:stretch}
+      .primary-btn,.watch-link{justify-content:center}
+      .ai-input-wrap{padding:10px 14px}
+      .chat-bubble{max-width:95%}
+      .quick-prompts{padding:8px 12px}
+      .quick-chip{font-size:9px;padding:6px 10px}
     }
   </style>
 
@@ -305,7 +311,7 @@
   </header>
 
   <main>
-    <!-- HERO SECTION (WHITE, PURPLE & GOLD) -->
+    <!-- HERO SECTION -->
     <section class="hero" id="home">
       <canvas id="scene"></canvas>
       <div class="hero-copy">
@@ -331,7 +337,7 @@
 
     <!-- SPACES SECTION -->
     <section class="content-section" id="spaces">
-      <div class="space-head" style="margin-bottom:35px;">
+      <div class="space-head">
         <div class="section-kicker">Explore my creative world</div>
         <h2 class="section-title">Choose your <span class="gradient-text">space.</span></h2>
       </div>
@@ -416,7 +422,7 @@
       <div class="yt-banner-cta">
         <div>
           <span class="mono" style="font-size:10px;color:var(--yt-red);letter-spacing:.15em">Official Video Channel</span>
-          <h3 style="font-size:clamp(26px,4vw,40px);color:#fff;margin-top:6px">Explore <span style="color:var(--yt-red)">Motion Nest.</span></h3>
+          <h3 style="font-size:clamp(22px,4vw,36px);color:#fff;margin-top:6px">Explore <span style="color:var(--yt-red)">Motion Nest.</span></h3>
           <p style="font-size:13px;color:#e2c5cb;margin-top:6px">Watch full-length motion design, video breakdowns and creative tutorials on YouTube.</p>
         </div>
         <a class="primary-btn yt-btn" href="https://www.youtube.com/@motion-nest0.1" target="_blank" rel="noopener noreferrer">
@@ -425,18 +431,16 @@
       </div>
     </section>
 
-    <!-- ========================================================
-         QUEEN MEDUSA (CAI LIN · BTTH) IMPERIAL AI SANCTUM
-         ======================================================== -->
+    <!-- QUEEN MEDUSA (CAI LIN · BTTH) IMPERIAL AI SANCTUM -->
     <section class="content-section ai-section" id="ai-assistant">
       <div>
         <div class="section-kicker">Imperial Sanctuary / Queen Medusa (BTTH)</div>
         <h2 class="section-title">Audience with the <span class="gradient-text">Empress.</span></h2>
-        <p class="section-desc">You are in the presence of Queen Medusa (Cai Lin). Talk to Her Majesty with your voice (Mic 🎙️) or text, and watch her rule this website with imperial authority!</p>
+        <p class="section-desc">Talk to Her Majesty with your voice (Mic 🎙️) or text, and watch her rule this website with imperial authority!</p>
       </div>
 
       <div class="ai-layout">
-        <!-- Queen Medusa Serpentine Stage -->
+        <!-- Queen Medusa Serpentine Card -->
         <div class="medusa-card">
           <div class="agent-overlay-top">
             <div class="agent-badge">
@@ -446,11 +450,10 @@
             <div class="agent-mood-tag" id="agentMood">IMPERIAL MAJESTY 👑</div>
           </div>
 
-          <!-- Queen Medusa BTTH Visual Character -->
+          <!-- Queen Medusa Visual Stage -->
           <div class="medusa-stage">
             <div class="floating-empress" id="medusaWrap">
               <svg class="medusa-svg" viewBox="0 0 330 460" xmlns="http://www.w3.org/2000/svg">
-                <!-- Swallowing Python Purple Aura -->
                 <circle cx="165" cy="180" r="140" fill="url(#pythonAura)" opacity="0.6"/>
                 <defs>
                   <radialGradient id="pythonAura" cx="50%" cy="50%" r="50%">
@@ -470,54 +473,43 @@
                   </linearGradient>
                 </defs>
 
-                <!-- Long Majestic Hair (Black with Deep Violet Highlights) -->
+                <!-- Long Majestic Hair -->
                 <path d="M70,120 C40,240 25,350 40,420 C60,450 100,450 115,390 C120,310 115,240 115,210 Z" fill="#0c0714"/>
                 <path d="M260,120 C290,240 305,350 290,420 C270,450 230,450 215,390 C210,310 215,240 215,210 Z" fill="#0c0714"/>
                 <path d="M65,100 C50,260 80,390 165,410 C250,390 280,260 265,100 Z" fill="#140a22"/>
 
                 <!-- Imperial Purple & Gold Silk Robe -->
                 <path d="M110,270 L70,410 L260,410 L220,270 Z" fill="url(#silkRobe)"/>
-                <!-- Golden Corset / Snake Scale Armor -->
                 <path d="M135,270 L120,350 L210,350 L195,270 Z" fill="url(#goldGradient)" opacity="0.9"/>
-                <!-- Ruby Pendant -->
                 <polygon points="165,260 173,275 165,290 157,275" fill="#e11d48"/>
                 <circle cx="165" cy="275" r="2.5" fill="#ffffff"/>
 
-                <!-- Neck -->
                 <rect x="151" y="215" width="28" height="32" rx="6" fill="#fcd9cc"/>
-
-                <!-- Face (Seductive Empress Facial Shape) -->
                 <path d="M105,140 C105,80 225,80 225,140 C225,198 188,238 165,242 C142,238 105,198 105,140 Z" fill="#fff0ea"/>
-
-                <!-- Imperial Forehead Mark (Red Lotus / Python Flame Seal) -->
                 <path d="M165,110 C162,118 159,122 165,126 C171,122 168,118 165,110 Z" fill="#e11d48"/>
                 <circle cx="165" cy="120" r="1.5" fill="#ffd700"/>
 
-                <!-- Soft Blushes -->
                 <ellipse cx="125" cy="186" rx="14" ry="7" fill="#f43f5e" opacity="0.35"/>
                 <ellipse cx="205" cy="186" rx="14" ry="7" fill="#f43f5e" opacity="0.35"/>
 
-                <!-- Seductive Crimson Lips -->
+                <!-- Seductive Lips -->
                 <g class="medusa-mouth" id="medusaMouth">
                   <path d="M154,206 Q165,212 176,206 Q165,218 154,206 Z" fill="#be123c"/>
                 </g>
 
-                <!-- Left Serpentine Eye -->
+                <!-- Left Serpent Eye -->
                 <g id="leftEyeGroup">
                   <ellipse cx="135" cy="164" rx="16" ry="14" fill="#ffffff"/>
                   <g class="serpent-pupil" id="leftPupil">
-                    <!-- Amber / Golden Slit Pupil -->
                     <ellipse cx="135" cy="164" rx="11" ry="11" fill="url(#goldGradient)"/>
                     <polygon points="135,155 137,164 135,173 133,164" fill="#000000"/>
                     <circle cx="132" cy="160" r="2.8" fill="#ffffff"/>
                   </g>
-                  <!-- Eyelid for Blinking -->
                   <path class="serpent-lid" d="M116,148 Q135,146 154,148 Q135,188 116,148 Z" fill="#fff0ea"/>
-                  <!-- Seductive Winged Eyelash -->
                   <path d="M115,156 Q135,144 156,152 Q160,146 163,143" stroke="#0f071a" stroke-width="3.5" fill="none" stroke-linecap="round"/>
                 </g>
 
-                <!-- Right Serpentine Eye -->
+                <!-- Right Serpent Eye -->
                 <g id="rightEyeGroup">
                   <ellipse cx="195" cy="164" rx="16" ry="14" fill="#ffffff"/>
                   <g class="serpent-pupil" id="rightPupil">
@@ -529,11 +521,9 @@
                   <path d="M167,143 Q170,146 174,152 Q195,144 215,156" stroke="#0f071a" stroke-width="3.5" fill="none" stroke-linecap="round"/>
                 </g>
 
-                <!-- Side Bangs & Golden Hair Ornaments -->
+                <!-- Queen's Imperial Golden Crown -->
                 <path d="M96,135 C88,205 98,255 106,290 C110,290 114,240 112,180 Z" fill="#1e1030"/>
                 <path d="M234,135 C242,205 232,255 224,290 C220,290 216,240 218,180 Z" fill="#1e1030"/>
-                
-                <!-- Queen's Imperial Golden Crown (BTTH Style) -->
                 <path d="M115,95 L135,65 L150,85 L165,50 L180,85 L195,65 L215,95 Q165,82 115,95 Z" fill="url(#goldGradient)"/>
                 <circle cx="165" cy="65" r="4" fill="#e11d48"/>
                 <circle cx="135" cy="78" r="2.5" fill="#e11d48"/>
@@ -543,8 +533,8 @@
           </div>
 
           <div class="agent-overlay-bottom">
-            <h4 style="font-size:18px;color:#fff;margin-bottom:4px">Queen Medusa — Supreme Empress</h4>
-            <p style="font-size:11px;color:var(--text-muted)">Her serpentine eyes track your cursor. Speak or type: <em>"Motion design dekhao"</em> or <em>"Who are you?"</em>.</p>
+            <h4 style="font-size:16px;color:#fff;margin-bottom:4px">Queen Medusa — Supreme Empress</h4>
+            <p style="font-size:11px;color:var(--text-muted)">Her serpentine eyes track your cursor or touch. Speak: <em>"Motion design dekhao"</em>.</p>
           </div>
         </div>
 
@@ -556,7 +546,7 @@
               <span>QUEEN'S ENCHANTING VOICE</span>
             </div>
             <button class="voice-toggle-btn active" id="voiceToggle">
-              <span>👑 Voice:</span> <b id="voiceStatus">IMPERIAL VOICE ON</b>
+              <span>👑 Voice:</span> <b id="voiceStatus">ON</b>
             </button>
           </div>
 
@@ -577,9 +567,8 @@
           </div>
 
           <form class="ai-input-wrap" id="aiForm">
-            <!-- Voice Input Microphone Button -->
-            <button type="button" class="mic-btn" id="micBtn" title="Speak to Queen Medusa (Voice Recognition)">🎙️</button>
-            <input type="text" class="ai-input" id="aiInput" placeholder="সম্রাজ্ঞী মেদুসাকে আপনার প্রশ্ন বা আদেশ দিন..." autocomplete="off" required />
+            <button type="button" class="mic-btn" id="micBtn" title="Speak (Voice Input)">🎙️</button>
+            <input type="text" class="ai-input" id="aiInput" placeholder="সম্রাজ্ঞী মেদুসাকে প্রশ্ন বা আদেশ দিন..." autocomplete="off" required />
             <button type="submit" class="ai-send-btn">↗</button>
           </form>
         </div>
@@ -596,7 +585,7 @@
         </div>
         <div class="about-panel">
           <div class="section-kicker">Creative toolkit</div>
-          <h3 style="font-size:26px;margin-bottom:15px;color:#fff">Ideas into visuals.</h3>
+          <h3 style="font-size:24px;margin-bottom:15px;color:#fff">Ideas into visuals.</h3>
           <div class="skill-list">
             <span>PHOTOSHOP</span><span>ILLUSTRATOR</span><span>AFTER EFFECTS</span><span>PREMIERE PRO</span><span>BRANDING</span><span>MOTION GRAPHICS</span>
           </div>
@@ -609,10 +598,10 @@
       <div class="section-kicker">How I work</div>
       <h2 class="section-title">From idea to<br><span class="gradient-text">experience.</span></h2>
       <div class="process-grid">
-        <article class="process-item"><b class="mono" style="color:var(--gold)">01 / DISCOVER</b><h3 style="margin:15px 0 8px;color:#fff">Understand</h3><p style="font-size:12px;color:var(--text-muted)">Explore goals and audience before shaping direction.</p></article>
-        <article class="process-item"><b class="mono" style="color:var(--gold)">02 / DEFINE</b><h3 style="margin:15px 0 8px;color:#fff">Concept</h3><p style="font-size:12px;color:var(--text-muted)">Build a mood and visual system for the project.</p></article>
-        <article class="process-item"><b class="mono" style="color:var(--gold)">03 / CREATE</b><h3 style="margin:15px 0 8px;color:#fff">Design</h3><p style="font-size:12px;color:var(--text-muted)">Craft high-impact visuals and bring stories to life.</p></article>
-        <article class="process-item"><b class="mono" style="color:var(--gold)">04 / DELIVER</b><h3 style="margin:15px 0 8px;color:#fff">Launch</h3><p style="font-size:12px;color:var(--text-muted)">Prepare production assets and ensure quality delivery.</p></article>
+        <article class="process-item"><b class="mono" style="color:var(--gold)">01 / DISCOVER</b><h3 style="margin:12px 0 6px;color:#fff">Understand</h3><p style="font-size:12px;color:var(--text-muted)">Explore goals and audience before shaping direction.</p></article>
+        <article class="process-item"><b class="mono" style="color:var(--gold)">02 / DEFINE</b><h3 style="margin:12px 0 6px;color:#fff">Concept</h3><p style="font-size:12px;color:var(--text-muted)">Build a mood and visual system for the project.</p></article>
+        <article class="process-item"><b class="mono" style="color:var(--gold)">03 / CREATE</b><h3 style="margin:12px 0 6px;color:#fff">Design</h3><p style="font-size:12px;color:var(--text-muted)">Craft high-impact visuals and bring stories to life.</p></article>
+        <article class="process-item"><b class="mono" style="color:var(--gold)">04 / DELIVER</b><h3 style="margin:12px 0 6px;color:#fff">Launch</h3><p style="font-size:12px;color:var(--text-muted)">Prepare production assets and ensure quality delivery.</p></article>
       </div>
     </section>
 
@@ -622,7 +611,7 @@
         <div>
           <div class="section-kicker">Have a project in mind?</div>
           <h2>Let’s create<br><span class="gradient-text">something bold.</span></h2>
-          <p style="color:var(--text-muted);margin-top:12px">Ready to start your next design or motion project? Reach out directly.</p>
+          <p style="color:var(--text-muted);margin-top:10px">Ready to start your next design or motion project? Reach out directly.</p>
         </div>
         <div class="contact-actions">
           <a class="primary-btn" href="mailto:your-email@gmail.com">Email Directly <span class="round-arrow">↗</span></a>
@@ -650,12 +639,12 @@
     </div>
   </div>
 
-  <!-- JAVASCRIPT LOGIC -->
+  <!-- JAVASCRIPT LOGIC (CROSS-DEVICE OPTIMIZED) -->
   <script type="module">
     import * as THREE from 'three';
 
     /* ========================================================
-       1. COMPACT 29 BEHANCE PROJECTS DATASET
+       1. 29 BEHANCE PROJECTS DATASET (LIGHTWEIGHT & COMPACT)
        ======================================================== */
     const P = [
       ["01","motion design","Claude AI — Cinematic SaaS Animation & UI Showcase","77445c257466427.Y3JvcCwxMjAzLDk0MSw3Nyww.png","257466427/Claude-AI-Cinematic-SaaS-Animation-UI-Showcase"],
@@ -728,7 +717,7 @@
     });
 
     /* ========================================================
-       2. THREE.JS 3D HERO ENERGY CORE
+       2. THREE.JS 3D HERO ENERGY CORE (DEVICE-SCALED)
        ======================================================== */
     const heroCanvas = document.querySelector('#scene');
     let heroRenderer, heroScene, heroCamera, core, wire, ringGroup;
@@ -736,7 +725,7 @@
 
     try {
       heroRenderer = new THREE.WebGLRenderer({ canvas: heroCanvas, antialias: true, alpha: true });
-      heroRenderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
+      heroRenderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.5));
       heroRenderer.setSize(heroCanvas.clientWidth, heroCanvas.clientHeight, false);
       heroScene = new THREE.Scene();
       heroCamera = new THREE.PerspectiveCamera(38, heroCanvas.clientWidth / heroCanvas.clientHeight, .1, 100);
@@ -748,7 +737,10 @@
       heroScene.add(light);
 
       const group = new THREE.Group();
-      group.position.set(2.1, 0, 0);
+      // On mobile, position core subtly in center-bottom, on desktop off to the right
+      const isMobile = window.innerWidth < 960;
+      group.position.set(isMobile ? 0 : 2.1, isMobile ? -0.5 : 0, 0);
+      group.scale.setScalar(isMobile ? 0.75 : 1);
       heroScene.add(group);
 
       core = new THREE.Mesh(
@@ -785,22 +777,23 @@
       }
       animHero();
 
-      window.addEventListener('resize', () => {
+      const handleResize = () => {
+        const mob = window.innerWidth < 960;
+        group.position.set(mob ? 0 : 2.1, mob ? -0.5 : 0, 0);
+        group.scale.setScalar(mob ? 0.75 : 1);
         heroCamera.aspect = heroCanvas.clientWidth / heroCanvas.clientHeight;
         heroCamera.updateProjectionMatrix();
         heroRenderer.setSize(heroCanvas.clientWidth, heroCanvas.clientHeight, false);
-      }, { passive: true });
+      };
+      window.addEventListener('resize', handleResize, { passive: true });
+      window.addEventListener('orientationchange', () => setTimeout(handleResize, 150), { passive: true });
 
-      window.addEventListener('pointermove', e => {
-        pointerX = (e.clientX / window.innerWidth - .5) * 2;
-        pointerY = (e.clientY / window.innerHeight - .5) * 2;
-      }, { passive: true });
     } catch (e) {
       console.warn("Hero Three.js error:", e);
     }
 
     /* ========================================================
-       3. QUEEN MEDUSA (BTTH) SERPENT EYES & AURA TRACKING
+       3. QUEEN MEDUSA SERPENT EYES (TOUCH & MOUSE UNIFIED)
        ======================================================== */
     const leftPupil = document.getElementById('leftPupil');
     const rightPupil = document.getElementById('rightPupil');
@@ -809,16 +802,23 @@
     const medusaMouth = document.getElementById('medusaMouth');
     const medusaWrap = document.getElementById('medusaWrap');
 
-    window.addEventListener('pointermove', (e) => {
-      const x = (e.clientX / window.innerWidth - 0.5) * 9;
-      const y = (e.clientY / window.innerHeight - 0.5) * 6;
+    const updateTracking = (clientX, clientY) => {
+      const x = (clientX / window.innerWidth - 0.5) * 8;
+      const y = (clientY / window.innerHeight - 0.5) * 6;
       if (leftPupil && rightPupil) {
         leftPupil.style.transform = `translate(${x}px, ${y}px)`;
         rightPupil.style.transform = `translate(${x}px, ${y}px)`;
       }
       if (medusaWrap) {
-        medusaWrap.style.transform = `translate(${x * 0.35}px, ${y * 0.25}px)`;
+        medusaWrap.style.transform = `translate(${x * 0.3}px, ${y * 0.2}px)`;
       }
+      pointerX = (clientX / window.innerWidth - .5) * 2;
+      pointerY = (clientY / window.innerHeight - .5) * 2;
+    };
+
+    window.addEventListener('pointermove', e => updateTracking(e.clientX, e.clientY), { passive: true });
+    window.addEventListener('touchmove', e => {
+      if (e.touches && e.touches[0]) updateTracking(e.touches[0].clientX, e.touches[0].clientY);
     }, { passive: true });
 
     function triggerMedusaBlink() {
@@ -835,7 +835,7 @@
     setTimeout(triggerMedusaBlink, 2200);
 
     /* ========================================================
-       4. SPEECH RECOGNITION (MIC 🎙️)
+       4. CROSS-DEVICE VOICE INPUT (MIC 🎙️)
        ======================================================== */
     const micBtn = document.getElementById('micBtn');
     const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -864,14 +864,11 @@
         handleChat(transcript);
       };
 
-      recognition.onerror = () => {
-        micBtn.classList.remove('listening');
-      };
-      recognition.onend = () => {
-        micBtn.classList.remove('listening');
-      };
+      recognition.onerror = () => micBtn.classList.remove('listening');
+      recognition.onend = () => micBtn.classList.remove('listening');
     } else {
-      micBtn.style.opacity = "0.5";
+      micBtn.style.opacity = "0.4";
+      micBtn.title = "Voice recognition not available on this mobile browser";
     }
 
     /* ========================================================
@@ -906,10 +903,15 @@
       window.speechSynthesis.onvoiceschanged = pickImperialVoice;
     }
 
+    // Unmute on first user touch for iOS Safari policy
+    window.addEventListener('touchstart', () => {
+      if ('speechSynthesis' in window && !femaleVoice) pickImperialVoice();
+    }, { once: true, passive: true });
+
     voiceToggle.addEventListener('click', () => {
       isVoiceOn = !isVoiceOn;
       voiceToggle.classList.toggle('active', isVoiceOn);
-      voiceStatus.textContent = isVoiceOn ? 'IMPERIAL VOICE ON' : 'SILENCED';
+      voiceStatus.textContent = isVoiceOn ? 'ON' : 'OFF';
       if (isVoiceOn) speak("Hmph. You shall hear my imperial decree.");
       else window.speechSynthesis.cancel();
     });
@@ -920,7 +922,7 @@
       const clean = text.replace(/<[^>]*>?/gm, '').replace(/[*_#`~]/g, '');
       const utt = new SpeechSynthesisUtterance(clean);
       if (femaleVoice) utt.voice = femaleVoice;
-      utt.pitch = 1.15; // Alluring, commanding queen tone
+      utt.pitch = 1.15;
       utt.rate = 1.0;
 
       utt.onstart = () => {
@@ -1003,7 +1005,7 @@
     aiForm.addEventListener('submit', e => { e.preventDefault(); handleChat(aiInput.value); });
     document.querySelectorAll('.quick-chip').forEach(c => c.addEventListener('click', () => handleChat(c.dataset.prompt)));
 
-    // Modal & BackToTop
+    // Modal, BackToTop, Mobile Drawer
     const modal = document.getElementById('videoModal');
     const iframe = document.getElementById('videoIframe');
     document.getElementById('closeModal').onclick = () => { modal.classList.remove('active'); iframe.src = ''; };
@@ -1011,7 +1013,7 @@
     document.querySelectorAll('.video-trigger').forEach(v => v.onclick = () => { modal.classList.add('active'); iframe.src = v.dataset.video + "?autoplay=1"; });
 
     const btt = document.getElementById('backToTop');
-    window.addEventListener('scroll', () => { btt.style.display = window.scrollY > 400 ? 'grid' : 'none'; });
+    window.addEventListener('scroll', () => { btt.style.display = window.scrollY > 400 ? 'grid' : 'none'; }, { passive: true });
     btt.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
 
     const toggle = document.getElementById('menuToggle');
