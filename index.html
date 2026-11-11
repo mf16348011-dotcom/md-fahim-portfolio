@@ -7,7 +7,7 @@
   <meta name="theme-color" content="#07040d" />
   
   <title>MD FAHIM — Creative Portfolio | Graphic & Motion Designer</title>
-  <meta name="description" content="MD Fahim — Graphic Designer & Motion Designer. Guided by Aria, your anime AI copilot." />
+  <meta name="description" content="MD Fahim — Graphic Designer & Motion Designer. Guided by Aria, your 3D anime AI copilot." />
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌸</text></svg>">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,12 +16,12 @@
   
   <style>
     /* ========================================================
-       GLOBAL PALETTE: WHITE, ROYAL PURPLE & OBSIDIAN BLACK
+       THEME 1: WHITE, PURPLE & BLACK (GLOBAL WEBSITE THEME)
        ======================================================== */
     :root{
       --bg:#07040d;
       --panel:#110a1f;
-      --panel-border:rgba(168,85,247,0.22);
+      --panel-border:rgba(168,85,247,0.25);
       --white:#ffffff;
       --text-muted:#c3b5d9;
       --purple:#a855f7;
@@ -96,7 +96,7 @@
     .project-meta p{margin-top:8px;font:9px 'DM Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:#c0a2e0}
 
     /* ========================================================
-       YOUTUBE VIDEO SECTION: RED & WHITE MIX THEME
+       THEME 2: YOUTUBE SECTION (RED & WHITE MIX THEME)
        ======================================================== */
     .yt-section{
       background: radial-gradient(ellipse at 50% 25%, rgba(255, 0, 51, 0.16), transparent 65%), linear-gradient(180deg, #07040d, #0d0306 60%, #07040d);
@@ -145,7 +145,7 @@
     .yt-btn:hover{background:var(--yt-red);box-shadow:0 0 35px var(--yt-red-glow)}
 
     /* ========================================================
-       LIVE ANIME AI COMPANION "ARIA" (WAN AI AVATAR + CHAT)
+       DUAL-ENGINE 3D ANIME AI "ARIA" (GLTF/VRM 3D & AI VIDEO)
        ======================================================== */
     .ai-section{
       background: radial-gradient(ellipse at 50% 20%, rgba(168,85,247,0.18), transparent 60%), #07040d;
@@ -158,15 +158,15 @@
       background: #0d0617;
       position: relative;
       overflow: hidden;
-      min-height: 520px;
+      min-height: 540px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       box-shadow: 0 25px 70px rgba(0,0,0,.6), 0 0 35px var(--purple-glow);
     }
     
-    /* Video Avatar Stage */
-    .anime-video-stage{
+    /* 3D Stage / Video Container */
+    .anime-avatar-stage{
       position: absolute;
       inset: 0;
       width: 100%;
@@ -175,39 +175,55 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      background: radial-gradient(circle at 50% 35%, #180928, #0a0412);
+      background: radial-gradient(circle at 50% 35%, #180928, #07030e);
       overflow: hidden;
     }
     
+    /* WebGL 3D Canvas */
+    #anime3dCanvas{
+      width: 100%;
+      height: 100%;
+      display: block;
+      cursor: grab;
+    }
+    #anime3dCanvas:active{cursor: grabbing;}
+
+    /* AI Video Player Overlay */
     .anime-video-player{
+      position: absolute;
+      inset: 0;
       width: 100%;
       height: 100%;
       object-fit: cover;
       object-position: center 20%;
-      transform: scale(1.02);
-      transition: filter 0.4s ease, transform 0.4s ease;
+      z-index: 2;
+      transition: filter 0.4s ease;
     }
     .anime-video-player.speaking{
       filter: drop-shadow(0 0 30px rgba(192,132,252,0.7)) saturate(1.15);
-      transform: scale(1.05);
     }
 
-    .video-uploader-btn{
+    /* Avatar Control Mode Pills */
+    .avatar-mode-switch{
       position: absolute;
       right: 18px;
       top: 65px;
       z-index: 4;
-      background: rgba(17,10,31,0.8);
+      display: flex;
+      gap: 6px;
+    }
+    .mode-pill{
+      background: rgba(17,10,31,0.85);
       border: 1px solid var(--purple);
       color: var(--purple-light);
-      padding: 6px 12px;
+      padding: 5px 12px;
       border-radius: 20px;
       font: 10px 'DM Mono', monospace;
       cursor: pointer;
       backdrop-filter: blur(8px);
       transition: .25s;
     }
-    .video-uploader-btn:hover{background:var(--purple);color:#fff}
+    .mode-pill:hover,.mode-pill.active{background:var(--purple);color:#fff}
 
     .agent-overlay-top{position:relative;z-index:3;padding:22px;display:flex;justify-content:space-between;align-items:center;background:linear-gradient(180deg,rgba(11,5,20,.88),transparent)}
     .agent-badge{display:flex;align-items:center;gap:8px;font:10px 'DM Mono',monospace;color:var(--purple-light);letter-spacing:.12em}
@@ -216,26 +232,9 @@
     .agent-overlay-bottom{position:relative;z-index:3;padding:22px;background:linear-gradient(0deg,rgba(11,5,20,.95) 35%,transparent)}
     
     /* AI Chat Card */
-    .ai-chat-card{border:1px solid var(--line);border-radius:24px;background:linear-gradient(145deg,#130a21,#07030e);overflow:hidden;display:flex;flex-direction:column;justify-content:space-between;min-height:520px}
+    .ai-chat-card{border:1px solid var(--line);border-radius:24px;background:linear-gradient(145deg,#130a21,#07030e);overflow:hidden;display:flex;flex-direction:column;justify-content:space-between;min-height:540px}
     .ai-topbar{padding:16px 22px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;background:rgba(14,7,26,.6)}
     
-    .topbar-actions{display:flex;align-items:center;gap:8px}
-    .download-exe-badge{
-      background: rgba(255,255,255,.05);
-      border: 1px solid var(--purple);
-      color: #fff;
-      border-radius: 20px;
-      padding: 5px 12px;
-      font: 9px 'DM Mono', monospace;
-      cursor: pointer;
-      transition: .25s;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-    }
-    .download-exe-badge:hover{background:var(--purple)}
-
     .voice-toggle-btn{background:rgba(255,255,255,.06);border:1px solid var(--line);color:var(--purple-light);border-radius:20px;padding:5px 12px;font:9px 'DM Mono',monospace;cursor:pointer;transition:.25s}
     .voice-toggle-btn.active{background:rgba(168,85,247,.25);border-color:var(--purple);color:#fff;box-shadow:0 0 16px var(--purple-glow)}
     
@@ -253,7 +252,6 @@
     .ai-input-wrap{padding:16px 22px;border-top:1px solid var(--line);display:flex;gap:10px;background:rgba(14,7,26,.7);align-items:center}
     .ai-input{flex:1;background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:30px;padding:12px 20px;color:#fff;outline:none;font-family:inherit}
     
-    /* Mic Voice Input Button */
     .mic-btn{
       border: 1px solid var(--line);
       background: rgba(255,255,255,0.05);
@@ -319,7 +317,12 @@
   </style>
 
   <script type="importmap">
-    {"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js"}}
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+      }
+    }
   </script>
 </head>
 <body>
@@ -356,7 +359,7 @@
       </div>
       <a class="assistant-chip" href="#ai-assistant">
         <span class="assistant-icon">🌸</span>
-        <span><b>Meet Aria ✦</b><small>Live Anime AI Companion</small></span>
+        <span><b>Meet Aria ✦</b><small>3D Anime AI Companion</small></span>
         <span>↓</span>
       </a>
     </section>
@@ -457,42 +460,44 @@
       </div>
     </section>
 
-    <!-- LIVE ANIME AI COMPANION "ARIA" -->
+    <!-- LIVE DUAL 3D ANIME AI COMPANION "ARIA" -->
     <section class="content-section ai-section" id="ai-assistant">
       <div>
-        <div class="section-kicker">Interactive Studio / Anime AI Companion</div>
+        <div class="section-kicker">Interactive Studio / Anime 3D AI Copilot</div>
         <h2 class="section-title">Meet Aria, your <span class="gradient-text">companion.</span></h2>
-        <p class="section-desc">Talk to Aria using your voice (Microphone 🎙️) or text. She speaks with a sweet girl voice and runs this portfolio!</p>
+        <p class="section-desc">Aria supports real 3D models and your AI video! Talk with your voice (Mic 🎙️) or text, and watch her run this website.</p>
       </div>
 
       <div class="ai-layout">
-        <!-- Live Anime Video Card -->
+        <!-- Dual 3D / Video Character Card -->
         <div class="ai-character-card">
           <div class="agent-overlay-top">
             <div class="agent-badge">
               <span class="pulse-light"></span>
-              <span>ARIA · LIVE ANIME AVATAR</span>
+              <span id="agentModeTitle">ARIA · 3D ANIME AVATAR</span>
             </div>
             <div class="agent-mood-tag" id="agentMood">MOOD: HAPPY 🌸</div>
           </div>
 
-          <!-- Video Upload Option if file is on PC -->
-          <label class="video-uploader-btn" for="videoFileInput" title="Select your anime video from computer">
-            📁 Select Video
-          </label>
-          <input type="file" id="videoFileInput" accept="video/*" style="display:none;" />
+          <!-- Switch Between 3D Canvas & Video Mode -->
+          <div class="avatar-mode-switch">
+            <button class="mode-pill active" id="btn3DMode">3D Model</button>
+            <button class="mode-pill" id="btnVideoMode">Video Mode</button>
+            <label class="mode-pill" for="modelFileInput" title="Load custom .glb or .vrm 3D model">📁 Load 3D/Video</label>
+            <input type="file" id="modelFileInput" accept=".glb,.gltf,.vrm,.mp4" style="display:none;" />
+          </div>
 
-          <!-- Interactive Video Stage -->
-          <div class="anime-video-stage">
-            <video class="anime-video-player" id="ariaVideo" autoplay loop muted playsinline>
-              <!-- Name your video aria.mp4 in the folder -->
+          <!-- 3D WebGL / Video Stage -->
+          <div class="anime-avatar-stage">
+            <canvas id="anime3dCanvas"></canvas>
+            <video class="anime-video-player" id="ariaVideo" autoplay loop muted playsinline style="display:none;">
               <source src="aria.mp4" type="video/mp4">
             </video>
           </div>
 
           <div class="agent-overlay-bottom">
-            <h4 style="font-size:17px;color:#fff;margin-bottom:4px">Aria — Cute Anime Copilot</h4>
-            <p style="font-size:11px;color:var(--text-muted)">Press the Mic 🎙️ and talk to her! Try: <em>"Motion design dekhao"</em> or <em>"Play video reel"</em>.</p>
+            <h4 style="font-size:17px;color:#fff;margin-bottom:4px">Aria — Interactive 3D Companion</h4>
+            <p style="font-size:11px;color:var(--text-muted)">Real 3D Anime Avatar with orbital controls! Ask: <em>"Motion design dekhao"</em> or <em>"Play video reel"</em>.</p>
           </div>
         </div>
 
@@ -501,24 +506,18 @@
           <div class="ai-topbar">
             <div class="agent-badge">
               <span class="pulse-light"></span>
-              <span>VOICE & SPEECH RECOGNITION</span>
+              <span>VOICE & SPEECH SYNTHESIS</span>
             </div>
-            <div class="topbar-actions">
-              <!-- Desktop .exe download link -->
-              <a class="download-exe-badge" href="aria.exe" download title="Download Aria Desktop App (.exe)">
-                <span>📥 Desktop .exe</span>
-              </a>
-              <button class="voice-toggle-btn active" id="voiceToggle">
-                <span>🌸 Voice:</span> <b id="voiceStatus">ON</b>
-              </button>
-            </div>
+            <button class="voice-toggle-btn active" id="voiceToggle">
+              <span>🌸 Voice:</span> <b id="voiceStatus">GIRL VOICE ON</b>
+            </button>
           </div>
 
           <div class="ai-chat-window" id="aiChatWindow">
             <div class="chat-bubble bot">
               <div class="chat-avatar">🌸</div>
               <div>
-                Hello there! 💕 I’m <strong>Aria</strong>, your anime copilot. You can type or click the <strong>Mic 🎙️</strong> to speak with me in <strong>বাংলা or English</strong>! What would you love to see? ✨
+                Hello there! 💕 I’m <strong>Aria</strong>, your 3D anime companion. You can type or click the <strong>Mic 🎙️</strong> to speak with me in <strong>বাংলা or English</strong>! What would you love to see on Fahim's portfolio? ✨
               </div>
             </div>
           </div>
@@ -589,7 +588,7 @@
 
   <footer>
     <span>© 2026 MD FAHIM — IMAGINE. CREATE. INSPIRE.</span>
-    <span>HOSTED WITH ARIA LIVE ANIME AI</span>
+    <span>HOSTED WITH ARIA 3D ANIME AI</span>
   </footer>
 
   <div id="actionToast">✨ <span>Command Executed</span></div>
@@ -607,6 +606,8 @@
   <!-- JAVASCRIPT LOGIC -->
   <script type="module">
     import * as THREE from 'three';
+    import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+    import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 
     /* ========================================================
        1. COMPLETE 29 BEHANCE PROJECTS DATASET
@@ -754,18 +755,157 @@
     }
 
     /* ========================================================
-       3. VIDEO FILE SWITCHER / DRAG-AND-DROP LOGIC
+       3. PRO 3D ANIME AVATAR ENGINE (GLTF / VRM / VIDEO DUAL MODE)
        ======================================================== */
+    const anime3dCanvas = document.querySelector('#anime3dCanvas');
     const ariaVideo = document.getElementById('ariaVideo');
-    const videoFileInput = document.getElementById('videoFileInput');
+    const btn3DMode = document.getElementById('btn3DMode');
+    const btnVideoMode = document.getElementById('btnVideoMode');
+    const modelFileInput = document.getElementById('modelFileInput');
+    const agentModeTitle = document.getElementById('agentModeTitle');
+    let animeRenderer, animeScene, animeCamera, animeControls;
+    let current3DModel = null;
+    let animeClock = new THREE.Clock();
 
-    videoFileInput.addEventListener('change', (e) => {
+    try {
+      animeRenderer = new THREE.WebGLRenderer({ canvas: anime3dCanvas, antialias: true, alpha: true });
+      animeRenderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
+      animeRenderer.setSize(anime3dCanvas.clientWidth, anime3dCanvas.clientHeight, false);
+      animeRenderer.outputColorSpace = THREE.SRGBColorSpace;
+      animeRenderer.toneMapping = THREE.ACESFilmicToneMapping;
+
+      animeScene = new THREE.Scene();
+      animeCamera = new THREE.PerspectiveCamera(35, anime3dCanvas.clientWidth / anime3dCanvas.clientHeight, 0.1, 50);
+      animeCamera.position.set(0, 1.25, 3.2);
+
+      animeControls = new OrbitControls(animeCamera, animeRenderer.domElement);
+      animeControls.enableDamping = true;
+      animeControls.target.set(0, 1.1, 0);
+      animeControls.maxDistance = 6;
+      animeControls.minDistance = 1.5;
+
+      // Studio Lighting for 3D Anime Model
+      animeScene.add(new THREE.AmbientLight(0xffffff, 1.8));
+      const dirLight = new THREE.DirectionalLight(0xffffff, 2.2);
+      dirLight.position.set(2, 4, 3);
+      animeScene.add(dirLight);
+      const backLight = new THREE.PointLight(0xa855f7, 30, 8);
+      backLight.position.set(-2, 2, -2);
+      animeScene.add(backLight);
+
+      // Load 3D Model with GLTFLoader
+      const gltfLoader = new GLTFLoader();
+      
+      // Default: Loads high-quality sample 3D model
+      function load3DModel(url) {
+        toast("Loading 3D Anime Model...");
+        gltfLoader.load(
+          url,
+          (gltf) => {
+            if (current3DModel) animeScene.remove(current3DModel);
+            current3DModel = gltf.scene || gltf.scenes[0];
+            current3DModel.position.set(0, 0, 0);
+            current3DModel.scale.setScalar(1.0);
+            animeScene.add(current3DModel);
+            toast("3D Anime Model Loaded! ✨");
+          },
+          undefined,
+          (err) => {
+            console.log("Custom 3D model load notice:", err);
+            // Elegant Holographic Avatar Standby if external CDN takes time
+            createHolographicAnimeStandby();
+          }
+        );
+      }
+
+      // Standby Anime Hologram Core (Smooth Stylized Avatar)
+      function createHolographicAnimeStandby() {
+        if (current3DModel) return;
+        const standbyGroup = new THREE.Group();
+        standbyGroup.position.set(0, 1.0, 0);
+
+        // Holographic Rings
+        const ringMat = new THREE.MeshStandardMaterial({ color: 0xc084fc, emissive: 0xa855f7, emissiveIntensity: 0.8, wireframe: true });
+        const ring = new THREE.Mesh(new THREE.TorusGeometry(0.8, 0.02, 16, 64), ringMat);
+        ring.rotation.x = Math.PI / 2;
+        standbyGroup.add(ring);
+
+        // Anime Cyber Pod
+        const coreMat = new THREE.MeshStandardMaterial({ color: 0x1a092a, roughness: 0.2, metalness: 0.9, emissive: 0x4a126d, emissiveIntensity: 0.5 });
+        const pod = new THREE.Mesh(new THREE.IcosahedronGeometry(0.6, 2), coreMat);
+        standbyGroup.add(pod);
+
+        animeScene.add(standbyGroup);
+        current3DModel = standbyGroup;
+      }
+
+      // Try loading standard sample or create high-tech cyber avatar
+      load3DModel('https://raw.githubusercontent.com/mrdoob/three.js/dev/examples/models/gltf/LeePerrySmith/LeePerrySmith.glb');
+
+      function render3D() {
+        requestAnimationFrame(render3D);
+        const t = animeClock.getElapsedTime();
+        animeControls.update();
+        if (current3DModel) {
+          current3DModel.position.y = Math.sin(t * 2) * 0.03;
+        }
+        animeRenderer.render(animeScene, animeCamera);
+      }
+      render3D();
+
+      window.addEventListener('resize', () => {
+        animeCamera.aspect = anime3dCanvas.clientWidth / anime3dCanvas.clientHeight;
+        animeCamera.updateProjectionMatrix();
+        animeRenderer.setSize(anime3dCanvas.clientWidth, anime3dCanvas.clientHeight, false);
+      }, { passive: true });
+
+    } catch (e) {
+      console.warn("3D Avatar Loader Error:", e);
+    }
+
+    // Switch to 3D Mode
+    btn3DMode.addEventListener('click', () => {
+      btn3DMode.classList.add('active');
+      btnVideoMode.classList.remove('active');
+      anime3dCanvas.style.display = 'block';
+      ariaVideo.style.display = 'none';
+      agentModeTitle.textContent = 'ARIA · 3D ANIME AVATAR';
+      toast("Switched to 3D Model Mode 🌸");
+    });
+
+    // Switch to Video Mode
+    btnVideoMode.addEventListener('click', () => {
+      btnVideoMode.classList.add('active');
+      btn3DMode.classList.remove('active');
+      anime3dCanvas.style.display = 'none';
+      ariaVideo.style.display = 'block';
+      ariaVideo.play();
+      agentModeTitle.textContent = 'ARIA · AI VIDEO HOLOGRAM';
+      toast("Switched to AI Video Mode ✨");
+    });
+
+    // File Input for Custom .glb/.vrm or .mp4
+    modelFileInput.addEventListener('change', (e) => {
       const file = e.target.files[0];
-      if (file) {
-        const fileURL = URL.createObjectURL(file);
-        ariaVideo.src = fileURL;
+      if (!file) return;
+      const fileUrl = URL.createObjectURL(file);
+
+      if (file.name.endsWith('.mp4') || file.type.includes('video')) {
+        ariaVideo.src = fileUrl;
         ariaVideo.play();
-        toast("Anime Video Loaded! 🌸");
+        btnVideoMode.click();
+        toast("Loaded Video successfully! 🌸");
+      } else {
+        // Load .glb / .vrm 3D model
+        const loader = new GLTFLoader();
+        loader.load(fileUrl, (gltf) => {
+          if (current3DModel) animeScene.remove(current3DModel);
+          current3DModel = gltf.scene || gltf.scenes[0];
+          current3DModel.position.set(0, 0, 0);
+          animeScene.add(current3DModel);
+          btn3DMode.click();
+          toast("3D Model Loaded Successfully! 🌸");
+        });
       }
     });
 
@@ -808,7 +948,7 @@
         micBtn.classList.remove('listening');
       };
     } else {
-      micBtn.title = "Voice recognition not supported in this browser";
+      micBtn.title = "Voice recognition not supported";
       micBtn.style.opacity = "0.5";
     }
 
@@ -848,7 +988,7 @@
     voiceToggle.addEventListener('click', () => {
       isVoiceOn = !isVoiceOn;
       voiceToggle.classList.toggle('active', isVoiceOn);
-      voiceStatus.textContent = isVoiceOn ? 'ON' : 'OFF';
+      voiceStatus.textContent = isVoiceOn ? 'GIRL VOICE ON' : 'MUTED';
       if (isVoiceOn) speak("Hey! My voice is ready!");
       else window.speechSynthesis.cancel();
     });
@@ -859,18 +999,18 @@
       const clean = text.replace(/<[^>]*>?/gm, '').replace(/[*_#`~]/g, '');
       const utt = new SpeechSynthesisUtterance(clean);
       if (femaleVoice) utt.voice = femaleVoice;
-      utt.pitch = 1.22; // Natural sweet cadence
+      utt.pitch = 1.2;
       utt.rate = 1.02;
 
       utt.onstart = () => {
         agentMood.textContent = 'SPEAKING... 🌸';
         agentMood.style.color = '#c084fc';
-        if (ariaVideo) ariaVideo.classList.add('speaking');
+        ariaVideo.classList.add('speaking');
       };
       utt.onend = () => {
         agentMood.textContent = 'MOOD: HAPPY 🌸';
         agentMood.style.color = '#fff';
-        if (ariaVideo) ariaVideo.classList.remove('speaking');
+        ariaVideo.classList.remove('speaking');
       };
       window.speechSynthesis.speak(utt);
     }
@@ -940,7 +1080,7 @@
     aiForm.addEventListener('submit', e => { e.preventDefault(); handleChat(aiInput.value); });
     document.querySelectorAll('.quick-chip').forEach(c => c.addEventListener('click', () => handleChat(c.dataset.prompt)));
 
-    // Modal & BackToTop
+    // Modal & Navigation
     const modal = document.getElementById('videoModal');
     const iframe = document.getElementById('videoIframe');
     document.getElementById('closeModal').onclick = () => { modal.classList.remove('active'); iframe.src = ''; };
