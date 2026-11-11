@@ -33,6 +33,7 @@
       --muted:#aaa0bc;
       --purple:#a855f7;
       --violet:#7025f5;
+      --cyan:#00f2fe;
       --line:rgba(205,174,255,.16)
     }
     *{box-sizing:border-box;margin:0;padding:0}
@@ -44,7 +45,7 @@
     .site-header{height:76px;position:fixed;top:0;left:0;width:100%;z-index:20;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(22px,6vw,100px);border-bottom:1px solid var(--line);background:rgba(8,5,16,.68);backdrop-filter:blur(18px)}
     .logo{font-weight:900;font-size:27px;letter-spacing:-.09em}.logo span{color:#b78aff}
     .nav{display:flex;gap:clamp(14px,2.5vw,38px);align-items:center}.nav a,.availability{font:500 10px 'DM Mono',monospace;letter-spacing:.12em;color:#c7bed5;text-transform:uppercase;transition:.25s}.nav a:hover{color:#c18cff}
-    .nav a.ai-nav{color:#b78aff;display:inline-flex;align-items:center;gap:5px}
+    .nav a.ai-nav{color:#00f2fe;display:inline-flex;align-items:center;gap:5px;font-weight:bold}
     .availability{display:flex;align-items:center;gap:10px}.status-dot{width:7px;height:7px;border-radius:50%;background:#6cffad;box-shadow:0 0 14px #6cffad}
     .menu-toggle{display:none;background:none;border:1px solid var(--line);color:white;border-radius:50%;width:42px;height:42px;font-size:20px;cursor:pointer}
     
@@ -67,9 +68,10 @@
     .watch-link:hover .play{background:rgba(166,107,255,0.2);transform:scale(1.06)}
     .hero-stats{display:flex;gap:34px;margin-top:36px;padding-top:24px;border-top:1px solid var(--line);max-width:530px}.stat strong{display:block;font-size:22px;letter-spacing:-.05em}.stat span{font-size:11px;color:#aaa0bc}
     .side-label{position:absolute;right:5.5%;top:32%;font:10px 'DM Mono',monospace;letter-spacing:.16em;line-height:1.9;color:#b9a8d0;text-transform:uppercase;z-index:2}.scroll-cue{position:absolute;left:3%;bottom:16%;writing-mode:vertical-rl;transform:rotate(180deg);font:10px 'DM Mono',monospace;letter-spacing:.2em;color:#d0c5dd;z-index:2}
-    .assistant-chip{position:absolute;right:5.5%;bottom:13%;z-index:3;display:flex;align-items:center;gap:13px;padding:14px 18px;border:1px solid rgba(190,139,255,.25);border-radius:16px;background:rgba(21,10,39,.78);box-shadow:0 12px 40px rgba(0,0,0,.3);backdrop-filter:blur(14px);font-size:12px;transition:.3s}
-    .assistant-chip:hover{border-color:#b78aff;transform:translateY(-3px)}
-    .assistant-icon{width:32px;height:32px;border-radius:10px;background:linear-gradient(135deg,#a855f7,#5420c9);display:grid;place-items:center}.assistant-chip small{display:block;color:#a99db8;margin-top:3px}
+    .assistant-chip{position:absolute;right:5.5%;bottom:13%;z-index:3;display:flex;align-items:center;gap:13px;padding:14px 18px;border:1px solid rgba(0,242,254,.35);border-radius:16px;background:rgba(16,10,34,.85);box-shadow:0 12px 40px rgba(0,0,0,.4);backdrop-filter:blur(14px);font-size:12px;transition:.3s}
+    .assistant-chip:hover{border-color:#00f2fe;transform:translateY(-3px);box-shadow:0 0 25px rgba(0,242,254,.25)}
+    .assistant-icon{width:32px;height:32px;border-radius:10px;background:linear-gradient(135deg,#00f2fe,#7025f5);display:grid;place-items:center}
+    .assistant-chip small{display:block;color:#a99db8;margin-top:3px}
     
     section.content-section{padding:110px clamp(22px,9vw,150px);position:relative}.section-kicker{font:10px 'DM Mono',monospace;letter-spacing:.17em;color:#b58aff;text-transform:uppercase;margin-bottom:18px}.section-title{font-size:clamp(38px,6vw,76px);line-height:.95;letter-spacing:-.07em;margin-bottom:24px}.section-desc{color:var(--muted);line-height:1.8;max-width:580px;font-size:14px}
     
@@ -105,7 +107,7 @@
     .project-card .card-arrow{position:absolute;right:17px;bottom:17px;color:#c69bff;font-size:20px}
     .work-count{margin-top:18px;color:#9385a6;font:10px 'DM Mono',monospace;letter-spacing:.1em}
 
-    /* Split portfolio: Design / Video */
+    /* Split portfolio */
     .space-section{padding:120px clamp(22px,3.4vw,64px) 95px;position:relative;overflow:hidden}
     .space-head{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;margin-bottom:38px}
     .space-head .section-title{margin:0;font-size:clamp(48px,6.2vw,82px)}
@@ -146,32 +148,141 @@
     .video-channel-cta .primary-btn:hover{background:#d94c69;box-shadow:0 0 35px rgba(239,102,128,.35)}
 
     /* ========================================================
-       NEW: AI CREATIVE STUDIO / ASSISTANT SECTION STYLES
+       AI CREATIVE STUDIO & 3D CHARACTER AGENT STYLES
        ======================================================== */
     .ai-section{background:radial-gradient(ellipse at 50% 20%,rgba(139,65,255,.15),transparent 60%),#080510}
-    .ai-container{border:1px solid rgba(184,132,255,.3);border-radius:24px;background:radial-gradient(circle at 80% 10%,rgba(112,37,245,.2),transparent 45%),linear-gradient(145deg,#130b22,#0c0816);overflow:hidden;box-shadow:0 25px 70px rgba(0,0,0,.45)}
-    .ai-topbar{padding:18px 24px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;background:rgba(16,10,28,.6);backdrop-filter:blur(10px)}
-    .ai-status-badge{display:flex;align-items:center;gap:10px;font:11px 'DM Mono',monospace;color:#b78aff;letter-spacing:.12em}
-    .ai-status-badge .dot{width:8px;height:8px;border-radius:50%;background:#a855f7;box-shadow:0 0 12px #a855f7;animation:pulse 2s infinite}
-    @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.8)}}
-    .ai-chat-window{height:360px;overflow-y:auto;padding:26px;display:flex;flex-direction:column;gap:18px;scroll-behavior:smooth}
+    
+    .ai-layout{
+      display:grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 22px;
+      margin-top: 36px;
+      align-items: stretch;
+    }
+
+    /* 3D Character Stage Card */
+    .ai-character-card{
+      border: 1px solid rgba(0, 242, 254, 0.3);
+      border-radius: 24px;
+      background: radial-gradient(circle at 50% 40%, rgba(0,242,254,0.12), transparent 58%), linear-gradient(145deg, #110920, #0c0816);
+      position: relative;
+      overflow: hidden;
+      min-height: 480px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 25px 70px rgba(0,0,0,0.5);
+    }
+    #agentCanvas{
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      cursor: grab;
+    }
+    #agentCanvas:active{cursor: grabbing;}
+
+    .agent-overlay-top{
+      position: relative;
+      z-index: 2;
+      padding: 22px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: linear-gradient(180deg, rgba(16,10,28,0.85), transparent);
+    }
+    .agent-badge{
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font: 10px 'DM Mono', monospace;
+      color: var(--cyan);
+      letter-spacing: .12em;
+    }
+    .agent-badge .pulse-light{
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--cyan);
+      box-shadow: 0 0 12px var(--cyan);
+    }
+    .agent-mood-tag{
+      font: 9px 'DM Mono', monospace;
+      letter-spacing: .14em;
+      padding: 4px 10px;
+      border-radius: 12px;
+      background: rgba(0,242,254,0.12);
+      border: 1px solid rgba(0,242,254,0.3);
+      color: #fff;
+    }
+
+    .agent-overlay-bottom{
+      position: relative;
+      z-index: 2;
+      padding: 20px 22px;
+      background: linear-gradient(0deg, rgba(16,10,28,0.92) 20%, transparent);
+    }
+    .agent-overlay-bottom h4{
+      font-size: 16px;
+      letter-spacing: -.02em;
+      margin-bottom: 4px;
+      color: #fff;
+    }
+    .agent-overlay-bottom p{
+      font-size: 11px;
+      color: #a89cb9;
+      line-height: 1.6;
+    }
+
+    /* AI Chat Card */
+    .ai-chat-card{
+      border: 1px solid rgba(184,132,255,.3);
+      border-radius: 24px;
+      background: radial-gradient(circle at 80% 10%,rgba(112,37,245,.2),transparent 45%),linear-gradient(145deg,#130b22,#0c0816);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 25px 70px rgba(0,0,0,.45);
+      min-height: 480px;
+    }
+    .ai-topbar{
+      padding: 16px 22px;
+      border-bottom: 1px solid var(--line);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(16,10,28,.6);
+      backdrop-filter: blur(10px);
+    }
+    .ai-chat-window{
+      flex: 1;
+      height: 290px;
+      overflow-y: auto;
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      scroll-behavior: smooth;
+    }
     .ai-chat-window::-webkit-scrollbar{width:6px}
     .ai-chat-window::-webkit-scrollbar-thumb{background:rgba(183,138,255,.2);border-radius:10px}
     
-    .chat-bubble{max-width:82%;padding:14px 18px;border-radius:18px;font-size:13px;line-height:1.75;display:flex;gap:12px;align-items:flex-start}
+    .chat-bubble{max-width:85%;padding:13px 17px;border-radius:18px;font-size:13px;line-height:1.7;display:flex;gap:12px;align-items:flex-start}
     .chat-bubble.bot{align-self:flex-start;background:rgba(28,16,48,.8);border:1px solid var(--line);color:#e4daf3}
     .chat-bubble.user{align-self:flex-end;background:linear-gradient(135deg,#7e2bf5,#5420c9);color:#fff;border-bottom-right-radius:4px}
-    .chat-avatar{width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,#a855f7,#5420c9);display:grid;place-items:center;font-size:14px;flex-shrink:0}
+    .chat-avatar{width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,#00f2fe,#a855f7);display:grid;place-items:center;font-size:13px;flex-shrink:0;color:#05030a;font-weight:900}
     
-    .quick-prompts{display:flex;flex-wrap:wrap;gap:8px;padding:12px 24px;border-top:1px solid rgba(205,174,255,.08);background:rgba(14,8,24,.4)}
+    .quick-prompts{display:flex;flex-wrap:wrap;gap:8px;padding:12px 22px;border-top:1px solid rgba(205,174,255,.08);background:rgba(14,8,24,.4)}
     .quick-chip{font:10px 'DM Mono',monospace;letter-spacing:.08em;color:#b9a8d0;background:rgba(255,255,255,.03);border:1px solid var(--line);padding:7px 12px;border-radius:20px;cursor:pointer;transition:.25s}
-    .quick-chip:hover{color:#fff;border-color:#b78aff;background:rgba(183,138,255,.15);transform:translateY(-2px)}
+    .quick-chip:hover{color:#fff;border-color:var(--cyan);background:rgba(0,242,254,.12);transform:translateY(-2px)}
     
-    .ai-input-wrap{padding:18px 24px;border-top:1px solid var(--line);display:flex;gap:12px;background:rgba(16,10,28,.7);backdrop-filter:blur(10px)}
-    .ai-input{flex:1;background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:30px;padding:12px 22px;color:#fff;font-family:inherit;font-size:13px;outline:none;transition:.3s}
-    .ai-input:focus{border-color:#a855f7;box-shadow:0 0 20px rgba(168,85,247,.25)}
-    .ai-send-btn{border:none;background:linear-gradient(120deg,#7025f5,#a855f7);color:#fff;width:44px;height:44px;border-radius:50%;cursor:pointer;display:grid;place-items:center;font-size:17px;transition:.3s;flex-shrink:0}
-    .ai-send-btn:hover{transform:scale(1.08);box-shadow:0 0 24px rgba(168,85,247,.5)}
+    .ai-input-wrap{padding:16px 22px;border-top:1px solid var(--line);display:flex;gap:12px;background:rgba(16,10,28,.7);backdrop-filter:blur(10px)}
+    .ai-input{flex:1;background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:30px;padding:12px 20px;color:#fff;font-family:inherit;font-size:13px;outline:none;transition:.3s}
+    .ai-input:focus{border-color:var(--cyan);box-shadow:0 0 20px rgba(0,242,254,.25)}
+    .ai-send-btn{border:none;background:linear-gradient(120deg,#00f2fe,#7025f5);color:#fff;width:44px;height:44px;border-radius:50%;cursor:pointer;display:grid;place-items:center;font-size:17px;transition:.3s;flex-shrink:0}
+    .ai-send-btn:hover{transform:scale(1.08);box-shadow:0 0 24px rgba(0,242,254,.5)}
 
     /* Floating Back to Top Button */
     #backToTop{position:fixed;bottom:26px;right:26px;z-index:90;width:46px;height:46px;border-radius:50%;background:#130b24;border:1px solid rgba(168,85,247,.45);color:#e2caff;display:none;place-items:center;font-size:18px;cursor:pointer;box-shadow:0 10px 30px rgba(0,0,0,.5);transition:.3s}
@@ -187,7 +298,9 @@
     .video-wrapper iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none}
 
     /* Responsive Queries */
-    @media(max-width:900px){
+    @media(max-width:960px){
+      .ai-layout{grid-template-columns: 1fr;}
+      .ai-character-card{min-height: 380px;}
       .space-grid{grid-template-columns:1fr}
       .space-card{min-height:320px}
       .video-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
@@ -228,7 +341,7 @@
       .video-channel-cta{align-items:flex-start;flex-direction:column}
       .contact-panel{align-items:flex-start;flex-direction:column}
       footer{flex-direction:column;padding:24px 22px;line-height:1.8}
-      .ai-chat-window{height:300px;padding:16px}
+      .ai-chat-window{height:260px;padding:16px}
       .chat-bubble{max-width:92%}
     }
     
@@ -250,7 +363,7 @@
     <a class="logo" href="#home" aria-label="MD Fahim home">MF<span>.</span></a>
     <nav class="nav" id="mainNav" aria-label="Main navigation">
       <a href="#spaces">Portfolio</a>
-      <a href="#ai-assistant" class="ai-nav">✦ AI Assistant</a>
+      <a href="#ai-assistant" class="ai-nav">✦ 3D AI Agent</a>
       <a href="#about">About</a>
       <a href="#process">Process</a>
       <a href="#contact">Contact</a>
@@ -280,10 +393,10 @@
       </div>
       <div class="side-label">Creative<br>Energy / 001</div>
       <div class="scroll-cue">SCROLL DOWN ↓</div>
-      <!-- Links directly to the new AI Assistant section -->
+      <!-- Links directly to the 3D AI Assistant section -->
       <a class="assistant-chip" href="#ai-assistant">
-        <span class="assistant-icon">✦</span>
-        <span><b>AI Assistant ✦</b><small>Ask me anything about Fahim</small></span>
+        <span class="assistant-icon">🤖</span>
+        <span><b>3D Agent Online ✦</b><small>Talk to my interactive assistant</small></span>
         <span>↓</span>
       </a>
     </section>
@@ -537,44 +650,65 @@
     </section>
 
     <!-- ========================================================
-         NEW: AI CREATIVE STUDIO / ASSISTANT SECTION
+         NEW: 3D ANIMATED CHARACTER AI AGENT STUDIO
          ======================================================== -->
     <section class="content-section ai-section" id="ai-assistant">
       <div class="reveal">
-        <div class="section-kicker">Interactive Studio / Powered by AI</div>
-        <h2 class="section-title">Ask the creative <span class="gradient-text">assistant.</span></h2>
-        <p class="section-desc">Have a question about my design workflow, software stack, or want instant concept brainstorming for your brand? Chat with my interactive AI assistant below.</p>
+        <div class="section-kicker">Interactive Studio / 3D AI Companion</div>
+        <h2 class="section-title">Meet your creative <span class="gradient-text">agent.</span></h2>
+        <p class="section-desc">Interact with my live 3D droid companion. Move your cursor to watch it look around, ask questions about Fahim's work, or generate creative motion design briefs.</p>
       </div>
 
-      <div class="ai-container reveal" style="margin-top: 36px;">
-        <div class="ai-topbar">
-          <div class="ai-status-badge">
-            <span class="dot"></span>
-            <span>FAHIM AI STUDIO · ONLINE</span>
+      <div class="ai-layout reveal">
+        <!-- 3D Interactive Character Stage -->
+        <div class="ai-character-card">
+          <div class="agent-overlay-top">
+            <div class="agent-badge">
+              <span class="pulse-light"></span>
+              <span>NEXUS-01 · 3D DROID</span>
+            </div>
+            <div class="agent-mood-tag" id="agentMood">STATE: ACTIVE</div>
           </div>
-          <span class="mono" style="font-size: 10px; color:#aaa0bc;">VERSION 2.0</span>
+
+          <canvas id="agentCanvas" aria-label="Interactive 3D AI Robot Companion"></canvas>
+
+          <div class="agent-overlay-bottom">
+            <h4>Fahim’s Autonomous Droid</h4>
+            <p>Drag or move your mouse to interact. Reacts with real-time expressions when speaking or thinking.</p>
+          </div>
         </div>
 
-        <div class="ai-chat-window" id="aiChatWindow">
-          <div class="chat-bubble bot">
-            <div class="chat-avatar">✦</div>
-            <div>
-              Hello there! 👋 I am <strong>Fahim’s Creative Assistant</strong>. Ask me anything about MD Fahim’s motion design, brand identity packages, creative tools, or ask for a design concept!
+        <!-- AI Chat Interface -->
+        <div class="ai-chat-card">
+          <div class="ai-topbar">
+            <div class="agent-badge">
+              <span class="pulse-light" style="background:#b78aff;box-shadow:0 0 10px #b78aff;"></span>
+              <span>SYNCHRONIZED WITH FAHIM</span>
+            </div>
+            <span class="mono" style="font-size: 10px; color:#aaa0bc;">NEURAL LINK v3.1</span>
+          </div>
+
+          <div class="ai-chat-window" id="aiChatWindow">
+            <div class="chat-bubble bot">
+              <div class="chat-avatar">AI</div>
+              <div>
+                Greetings! 🤖 I am <strong>Nexus</strong>, Fahim's autonomous 3D design agent. How can I assist your brand, motion project, or creative inquiry today?
+              </div>
             </div>
           </div>
-        </div>
 
-        <div class="quick-prompts">
-          <button class="quick-chip" data-prompt="What creative software does Fahim use?">🛠 Creative Toolkit</button>
-          <button class="quick-chip" data-prompt="How long does a brand identity project take?">⏱ Project Timeline</button>
-          <button class="quick-chip" data-prompt="Give me a SaaS UI motion design concept idea">💡 Motion Design Idea</button>
-          <button class="quick-chip" data-prompt="How can I hire Fahim for a project?">🚀 Hiring Process</button>
-        </div>
+          <div class="quick-prompts">
+            <button class="quick-chip" data-prompt="What creative software does Fahim use?">🛠 Creative Stack</button>
+            <button class="quick-chip" data-prompt="How long does a brand identity project take?">⏱ Project Timeline</button>
+            <button class="quick-chip" data-prompt="Give me a SaaS UI motion design concept idea">💡 SaaS Motion Idea</button>
+            <button class="quick-chip" data-prompt="How can I hire Fahim for a project?">🚀 Start Project</button>
+          </div>
 
-        <form class="ai-input-wrap" id="aiForm">
-          <input type="text" class="ai-input" id="aiInput" placeholder="Ask a question or type a design prompt..." autocomplete="off" required />
-          <button type="submit" class="ai-send-btn" aria-label="Send message">↗</button>
-        </form>
+          <form class="ai-input-wrap" id="aiForm">
+            <input type="text" class="ai-input" id="aiInput" placeholder="Message Nexus or ask a creative question..." autocomplete="off" required />
+            <button type="submit" class="ai-send-btn" aria-label="Send message">↗</button>
+          </form>
+        </div>
       </div>
     </section>
 
@@ -657,15 +791,16 @@
   <script type="module">
     import * as THREE from 'three';
 
-    /* --- Three.js 3D Core with Visibility Optimization --- */
-    const canvas = document.querySelector('#scene');
+    /* ========================================================
+       1. HERO 3D SCENE (Interactive Energy Core)
+       ======================================================== */
+    const heroCanvas = document.querySelector('#scene');
     const heroSection = document.querySelector('#home');
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    let renderer, scene, camera, core, coreWire, ringGroup, particles, crystalGroup;
+    let heroRenderer, heroScene, heroCamera, core, coreWire, ringGroup, particles, crystalGroup;
     let pointerX = 0, pointerY = 0, targetX = 0, targetY = 0;
     let isHeroVisible = true;
 
-    // Visibility observer to pause 3D calculations when off-screen
     if ('IntersectionObserver' in window) {
       const heroObserver = new IntersectionObserver(([entry]) => {
         isHeroVisible = entry.isIntersecting;
@@ -674,26 +809,26 @@
     }
 
     try {
-      renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
-      renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, window.innerWidth < 700 ? 1.25 : 1.6));
-      renderer.setSize(canvas.clientWidth, canvas.clientHeight, false);
-      renderer.outputColorSpace = THREE.SRGBColorSpace;
-      renderer.toneMapping = THREE.ACESFilmicToneMapping;
-      renderer.toneMappingExposure = 1.25;
+      heroRenderer = new THREE.WebGLRenderer({ canvas: heroCanvas, antialias: true, alpha: true });
+      heroRenderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, window.innerWidth < 700 ? 1.25 : 1.6));
+      heroRenderer.setSize(heroCanvas.clientWidth, heroCanvas.clientHeight, false);
+      heroRenderer.outputColorSpace = THREE.SRGBColorSpace;
+      heroRenderer.toneMapping = THREE.ACESFilmicToneMapping;
+      heroRenderer.toneMappingExposure = 1.25;
 
-      scene = new THREE.Scene();
-      camera = new THREE.PerspectiveCamera(38, canvas.clientWidth / canvas.clientHeight, .1, 100);
-      camera.position.set(0, 0, 10);
+      heroScene = new THREE.Scene();
+      heroCamera = new THREE.PerspectiveCamera(38, heroCanvas.clientWidth / heroCanvas.clientHeight, .1, 100);
+      heroCamera.position.set(0, 0, 10);
 
-      const ambient = new THREE.AmbientLight(0x9e72ff, 1.2); scene.add(ambient);
-      const key = new THREE.PointLight(0xb76aff, 95, 20); key.position.set(2, 2, 4); scene.add(key);
-      const blue = new THREE.PointLight(0x4a1aff, 65, 18); blue.position.set(-4, -2, 1); scene.add(blue);
+      const ambient = new THREE.AmbientLight(0x9e72ff, 1.2); heroScene.add(ambient);
+      const key = new THREE.PointLight(0xb76aff, 95, 20); key.position.set(2, 2, 4); heroScene.add(key);
+      const blue = new THREE.PointLight(0x4a1aff, 65, 18); blue.position.set(-4, -2, 1); heroScene.add(blue);
 
       const group = new THREE.Group();
       const isCompact = window.matchMedia('(max-width: 620px)').matches;
       if (isCompact) { group.position.set(1.05, -1.45, 0); group.scale.setScalar(.52); }
       else { group.position.set(2.1, .05, 0); }
-      scene.add(group);
+      heroScene.add(group);
 
       const coreGeo = new THREE.IcosahedronGeometry(1.48, 5);
       const coreMat = new THREE.MeshStandardMaterial({
@@ -745,13 +880,13 @@
       const pGeo = new THREE.BufferGeometry();
       pGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
       particles = new THREE.Points(pGeo, new THREE.PointsMaterial({ color: 0xb78aff, size: .018, transparent: true, opacity: .72, depthWrite: false }));
-      scene.add(particles);
+      heroScene.add(particles);
 
       const clock = new THREE.Clock();
 
-      function animate() {
-        requestAnimationFrame(animate);
-        if (!isHeroVisible) return; // Saves battery & GPU
+      function animateHero() {
+        requestAnimationFrame(animateHero);
+        if (!isHeroVisible) return;
 
         const t = clock.getElapsedTime();
         if (!reducedMotion) {
@@ -769,35 +904,271 @@
           });
           particles.rotation.y = t * .008;
         }
-        renderer.render(scene, camera);
+        heroRenderer.render(heroScene, heroCamera);
       }
-      animate();
+      animateHero();
 
-      function resize() {
-        const w = canvas.clientWidth, h = canvas.clientHeight;
+      function resizeHero() {
+        const w = heroCanvas.clientWidth, h = heroCanvas.clientHeight;
         if (!w || !h) return;
         const compact = window.matchMedia('(max-width: 620px)').matches;
         if (compact) { group.position.set(1.05, -1.45, 0); group.scale.setScalar(.52); }
         else { group.position.set(2.1, .05, 0); group.scale.setScalar(1); }
-        camera.aspect = w / h;
-        camera.updateProjectionMatrix();
-        renderer.setSize(w, h, false);
-        renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, compact ? 1.1 : 1.6));
+        heroCamera.aspect = w / h;
+        heroCamera.updateProjectionMatrix();
+        heroRenderer.setSize(w, h, false);
       }
-
-      if ('ResizeObserver' in window) { new ResizeObserver(resize).observe(canvas); }
-      else { window.addEventListener('resize', resize, { passive: true }); }
-      window.addEventListener('orientationchange', () => setTimeout(resize, 180), { passive: true });
-      window.addEventListener('pointermove', e => {
-        pointerX = (e.clientX / window.innerWidth - .5) * 2;
-        pointerY = (e.clientY / window.innerHeight - .5) * 2;
-      }, { passive: true });
-
-    } catch (error) {
-      console.warn('3D scene could not start:', error);
+      window.addEventListener('resize', resizeHero, { passive: true });
+    } catch (e) {
+      console.warn('Hero 3D scene error:', e);
     }
 
-    /* --- Project Category Filter --- */
+    /* ========================================================
+       2. INTERACTIVE 3D ANIMATED ROBOT AGENT (Nexus-01)
+       ======================================================== */
+    const agentCanvas = document.querySelector('#agentCanvas');
+    const aiSection = document.querySelector('#ai-assistant');
+    const agentMoodBadge = document.querySelector('#agentMood');
+    let agentRenderer, agentScene, agentCamera;
+    let agentBotGroup, botHead, eyeLeft, eyeRight, botChest, botCoreLight, leftHand, rightHand;
+    let isAgentVisible = true;
+    let agentTargetRotX = 0, agentTargetRotY = 0;
+    let isThinking = false;
+
+    if ('IntersectionObserver' in window) {
+      const agentObserver = new IntersectionObserver(([entry]) => {
+        isAgentVisible = entry.isIntersecting;
+      }, { threshold: 0.1 });
+      agentObserver.observe(aiSection);
+    }
+
+    try {
+      agentRenderer = new THREE.WebGLRenderer({ canvas: agentCanvas, antialias: true, alpha: true });
+      agentRenderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.6));
+      agentRenderer.setSize(agentCanvas.clientWidth, agentCanvas.clientHeight, false);
+      agentRenderer.toneMapping = THREE.ACESFilmicToneMapping;
+      agentRenderer.toneMappingExposure = 1.35;
+
+      agentScene = new THREE.Scene();
+      agentCamera = new THREE.PerspectiveCamera(40, agentCanvas.clientWidth / agentCanvas.clientHeight, 0.1, 50);
+      agentCamera.position.set(0, 0.3, 5.2);
+
+      // Lighting for character
+      const amb = new THREE.AmbientLight(0x7025f5, 1.4);
+      agentScene.add(amb);
+      const topLight = new THREE.DirectionalLight(0x00f2fe, 3.2);
+      topLight.position.set(2, 4, 3);
+      agentScene.add(topLight);
+      const rimLight = new THREE.PointLight(0xa855f7, 40, 10);
+      rimLight.position.set(-2, -1, -1);
+      agentScene.add(rimLight);
+
+      // Root Bot Hierarchy
+      agentBotGroup = new THREE.Group();
+      agentScene.add(agentBotGroup);
+
+      // Materials
+      const armorMat = new THREE.MeshStandardMaterial({
+        color: 0x180f2d,
+        metalness: 0.85,
+        roughness: 0.22,
+        emissive: 0x120726
+      });
+      const darkGlassMat = new THREE.MeshStandardMaterial({
+        color: 0x07040d,
+        metalness: 0.9,
+        roughness: 0.1
+      });
+      const cyanGlowMat = new THREE.MeshStandardMaterial({
+        color: 0x00f2fe,
+        emissive: 0x00f2fe,
+        emissiveIntensity: 2.2,
+        roughness: 0.1
+      });
+      const violetGlowMat = new THREE.MeshStandardMaterial({
+        color: 0xa855f7,
+        emissive: 0xa855f7,
+        emissiveIntensity: 1.8
+      });
+
+      // --- 1. Bot Head ---
+      botHead = new THREE.Group();
+      botHead.position.set(0, 0.55, 0);
+      agentBotGroup.add(botHead);
+
+      // Skull
+      const skull = new THREE.Mesh(new THREE.SphereGeometry(0.72, 32, 28), armorMat);
+      skull.scale.set(1.05, 1.0, 1.0);
+      botHead.add(skull);
+
+      // Visor / Screen Face
+      const visor = new THREE.Mesh(new THREE.SphereGeometry(0.68, 32, 20, 0, Math.PI), darkGlassMat);
+      visor.rotation.y = -Math.PI / 2;
+      visor.position.set(0, 0.05, 0.12);
+      visor.scale.set(0.9, 0.65, 0.85);
+      botHead.add(visor);
+
+      // Glowing Eyes
+      eyeLeft = new THREE.Mesh(new THREE.CapsuleGeometry(0.08, 0.16, 6, 12), cyanGlowMat);
+      eyeLeft.rotation.z = Math.PI / 2;
+      eyeLeft.position.set(-0.24, 0.06, 0.7);
+      botHead.add(eyeLeft);
+
+      eyeRight = new THREE.Mesh(new THREE.CapsuleGeometry(0.08, 0.16, 6, 12), cyanGlowMat);
+      eyeRight.rotation.z = Math.PI / 2;
+      eyeRight.position.set(0.24, 0.06, 0.7);
+      botHead.add(eyeRight);
+
+      // Ear Pods
+      const earL = new THREE.Mesh(new THREE.CylinderGeometry(0.18, 0.18, 0.12, 18), armorMat);
+      earL.rotation.z = Math.PI / 2;
+      earL.position.set(-0.8, 0.05, 0);
+      botHead.add(earL);
+
+      const earR = new THREE.Mesh(new THREE.CylinderGeometry(0.18, 0.18, 0.12, 18), armorMat);
+      earR.rotation.z = Math.PI / 2;
+      earR.position.set(0.8, 0.05, 0);
+      botHead.add(earR);
+
+      // Antenna on top
+      const antStem = new THREE.Mesh(new THREE.CylinderGeometry(0.02, 0.02, 0.35), armorMat);
+      antStem.position.set(0, 0.82, 0);
+      botHead.add(antStem);
+      const antTip = new THREE.Mesh(new THREE.SphereGeometry(0.065, 12, 12), cyanGlowMat);
+      antTip.position.set(0, 1.0, 0);
+      botHead.add(antTip);
+
+      // --- 2. Floating Neck Halo ---
+      const halo = new THREE.Mesh(new THREE.TorusGeometry(0.48, 0.02, 12, 36), violetGlowMat);
+      halo.rotation.x = Math.PI / 2;
+      halo.position.set(0, -0.22, 0);
+      botHead.add(halo);
+
+      // --- 3. Floating Torso / Body ---
+      botChest = new THREE.Group();
+      botChest.position.set(0, -0.65, 0);
+      agentBotGroup.add(botChest);
+
+      const torsoMesh = new THREE.Mesh(new THREE.CapsuleGeometry(0.55, 0.5, 16, 24), armorMat);
+      torsoMesh.scale.set(0.9, 1.1, 0.85);
+      botChest.add(torsoMesh);
+
+      // Glowing Reactor Core
+      const coreGeo = new THREE.OctahedronGeometry(0.22, 0);
+      botCoreLight = new THREE.Mesh(coreGeo, cyanGlowMat);
+      botCoreLight.position.set(0, 0.15, 0.44);
+      botChest.add(botCoreLight);
+
+      // Torso Ring
+      const chestRing = new THREE.Mesh(new THREE.TorusGeometry(0.72, 0.015, 10, 48), violetGlowMat);
+      chestRing.rotation.set(0.6, 0.3, 0);
+      botChest.add(chestRing);
+
+      // --- 4. Floating Magnetic Cyber Hands ---
+      leftHand = new THREE.Group();
+      leftHand.position.set(-1.1, -0.4, 0.3);
+      agentBotGroup.add(leftHand);
+      const handOrbL = new THREE.Mesh(new THREE.SphereGeometry(0.18, 18, 18), armorMat);
+      leftHand.add(handOrbL);
+      const handRingL = new THREE.Mesh(new THREE.TorusGeometry(0.24, 0.018, 8, 24), cyanGlowMat);
+      handRingL.rotation.x = Math.PI / 3;
+      leftHand.add(handRingL);
+
+      rightHand = new THREE.Group();
+      rightHand.position.set(1.1, -0.4, 0.3);
+      agentBotGroup.add(rightHand);
+      const handOrbR = new THREE.Mesh(new THREE.SphereGeometry(0.18, 18, 18), armorMat);
+      rightHand.add(handOrbR);
+      const handRingR = new THREE.Mesh(new THREE.TorusGeometry(0.24, 0.018, 8, 24), cyanGlowMat);
+      handRingR.rotation.x = -Math.PI / 3;
+      rightHand.add(handRingR);
+
+      // Blink timer
+      let nextBlink = 2.5;
+
+      const agentClock = new THREE.Clock();
+
+      function animateAgent() {
+        requestAnimationFrame(animateAgent);
+        if (!isAgentVisible) return;
+
+        const delta = agentClock.getDelta();
+        const time = agentClock.getElapsedTime();
+
+        // 1. Natural Floating Motion
+        const bob = Math.sin(time * 2.2) * 0.12;
+        agentBotGroup.position.y = bob;
+        leftHand.position.y = -0.4 + Math.sin(time * 2.2 + 0.8) * 0.08;
+        rightHand.position.y = -0.4 + Math.cos(time * 2.2 + 0.8) * 0.08;
+
+        // Hands spinning
+        leftHand.rotation.y = time * 0.8;
+        rightHand.rotation.y = -time * 0.8;
+
+        // Core Rotation
+        botCoreLight.rotation.y = time * 2;
+        botCoreLight.rotation.x = time * 1.5;
+
+        // 2. Head Look-At Cursor Tracking with Inertia
+        botHead.rotation.y += (agentTargetRotY - botHead.rotation.y) * 0.08;
+        botHead.rotation.x += (agentTargetRotX - botHead.rotation.x) * 0.08;
+        botChest.rotation.y += (agentTargetRotY * 0.3 - botChest.rotation.y) * 0.05;
+
+        // 3. Thinking / Speaking State Reactivity
+        if (isThinking) {
+          botCoreLight.material.emissiveIntensity = 3.5 + Math.sin(time * 12) * 1.5;
+          botHead.rotation.z = Math.sin(time * 5) * 0.06;
+          agentBotGroup.rotation.y = Math.sin(time * 4) * 0.15;
+        } else {
+          botCoreLight.material.emissiveIntensity = 2.0 + Math.sin(time * 3) * 0.4;
+          botHead.rotation.z = 0;
+          agentBotGroup.rotation.y = 0;
+        }
+
+        // 4. Blinking Logic
+        nextBlink -= delta;
+        if (nextBlink <= 0) {
+          eyeLeft.scale.y = 0.1;
+          eyeRight.scale.y = 0.1;
+          setTimeout(() => {
+            eyeLeft.scale.y = 1;
+            eyeRight.scale.y = 1;
+          }, 140);
+          nextBlink = 3 + Math.random() * 4;
+        }
+
+        agentRenderer.render(agentScene, agentCamera);
+      }
+      animateAgent();
+
+      function resizeAgent() {
+        const w = agentCanvas.clientWidth, h = agentCanvas.clientHeight;
+        if (!w || !h) return;
+        agentCamera.aspect = w / h;
+        agentCamera.updateProjectionMatrix();
+        agentRenderer.setSize(w, h, false);
+      }
+      window.addEventListener('resize', resizeAgent, { passive: true });
+
+      // Mouse Look tracking for Agent
+      window.addEventListener('pointermove', (e) => {
+        const rect = agentCanvas.getBoundingClientRect();
+        // Calculate relative to agent canvas center
+        const x = (e.clientX - (rect.left + rect.width / 2)) / (window.innerWidth / 2);
+        const y = (e.clientY - (rect.top + rect.height / 2)) / (window.innerHeight / 2);
+
+        agentTargetRotY = Math.max(-0.6, Math.min(0.6, x * 0.9));
+        agentTargetRotX = Math.max(-0.4, Math.min(0.4, y * 0.6));
+      }, { passive: true });
+
+    } catch (e) {
+      console.warn('Agent 3D scene error:', e);
+    }
+
+    /* ========================================================
+       3. GENERAL UI INTERACTIONS (Filter, Modal, Chat)
+       ======================================================== */
+    // Filter
     const filterButtons = [...document.querySelectorAll('.filter-btn')];
     const projectCards = [...document.querySelectorAll('.project-card')];
     const workCount = document.querySelector('#workCount');
@@ -821,7 +1192,7 @@
       workCount.textContent = `${visible} PROJECT${visible === 1 ? '' : 'S'}${filter === 'all' ? ' — COMPLETE BEHANCE COLLECTION' : ''}`;
     }));
 
-    /* --- Mobile Menu Navigation --- */
+    // Mobile Navigation
     const toggle = document.querySelector('#menuToggle'), nav = document.querySelector('#mainNav');
     toggle.setAttribute('aria-expanded', 'false');
     toggle.addEventListener('click', () => {
@@ -833,7 +1204,7 @@
       toggle.setAttribute('aria-expanded', 'false');
     }));
 
-    /* --- Scroll Reveal Animations --- */
+    // Scroll Reveal
     if ('IntersectionObserver' in window) {
       const observer = new IntersectionObserver(entries => entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -846,18 +1217,14 @@
       document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
     }
 
-    /* --- Back to Top Button --- */
+    // Back to top
     const btt = document.getElementById('backToTop');
     window.addEventListener('scroll', () => {
-      if (window.scrollY > 450) {
-        btt.style.display = 'grid';
-      } else {
-        btt.style.display = 'none';
-      }
+      btt.style.display = window.scrollY > 450 ? 'grid' : 'none';
     }, { passive: true });
     btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
-    /* --- Video Modal Lightbox Logic --- */
+    // Video Modal
     const videoModal = document.getElementById('videoModal');
     const videoIframe = document.getElementById('videoIframe');
     const closeModal = document.getElementById('closeModal');
@@ -870,13 +1237,11 @@
       videoModal.classList.add('active');
       document.body.style.overflow = 'hidden';
     }
-
     function closeVideo() {
       videoModal.classList.remove('active');
       videoIframe.src = '';
       document.body.style.overflow = '';
     }
-
     heroReelBtn.addEventListener('click', () => openVideo("https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ"));
     videoTriggers.forEach(card => card.addEventListener('click', () => openVideo(card.dataset.video)));
     closeModal.addEventListener('click', closeVideo);
@@ -884,44 +1249,36 @@
     window.addEventListener('keydown', e => { if (e.key === 'Escape' && videoModal.classList.contains('active')) closeVideo(); });
 
     /* ========================================================
-       AI CREATIVE STUDIO LOGIC
+       4. AI AGENT CHAT LOGIC WITH 3D BOT STATE SYNC
        ======================================================== */
     const aiChatWindow = document.getElementById('aiChatWindow');
     const aiForm = document.getElementById('aiForm');
     const aiInput = document.getElementById('aiInput');
     const quickChips = document.querySelectorAll('.quick-chip');
 
-    // Built-in intelligent response knowledge base about Fahim
     function getAssistantResponse(prompt) {
       const p = prompt.toLowerCase();
-      
       if (p.includes('tool') || p.includes('software') || p.includes('stack')) {
-        return "MD Fahim's core creative toolkit includes: <strong>Adobe After Effects</strong> (for UI/Motion animations), <strong>Premiere Pro</strong> (for video editing), <strong>Illustrator</strong> (for vector branding/logos), and <strong>Photoshop</strong> (for manipulation & poster design).";
+        return "MD Fahim's professional toolkit includes: <strong>Adobe After Effects</strong> (for UI/Motion animations), <strong>Premiere Pro</strong> (for video editing), <strong>Illustrator</strong> (for vector branding/logos), and <strong>Photoshop</strong> (for manipulation & poster design).";
       }
       if (p.includes('time') || p.includes('timeline') || p.includes('long') || p.includes('deadline')) {
-        return "Project turnaround varies by scope: standard motion graphics ads typically take <strong>3–5 days</strong>, while complete brand identity packages take around <strong>1–2 weeks</strong> with revision cycles.";
+        return "Turnaround depends on project scope: standard motion graphics ads typically take <strong>3–5 business days</strong>, while complete brand identity packages take around <strong>1–2 weeks</strong> with revisions.";
       }
       if (p.includes('idea') || p.includes('concept') || p.includes('saas') || p.includes('motion')) {
-        return "✨ <strong>Concept Idea:</strong> Start with an isometric 3D dark-mode dashboard. As the user clicks, feature layers slide out with smooth spring physics, neon purple glowing accent highlights, and kinetic typography accentuating the product benefit!";
+        return "✨ <strong>Nexus Recommendation:</strong> Open with a dark sleek isometric 3D UI card. Feature elements slide in with smooth spring physics, neon purple glowing accent highlights, followed by punchy kinetic typography highlighting user ROI!";
       }
       if (p.includes('hire') || p.includes('contact') || p.includes('cost') || p.includes('price')) {
-        return "You can start collaborating right away! Scroll down to the <strong>Contact Section</strong> below to send an email, reach out on WhatsApp, or message Fahim directly on Behance with your project brief.";
+        return "Fahim is currently <strong>Available for select projects</strong>. Scroll to the <strong>Contact Section</strong> below to send a direct email, reach out on WhatsApp, or connect on Behance!";
       }
-      
-      // Default fallback response
-      return `Thank you for asking! I've noted: <em>"${prompt}"</em>. For custom quotes and specific project inquiries, feel free to reach out via the contact buttons below!`;
+      return `Roger that! I've logged your inquiry: <em>"${prompt}"</em>. For detailed project estimates, feel free to use the direct email or WhatsApp buttons below!`;
     }
 
     function appendMessage(sender, text) {
       const bubble = document.createElement('div');
       bubble.className = `chat-bubble ${sender}`;
-      
-      if (sender === 'bot') {
-        bubble.innerHTML = `<div class="chat-avatar">✦</div><div>${text}</div>`;
-      } else {
-        bubble.innerHTML = `<div>${text}</div>`;
-      }
-      
+      bubble.innerHTML = sender === 'bot' 
+        ? `<div class="chat-avatar">AI</div><div>${text}</div>`
+        : `<div>${text}</div>`;
       aiChatWindow.appendChild(bubble);
       aiChatWindow.scrollTop = aiChatWindow.scrollHeight;
     }
@@ -931,23 +1288,27 @@
       appendMessage('user', userText);
       aiInput.value = '';
 
-      // Typing animation simulation
+      // Trigger 3D Agent THINKING Mode
+      isThinking = true;
+      agentMoodBadge.textContent = 'STATE: PROCESSING';
+      agentMoodBadge.style.color = '#00f2fe';
+
       const typingBubble = document.createElement('div');
       typingBubble.className = 'chat-bubble bot';
-      typingBubble.innerHTML = `<div class="chat-avatar">✦</div><div><em>Thinking...</em></div>`;
+      typingBubble.innerHTML = `<div class="chat-avatar">AI</div><div><em>Nexus is processing response...</em></div>`;
       aiChatWindow.appendChild(typingBubble);
       aiChatWindow.scrollTop = aiChatWindow.scrollHeight;
 
       setTimeout(() => {
         typingBubble.remove();
-        
-        /* 
-           NOTE: If you have your own API (OpenAI / Gemini / Webhook), 
-           you can replace getAssistantResponse() with a real fetch() call!
-        */
         const botReply = getAssistantResponse(userText);
         appendMessage('bot', botReply);
-      }, 700);
+
+        // Reset 3D Agent back to ACTIVE
+        isThinking = false;
+        agentMoodBadge.textContent = 'STATE: ACTIVE';
+        agentMoodBadge.style.color = '#fff';
+      }, 900);
     }
 
     aiForm.addEventListener('submit', (e) => {
