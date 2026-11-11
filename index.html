@@ -7,9 +7,7 @@
   <meta name="theme-color" content="#080510" />
   
   <title>MD FAHIM — Immersive Creative Portfolio | Graphic & Motion Designer</title>
-  <meta name="description" content="MD Fahim — Graphic Designer & Motion Designer. Guided by Aria, your anime AI copilot." />
-  <meta property="og:title" content="MD FAHIM — Graphic Designer & Motion Designer" />
-  <meta property="og:image" content="https://mir-s3-cdn-cf.behance.net/projects/404/77445c257466427.Y3JvcCwxMjAzLDk0MSw3Nyww.png" />
+  <meta name="description" content="MD Fahim — Graphic Designer & Motion Designer. Guided by Aria, your 3D anime AI copilot." />
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌸</text></svg>">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -57,19 +55,19 @@
     .assistant-chip:hover{border-color:var(--pink);transform:translateY(-3px);box-shadow:0 0 25px rgba(255,94,168,.35)}
     .assistant-icon{width:32px;height:32px;border-radius:10px;background:linear-gradient(135deg,var(--pink),#7025f5);display:grid;place-items:center}
     
-    /* Sections */
+    /* Content Sections */
     section.content-section{padding:110px clamp(22px,9vw,150px);position:relative}
     .section-kicker{font:10px 'DM Mono',monospace;letter-spacing:.17em;color:var(--pink);text-transform:uppercase;margin-bottom:18px}
     .section-title{font-size:clamp(38px,6vw,76px);line-height:.95;letter-spacing:-.07em;margin-bottom:24px}
     .section-desc{color:var(--muted);line-height:1.8;max-width:580px;font-size:14px}
     
-    /* Space Cards */
+    /* Spaces */
     .space-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
     .space-card{min-height:365px;border:1px solid rgba(205,174,255,.2);padding:30px;background:radial-gradient(ellipse at 75% 25%,rgba(127,49,221,.2),transparent 48%),linear-gradient(135deg,#100a1c,#0b0712);display:flex;flex-direction:column;justify-content:space-between;transition:.4s;border-radius:18px}
     .space-card:hover{transform:translateY(-7px);border-color:var(--pink);box-shadow:0 25px 70px rgba(255,94,168,.2)}
     .space-card h3{font-size:clamp(42px,4.3vw,66px);line-height:.91;margin:38px 0 20px;text-transform:uppercase}
     
-    /* Project Grid & Filters */
+    /* Projects Grid */
     .work-toolbar{display:flex;flex-wrap:wrap;gap:9px;margin-top:32px}
     .filter-btn{border:1px solid var(--line);background:rgba(255,255,255,.025);color:#c9bdd8;border-radius:30px;padding:10px 15px;font:10px 'DM Mono',monospace;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;transition:.25s}
     .filter-btn:hover,.filter-btn.active{background:linear-gradient(120deg,var(--pink),#7025f5);border-color:var(--pink);color:#fff;box-shadow:0 0 24px rgba(255,94,168,.35)}
@@ -91,17 +89,42 @@
     .video-play{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;background:#ff4d94;color:#fff;font-size:16px}
 
     /* ========================================================
-       ANIME AI COMPANION "ARIA" (Interactive Avatar Stage)
+       LIVE 3D ANIME AI CHARACTER "ARIA" STAGE & CHAT
        ======================================================== */
     .ai-section{background:radial-gradient(ellipse at 50% 20%,rgba(255,94,168,.14),transparent 60%),#080510}
     .ai-layout{display:grid;grid-template-columns:0.95fr 1.05fr;gap:22px;margin-top:36px;align-items:stretch}
     
-    .ai-character-card{border:1px solid rgba(255,94,168,.4);border-radius:24px;background:#13091c;position:relative;overflow:hidden;min-height:520px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 25px 70px rgba(0,0,0,.6)}
-    .anime-avatar-stage{position:absolute;inset:0;width:100%;height:100%;z-index:1;overflow:hidden;display:flex;align-items:center;justify-content:center;background:#0c0614}
+    .ai-character-card{
+      border: 1px solid rgba(255,94,168,.4);
+      border-radius: 24px;
+      background: radial-gradient(circle at 50% 40%, #1f0b26, #09040d);
+      position: relative;
+      overflow: hidden;
+      min-height: 520px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 25px 70px rgba(0,0,0,.6), 0 0 35px rgba(255,94,168,0.2);
+    }
     
-    /* Anime Avatar Video / Visual */
-    .anime-avatar-video{width:100%;height:100%;object-fit:cover;object-position:center 15%;transform:scale(1.02);transition:filter .4s ease,transform .4s ease}
-    .anime-avatar-video.speaking{filter:drop-shadow(0 0 25px rgba(255,94,168,.6)) saturate(1.15);transform:scale(1.06)}
+    /* 3D Anime Avatar Canvas Container */
+    .anime-avatar-stage{
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: grab;
+    }
+    .anime-avatar-stage:active{cursor: grabbing;}
+    #animeCanvas{
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
     
     .agent-overlay-top{position:relative;z-index:3;padding:22px;display:flex;justify-content:space-between;align-items:center;background:linear-gradient(180deg,rgba(16,10,28,.88),transparent)}
     .agent-badge{display:flex;align-items:center;gap:8px;font:10px 'DM Mono',monospace;color:var(--pink);letter-spacing:.12em}
@@ -129,7 +152,7 @@
     .ai-input{flex:1;background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:30px;padding:12px 20px;color:#fff;outline:none}
     .ai-send-btn{border:none;background:linear-gradient(120deg,var(--pink),#7025f5);color:#fff;width:44px;height:44px;border-radius:50%;cursor:pointer;display:grid;place-items:center}
 
-    /* About, Process, Contact, Modals */
+    /* About & Contact */
     .about-wrap{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center}
     .about-panel{border:1px solid var(--line);border-radius:22px;padding:34px;background:#100a1b}
     .skill-list{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}.skill-list span{border:1px solid var(--line);padding:9px 13px;border-radius:30px;font:10px 'DM Mono',monospace}
@@ -204,7 +227,7 @@
       </div>
       <a class="assistant-chip" href="#ai-assistant">
         <span class="assistant-icon">🌸</span>
-        <span><b>Aria Online ✦</b><small>Meet Fahim's 3D anime copilot</small></span>
+        <span><b>Meet Aria ✦</b><small>Live 3D Anime AI Companion</small></span>
         <span>↓</span>
       </a>
     </section>
@@ -295,36 +318,34 @@
     </section>
 
     <!-- ========================================================
-         INTERACTIVE ANIME AI COPILOT (ARIA)
+         LIVE 3D ANIME AI COMPANION (ARIA)
          ======================================================== -->
     <section class="content-section ai-section" id="ai-assistant">
       <div>
-        <div class="section-kicker">Interactive Studio / Anime AI Copilot</div>
+        <div class="section-kicker">Interactive Studio / 3D Anime AI Copilot</div>
         <h2 class="section-title">Meet Aria, your <span class="gradient-text">companion.</span></h2>
-        <p class="section-desc">Aria speaks with a sweet human girl voice. Talk in বাংলা or English and command her to run any feature on this website!</p>
+        <p class="section-desc">Aria is a live 3D anime girl avatar who looks around, blinks, talks with a sweet human girl voice, and controls this website upon your command!</p>
       </div>
 
       <div class="ai-layout">
-        <!-- Hologram Stage -->
+        <!-- 3D Anime Avatar Canvas Card -->
         <div class="ai-character-card">
           <div class="agent-overlay-top">
             <div class="agent-badge">
               <span class="pulse-light"></span>
-              <span>ARIA · ANIME AI COMPANION</span>
+              <span>ARIA · 3D ANIME AVATAR</span>
             </div>
             <div class="agent-mood-tag" id="agentMood">MOOD: HAPPY 🌸</div>
           </div>
 
+          <!-- Live 3D Render Canvas -->
           <div class="anime-avatar-stage">
-            <!-- Place your 'aria.mp4' video in the same folder -->
-            <video class="anime-avatar-video" id="ariaVideo" autoplay loop muted playsinline poster="https://mir-s3-cdn-cf.behance.net/projects/404/77445c257466427.Y3JvcCwxMjAzLDk0MSw3Nyww.png">
-              <source src="aria.mp4" type="video/mp4">
-            </video>
+            <canvas id="animeCanvas" aria-label="3D Anime Girl Avatar Aria"></canvas>
           </div>
 
           <div class="agent-overlay-bottom">
-            <h4>Aria — Autonomous Assistant</h4>
-            <p>Live anime companion. Ask: <em>"Hi Aria, kemon acho?"</em> or <em>"Motion design dekhao"</em>.</p>
+            <h4>Aria — Autonomous 3D Avatar</h4>
+            <p>Move your mouse to watch her look at you. Ask: <em>"Hi Aria, kemon acho?"</em> or <em>"Motion design dekhao"</em>.</p>
           </div>
         </div>
 
@@ -333,7 +354,7 @@
           <div class="ai-topbar">
             <div class="agent-badge">
               <span class="pulse-light"></span>
-              <span>HUMAN GIRL VOICE ACTIVE</span>
+              <span>SWEET GIRL VOICE ENGINE</span>
             </div>
             <button class="voice-toggle-btn active" id="voiceToggle">
               <span>🌸 Voice:</span> <b id="voiceStatus">GIRL VOICE ON</b>
@@ -344,7 +365,7 @@
             <div class="chat-bubble bot">
               <div class="chat-avatar">🌸</div>
               <div>
-                Hey there! 💕 I’m <strong>Aria</strong>, your anime AI copilot. You can talk to me in <strong>বাংলা, English, or Banglish</strong> and command me to control this entire portfolio! What would you love to see? ✨
+                Hello there! 💕 I’m <strong>Aria</strong>, Fahim's 3D anime companion. You can chat with me in <strong>বাংলা, English, or Banglish</strong> and command me to run this entire portfolio! What would you love to see? ✨
               </div>
             </div>
           </div>
@@ -413,7 +434,7 @@
 
   <footer>
     <span>© 2026 MD FAHIM — IMAGINE. CREATE. INSPIRE.</span>
-    <span>HOSTED WITH ARIA ANIME AI</span>
+    <span>3D ANIME COMPANION ARIA ONLINE</span>
   </footer>
 
   <div id="actionToast">✨ <span>Command Executed</span></div>
@@ -496,7 +517,6 @@
     }
     renderProjects('all');
 
-    // Filter toolbar buttons
     const filterButtons = document.querySelectorAll('.filter-btn');
     filterButtons.forEach(btn => {
       btn.addEventListener('click', () => {
@@ -509,26 +529,26 @@
     /* ========================================================
        2. THREE.JS 3D HERO ENERGY CORE
        ======================================================== */
-    const canvas = document.querySelector('#scene');
-    let renderer, scene, camera, core, wire, ringGroup;
+    const heroCanvas = document.querySelector('#scene');
+    let heroRenderer, heroScene, heroCamera, core, wire, ringGroup;
     let pointerX = 0, pointerY = 0;
 
     try {
-      renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
-      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
-      renderer.setSize(canvas.clientWidth, canvas.clientHeight, false);
-      scene = new THREE.Scene();
-      camera = new THREE.PerspectiveCamera(38, canvas.clientWidth / canvas.clientHeight, .1, 100);
-      camera.position.set(0, 0, 10);
+      heroRenderer = new THREE.WebGLRenderer({ canvas: heroCanvas, antialias: true, alpha: true });
+      heroRenderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
+      heroRenderer.setSize(heroCanvas.clientWidth, heroCanvas.clientHeight, false);
+      heroScene = new THREE.Scene();
+      heroCamera = new THREE.PerspectiveCamera(38, heroCanvas.clientWidth / heroCanvas.clientHeight, .1, 100);
+      heroCamera.position.set(0, 0, 10);
 
-      scene.add(new THREE.AmbientLight(0xff7ab8, 1.2));
+      heroScene.add(new THREE.AmbientLight(0xff7ab8, 1.2));
       const light = new THREE.PointLight(0xff5ea8, 90, 20);
       light.position.set(2, 2, 4);
-      scene.add(light);
+      heroScene.add(light);
 
       const group = new THREE.Group();
       group.position.set(2.1, 0, 0);
-      scene.add(group);
+      heroScene.add(group);
 
       core = new THREE.Mesh(
         new THREE.IcosahedronGeometry(1.48, 4),
@@ -553,21 +573,21 @@
         ringGroup.add(ring);
       }
 
-      function anim() {
-        requestAnimationFrame(anim);
+      function animHero() {
+        requestAnimationFrame(animHero);
         const t = performance.now() * 0.001;
         core.rotation.y = t * .15;
         wire.rotation.x = t * .1;
         ringGroup.rotation.z = t * .06;
         group.rotation.y += (pointerX * .2 - group.rotation.y) * .05;
-        renderer.render(scene, camera);
+        heroRenderer.render(heroScene, heroCamera);
       }
-      anim();
+      animHero();
 
       window.addEventListener('resize', () => {
-        camera.aspect = canvas.clientWidth / canvas.clientHeight;
-        camera.updateProjectionMatrix();
-        renderer.setSize(canvas.clientWidth, canvas.clientHeight, false);
+        heroCamera.aspect = heroCanvas.clientWidth / heroCanvas.clientHeight;
+        heroCamera.updateProjectionMatrix();
+        heroRenderer.setSize(heroCanvas.clientWidth, heroCanvas.clientHeight, false);
       }, { passive: true });
 
       window.addEventListener('pointermove', e => {
@@ -575,16 +595,210 @@
         pointerY = (e.clientY / window.innerHeight - .5) * 2;
       }, { passive: true });
     } catch (e) {
-      console.warn("Three.js not supported:", e);
+      console.warn("Hero Three.js error:", e);
     }
 
     /* ========================================================
-       3. ARIA ANIME AI COPILOT & HUMAN GIRL VOICE ENGINE
+       3. LIVE 3D ANIME GIRL CHARACTER (ARIA) IN THREE.JS
+       ======================================================== */
+    const animeCanvas = document.querySelector('#animeCanvas');
+    let animeRenderer, animeScene, animeCamera;
+    let ariaGroup, headGroup, eyeLeft, eyeRight, mouth, hairGroup;
+    let animeTargetX = 0, animeTargetY = 0;
+    let isSpeaking = false;
+
+    try {
+      animeRenderer = new THREE.WebGLRenderer({ canvas: animeCanvas, antialias: true, alpha: true });
+      animeRenderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
+      animeRenderer.setSize(animeCanvas.clientWidth, animeCanvas.clientHeight, false);
+      animeRenderer.toneMapping = THREE.ACESFilmicToneMapping;
+      animeRenderer.toneMappingExposure = 1.35;
+
+      animeScene = new THREE.Scene();
+      animeCamera = new THREE.PerspectiveCamera(36, animeCanvas.clientWidth / animeCanvas.clientHeight, 0.1, 50);
+      animeCamera.position.set(0, 0.4, 4.8);
+
+      // Warm studio lights for anime skin
+      animeScene.add(new THREE.AmbientLight(0xffe8f0, 1.4));
+      const keyLight = new THREE.DirectionalLight(0xfff5f8, 2.5);
+      keyLight.position.set(1.5, 3, 3);
+      animeScene.add(keyLight);
+      const rim = new THREE.PointLight(0x00f2fe, 35, 10);
+      rim.position.set(-2, 1, -1);
+      animeScene.add(rim);
+
+      ariaGroup = new THREE.Group();
+      animeScene.add(ariaGroup);
+
+      // Materials
+      const skinMat = new THREE.MeshStandardMaterial({ color: 0xffe4db, roughness: 0.45, metalness: 0.05 });
+      const darkHairMat = new THREE.MeshStandardMaterial({ color: 0x111625, roughness: 0.35, metalness: 0.25 });
+      const blueEyeMat = new THREE.MeshStandardMaterial({ color: 0x00b4d8, emissive: 0x00b4d8, emissiveIntensity: 1.6, roughness: 0.1 });
+      const whiteShirtMat = new THREE.MeshStandardMaterial({ color: 0xf5f7fc, roughness: 0.4 });
+      const vestNavyMat = new THREE.MeshStandardMaterial({ color: 0x141a2e, roughness: 0.35 });
+      const tieBlueMat = new THREE.MeshStandardMaterial({ color: 0x1d4ed8, roughness: 0.3 });
+
+      // Head Hierarchy
+      headGroup = new THREE.Group();
+      headGroup.position.set(0, 0.65, 0);
+      ariaGroup.add(headGroup);
+
+      // Anime Face (Smooth & Tapered Chin)
+      const faceGeo = new THREE.SphereGeometry(0.68, 32, 28);
+      const face = new THREE.Mesh(faceGeo, skinMat);
+      face.scale.set(0.95, 1.05, 0.95);
+      headGroup.add(face);
+
+      // Blushing Cheeks
+      const blushMat = new THREE.MeshBasicMaterial({ color: 0xff6b9d, transparent: true, opacity: 0.35 });
+      const blushL = new THREE.Mesh(new THREE.CircleGeometry(0.12, 16), blushMat);
+      blushL.position.set(-0.35, -0.05, 0.65);
+      headGroup.add(blushL);
+      const blushR = new THREE.Mesh(new THREE.CircleGeometry(0.12, 16), blushMat);
+      blushR.position.set(0.35, -0.05, 0.65);
+      headGroup.add(blushR);
+
+      // Big Anime Blue Eyes
+      const eyeGeo = new THREE.CapsuleGeometry(0.09, 0.15, 8, 16);
+      eyeLeft = new THREE.Mesh(eyeGeo, blueEyeMat);
+      eyeLeft.rotation.z = Math.PI / 18;
+      eyeLeft.position.set(-0.24, 0.1, 0.64);
+      headGroup.add(eyeLeft);
+
+      eyeRight = new THREE.Mesh(eyeGeo, blueEyeMat);
+      eyeRight.rotation.z = -Math.PI / 18;
+      eyeRight.position.set(0.24, 0.1, 0.64);
+      headGroup.add(eyeRight);
+
+      // Anime Highlights in Eyes
+      const highlightMat = new THREE.MeshBasicMaterial({ color: 0xffffff });
+      const sparkL = new THREE.Mesh(new THREE.CircleGeometry(0.035, 12), highlightMat);
+      sparkL.position.set(-0.22, 0.14, 0.73);
+      headGroup.add(sparkL);
+      const sparkR = new THREE.Mesh(new THREE.CircleGeometry(0.035, 12), highlightMat);
+      sparkR.position.set(0.26, 0.14, 0.73);
+      headGroup.add(sparkR);
+
+      // Anime Mouth (Animated when speaking)
+      const mouthMat = new THREE.MeshBasicMaterial({ color: 0x9e2a4b });
+      mouth = new THREE.Mesh(new THREE.CapsuleGeometry(0.025, 0.08, 4, 12), mouthMat);
+      mouth.rotation.z = Math.PI / 2;
+      mouth.position.set(0, -0.25, 0.66);
+      headGroup.add(mouth);
+
+      // Anime Hair (Bangs, Twin Strands, Long Back Hair)
+      hairGroup = new THREE.Group();
+      headGroup.add(hairGroup);
+
+      // Bangs / Forehead Locks
+      for (let i = -3; i <= 3; i++) {
+        const bang = new THREE.Mesh(new THREE.ConeGeometry(0.15, 0.55, 12), darkHairMat);
+        bang.rotation.x = -Math.PI / 1.1;
+        bang.rotation.z = i * 0.12;
+        bang.position.set(i * 0.12, 0.38, 0.62);
+        hairGroup.add(bang);
+      }
+
+      // Side Hair Locks framing face
+      const sideLockL = new THREE.Mesh(new THREE.CylinderGeometry(0.1, 0.02, 1.2, 12), darkHairMat);
+      sideLockL.position.set(-0.6, -0.15, 0.3);
+      sideLockL.rotation.z = 0.1;
+      hairGroup.add(sideLockL);
+
+      const sideLockR = new THREE.Mesh(new THREE.CylinderGeometry(0.1, 0.02, 1.2, 12), darkHairMat);
+      sideLockR.position.set(0.6, -0.15, 0.3);
+      sideLockR.rotation.z = -0.1;
+      hairGroup.add(sideLockR);
+
+      // Back Long Hair
+      const backHair = new THREE.Mesh(new THREE.CylinderGeometry(0.7, 0.9, 1.6, 24), darkHairMat);
+      backHair.position.set(0, -0.2, -0.25);
+      hairGroup.add(backHair);
+
+      // --- Body (Anime School Uniform Vest & Tie) ---
+      const bodyGroup = new THREE.Group();
+      bodyGroup.position.set(0, -0.65, 0);
+      ariaGroup.add(bodyGroup);
+
+      // White Shirt & Collar
+      const shirt = new THREE.Mesh(new THREE.CylinderGeometry(0.48, 0.55, 0.9, 20), whiteShirtMat);
+      bodyGroup.add(shirt);
+
+      // Navy Blue Uniform Vest
+      const vest = new THREE.Mesh(new THREE.CylinderGeometry(0.5, 0.57, 0.8, 20), vestNavyMat);
+      vest.position.set(0, -0.05, 0);
+      bodyGroup.add(vest);
+
+      // Uniform Tie
+      const tie = new THREE.Mesh(new THREE.BoxGeometry(0.12, 0.5, 0.08), tieBlueMat);
+      tie.position.set(0, 0.12, 0.48);
+      bodyGroup.add(tie);
+
+      // Blinking & Idle Timer
+      let blinkTimer = 2.5;
+
+      function renderAnimeBot() {
+        requestAnimationFrame(renderAnimeBot);
+        const t = performance.now() * 0.001;
+
+        // Gentle breathing float
+        ariaGroup.position.y = Math.sin(t * 2.2) * 0.06;
+
+        // Head tracking mouse
+        headGroup.rotation.y += (animeTargetX * 0.6 - headGroup.rotation.y) * 0.08;
+        headGroup.rotation.x += (animeTargetY * 0.4 - headGroup.rotation.x) * 0.08;
+
+        // Blinking
+        blinkTimer -= 0.016;
+        if (blinkTimer <= 0) {
+          eyeLeft.scale.y = 0.1;
+          eyeRight.scale.y = 0.1;
+          setTimeout(() => {
+            eyeLeft.scale.y = 1;
+            eyeRight.scale.y = 1;
+          }, 140);
+          blinkTimer = 2.5 + Math.random() * 3.5;
+        }
+
+        // Lip-Sync Speaking Animation
+        if (isSpeaking) {
+          mouth.scale.y = 1.0 + Math.sin(t * 18) * 1.5;
+          mouth.scale.x = 1.0 + Math.cos(t * 14) * 0.4;
+          headGroup.rotation.z = Math.sin(t * 6) * 0.05;
+        } else {
+          mouth.scale.set(1, 1, 1);
+          headGroup.rotation.z = 0;
+        }
+
+        animeRenderer.render(animeScene, animeCamera);
+      }
+      renderAnimeBot();
+
+      window.addEventListener('resize', () => {
+        animeCamera.aspect = animeCanvas.clientWidth / animeCanvas.clientHeight;
+        animeCamera.updateProjectionMatrix();
+        animeRenderer.setSize(animeCanvas.clientWidth, animeCanvas.clientHeight, false);
+      }, { passive: true });
+
+      // Track mouse on Anime stage
+      window.addEventListener('pointermove', e => {
+        const rect = animeCanvas.getBoundingClientRect();
+        const x = (e.clientX - (rect.left + rect.width / 2)) / (window.innerWidth / 2);
+        const y = (e.clientY - (rect.top + rect.height / 2)) / (window.innerHeight / 2);
+        animeTargetX = Math.max(-0.6, Math.min(0.6, x));
+        animeTargetY = Math.max(-0.4, Math.min(0.4, y));
+      }, { passive: true });
+
+    } catch (e) {
+      console.warn("Anime 3D Avatar Error:", e);
+    }
+
+    /* ========================================================
+       4. ARIA CHAT & HUMAN GIRL VOICE SYNTHESIS
        ======================================================== */
     const aiChatWindow = document.getElementById('aiChatWindow');
     const aiForm = document.getElementById('aiForm');
     const aiInput = document.getElementById('aiInput');
-    const ariaVideo = document.getElementById('ariaVideo');
     const agentMood = document.getElementById('agentMood');
     const voiceToggle = document.getElementById('voiceToggle');
     const voiceStatus = document.getElementById('voiceStatus');
@@ -598,7 +812,6 @@
       setTimeout(() => actionToast.classList.remove('show'), 2500);
     }
 
-    // High quality human female voice selection
     function pickFemaleVoice() {
       if (!('speechSynthesis' in window)) return;
       const v = window.speechSynthesis.getVoices();
@@ -627,18 +840,18 @@
       const clean = text.replace(/<[^>]*>?/gm, '').replace(/[*_#`~]/g, '');
       const utt = new SpeechSynthesisUtterance(clean);
       if (femaleVoice) utt.voice = femaleVoice;
-      utt.pitch = 1.18; // Sweet female cadence
+      utt.pitch = 1.2; // Sweet anime female voice pitch
       utt.rate = 1.02;
 
       utt.onstart = () => {
+        isSpeaking = true;
         agentMood.textContent = 'SPEAKING... 🌸';
         agentMood.style.color = '#ff5ea8';
-        if (ariaVideo) ariaVideo.classList.add('speaking');
       };
       utt.onend = () => {
+        isSpeaking = false;
         agentMood.textContent = 'MOOD: HAPPY 🌸';
         agentMood.style.color = '#fff';
-        if (ariaVideo) ariaVideo.classList.remove('speaking');
       };
       window.speechSynthesis.speak(utt);
     }
@@ -708,7 +921,7 @@
     aiForm.addEventListener('submit', e => { e.preventDefault(); handleChat(aiInput.value); });
     document.querySelectorAll('.quick-chip').forEach(c => c.addEventListener('click', () => handleChat(c.dataset.prompt)));
 
-    // General Controls (Modal, Navigation, BackToTop)
+    // Modal & BackToTop
     const modal = document.getElementById('videoModal');
     const iframe = document.getElementById('videoIframe');
     document.getElementById('closeModal').onclick = () => { modal.classList.remove('active'); iframe.src = ''; };
