@@ -1,873 +1,497 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#080510">
-<meta name="description" content="MD Fahim — Graphic Designer, Brand Identity Designer and Motion Graphics Artist.">
-<title>MD FAHIM — Creative Portfolio</title>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-
-<style>
-:root {
-  --bg: #080510;
-  --surface: #100b1c;
-  --purple: #a855f7;
-  --blue: #38bdf8;
-  --white: #ffffff;
-  --muted: #a19aad;
-}
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  font-family: 'Inter', sans-serif;
-  background: var(--bg);
-  color: var(--white);
-  overflow-x: hidden;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-button {
-  font: inherit;
-}
-
-.container {
-  width: min(1180px, 90%);
-  margin: auto;
-}
-
-nav {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 100;
-  padding: 22px 0;
-  background: rgba(8,5,16,.85);
-  backdrop-filter: blur(18px);
-  border-bottom: 1px solid rgba(255,255,255,.07);
-}
-
-.nav-inner {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.logo {
-  font-size: 23px;
-  font-weight: 900;
-  letter-spacing: 2px;
-}
-
-.logo span {
-  color: var(--purple);
-}
-
-.nav-links {
-  display: flex;
-  gap: 32px;
-  list-style: none;
-}
-
-.nav-links a {
-  color: var(--muted);
-  font-size: 13px;
-  transition: .3s;
-}
-
-.nav-links a:hover {
-  color: var(--purple);
-}
-
-.menu-btn {
-  display: none;
-  color: white;
-  background: none;
-  border: 0;
-  font-size: 25px;
-  cursor: pointer;
-}
-
-.hero {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  position: relative;
-  overflow: hidden;
-}
-
-.hero::before {
-  content: "";
-  position: absolute;
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle,rgba(168,85,247,.2),transparent 70%);
-  top: 10%;
-  right: -10%;
-  pointer-events: none;
-}
-
-.hero-content {
-  position: relative;
-  z-index: 2;
-  max-width: 850px;
-  padding-top: 90px;
-}
-
-.eyebrow {
-  color: var(--blue);
-  letter-spacing: 4px;
-  font-size: 12px;
-  font-weight: 700;
-  margin-bottom: 25px;
-}
-
-.hero h1 {
-  font-size: clamp(55px,10vw,115px);
-  line-height: .95;
-  font-weight: 900;
-  letter-spacing: -7px;
-}
-
-.gradient-text {
-  background: linear-gradient(90deg,#a855f7,#38bdf8);
-  -webkit-background-clip: text;
-  color: transparent;
-}
-
-.hero-description {
-  max-width: 550px;
-  color: var(--muted);
-  line-height: 1.9;
-  margin-top: 30px;
-  font-size: 15px;
-}
-
-.hero-buttons {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 15px;
-  margin-top: 35px;
-}
-
-.btn {
-  display: inline-block;
-  padding: 15px 25px;
-  border-radius: 5px;
-  font-size: 12px;
-  font-weight: 800;
-  letter-spacing: 1px;
-  transition: .3s;
-}
-
-.btn-primary {
-  background: var(--purple);
-  color: white;
-}
-
-.btn-primary:hover {
-  background: #9333ea;
-  transform: translateY(-4px);
-}
-
-.btn-outline {
-  border: 1px solid rgba(255,255,255,.3);
-}
-
-.btn-outline:hover {
-  border-color: var(--purple);
-  color: var(--purple);
-}
-
-.scroll-indicator {
-  position: absolute;
-  bottom: 35px;
-  left: 5%;
-  color: #777;
-  font-size: 10px;
-  letter-spacing: 3px;
-}
-
-section {
-  padding: 110px 0;
-}
-
-.section-label {
-  color: var(--purple);
-  font-size: 11px;
-  font-weight: 800;
-  letter-spacing: 4px;
-  margin-bottom: 17px;
-}
-
-.section-title {
-  font-size: clamp(35px,6vw,65px);
-  font-weight: 900;
-  letter-spacing: -3px;
-  margin-bottom: 22px;
-}
-
-.section-description {
-  color: var(--muted);
-  line-height: 1.8;
-  max-width: 600px;
-}
-
-.about-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 70px;
-  align-items: center;
-}
-
-.about-visual {
-  min-height: 420px;
-  border: 1px solid rgba(168,85,247,.25);
-  background:
-    radial-gradient(circle at 50% 40%,rgba(168,85,247,.25),transparent 55%),
-    linear-gradient(135deg,#171026,#080510);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  overflow: hidden;
-}
-
-.about-visual span {
-  font-size: clamp(70px,12vw,130px);
-  font-weight: 900;
-  color: rgba(255,255,255,.1);
-}
-
-.about-visual::after {
-  content: "CREATIVE MIND";
-  position: absolute;
-  bottom: 25px;
-  letter-spacing: 5px;
-  font-size: 11px;
-  color: var(--blue);
-}
-
-.skills {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 30px;
-}
-
-.skill {
-  padding: 10px 15px;
-  background: var(--surface);
-  border: 1px solid rgba(255,255,255,.1);
-  font-size: 11px;
-  color: #ddd;
-}
-
-.projects-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: end;
-  flex-wrap: wrap;
-  gap: 25px;
-  margin-bottom: 40px;
-}
-
-.filters {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-}
-
-.filter-btn {
-  border: 1px solid rgba(255,255,255,.15);
-  background: transparent;
-  color: var(--muted);
-  padding: 10px 15px;
-  cursor: pointer;
-  font-size: 11px;
-  border-radius: 3px;
-}
-
-.filter-btn.active,
-.filter-btn:hover {
-  background: var(--purple);
-  border-color: var(--purple);
-  color: white;
-}
-
-.project-grid {
-  display: grid;
-  grid-template-columns: repeat(3,1fr);
-  gap: 22px;
-}
-
-.project-card {
-  background: var(--surface);
-  border: 1px solid rgba(255,255,255,.08);
-  overflow: hidden;
-  transition: .35s;
-}
-
-.project-card:hover {
-  transform: translateY(-8px);
-  border-color: rgba(168,85,247,.6);
-}
-
-.project-image {
-  height: 240px;
-  background: linear-gradient(135deg,#201034,#12334a);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-}
-
-.project-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: .5s;
-}
-
-.project-card:hover .project-image img {
-  transform: scale(1.08);
-}
-
-.project-info {
-  padding: 23px;
-}
-
-.project-info small {
-  color: var(--blue);
-  font-size: 10px;
-  letter-spacing: 2px;
-}
-
-.project-info h3 {
-  font-size: 18px;
-  margin: 12px 0;
-}
-
-.project-info p {
-  color: var(--muted);
-  font-size: 12px;
-  line-height: 1.7;
-}
-
-.project-link {
-  display: inline-block;
-  color: var(--purple);
-  font-size: 11px;
-  font-weight: 800;
-  margin-top: 20px;
-}
-
-.services-grid {
-  display: grid;
-  grid-template-columns: repeat(3,1fr);
-  gap: 20px;
-  margin-top: 40px;
-}
-
-.service-card {
-  background: var(--surface);
-  border: 1px solid rgba(255,255,255,.08);
-  padding: 35px;
-  transition: .3s;
-}
-
-.service-card:hover {
-  border-color: var(--purple);
-  transform: translateY(-6px);
-}
-
-.service-number {
-  font-size: 13px;
-  color: var(--purple);
-  margin-bottom: 30px;
-}
-
-.service-card h3 {
-  font-size: 21px;
-  margin-bottom: 15px;
-}
-
-.service-card p {
-  color: var(--muted);
-  line-height: 1.8;
-  font-size: 13px;
-}
-
-.contact-section {
-  background: linear-gradient(135deg,#130b20,#080510);
-  text-align: center;
-}
-
-.contact-section .section-description {
-  margin: 0 auto;
-}
-
-.contact-links {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 15px;
-  margin-top: 35px;
-}
-
-.contact-links a {
-  border: 1px solid rgba(255,255,255,.2);
-  padding: 15px 23px;
-  font-size: 12px;
-  transition: .3s;
-}
-
-.contact-links a:hover {
-  background: var(--purple);
-  border-color: var(--purple);
-}
-
-footer {
-  padding: 55px 0 25px;
-  background: #05030a;
-  border-top: 1px solid rgba(255,255,255,.08);
-  text-align: center;
-}
-
-.footer-logo {
-  font-size: 28px;
-  font-weight: 900;
-  letter-spacing: 3px;
-}
-
-.footer-logo span {
-  color: var(--purple);
-}
-
-.footer-tagline {
-  color: var(--muted);
-  font-size: 12px;
-  margin-top: 12px;
-}
-
-.footer-socials {
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-  margin: 28px 0;
-}
-
-.footer-socials a {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  color: white;
-  border: 1px solid rgba(168,85,247,.5);
-  padding: 13px 22px;
-  border-radius: 30px;
-  font-size: 11px;
-  font-weight: 800;
-  letter-spacing: 2px;
-  transition: .3s;
-}
-
-.footer-socials a:hover {
-  background: var(--purple);
-  transform: translateY(-4px);
-  box-shadow: 0 5px 25px rgba(168,85,247,.3);
-}
-
-.copyright {
-  border-top: 1px solid rgba(255,255,255,.08);
-  padding-top: 22px;
-  margin-top: 25px;
-  color: #777;
-  font-size: 10px;
-  letter-spacing: 1px;
-}
-
-.reveal {
-  opacity: 0;
-  transform: translateY(35px);
-  transition: .8s ease;
-}
-
-.reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-@media(max-width:850px) {
-  .project-grid {
-    grid-template-columns: repeat(2,1fr);
-  }
-
-  .services-grid {
-    grid-template-columns: repeat(2,1fr);
-  }
-
-  .about-grid {
-    gap: 35px;
-  }
-}
-
-@media(max-width:650px) {
-  .menu-btn {
-    display: block;
-  }
-
-  .nav-links {
-    display: none;
-    position: absolute;
-    top: 70px;
-    left: 0;
-    width: 100%;
-    background: #100b1c;
-    padding: 25px;
-    flex-direction: column;
-    gap: 25px;
-    border-bottom: 1px solid rgba(255,255,255,.1);
-  }
-
-  .nav-links.open {
-    display: flex;
-  }
-
-  .hero h1 {
-    letter-spacing: -4px;
-  }
-
-  .about-grid,
-  .project-grid,
-  .services-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .about-visual {
-    min-height: 300px;
-  }
-
-  section {
-    padding: 80px 0;
-  }
-
-  .projects-header {
-    align-items: start;
-  }
-
-  .scroll-indicator {
-    display: none;
-  }
-}
-</style>
-</head>
-
-<body>
-
-<nav>
-  <div class="container nav-inner">
-    <a href="#home" class="logo">MD FAHIM<span>.</span></a>
-
-    <button class="menu-btn" id="menuBtn" aria-label="Open menu">☰</button>
-
-    <ul class="nav-links" id="navLinks">
-      <li><a href="#home">HOME</a></li>
-      <li><a href="#about">ABOUT</a></li>
-      <li><a href="#work">PORTFOLIO</a></li>
-      <li><a href="#services">SERVICES</a></li>
-      <li><a href="#contact">CONTACT</a></li>
-    </ul>
-  </div>
-</nav>
-
-<main>
-
-<section class="hero" id="home">
-  <div class="container">
-    <div class="hero-content reveal">
-      <div class="eyebrow">CREATIVE DESIGNER & MOTION ARTIST</div>
-
-      <h1>
-        MD<br>
-        <span class="gradient-text">FAHIM.</span>
-      </h1>
-
-      <p class="hero-description">
-        I transform ideas into meaningful visual experiences.
-        Graphic Design, Brand Identity and Motion Graphics —
-        creating visuals that make brands unforgettable.
-      </p>
-
-      <div class="hero-buttons">
-        <a href="#work" class="btn btn-primary">EXPLORE MY WORK ↗</a>
-        <a href="#contact" class="btn btn-outline">LET'S TALK</a>
-      </div>
-    </div>
-  </div>
-
-  <div class="scroll-indicator">SCROLL TO EXPLORE ↓</div>
-</section>
-
-<section id="about">
-  <div class="container about-grid">
-    <div class="about-visual reveal">
-      <span>MF.</span>
-    </div>
-
-    <div class="reveal">
-      <div class="section-label">01 — ABOUT ME</div>
-      <h2 class="section-title">Designing Beyond Limits.</h2>
-
-      <p class="section-description">
-        I'm MD Fahim, a creative designer passionate about
-        visual storytelling, brand identity and motion design.
-        I believe great design is not just about appearance —
-        it's about creating a memorable experience.
-      </p>
-
-      <div class="skills">
-        <span class="skill">Graphic Design</span>
-        <span class="skill">Motion Graphics</span>
-        <span class="skill">Brand Identity</span>
-        <span class="skill">Adobe Photoshop</span>
-        <span class="skill">Adobe Illustrator</span>
-        <span class="skill">After Effects</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="work">
-  <div class="container">
-    <div class="projects-header">
-      <div>
-        <div class="section-label">02 — SELECTED WORK</div>
-        <h2 class="section-title">My Portfolio.</h2>
-        <p class="section-description">
-          A selection of creative projects and visual experiments.
-        </p>
-      </div>
-
-      <div class="filters">
-        <button class="filter-btn active" data-filter="all">ALL</button>
-        <button class="filter-btn" data-filter="branding">BRANDING</button>
-        <button class="filter-btn" data-filter="graphic">GRAPHIC</button>
-        <button class="filter-btn" data-filter="motion">MOTION</button>
-      </div>
-    </div>
-
-    <div class="project-grid" id="projectGrid">
-
-      <article class="project-card reveal" data-category="branding">
-        <div class="project-image">
-          <img src="https://images.unsplash.com/photo-1634942536790-2537c2c4a3b0?auto=format&fit=crop&w=900&q=85" alt="Brand identity design">
-        </div>
-        <div class="project-info">
-          <small>BRAND IDENTITY</small>
-          <h3>Modern Brand Identity</h3>
-          <p>A visual identity concept with a premium and modern direction.</p>
-          <a class="project-link" href="https://www.behance.net/" target="_blank" rel="noopener noreferrer">VIEW PROJECT ↗</a>
-        </div>
-      </article>
-
-      <article class="project-card reveal" data-category="graphic">
-        <div class="project-image">
-          <img src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?auto=format&fit=crop&w=900&q=85" alt="Creative graphic design">
-        </div>
-        <div class="project-info">
-          <small>GRAPHIC DESIGN</small>
-          <h3>Creative Visual Artwork</h3>
-          <p>Bold composition and visual storytelling for a creative concept.</p>
-          <a class="project-link" href="https://www.behance.net/" target="_blank" rel="noopener noreferrer">VIEW PROJECT ↗</a>
-        </div>
-      </article>
-
-      <article class="project-card reveal" data-category="motion">
-        <div class="project-image">
-          <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=900&q=85" alt="Motion design artwork">
-        </div>
-        <div class="project-info">
-          <small>MOTION GRAPHICS</small>
-          <h3>Digital Motion Concept</h3>
-          <p>A futuristic visual direction for motion and digital media.</p>
-          <a class="project-link" href="https://www.behance.net/" target="_blank" rel="noopener noreferrer">VIEW PROJECT ↗</a>
-        </div>
-      </article>
-
-      <article class="project-card reveal" data-category="branding">
-        <div class="project-image">
-          <img src="https://images.unsplash.com/photo-1600508774634-4e11d34730e2?auto=format&fit=crop&w=900&q=85" alt="Logo design concept">
-        </div>
-        <div class="project-info">
-          <small>BRANDING</small>
-          <h3>Minimal Logo Concept</h3>
-          <p>A clean visual identity concept for a modern brand.</p>
-          <a class="project-link" href="https://www.behance.net/" target="_blank" rel="noopener noreferrer">VIEW PROJECT ↗</a>
-        </div>
-      </article>
-
-      <article class="project-card reveal" data-category="graphic">
-        <div class="project-image">
-          <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=85" alt="Creative campaign artwork">
-        </div>
-        <div class="project-info">
-          <small>CAMPAIGN DESIGN</small>
-          <h3>Visual Campaign</h3>
-          <p>Creative campaign artwork with a strong visual personality.</p>
-          <a class="project-link" href="https://www.behance.net/" target="_blank" rel="noopener noreferrer">VIEW PROJECT ↗</a>
-        </div>
-      </article>
-
-      <article class="project-card reveal" data-category="motion">
-        <div class="project-image">
-          <img src="https://images.unsplash.com/photo-1535223289827-42f1e9919769?auto=format&fit=crop&w=900&q=85" alt="Digital art and motion">
-        </div>
-        <div class="project-info">
-          <small>DIGITAL ART</small>
-          <h3>Future Visuals</h3>
-          <p>Experimental digital visuals with futuristic art direction.</p>
-          <a class="project-link" href="https://www.behance.net/" target="_blank" rel="noopener noreferrer">VIEW PROJECT ↗</a>
-        </div>
-      </article>
-
-    </div>
-  </div>
-</section>
-
-<section id="services">
-  <div class="container">
-    <div class="section-label">03 — WHAT I DO</div>
-    <h2 class="section-title">Creative Services.</h2>
-
-    <div class="services-grid">
-      <div class="service-card reveal">
-        <div class="service-number">01 / DESIGN</div>
-        <h3>Graphic Design</h3>
-        <p>Social media designs, banners, posters, advertising creatives and visual communication.</p>
-      </div>
-
-      <div class="service-card reveal">
-        <div class="service-number">02 / IDENTITY</div>
-        <h3>Brand Identity</h3>
-        <p>Logo design, business cards, brand guidelines and complete visual identity systems.</p>
-      </div>
-
-      <div class="service-card reveal">
-        <div class="service-number">03 / MOTION</div>
-        <h3>Motion Graphics</h3>
-        <p>Product animations, promotional videos, motion design and visual storytelling.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="contact-section" id="contact">
-  <div class="container reveal">
-    <div class="section-label">04 — CONTACT</div>
-    <h2 class="section-title">Let's Create Something.</h2>
-
-    <p class="section-description">
-      Have a project in mind? Let's connect and bring your creative
-      ideas to life.
-    </p>
-
-    <div class="contact-links">
-      <a href="https://www.facebook.com/md.fahim.766663" target="_blank" rel="noopener noreferrer">FACEBOOK ↗</a>
-      <a href="https://www.behance.net/" target="_blank" rel="noopener noreferrer">BEHANCE ↗</a>
-      <a href="mailto:your-email@example.com">EMAIL ME ↗</a>
-    </div>
-  </div>
-</section>
-
-</main>
-
-<footer>
-  <div class="container">
-    <div class="footer-logo">MD FAHIM<span>.</span></div>
-    <p class="footer-tagline">Imagine. Create. Inspire.</p>
-
-    <div class="footer-socials">
-      <a
-        href="https://www.facebook.com/md.fahim.766663"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Visit my Facebook profile"
-      >
-        FACEBOOK <span>↗</span>
-      </a>
-    </div>
-
-    <div class="copyright">
-      © 2026 MD FAHIM. ALL RIGHTS RESERVED.
-    </div>
-  </div>
-</footer>
-
-<script>
-const menuBtn = document.getElementById("menuBtn");
-const navLinks = document.getElementById("navLinks");
-
-menuBtn.addEventListener("click", () => {
-  navLinks.classList.toggle("open");
-  menuBtn.textContent = navLinks.classList.contains("open") ? "✕" : "☰";
-});
-
-document.querySelectorAll(".nav-links a").forEach(link => {
-  link.addEventListener("click", () => {
-    navLinks.classList.remove("open");
-    menuBtn.textContent = "☰";
-  });
-});
-
-// Portfolio filtering
-const filterButtons = document.querySelectorAll(".filter-btn");
-const projectCards = document.querySelectorAll(".project-card");
-
-filterButtons.forEach(button => {
-  button.addEventListener("click", () => {
-    filterButtons.forEach(item => item.classList.remove("active"));
-    button.classList.add("active");
-
-    const filter = button.dataset.filter;
-
-    projectCards.forEach(card => {
-      const match = filter === "all" || card.dataset.category === filter;
-      card.style.display = match ? "block" : "none";
-    });
-  });
-});
-
-// Scroll reveal animation
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add("visible");
-      observer.unobserve(entry.target);
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="color-scheme" content="dark" />
+  <meta name="theme-color" content="#080510" />
+  <meta name="description" content="MD Fahim — Graphic Designer & Motion Designer. Imagine. Create. Inspire." />
+  <title>MD FAHIM — Immersive Creative Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#080510;--panel:#100a1c;--white:#f6f1ff;--muted:#aaa0bc;--purple:#a855f7;--violet:#7025f5;--line:rgba(205,174,255,.16)}
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth;scroll-padding-top:90px}
+    body{background:var(--bg);color:var(--white);font-family:Manrope,system-ui,sans-serif;overflow-x:hidden}
+    body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:5;opacity:.12;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.2'/%3E%3C/svg%3E")}
+    a{color:inherit;text-decoration:none}.mono{font-family:'DM Mono',monospace;letter-spacing:.12em;text-transform:uppercase}
+    .site-header{height:76px;position:fixed;top:0;left:0;width:100%;z-index:20;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(22px,6vw,100px);border-bottom:1px solid var(--line);background:rgba(8,5,16,.68);backdrop-filter:blur(18px)}
+    .logo{font-weight:900;font-size:27px;letter-spacing:-.09em}.logo span{color:#b78aff}
+    .nav{display:flex;gap:clamp(18px,3vw,48px);align-items:center}.nav a,.availability{font:500 10px 'DM Mono',monospace;letter-spacing:.12em;color:#c7bed5;text-transform:uppercase;transition:.25s}.nav a:hover{color:#c18cff}
+    .availability{display:flex;align-items:center;gap:10px}.status-dot{width:7px;height:7px;border-radius:50%;background:#6cffad;box-shadow:0 0 14px #6cffad}
+    .menu-toggle{display:none;background:none;border:1px solid var(--line);color:white;border-radius:50%;width:42px;height:42px;font-size:20px}
+    .hero{min-height:850px;height:100svh;max-height:1100px;position:relative;isolation:isolate;display:grid;grid-template-columns:1fr 1.1fr;align-items:center;padding:120px clamp(22px,12vw,220px) 80px;overflow:hidden}
+    .hero:before{content:"";position:absolute;inset:0;z-index:-2;background:radial-gradient(ellipse at 67% 49%,rgba(112,37,245,.22),transparent 34%),radial-gradient(ellipse at 80% 80%,rgba(139,44,255,.12),transparent 35%),linear-gradient(110deg,#080510 10%,#0b0615 60%,#10071d)}
+    .hero:after{content:"";position:absolute;inset:auto 0 0;height:22%;z-index:-1;background:linear-gradient(transparent,#080510)}
+    #scene{position:absolute;inset:0;width:100%;height:100%;z-index:-1;pointer-events:auto}
+    .hero-copy{position:relative;z-index:2;max-width:590px;padding-top:30px}
+    .eyebrow{font:500 11px 'DM Mono',monospace;color:#c5b8d7;letter-spacing:.16em;text-transform:uppercase;display:flex;align-items:center;gap:15px;margin-bottom:28px}.eyebrow:before{content:"";width:28px;height:1px;background:#b78aff}
+    h1{font-size:clamp(62px,7.3vw,112px);line-height:.84;letter-spacing:-.085em;font-weight:900;text-transform:uppercase;margin-bottom:34px}
+    h1 span{display:block}.gradient-text{background:linear-gradient(105deg,#c8a5ff 0%,#8c42ff 45%,#d9baff 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+    .intro{max-width:440px;color:#b7adc5;font-size:14px;line-height:1.9}.intro strong{color:#fff}
+    .hero-actions{display:flex;align-items:center;gap:28px;margin-top:28px;flex-wrap:wrap}
+    .primary-btn{display:inline-flex;align-items:center;gap:22px;padding:12px 14px 12px 22px;border:1px solid #9b50ff;border-radius:40px;box-shadow:0 0 28px rgba(143,54,255,.18);font-size:12px;font-weight:800;transition:.3s}.primary-btn:hover{background:#8c35f5;transform:translateY(-3px);box-shadow:0 0 35px rgba(143,54,255,.5)}
+    .round-arrow{width:30px;height:30px;border:1px solid rgba(255,255,255,.5);border-radius:50%;display:grid;place-items:center;font-size:17px}
+    .watch-link{display:flex;align-items:center;gap:12px;font-size:12px;color:#ddd4e9}.play{width:43px;height:43px;border:1px solid #a66bff;border-radius:50%;display:grid;place-items:center;padding-left:2px}
+    .hero-stats{display:flex;gap:34px;margin-top:36px;padding-top:24px;border-top:1px solid var(--line);max-width:530px}.stat strong{display:block;font-size:22px;letter-spacing:-.05em}.stat span{font-size:11px;color:#aaa0bc}
+    .side-label{position:absolute;right:5.5%;top:32%;font:10px 'DM Mono',monospace;letter-spacing:.16em;line-height:1.9;color:#b9a8d0;text-transform:uppercase;z-index:2}.scroll-cue{position:absolute;left:3%;bottom:16%;writing-mode:vertical-rl;transform:rotate(180deg);font:10px 'DM Mono',monospace;letter-spacing:.2em;color:#d0c5dd;z-index:2}
+    .assistant-chip{position:absolute;right:5.5%;bottom:13%;z-index:3;display:flex;align-items:center;gap:13px;padding:14px 18px;border:1px solid rgba(190,139,255,.25);border-radius:16px;background:rgba(21,10,39,.78);box-shadow:0 12px 40px rgba(0,0,0,.3);backdrop-filter:blur(14px);font-size:12px}.assistant-icon{width:32px;height:32px;border-radius:10px;background:linear-gradient(135deg,#a855f7,#5420c9);display:grid;place-items:center}.assistant-chip small{display:block;color:#a99db8;margin-top:3px}
+    section.content-section{padding:110px clamp(22px,9vw,150px);position:relative}.section-kicker{font:10px 'DM Mono',monospace;letter-spacing:.17em;color:#b58aff;text-transform:uppercase;margin-bottom:18px}.section-title{font-size:clamp(38px,6vw,76px);line-height:.95;letter-spacing:-.07em;margin-bottom:24px}.section-desc{color:var(--muted);line-height:1.8;max-width:580px;font-size:14px}
+    .work-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:48px}.work-card{min-height:240px;border:1px solid var(--line);border-radius:18px;padding:24px;background:radial-gradient(circle at 80% 20%,rgba(135,61,255,.2),transparent 45%),linear-gradient(145deg,#171023,#0d0915);display:flex;flex-direction:column;justify-content:space-between;transition:.35s;overflow:hidden;position:relative}.work-card:hover{transform:translateY(-8px);border-color:rgba(185,131,255,.55);box-shadow:0 18px 50px rgba(69,24,130,.2)}.work-card .number{font:10px 'DM Mono',monospace;color:#9e8db2}.work-card h3{font-size:23px;letter-spacing:-.05em}.work-card p{color:#a99eb7;font-size:12px;line-height:1.7;margin-top:8px}.work-card .card-arrow{align-self:flex-end;color:#c69bff;font-size:24px}
+    .about-wrap{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center}.about-panel{border:1px solid var(--line);border-radius:22px;padding:34px;background:radial-gradient(circle at 80% 0%,rgba(139,65,255,.2),transparent 50%),#100a1b}.skill-list{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}.skill-list span{border:1px solid var(--line);padding:9px 13px;border-radius:30px;color:#d4c8e3;font:10px 'DM Mono',monospace}
+    .process-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:42px}.process-item{padding:23px;border-top:1px solid #8050ba;background:linear-gradient(180deg,rgba(117,50,194,.1),transparent)}.process-item b{font:11px 'DM Mono',monospace;color:#b98aff}.process-item h3{margin:24px 0 10px;font-size:18px}.process-item p{font-size:12px;color:#a99eb7;line-height:1.7}
+    .contact-panel{padding:clamp(28px,6vw,70px);border:1px solid rgba(177,120,255,.3);border-radius:24px;background:radial-gradient(ellipse at 80% 50%,rgba(111,38,211,.25),transparent 45%),#100a1b;display:flex;align-items:center;justify-content:space-between;gap:30px}.contact-panel h2{font-size:clamp(38px,6vw,70px);letter-spacing:-.07em;line-height:.95}.contact-panel p{color:var(--muted);margin-top:15px;font-size:13px}.contact-btn{white-space:nowrap}
+    footer{padding:28px clamp(22px,9vw,150px);border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:20px;color:#92869f;font:10px 'DM Mono',monospace;letter-spacing:.08em}
+    .reveal{opacity:0;transform:translateY(25px);transition:opacity .8s ease,transform .8s ease}.reveal.visible{opacity:1;transform:translateY(0)}
+
+    .work-toolbar{display:flex;flex-wrap:wrap;gap:9px;margin-top:32px}.filter-btn{border:1px solid var(--line);background:rgba(255,255,255,.025);color:#c9bdd8;border-radius:30px;padding:10px 15px;font:10px 'DM Mono',monospace;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;transition:.25s}.filter-btn:hover,.filter-btn.active{background:linear-gradient(120deg,#7427d8,#a855f7);border-color:#b887ff;color:white;box-shadow:0 0 24px #852cff44}.work-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}.work-card.project-card{padding:0;min-height:0;display:block;border-radius:16px;background:#100a1b;transform-style:preserve-3d}.project-image{height:230px;overflow:hidden;background:radial-gradient(circle at 50% 40%,#51218b,#100a1b 70%)}.project-image img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .65s cubic-bezier(.2,.7,.2,1),filter .5s}.project-card:hover .project-image img{transform:scale(1.07);filter:saturate(1.15)}.project-meta{padding:18px 19px 20px}.project-meta .number{display:block;margin-bottom:10px}.project-meta h3{font-size:17px;line-height:1.35;letter-spacing:-.035em}.project-meta p{margin-top:8px;font:9px 'DM Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:#ad8bda}.project-card[hidden]{display:none!important}.project-card .card-arrow{position:absolute;right:17px;bottom:17px}.work-count{margin-top:18px;color:#9385a6;font:10px 'DM Mono',monospace;letter-spacing:.1em}
+
+
+    /* Split portfolio: Design / Video */
+    .space-section{padding:120px clamp(22px,3.4vw,64px) 95px;position:relative;overflow:hidden}
+    .space-head{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;margin-bottom:38px}
+    .space-head .section-title{margin:0;font-size:clamp(48px,6.2vw,82px)}
+    .space-note{max-width:290px;color:#b9a8d0;font-size:12px;line-height:1.8}
+    .space-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    .space-card{min-height:365px;position:relative;overflow:hidden;border:1px solid rgba(205,174,255,.2);padding:30px;background:radial-gradient(ellipse at 75% 25%,rgba(127,49,221,.2),transparent 48%),linear-gradient(135deg,#100a1c,#0b0712);display:flex;flex-direction:column;align-items:flex-start;justify-content:space-between;transition:transform .4s,border-color .4s,box-shadow .4s}
+    .space-card.video{background:radial-gradient(ellipse at 75% 25%,rgba(226,69,107,.17),transparent 50%),linear-gradient(135deg,#140b19,#0b0712)}
+    .space-card:hover{transform:translateY(-7px);border-color:rgba(184,132,255,.65);box-shadow:0 25px 70px rgba(91,35,151,.18)}
+    .space-card .space-index{font:10px 'DM Mono',monospace;letter-spacing:.14em;color:#c7a9f5;text-transform:uppercase}
+    .space-symbol{position:absolute;right:32px;top:25px;font-size:42px;color:#b58aff;transition:transform .5s}
+    .space-card.video .space-symbol{color:#f16a83}
+    .space-card:hover .space-symbol{transform:rotate(35deg) scale(1.15)}
+    .space-card h3{font-size:clamp(42px,4.3vw,66px);line-height:.91;letter-spacing:-.075em;text-transform:uppercase;margin:38px 0 20px}
+    .space-card h3 span{display:block;color:#a984f5}
+    .space-card.video h3 span{color:#f16a83}
+    .space-card p{max-width:390px;color:#b5a7c7;font-size:13px;line-height:1.9}
+    .space-link{margin-top:28px;font:10px 'DM Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:#f5edff;display:inline-flex;gap:18px;align-items:center}
+    .space-link b{font-size:19px;color:#b58aff;transition:transform .25s}
+    .space-card.video .space-link b{color:#f16a83}
+    .space-card:hover .space-link b{transform:translate(4px,-4px)}
+    .video-section{background:linear-gradient(180deg,rgba(33,12,51,.12),transparent)}
+    .video-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:44px}
+    .video-placeholder{min-height:245px;border:1px solid var(--line);background:radial-gradient(circle at 50% 30%,rgba(220,64,106,.17),transparent 55%),#100a1b;padding:22px;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden}
+    .video-placeholder .video-play{width:50px;height:50px;border-radius:50%;display:grid;place-items:center;background:#ef6680;color:#fff;font-size:17px;box-shadow:0 0 35px rgba(239,102,128,.3)}
+    .video-card-link{display:inline-block;margin-top:15px;color:#f18ba0;font:10px "DM Mono",monospace;letter-spacing:.09em;text-transform:uppercase;border-bottom:1px solid rgba(241,139,160,.4);padding-bottom:5px}.video-card-link:hover{color:#fff;border-color:#fff}
+    .video-placeholder h3{font-size:19px;letter-spacing:-.04em}
+    .video-placeholder p{font-size:11px;color:#aa9cb9;line-height:1.7;margin-top:7px}
+    .video-instructions{margin-top:24px;padding:17px 20px;border:1px dashed rgba(239,102,128,.35);color:#b9a8c6;font-size:12px;line-height:1.8}
+    .video-channel-cta{margin-top:28px;padding:clamp(22px,4vw,38px);border:1px solid rgba(239,102,128,.28);background:radial-gradient(ellipse at 80% 50%,rgba(239,102,128,.13),transparent 48%),linear-gradient(120deg,#170c1c,#100a1b);display:flex;align-items:center;justify-content:space-between;gap:24px}
+    .video-channel-cta .mono{font-size:9px;color:#f18ba0;letter-spacing:.16em}
+    .video-channel-cta h3{font-size:clamp(27px,4vw,43px);letter-spacing:-.06em;margin-top:10px}
+    .video-channel-cta h3 span{color:#f16a83}
+    .video-channel-cta p{font-size:12px;color:#b5a7c7;line-height:1.8;margin-top:8px;max-width:440px}
+    .video-channel-cta .primary-btn{border-color:#ed6b83;box-shadow:0 0 25px rgba(239,102,128,.12);flex-shrink:0}
+    .video-channel-cta .primary-btn:hover{background:#d94c69;box-shadow:0 0 35px rgba(239,102,128,.35)}
+    .video-channel-cta .round-arrow{border-color:rgba(255,255,255,.65)}
+
+    @media(max-width:900px){.space-grid{grid-template-columns:1fr}.space-card{min-height:320px}.video-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.space-head{align-items:flex-start;flex-direction:column}}
+    @media(max-width:620px){.video-channel-cta{align-items:flex-start;flex-direction:column}.video-channel-cta .primary-btn{white-space:normal}.space-section{padding:100px 22px 70px}.space-card{min-height:300px;padding:23px}.space-card h3{font-size:49px}.video-grid{grid-template-columns:1fr}.video-placeholder{min-height:210px}}
+
+    @media(max-width:900px){.hero{grid-template-columns:1fr;min-height:900px;padding-top:150px;align-items:start}.hero-copy{max-width:600px}.side-label{display:none}.assistant-chip{right:5%;bottom:7%}.scroll-cue{left:2%;bottom:22%}.work-grid{grid-template-columns:repeat(2,1fr)}.project-image{height:210px}.about-wrap{grid-template-columns:1fr;gap:28px}.process-grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:620px){.site-header{height:66px}.nav{display:none;position:absolute;top:66px;left:0;right:0;padding:22px;background:rgba(8,5,16,.96);border-bottom:1px solid var(--line);flex-direction:column}.nav.open{display:flex}.availability{display:none}.menu-toggle{display:block}.hero{min-height:850px;height:auto;padding:145px 24px 180px}.hero-copy{padding-top:0}h1{font-size:clamp(57px,15vw,86px)}.intro{font-size:13px}.hero-stats{gap:18px}.stat strong{font-size:19px}.stat span{font-size:9px}.assistant-chip{bottom:35px;left:24px;right:auto}.scroll-cue{display:none}.work-grid{grid-template-columns:1fr}.project-image{height:230px}.work-card{min-height:190px}.process-grid{grid-template-columns:1fr 1fr}.process-item{padding:16px}.contact-panel{align-items:flex-start;flex-direction:column}.contact-btn{white-space:normal}footer{flex-direction:column}.hero-actions{gap:16px}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+
+    /* Cross-device refinements: phones, tablets, laptops and wide displays */
+    img,canvas,svg,video{max-width:100%}
+    button,a{-webkit-tap-highlight-color:transparent}
+    .site-header,.content-section,.space-section,footer{min-width:0}
+    .work-card,.space-card,.video-placeholder,.about-panel,.contact-panel{min-width:0}
+    .project-meta h3,.section-title,.intro,.section-desc{overflow-wrap:anywhere}
+    @media(min-width:1500px){
+      .hero{padding-left:max(12vw,calc((100vw - 1500px)/2));padding-right:max(12vw,calc((100vw - 1500px)/2))}
+      .work-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
     }
-  });
-}, { threshold: 0.12 });
+    @media(max-width:900px){
+      .hero{min-height:820px}
+      .hero-copy{max-width:min(100%,680px)}
+      .space-head{gap:18px}
+      .work-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+    }
+    @media(max-width:620px){
+      body{font-size:14px}
+      .site-header{padding-left:18px;padding-right:18px}
+      .hero{min-height:780px;min-height: min(900px, 100svh);padding:128px 22px 150px}
+      .hero-copy{width:100%}
+      h1{font-size:clamp(48px,14vw,76px);letter-spacing:-.09em}
+      .hero-stats{max-width:100%;flex-wrap:wrap}
+      .stat{min-width:72px}
+      .hero-actions{align-items:flex-start}
+      .assistant-chip{max-width:calc(100% - 44px)}
+      section.content-section{padding:78px 22px}
+      .space-section{padding:85px 22px 65px}
+      .space-card{min-height:285px}
+      .work-grid,.video-grid{grid-template-columns:minmax(0,1fr)}
+      .project-image{height:clamp(190px,58vw,300px)}
+      .process-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .video-channel-cta{align-items:flex-start;flex-direction:column}
+      .video-channel-cta .primary-btn{white-space:normal}
+      .contact-panel{width:100%}
+      footer{padding:24px 22px;line-height:1.8}
+    }
+    @media(max-width:380px){
+      .logo{font-size:23px}
+      .hero{padding-left:17px;padding-right:17px}
+      h1{font-size:clamp(43px,13.5vw,58px)}
+      .hero-stats{gap:12px}
+      .process-grid{grid-template-columns:1fr}
+      .space-card h3{font-size:43px}
+      .filter-btn{padding:9px 11px;font-size:9px}
+    }
+    @media(hover:none){
+      .work-card:hover,.space-card:hover{transform:none}
+      .project-card:hover .project-image img{transform:none}
+    }
+    @supports(padding:max(0px)){
+      .site-header{padding-left:max(18px,env(safe-area-inset-left));padding-right:max(18px,env(safe-area-inset-right))}
+      footer{padding-bottom:max(24px,env(safe-area-inset-bottom))}
+    }
 
-document.querySelectorAll(".reveal").forEach(element => {
-  observer.observe(element);
-});
-</script>
 
+    /* Final mobile hero correction: prevent 3D artwork from covering content */
+    html,body{width:100%;max-width:100%;overflow-x:hidden}
+    #scene{display:block;max-width:100%;overflow:hidden}
+    @media(max-width:620px){
+      .hero{
+        display:block;
+        width:100%;
+        min-height:0;
+        height:auto;
+        max-height:none;
+        padding:118px 22px 170px;
+        overflow:hidden;
+        isolation:isolate;
+      }
+      .hero-copy{
+        width:100%;
+        max-width:100%;
+        padding:0;
+        margin:0;
+        position:relative;
+        z-index:3;
+      }
+      .eyebrow{
+        max-width:100%;
+        width:100%;
+        font-size:9px;
+        line-height:1.7;
+        letter-spacing:.09em;
+        gap:10px;
+        align-items:flex-start;
+        white-space:normal;
+        overflow-wrap:anywhere;
+        margin-bottom:30px;
+      }
+      .eyebrow:before{flex:0 0 22px;margin-top:7px}
+      .hero h1{
+        position:relative;
+        z-index:3;
+        width:100%;
+        max-width:100%;
+        font-size:clamp(48px,13.4vw,76px);
+        line-height:.88;
+        letter-spacing:-.085em;
+        margin-bottom:30px;
+        overflow-wrap:normal;
+      }
+      .hero h1 span{white-space:nowrap}
+      .intro{
+        max-width:100%;
+        width:100%;
+        font-size:14px;
+        line-height:1.85;
+        position:relative;
+        z-index:3;
+      }
+      .hero-actions{
+        width:100%;
+        gap:14px;
+        align-items:center;
+        flex-wrap:wrap;
+        position:relative;
+        z-index:4;
+        margin-top:26px;
+      }
+      .primary-btn{
+        min-height:52px;
+        max-width:100%;
+        padding:10px 12px 10px 18px;
+        gap:12px;
+        font-size:12px;
+      }
+      .watch-link{min-height:48px;gap:9px;font-size:12px}
+      .play{width:42px;height:42px;flex:0 0 42px}
+      .hero-stats{
+        width:100%;
+        max-width:100%;
+        display:grid;
+        grid-template-columns:repeat(3,minmax(0,1fr));
+        gap:8px;
+        margin-top:30px;
+        padding-top:20px;
+        position:relative;
+        z-index:3;
+      }
+      .stat{min-width:0}
+      .stat strong{font-size:clamp(18px,5vw,23px)}
+      .stat span{font-size:10px;line-height:1.4;display:block}
+      .assistant-chip{
+        left:22px;
+        right:22px;
+        bottom:24px;
+        max-width:none;
+        width:auto;
+        z-index:5;
+        padding:12px 14px;
+      }
+      .side-label,.scroll-cue{display:none}
+      /* The 3D core remains visible as a small atmospheric accent on the lower-right. */
+      #scene{position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:.62}
+    }
+    @media(max-width:390px){
+      .hero{padding-left:18px;padding-right:18px}
+      .hero h1{font-size:clamp(44px,12.8vw,56px)}
+      .eyebrow{font-size:8px;letter-spacing:.07em}
+      .hero-actions{gap:10px}
+      .primary-btn{padding-left:13px;gap:8px}
+      .assistant-chip{left:18px;right:18px}
+    }
+    @media(orientation:landscape) and (max-height:500px) and (max-width:900px){
+      .hero{min-height:680px}
+    }
+
+  </style>
+  <script type="importmap">
+    {"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js"}}
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="logo" href="#home" aria-label="MD Fahim home">MF<span>.</span></a>
+    <nav class="nav" id="mainNav" aria-label="Main navigation">
+      <a href="#spaces">Portfolio</a><a href="#about">About</a><a href="#process">Process</a><a href="#contact">Contact</a>
+    </nav>
+    <div class="availability"><i class="status-dot"></i> Available for work</div>
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">☰</button>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <canvas id="scene" aria-label="Interactive 3D purple energy core"></canvas>
+      <div class="hero-copy">
+        <div class="eyebrow">Independent creative portfolio · 2026</div>
+        <h1><span>Imagine</span><span>Create</span><span class="gradient-text">Inspire.</span></h1>
+        <p class="intro">I’m <strong>MD Fahim</strong> — a graphic and motion designer creating visual identities, digital experiences and memorable visual stories.</p>
+        <div class="hero-actions">
+          <a class="primary-btn" href="#spaces">Explore My Work <span class="round-arrow">↗</span></a>
+          <a class="watch-link" href="#youtube-work"><span class="play">▶</span> Watch Reel</a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat"><strong>29</strong><span>Projects</span></div>
+          <div class="stat"><strong>5K+</strong><span>Happy Clients*</span></div>
+          <div class="stat"><strong>3+</strong><span>Years Experience*</span></div>
+        </div>
+      </div>
+      <div class="side-label">Creative<br>Energy / 001</div>
+      <div class="scroll-cue">SCROLL DOWN　↓</div>
+      <a class="assistant-chip" href="#contact"><span class="assistant-icon">✦</span><span><b>Hello! 👋</b><small>How can I help you today?</small></span><span>↗</span></a>
+    </section>
+
+
+    <section class="space-section" id="spaces">
+      <div class="space-head reveal">
+        <div><div class="section-kicker">Explore my creative world</div><h2 class="section-title">Choose your <span class="gradient-text">space.</span></h2></div>
+        <p class="space-note">Two collections, one creative portfolio.<br>Choose a section to explore the work.</p>
+      </div>
+      <div class="space-grid">
+        <a class="space-card reveal" href="#design-portfolio">
+          <span class="space-index">01 / Design portfolio</span><span class="space-symbol" aria-hidden="true">✳</span>
+          <div><h3>Behance<span>Projects.</span></h3><p>Brand identity, graphic design, posters, social media, print and digital visuals.</p><span class="space-link">Explore projects <b>↗</b></span></div>
+        </a>
+        <a class="space-card video reveal" href="#youtube-work">
+          <span class="space-index">02 / Video portfolio</span><span class="space-symbol" aria-hidden="true">▶</span>
+          <div><h3>YouTube<span>Projects.</span></h3><p>Video editing, motion graphics, product ads, animations and YouTube content.</p><span class="space-link">Explore videos <b>↗</b></span></div>
+        </a>
+      </div>
+    </section>
+
+    <section class="content-section" id="design-portfolio">
+      <div class="reveal"><div class="section-kicker">Selected work / 001—029</div><h2 class="section-title">Made to make<br><span class="gradient-text">an impact.</span></h2><p class="section-desc">A curated collection of my real graphic design projects across brand identity, social media, posters, print and digital design. Select a category or open any project on Behance.</p></div>
+      <div class="work-toolbar" role="group" aria-label="Filter projects"><button class="filter-btn active" type="button" data-filter="all" aria-pressed="true">All Work</button><button class="filter-btn" type="button" data-filter="motion design" aria-pressed="false">Motion Design</button><button class="filter-btn" type="button" data-filter="branding" aria-pressed="false">Branding</button><button class="filter-btn" type="button" data-filter="social media" aria-pressed="false">Social Media</button><button class="filter-btn" type="button" data-filter="poster" aria-pressed="false">Poster</button><button class="filter-btn" type="button" data-filter="print design" aria-pressed="false">Print Design</button><button class="filter-btn" type="button" data-filter="digital art" aria-pressed="false">Digital Art</button><button class="filter-btn" type="button" data-filter="web & ui" aria-pressed="false">Web & UI</button><button class="filter-btn" type="button" data-filter="packaging" aria-pressed="false">Packaging</button><button class="filter-btn" type="button" data-filter="apparel" aria-pressed="false">Apparel</button><button class="filter-btn" type="button" data-filter="photo editing" aria-pressed="false">Photo Editing</button></div>
+      <div class="work-count" id="workCount">29 PROJECTS</div>
+      <div class="work-grid" id="projectGrid">
+        <a class="work-card project-card reveal" data-category="motion design" href="https://www.behance.net/gallery/257466427/Claude-AI-Cinematic-SaaS-Animation-UI-Showcase" target="_blank" rel="noopener noreferrer" aria-label="Open Claude AI — Cinematic SaaS Animation & UI Showcase on Behance"><div class="project-image"><img src="https://mir-s3-cdn-cf.behance.net/projects/404/77445c257466427.Y3JvcCwxMjAzLDk0MSw3Nyww.png" alt="Claude AI — Cinematic SaaS Animation & UI Showcase project cover" loading="lazy" decoding="async" onerror="this.style.display='none'"></div><div class="project-meta"><span class="number">01 / MOTION DESIGN</span><h3>Claude AI — Cinematic SaaS Animation & UI Showcase</h3><p>View project on Behance ↗</p></div></a>
+        <a class="work-card project-card reveal" data-category="motion design" href="https://www.behance.net/gallery/256395897/ChatGPT-SaaS-UI-Animation-Motion-Design" target="_blank" rel="noopener noreferrer" aria-label="Open ChatGPT SaaS UI Animation | Motion Design on Behance"><div class="project-image"><img src="https://mir-s3-cdn-cf.behance.net/projects/404/22f6c2256395897.Y3JvcCwxMjAzLDk0MSwyMzgsMA.png" alt="ChatGPT SaaS UI Animation | Motion Design project cover" loading="lazy" decoding="async" onerror="this.style.display='none'"></div><div class="project-meta"><span class="number">02 / MOTION DESIGN</span><h3>ChatGPT SaaS UI Animation | Motion Design</h3><p>View project on Behance ↗</p></div></a>
+        <a class="work-card project-card reveal" data-category="branding" href="https://www.behance.net/gallery/241934761/FEXORA-GLOBAL-Modern-F-Monogram-Logo-Brand-Identity" target="_blank" rel="noopener noreferrer" aria-label="Open FEXORA GLOBAL — Modern F Monogram Logo & Brand Identity on Behance"><div class="project-image"><img src="https://mir-s3-cdn-cf.behance.net/projects/404/ce107c241934761.Y3JvcCw0MjYxLDMzMzMsNzkxLDA.jpg" alt="FEXORA GLOBAL — Modern F Monogram Logo & Brand Identity project cover" loading="lazy" decoding="async" onerror="this.style.display='none'"></div><div class="project-meta"><span class="number">03 / BRANDING</span><h3>FEXORA GLOBAL — Modern F Monogram Logo & Brand Identity</h3><p>View project on Behance ↗</p></div></a>
+        <a class="work-card project-card reveal" data-category="branding" href="https://www.behance.net/gallery/249855995/NEXORA-AI-Futuristic-AI-Brand-Identity" target="_blank" rel="noopener noreferrer" aria-label="Open NEXORA AI — Futuristic AI Brand Identity on Behance"><div class="project-image"><img src="https://mir-s3-cdn-cf.behance.net/projects/404/e656ee249855995.Y3JvcCwxMDIyLDgwMCwxODcsMA.jpg" alt="NEXORA AI — Futuristic AI Brand Identity project cover" loading="lazy" decoding="async" onerror="this.style.display='none'"></div><div class="project-meta"><span class="number">04 / BRANDING</span><h3>NEXORA AI — Futuristic AI Brand Identity</h3><p>View project on Behance ↗</p></div></a>
+        <a class="work-card project-card reveal" data-category="social media" href="https://www.behance.net/gallery/251219691/Premium-Burger-Social-Media-Design-Concept" target="_blank" rel="noopener noreferrer" aria-label="Open Premium Burger Social Media Design Concept on Behance"><div class="project-image"><img src="https://mir-s3-cdn-cf.behance.net/projects/404/3f83f2251219691.Y3JvcCwxMDgwLDg0NCwwLDExNw.jpg" alt="Premium Burger Social Media Design Concept project cover" loading="lazy" decoding="async" onerror="this.style.display='none'"></div><div class="project-meta"><span class="number">05 / SOCIAL MEDIA</span><h3>Premium Burger Social Media Design Concept</h3><p>View project on Behance ↗</p></div></a>
+        <a class="work-card project-card reveal" data-category="social media" href="https://www.behance.net/gallery/249305851/Vision-of-Future-Arabian-Luxury-Social-Media-Design" target="_blank" rel="noopener noreferrer" aria-label="Open Vision of Future | Arabian Luxury Social Media Design on Behance"><div class="project-image"><img src="https://mir-s3-cdn-cf.behance.net/projects/404/63a614249305851.Y3JvcCwxNDAyLDEwOTYsMCwxMw.jpg" alt="Vision of Future | Arabian Luxury Social Media Design project cover" loading="lazy" decoding="async" onerror="this.style.display='none'"></div><div class="project-meta"><span class="number">06 / SOCIAL MEDIA</span><h3>Vision of Future | Arabian Luxury Social Media Design</h3><p>View project on Behance ↗</p></div></a>
+        <a class="work-card project-card reveal" data-category="poster" href="https://www.behance.net/gallery/248637103/Solo-Leveling-Inspired-Self-Model-Anime-Poster-Design" target="_blank" rel="noopener noreferrer" aria-label="Open Solo Leveling Inspired Self Model – Anime Poster Design on Behance"><div class="project-image"><img src="https://mir-s3-cdn-cf.behance.net/projects/404/44853a248637103.Y3JvcCwzNjAwLDI4MTUsMCw5ODk.jpg" alt="Solo Leveling Inspired Self Model – Anime Poster Design project cover" loading="lazy" decoding="async" onerror="this.style.display='none'"></div><div class="project-meta"><span class="number">07 / POSTER</span><h3>Solo Leveling Inspired Self Model – Anime Poster Design</h3><p>View project on Behance ↗</p></div></a>
+        <a class="work-card project-card reveal" data-category="digital design" href="https://www.behance.net/gallery/248101115/Gaming-YouTube-Thumbnail-Design-Collection" target="_blank" rel="noopener noreferrer" aria-label="Open Gaming YouTube Thumbnail Design Collection on Behance"><div class="project-image"><img src="https://mir-s3-cdn-cf.behance.net/projects/404/bad8f2248101115.Y3JvcCwxOTIwLDE1MDEsMCwzMzM2.jpg" alt="Gaming YouTube Thumbnail Design Collection project cover" loading="lazy" decoding="async" onerror="this.style.display='none'"></div><div class="project-meta"><span class="number">08 / DIGITAL DESIGN</span><h3>Gaming YouTube Thumbnail Design Collection</h3><p>View project on Behance ↗</p></div></a>
+        <a class="work-card project-card reveal" data-category="poster" href="https://www.behance.net/gallery/247380863/Spider-Man-Marvel-Inspired-Poster-Design" target="_blank" rel="noopener noreferrer" aria-label="Open Spider-Man Marvel Inspired Poster Design on Behance"><div class="project-image"><img src="https://mir-s3-cdn-cf.behance.net/projects/404/37ce17247380863.Y3JvcCwyNTUwLDE5OTQsMCw2NTA.jpg" alt="Spider-Man Marvel Inspired Poster Design project cover" loading="lazy" decoding="async" onerror="this.style.display='none'"></div><div class="project-meta"><span class="number">09 / POSTER</span><h3>Spider-Man Marvel Inspired Poster Design</h3><p>View project on Behance ↗</p></div></a>
+        <a class="work-card project-card reveal" data-category="poster" href="https://www.behance.net/gallery/249048811/Jujutsu-Kaisen-Inspired-Anime-Character-Poster" target="_blank" rel="noopener noreferrer" aria-label="Open Jujutsu Kaisen Inspired Anime Character Poster on Behance"><div class="project-image"><img src="https://mir-s3-cdn-cf.behance.net/projects/404/89fc13249048811.Y3JvcCwyNTUwLDE5OTQsMCw2NTA.jpg" alt="Jujutsu Kaisen Inspired Anime Character Poster project cover" loading="lazy" decoding="async" onerror="this.style.display='none'"></div><div class="project-meta"><span class="number">10 / POSTER</span><h3>Jujutsu Kaisen Inspired Anime Character Poster</h3><p>View project on Behance ↗</p></div></a>
+        <a class="work-card project-card reveal" data-category="digital art" href="https://www.behance.net/gallery/246917267/Surreal-Photo-Manipulation-Collection-2026" target="_blank" rel="noopener noreferrer" aria-label="Open Surreal Photo Manipulation Collection 2026 on Behance"><div class="project-image"><img src="https://mir-s3-cdn-cf.behance.net/projects/404/05b233246917267.Y3JvcCwxMDIyLDgwMCwxODcsMA.jpg" alt="Surreal Photo Manipulation Collection 2026 project cover" loading="lazy" decoding="async" onerror="this.style.display='none'"></div><div class="project-meta"><span class="number">11 / DIGITAL ART</span><h3>Surreal Photo Manipulation Collection 2026</h3><p>View project on Behance ↗</p></div></a>
+        <a class="work-card project-card reveal" data-category="social media" href="https://www.behance.net/gallery/245628247/Modern-Creative-Social-Media-Design-MD-Fahim" target="_blank" rel="noopener noreferrer" aria-label="Open Modern Creative Social Media Design | MD. Fahim on Behance"><div class="project-image"><img src="https://mir-s3-cdn-cf.behance.net/projects/404/604cd5245628247.Y3JvcCwxOTk5LDE1NjQsMCwyMTc.jpg" alt="Modern Creative Social Media Design | MD. Fahim project cover" loading="lazy" decoding="async" onerror="this.style.display='none'"></div><div class="project-meta"><span class="number">12 / SOCIAL MEDIA</span><h3>Modern Creative Social Media Design | MD. Fahim</h3><p>View project on Behance ↗</p></div></a>
+        <a class="work-card project-card reveal" data-category="web & ui" href="https://www.behance.net/gallery/248639603/Modern-Furniture-Website-UI-Design-Web-Template" target="_blank" rel="noopener noreferrer" aria-label="Open Modern Furniture Website UI Design | Web Template on Behance"><div class="project-image"><img src="https://mir-s3-cdn-cf.behance.net/projects/404/97f99a248639603.Y3JvcCwxMzY2LDEwNjgsMCw4NTU.jpg" alt="Modern Furniture Website UI Design | Web Template project cover" loading="lazy" decoding="async" onerror="this.style.display='none'"></div><div class="project-meta"><span class="number">13 / WEB & UI</span><h3>Modern Furniture Website UI Design | Web Template</h3><p>View project on Behance ↗</p></div></a>
+        <a class="work-card project-card reveal" data-category="digital art" href="https://www.behance.net/gallery/244955471/Landscape-Silhouette-Art-Collection" target="_blank" rel="noopener noreferrer" aria-label="Open Landscape Silhouette Art Collection on Behance"><div class="project-image"><img src="https://mir-s3-cdn-cf.behance.net/projects/404/8f6e4d244955471.Y3JvcCwzODM1LDMwMDAsNDg0LDA.jpg" alt="Landscape Silhouette Art Collection project cover" loading="lazy" decoding="async" onerror="this.style.display='none'"></div><div class="project-meta"><span class="number">14 / DIGITAL ART</span><h3>Landscape Silhouette Art Collection</h3><p>View project on Behance ↗</p></div></a>
+        <a class="work-card project-card reveal" data-category="print design" href="https://www.behance.net/gallery/244091845/Elegant-Italian-Cuisine-Promotional-Flyer-Design" target="_blank" rel="noopener noreferrer" aria-label="Open Elegant Italian Cuisine Promotional Flyer Design on Behance"><div class="project-image"><img src="https://mir-s3-cdn-cf.behance.net/projects/404/db35f5244091845.Y3JvcCwyNTU2LDIwMDAsMjIxLDA.jpg" alt="Elegant Italian Cuisine Promotional Flyer Design project cover" loading="lazy" decoding="async" onerror="this.style.display='none'"></div><div class="project-meta"><span class="number">15 / PRINT DESIGN</span><h3>Elegant Italian Cuisine Promotional Flyer Design</h3><p>View project on Behance ↗</p></div></a>
+        <a class="work-card project-card reveal" data-category="branding" href="https://www.behance.net/gallery/244443527/Cake-Shop-Brand-Identity-Premium-Tri-Fold-Brochure" target="_blank" rel="noopener noreferrer" aria-label="Open Cake Shop Brand Identity & Premium Tri-Fold Brochure on Behance"><div class="project-image"><img src="https://mir-s3-cdn-cf.behance.net/projects/404/cbbfc7244443527.Y3JvcCwyNDQxLDE5MTAsMjA1LDA.jpg" alt="Cake Shop Brand Identity & Premium Tri-Fold Brochure project cover" loading="lazy" decoding="async" onerror="this.style.display='none'"></div><div class="project-meta"><span class="number">16 / BRANDING</span><h3>Cake Shop Brand Identity & Premium Tri-Fold Brochure</h3><p>View project on Behance ↗</p></div></a>
+        <a class="work-card project-card reveal" data-category="social media" href="https://www.behance.net/gallery/247382073/LIVELY-Social-Media-Promotional-Banner-Design" target="_blank" rel="noopener noreferrer" aria-label="Open LIVELY Social Media Promotional Banner Design on Behance"><div class="project-image"><img src="https://mir-s3-cdn-cf.behance.net/projects/404/5cf341247382073.Y3JvcCw0NDc0LDM1MDAsMjY1LDA.jpg" alt="LIVELY Social Media Promotional Banner Design project cover" loading="lazy" decoding="async" onerror="this.style.display='none'"></div><div class="project-meta"><span class="number">17 / SOCIAL MEDIA</span><h3>LIVELY Social Media Promotional Banner Design</h3><p>View project on Behance ↗</p></div></a>
+        <a class="work-card project-card reveal" data-category="packaging" href="https://www.behance.net/gallery/247382865/Potato-Chips-Packaging-Design-Mockup" target="_blank" rel="noopener noreferrer" aria-label="Open Potato Chips Packaging Design Mockup on Behance"><div class="project-image"><img src="https://mir-s3-cdn-cf.behance.net/projects/404/8a025c247382865.Y3JvcCwzODM1LDMwMDAsODUsMA.jpg" alt="Potato Chips Packaging Design Mockup project cover" loading="lazy" decoding="async" onerror="this.style.display='none'"></div><div class="project-meta"><span class="number">18 / PACKAGING</span><h3>Potato Chips Packaging Design Mockup</h3><p>View project on Behance ↗</p></div></a>
+        <a class="work-card project-card reveal" data-category="packaging" href="https://www.behance.net/gallery/248103201/Elegant-Wine-Label-Design-Bottle-Mockup" target="_blank" rel="noopener noreferrer" aria-label="Open Elegant Wine Label Design & Bottle Mockup on Behance"><div class="project-image"><img src="https://mir-s3-cdn-cf.behance.net/projects/404/73c5d8248103201.Y3JvcCwzODM1LDMwMDAsODUsMA.jpg" alt="Elegant Wine Label Design & Bottle Mockup project cover" loading="lazy" decoding="async" onerror="this.style.display='none'"></div><div class="project-meta"><span class="number">19 / PACKAGING</span><h3>Elegant Wine Label Design & Bottle Mockup</h3><p>View project on Behance ↗</p></div></a>
+        <a class="work-card project-card reveal" data-category="print design" href="https://www.behance.net/gallery/245057439/Death-Note-Dark-Fantasy-Book-Cover-Design" target="_blank" rel="noopener noreferrer" aria-label="Open Death Note – Dark Fantasy Book Cover Design on Behance"><div class="project-image"><img src="https://mir-s3-cdn-cf.behance.net/projects/404/544d57245057439.Y3JvcCwzNTc5LDI4MDAsMjEyLDA.jpg" alt="Death Note – Dark Fantasy Book Cover Design project cover" loading="lazy" decoding="async" onerror="this.style.display='none'"></div><div class="project-meta"><span class="number">20 / PRINT DESIGN</span><h3>Death Note – Dark Fantasy Book Cover Design</h3><p>View project on Behance ↗</p></div></a>
+        <a class="work-card project-card reveal" data-category="apparel" href="https://www.behance.net/gallery/247315267/Creative-Streetwear-T-Shirt-Design" target="_blank" rel="noopener noreferrer" aria-label="Open Creative Streetwear T-Shirt Design on Behance"><div class="project-image"><img src="https://mir-s3-cdn-cf.behance.net/projects/404/9e545e247315267.Y3JvcCwyMDQ4LDE2MDEsMCwyMDI.jpg" alt="Creative Streetwear T-Shirt Design project cover" loading="lazy" decoding="async" onerror="this.style.display='none'"></div><div class="project-meta"><span class="number">21 / APPAREL</span><h3>Creative Streetwear T-Shirt Design</h3><p>View project on Behance ↗</p></div></a>
+        <a class="work-card project-card reveal" data-category="print design" href="https://www.behance.net/gallery/247379015/Modern-12-Month-Calendar-Design-2026" target="_blank" rel="noopener noreferrer" aria-label="Open Modern 12 Month Calendar Design 2026 on Behance"><div class="project-image"><img src="https://mir-s3-cdn-cf.behance.net/projects/404/f45176247379015.Y3JvcCwzODM1LDMwMDAsMzMyLDA.jpg" alt="Modern 12 Month Calendar Design 2026 project cover" loading="lazy" decoding="async" onerror="this.style.display='none'"></div><div class="project-meta"><span class="number">22 / PRINT DESIGN</span><h3>Modern 12 Month Calendar Design 2026</h3><p>View project on Behance ↗</p></div></a>
+        <a class="work-card project-card reveal" data-category="print design" href="https://www.behance.net/gallery/245398657/Professional-Certificate-Design-MD-Fahim" target="_blank" rel="noopener noreferrer" aria-label="Open Professional Certificate Design | MD. Fahim on Behance"><div class="project-image"><img src="https://mir-s3-cdn-cf.behance.net/projects/404/62c40d245398657.Y3JvcCwyNTU2LDIwMDAsMjIxLDA.jpg" alt="Professional Certificate Design | MD. Fahim project cover" loading="lazy" decoding="async" onerror="this.style.display='none'"></div><div class="project-meta"><span class="number">23 / PRINT DESIGN</span><h3>Professional Certificate Design | MD. Fahim</h3><p>View project on Behance ↗</p></div></a>
+        <a class="work-card project-card reveal" data-category="print design" href="https://www.behance.net/gallery/247310175/Modern-Corporate-Invoice-Design" target="_blank" rel="noopener noreferrer" aria-label="Open Modern Corporate Invoice Design on Behance"><div class="project-image"><img src="https://mir-s3-cdn-cf.behance.net/projects/404/1c1a76247310175.Y3JvcCwyNTU2LDIwMDAsMjIxLDA.jpg" alt="Modern Corporate Invoice Design project cover" loading="lazy" decoding="async" onerror="this.style.display='none'"></div><div class="project-meta"><span class="number">24 / PRINT DESIGN</span><h3>Modern Corporate Invoice Design</h3><p>View project on Behance ↗</p></div></a>
+        <a class="work-card project-card reveal" data-category="print design" href="https://www.behance.net/gallery/247313631/Modern-Corporate-ID-Card-Design" target="_blank" rel="noopener noreferrer" aria-label="Open Modern Corporate ID Card Design on Behance"><div class="project-image"><img src="https://mir-s3-cdn-cf.behance.net/projects/404/b8b7b5247313631.Y3JvcCwzODM1LDMwMDAsMzMyLDA.jpg" alt="Modern Corporate ID Card Design project cover" loading="lazy" decoding="async" onerror="this.style.display='none'"></div><div class="project-meta"><span class="number">25 / PRINT DESIGN</span><h3>Modern Corporate ID Card Design</h3><p>View project on Behance ↗</p></div></a>
+        <a class="work-card project-card reveal" data-category="print design" href="https://www.behance.net/gallery/247314677/Minimal-Corporate-Envelope-Design" target="_blank" rel="noopener noreferrer" aria-label="Open Minimal Corporate Envelope Design on Behance"><div class="project-image"><img src="https://mir-s3-cdn-cf.behance.net/projects/404/104c52247314677.Y3JvcCwyNTU2LDIwMDAsMjIxLDA.jpg" alt="Minimal Corporate Envelope Design project cover" loading="lazy" decoding="async" onerror="this.style.display='none'"></div><div class="project-meta"><span class="number">26 / PRINT DESIGN</span><h3>Minimal Corporate Envelope Design</h3><p>View project on Behance ↗</p></div></a>
+        <a class="work-card project-card reveal" data-category="branding" href="https://www.behance.net/gallery/244930127/Fexora-Global-Business-Letterhead-Design" target="_blank" rel="noopener noreferrer" aria-label="Open Fexora Global – Business Letterhead Design on Behance"><div class="project-image"><img src="https://mir-s3-cdn-cf.behance.net/projects/404/a8cea8244930127.Y3JvcCwyNTU2LDIwMDAsMjIxLDA.jpg" alt="Fexora Global – Business Letterhead Design project cover" loading="lazy" decoding="async" onerror="this.style.display='none'"></div><div class="project-meta"><span class="number">27 / BRANDING</span><h3>Fexora Global – Business Letterhead Design</h3><p>View project on Behance ↗</p></div></a>
+        <a class="work-card project-card reveal" data-category="digital art" href="https://www.behance.net/gallery/247386393/Colorful-Abstract-Gradient-Background-Design" target="_blank" rel="noopener noreferrer" aria-label="Open Colorful Abstract Gradient Background Design on Behance"><div class="project-image"><img src="https://mir-s3-cdn-cf.behance.net/projects/404/7bab17247386393.Y3JvcCw1NzUzLDQ1MDAsMTEyNSww.jpg" alt="Colorful Abstract Gradient Background Design project cover" loading="lazy" decoding="async" onerror="this.style.display='none'"></div><div class="project-meta"><span class="number">28 / DIGITAL ART</span><h3>Colorful Abstract Gradient Background Design</h3><p>View project on Behance ↗</p></div></a>
+        <a class="work-card project-card reveal" data-category="photo editing" href="https://www.behance.net/gallery/247382521/Jewelry-Background-Removal-Photo-Editing" target="_blank" rel="noopener noreferrer" aria-label="Open Jewelry Background Removal & Photo Editing on Behance"><div class="project-image"><img src="https://mir-s3-cdn-cf.behance.net/projects/404/cfcae4247382521.Y3JvcCwzODM1LDMwMDAsMTE3Nyww.jpg" alt="Jewelry Background Removal & Photo Editing project cover" loading="lazy" decoding="async" onerror="this.style.display='none'"></div><div class="project-meta"><span class="number">29 / PHOTO EDITING</span><h3>Jewelry Background Removal & Photo Editing</h3><p>View project on Behance ↗</p></div></a>
+      </div>
+    </section>
+
+
+    <section class="content-section video-section" id="youtube-work">
+      <div class="reveal">
+        <div class="section-kicker">Video portfolio / motion & storytelling</div>
+        <h2 class="section-title">Motion that <span class="gradient-text">moves.</span></h2>
+        <p class="section-desc">A dedicated space for video editing, motion graphics, product promos, logo animation, kinetic typography and YouTube content.</p>
+      </div>
+      <div class="video-grid">
+        <article class="video-placeholder reveal"><span class="video-play">▶</span><div><h3>Motion Graphics & Animation</h3><p>Showreels, animated visuals, logo animation and kinetic typography.</p><a class="video-card-link" href="https://www.youtube.com/@motion-nest0.1" target="_blank" rel="noopener noreferrer">Watch on Motion Nest ↗</a></div></article>
+        <article class="video-placeholder reveal"><span class="video-play">▶</span><div><h3>Product Ads & Promos</h3><p>Product-focused storytelling, SaaS animation and promotional videos.</p><a class="video-card-link" href="https://www.youtube.com/@motion-nest0.1" target="_blank" rel="noopener noreferrer">Watch on Motion Nest ↗</a></div></article>
+        <article class="video-placeholder reveal"><span class="video-play">▶</span><div><h3>Video Editing & YouTube</h3><p>Edited videos, social content, thumbnails and channel projects.</p><a class="video-card-link" href="https://www.youtube.com/@motion-nest0.1" target="_blank" rel="noopener noreferrer">Watch on Motion Nest ↗</a></div></article>
+      </div>
+      <div class="video-channel-cta reveal">
+        <div>
+          <span class="mono">Official video channel</span>
+          <h3>Explore <span>Motion Nest.</span></h3>
+          <p>Watch my motion design, video editing and creative video projects on YouTube.</p>
+        </div>
+        <a class="primary-btn" href="https://www.youtube.com/@motion-nest0.1" target="_blank" rel="noopener noreferrer" aria-label="Visit Motion Nest YouTube channel">
+          Visit YouTube Channel <span class="round-arrow">↗</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="content-section" id="about">
+      <div class="about-wrap">
+        <div class="reveal"><div class="section-kicker">A little about me</div><h2 class="section-title">Design with<br><span class="gradient-text">purpose.</span></h2><p class="section-desc">I’m MD Fahim, a graphic and motion designer focused on turning ideas into clear, memorable visual experiences. I combine design thinking, visual storytelling and motion to help brands communicate with impact.</p></div>
+        <div class="about-panel reveal"><div class="section-kicker">Creative toolkit</div><h3 style="font-size:26px;letter-spacing:-.05em">Ideas into visuals.</h3><div class="skill-list"><span>PHOTOSHOP</span><span>ILLUSTRATOR</span><span>AFTER EFFECTS</span><span>PREMIERE PRO</span><span>BRANDING</span><span>MOTION GRAPHICS</span><span>VISUAL STORYTELLING</span></div></div>
+      </div>
+    </section>
+
+    <section class="content-section" id="process">
+      <div class="reveal"><div class="section-kicker">How I work</div><h2 class="section-title">From idea to<br><span class="gradient-text">experience.</span></h2></div>
+      <div class="process-grid">
+        <article class="process-item reveal"><b>01 / DISCOVER</b><h3>Understand</h3><p>Explore the brief, audience and goals before shaping the direction.</p></article>
+        <article class="process-item reveal"><b>02 / DEFINE</b><h3>Concept</h3><p>Build a visual idea, mood and creative system for the project.</p></article>
+        <article class="process-item reveal"><b>03 / CREATE</b><h3>Design</h3><p>Craft the visuals, refine details and bring the story to life.</p></article>
+        <article class="process-item reveal"><b>04 / DELIVER</b><h3>Launch</h3><p>Prepare polished assets and deliver a consistent final experience.</p></article>
+      </div>
+    </section>
+
+    <section class="content-section" id="contact">
+      <div class="contact-panel reveal"><div><div class="section-kicker">Have a project in mind?</div><h2>Let’s create<br><span class="gradient-text">something bold.</span></h2><p>Have an idea? Let’s turn it into something memorable.</p></div><a class="primary-btn contact-btn" href="https://www.behance.net/mdfahim2528" target="_blank" rel="noopener noreferrer">Start a conversation <span class="round-arrow">↗</span></a></div>
+    </section>
+  </main>
+  <footer><span>© 2026 MD FAHIM — IMAGINE. CREATE. INSPIRE.</span><span>DESIGNED WITH CREATIVE ENERGY</span></footer>
+
+  <script type="module">
+    import * as THREE from 'three';
+    const canvas = document.querySelector('#scene');
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let renderer, scene, camera, core, coreWire, ringGroup, particles, crystalGroup;
+    let pointerX = 0, pointerY = 0, targetX = 0, targetY = 0;
+    try {
+      renderer = new THREE.WebGLRenderer({canvas, antialias:true, alpha:true});
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, window.innerWidth < 700 ? 1.25 : 1.6));
+      renderer.setSize(canvas.clientWidth, canvas.clientHeight, false);
+      renderer.outputColorSpace = THREE.SRGBColorSpace;
+      renderer.toneMapping = THREE.ACESFilmicToneMapping;
+      renderer.toneMappingExposure = 1.25;
+      scene = new THREE.Scene();
+      camera = new THREE.PerspectiveCamera(38, canvas.clientWidth/canvas.clientHeight, .1, 100);
+      camera.position.set(0,0,10);
+      const ambient = new THREE.AmbientLight(0x9e72ff, 1.2); scene.add(ambient);
+      const key = new THREE.PointLight(0xb76aff, 95, 20); key.position.set(2,2,4); scene.add(key);
+      const blue = new THREE.PointLight(0x4a1aff, 65, 18); blue.position.set(-4,-2,1); scene.add(blue);
+      const group = new THREE.Group();
+      const isCompact = window.matchMedia('(max-width: 620px)').matches;
+      if(isCompact){group.position.set(1.05,-1.45,0);group.scale.setScalar(.52);}
+      else{group.position.set(2.1,.05,0);}
+      scene.add(group);
+      const coreGeo = new THREE.IcosahedronGeometry(1.48, 5);
+      const coreMat = new THREE.MeshStandardMaterial({color:0x21103d, roughness:.38, metalness:.72, emissive:0x2a075b, emissiveIntensity:.85, flatShading:true});
+      core = new THREE.Mesh(coreGeo, coreMat); group.add(core);
+      const wireGeo = new THREE.IcosahedronGeometry(1.53, 2);
+      coreWire = new THREE.Mesh(wireGeo,new THREE.MeshBasicMaterial({color:0x9b4cff,wireframe:true,transparent:true,opacity:.17})); group.add(coreWire);
+      ringGroup = new THREE.Group(); group.add(ringGroup);
+      const ringColors=[0xc9a0ff,0x8c3dff,0xe2caff];
+      for(let i=0;i<3;i++){
+        const ring=new THREE.Mesh(new THREE.TorusGeometry(2.12+i*.12,.018,8,220),new THREE.MeshStandardMaterial({color:ringColors[i],metalness:.85,roughness:.22,emissive:ringColors[i],emissiveIntensity:.6}));
+        ring.rotation.set(.75+i*.58,.2+i*.45,.25+i*.6); ringGroup.add(ring);
+      }
+      const glow=new THREE.Mesh(new THREE.SphereGeometry(1.7,40,40),new THREE.MeshBasicMaterial({color:0x772bff,transparent:true,opacity:.075}));group.add(glow);
+      // Small floating faceted crystals around the energy core.
+      crystalGroup=new THREE.Group();group.add(crystalGroup);
+      for(let i=0;i<13;i++){
+        const size=.055+Math.random()*.13;
+        const crystal=new THREE.Mesh(new THREE.OctahedronGeometry(size,0),new THREE.MeshStandardMaterial({color:0x9d5cff,metalness:.8,roughness:.18,emissive:0x4b0c99,emissiveIntensity:.7}));
+        const angle=i/13*Math.PI*2, radius=2.6+Math.random()*.8;
+        crystal.position.set(Math.cos(angle)*radius,(Math.random()-.5)*3,Math.sin(angle)*radius*.45);
+        crystal.userData={speed:.3+Math.random()*.8,offset:Math.random()*6};crystalGroup.add(crystal);
+      }
+      const count=window.innerWidth < 700 ? 420 : (window.innerWidth < 1100 ? 760 : 1300), positions=new Float32Array(count*3);
+      for(let i=0;i<count;i++){positions[i*3]=(Math.random()-.5)*15;positions[i*3+1]=(Math.random()-.5)*9;positions[i*3+2]=(Math.random()-.5)*8-1;}
+      const pGeo=new THREE.BufferGeometry();pGeo.setAttribute('position',new THREE.BufferAttribute(positions,3));
+      particles=new THREE.Points(pGeo,new THREE.PointsMaterial({color:0xb78aff,size:.018,transparent:true,opacity:.72,depthWrite:false}));scene.add(particles);
+      const clock=new THREE.Clock();
+      function animate(){
+        requestAnimationFrame(animate);const t=clock.getElapsedTime();
+        if(!reducedMotion){targetX+=(pointerX-targetX)*.035;targetY+=(pointerY-targetY)*.035;group.rotation.y=targetX*.18+Math.sin(t*.18)*.08;group.rotation.x=targetY*.12+Math.sin(t*.23)*.04;core.rotation.y=t*.12;core.rotation.x=Math.sin(t*.2)*.12;ringGroup.rotation.z=t*.055;crystalGroup.children.forEach(c=>{c.rotation.x=t*c.userData.speed*.25;c.rotation.y=t*c.userData.speed*.3;c.position.y+=Math.sin(t*c.userData.speed+c.userData.offset)*.0009});particles.rotation.y=t*.008;}
+        renderer.render(scene,camera);
+      }
+      animate();
+      function resize(){
+        const w=canvas.clientWidth,h=canvas.clientHeight;if(!w||!h)return;
+        const compact=window.matchMedia('(max-width: 620px)').matches;
+        if(compact){group.position.set(1.05,-1.45,0);group.scale.setScalar(.52);}
+        else{group.position.set(2.1,.05,0);group.scale.setScalar(1);}
+        camera.aspect=w/h;camera.updateProjectionMatrix();renderer.setSize(w,h,false);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,compact?1.1:1.6));
+      }
+      if('ResizeObserver' in window){new ResizeObserver(resize).observe(canvas);}else{window.addEventListener('resize',resize,{passive:true});}
+      window.addEventListener('orientationchange',()=>setTimeout(resize,180),{passive:true});
+      window.addEventListener('pointermove',e=>{pointerX=(e.clientX/window.innerWidth-.5)*2;pointerY=(e.clientY/window.innerHeight-.5)*2;},{passive:true});
+    } catch(error) { console.warn('3D scene could not start:',error); }
+
+
+    const filterButtons=[...document.querySelectorAll('.filter-btn')];
+    const projectCards=[...document.querySelectorAll('.project-card')];
+    const workCount=document.querySelector('#workCount');
+    filterButtons.forEach(button=>button.addEventListener('click',()=>{
+      const filter=button.dataset.filter;
+      filterButtons.forEach(item=>{const active=item===button;item.classList.toggle('active',active);item.setAttribute('aria-pressed',String(active));});
+      let visible=0;
+      projectCards.forEach(card=>{const match=filter==='all'||card.dataset.category===filter;card.hidden=!match;if(match){visible++;card.classList.add('visible');}});
+      workCount.textContent=`${visible} PROJECT${visible===1?'':'S'}${filter==='all'?' — COMPLETE BEHANCE COLLECTION':''}`;
+    }));
+
+    const toggle=document.querySelector('#menuToggle'),nav=document.querySelector('#mainNav');
+    toggle.setAttribute('aria-expanded','false');
+    toggle.addEventListener('click',()=>{const opened=nav.classList.toggle('open');toggle.setAttribute('aria-expanded',String(opened));});
+    nav.querySelectorAll('a').forEach(link=>link.addEventListener('click',()=>{nav.classList.remove('open');toggle.setAttribute('aria-expanded','false');}));
+    if('IntersectionObserver' in window){
+      const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target)}}),{threshold:.12});
+      document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+    }else{
+      document.querySelectorAll('.reveal').forEach(el=>el.classList.add('visible'));
+    }
+  </script>
 </body>
 </html>
