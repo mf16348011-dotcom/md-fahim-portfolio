@@ -9,9 +9,9 @@
   <!-- Primary Meta Tags -->
   <title>MD FAHIM — Immersive Creative Portfolio | Graphic & Motion Designer</title>
   <meta name="title" content="MD FAHIM — Immersive Creative Portfolio | Graphic & Motion Designer" />
-  <meta name="description" content="MD Fahim — Graphic Designer & Motion Designer creating visual identities, SaaS UI animations, brand stories, and memorable digital experiences." />
+  <meta name="description" content="MD Fahim — Graphic Designer & Motion Designer. Controlled by autonomous 3D AI agent Nexus." />
 
-  <!-- Open Graph / Facebook / WhatsApp -->
+  <!-- Open Graph -->
   <meta property="og:type" content="website" />
   <meta property="og:title" content="MD FAHIM — Graphic Designer & Motion Designer" />
   <meta property="og:description" content="Explore selected brand identities, motion graphics, and creative visual stories." />
@@ -148,7 +148,7 @@
     .video-channel-cta .primary-btn:hover{background:#d94c69;box-shadow:0 0 35px rgba(239,102,128,.35)}
 
     /* ========================================================
-       AI CREATIVE STUDIO & 3D CHARACTER AGENT STYLES
+       AI WEBSITE COPILOT & 3D CHARACTER AGENT STYLES
        ======================================================== */
     .ai-section{background:radial-gradient(ellipse at 50% 20%,rgba(139,65,255,.15),transparent 60%),#080510}
     
@@ -167,7 +167,7 @@
       background: radial-gradient(circle at 50% 40%, rgba(0,242,254,0.12), transparent 58%), linear-gradient(145deg, #110920, #0c0816);
       position: relative;
       overflow: hidden;
-      min-height: 480px;
+      min-height: 490px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -245,7 +245,7 @@
       flex-direction: column;
       justify-content: space-between;
       box-shadow: 0 25px 70px rgba(0,0,0,.45);
-      min-height: 480px;
+      min-height: 490px;
     }
     .ai-topbar{
       padding: 16px 22px;
@@ -256,6 +256,26 @@
       background: rgba(16,10,28,.6);
       backdrop-filter: blur(10px);
     }
+    .voice-toggle-btn{
+      background: rgba(255,255,255,0.06);
+      border: 1px solid var(--line);
+      color: #b78aff;
+      border-radius: 20px;
+      padding: 4px 10px;
+      font: 9px 'DM Mono', monospace;
+      letter-spacing: .1em;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      transition: .25s;
+    }
+    .voice-toggle-btn.active{
+      background: rgba(0,242,254,0.15);
+      border-color: var(--cyan);
+      color: var(--cyan);
+    }
+
     .ai-chat-window{
       flex: 1;
       height: 290px;
@@ -274,6 +294,17 @@
     .chat-bubble.user{align-self:flex-end;background:linear-gradient(135deg,#7e2bf5,#5420c9);color:#fff;border-bottom-right-radius:4px}
     .chat-avatar{width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,#00f2fe,#a855f7);display:grid;place-items:center;font-size:13px;flex-shrink:0;color:#05030a;font-weight:900}
     
+    .action-chip-pill{
+      display: inline-block;
+      margin-top: 6px;
+      padding: 3px 8px;
+      border-radius: 8px;
+      font: 10px 'DM Mono', monospace;
+      background: rgba(0,242,254,0.15);
+      border: 1px solid rgba(0,242,254,0.3);
+      color: var(--cyan);
+    }
+
     .quick-prompts{display:flex;flex-wrap:wrap;gap:8px;padding:12px 22px;border-top:1px solid rgba(205,174,255,.08);background:rgba(14,8,24,.4)}
     .quick-chip{font:10px 'DM Mono',monospace;letter-spacing:.08em;color:#b9a8d0;background:rgba(255,255,255,.03);border:1px solid var(--line);padding:7px 12px;border-radius:20px;cursor:pointer;transition:.25s}
     .quick-chip:hover{color:#fff;border-color:var(--cyan);background:rgba(0,242,254,.12);transform:translateY(-2px)}
@@ -283,6 +314,33 @@
     .ai-input:focus{border-color:var(--cyan);box-shadow:0 0 20px rgba(0,242,254,.25)}
     .ai-send-btn{border:none;background:linear-gradient(120deg,#00f2fe,#7025f5);color:#fff;width:44px;height:44px;border-radius:50%;cursor:pointer;display:grid;place-items:center;font-size:17px;transition:.3s;flex-shrink:0}
     .ai-send-btn:hover{transform:scale(1.08);box-shadow:0 0 24px rgba(0,242,254,.5)}
+
+    /* Toast Alert for Website Control */
+    #actionToast{
+      position: fixed;
+      bottom: 85px;
+      left: 50%;
+      transform: translateX(-50%) translateY(30px);
+      background: rgba(17,9,32,0.95);
+      border: 1px solid var(--cyan);
+      box-shadow: 0 10px 35px rgba(0,242,254,0.3);
+      color: #fff;
+      padding: 10px 22px;
+      border-radius: 30px;
+      font: 500 11px 'DM Mono', monospace;
+      letter-spacing: .08em;
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.35s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+      z-index: 105;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    #actionToast.show{
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
 
     /* Floating Back to Top Button */
     #backToTop{position:fixed;bottom:26px;right:26px;z-index:90;width:46px;height:46px;border-radius:50%;background:#130b24;border:1px solid rgba(168,85,247,.45);color:#e2caff;display:none;place-items:center;font-size:18px;cursor:pointer;box-shadow:0 10px 30px rgba(0,0,0,.5);transition:.3s}
@@ -344,14 +402,6 @@
       .ai-chat-window{height:260px;padding:16px}
       .chat-bubble{max-width:92%}
     }
-    
-    @media(max-width:380px){
-      .logo{font-size:23px}
-      .hero h1{font-size:clamp(42px,13vw,56px)}
-      .process-grid{grid-template-columns:1fr}
-      .space-card h3{font-size:39px}
-      .filter-btn{padding:8px 10px;font-size:9px}
-    }
   </style>
 
   <script type="importmap">
@@ -363,7 +413,7 @@
     <a class="logo" href="#home" aria-label="MD Fahim home">MF<span>.</span></a>
     <nav class="nav" id="mainNav" aria-label="Main navigation">
       <a href="#spaces">Portfolio</a>
-      <a href="#ai-assistant" class="ai-nav">✦ 3D AI Agent</a>
+      <a href="#ai-assistant" class="ai-nav">✦ Copilot AI</a>
       <a href="#about">About</a>
       <a href="#process">Process</a>
       <a href="#contact">Contact</a>
@@ -393,10 +443,10 @@
       </div>
       <div class="side-label">Creative<br>Energy / 001</div>
       <div class="scroll-cue">SCROLL DOWN ↓</div>
-      <!-- Links directly to the 3D AI Assistant section -->
+      <!-- Direct trigger to AI Copilot -->
       <a class="assistant-chip" href="#ai-assistant">
         <span class="assistant-icon">🤖</span>
-        <span><b>3D Agent Online ✦</b><small>Talk to my interactive assistant</small></span>
+        <span><b>AI Copilot Online ✦</b><small>Talk or give voice/site commands</small></span>
         <span>↓</span>
       </a>
     </section>
@@ -433,7 +483,7 @@
       <div class="reveal">
         <div class="section-kicker">Selected work / 001—029</div>
         <h2 class="section-title">Made to make<br><span class="gradient-text">an impact.</span></h2>
-        <p class="section-desc">A curated collection of my real graphic design projects across brand identity, social media, posters, print and digital design. Select a category or open any project on Behance.</p>
+        <p class="section-desc">A curated collection of my real graphic design projects across brand identity, social media, posters, print and digital design. Select a category or ask Nexus to filter it for you!</p>
       </div>
 
       <div class="work-toolbar" role="group" aria-label="Filter projects">
@@ -650,13 +700,13 @@
     </section>
 
     <!-- ========================================================
-         NEW: 3D ANIMATED CHARACTER AI AGENT STUDIO
+         AI AUTONOMOUS WEBSITE COPILOT (Interactive 3D Agent)
          ======================================================== -->
     <section class="content-section ai-section" id="ai-assistant">
       <div class="reveal">
-        <div class="section-kicker">Interactive Studio / 3D AI Companion</div>
-        <h2 class="section-title">Meet your creative <span class="gradient-text">agent.</span></h2>
-        <p class="section-desc">Interact with my live 3D droid companion. Move your cursor to watch it look around, ask questions about Fahim's work, or generate creative motion design briefs.</p>
+        <div class="section-kicker">Interactive Studio / Autonomous Copilot</div>
+        <h2 class="section-title">Website copilot & <span class="gradient-text">agent.</span></h2>
+        <p class="section-desc">Nexus can speak in any language (বাংলা, English, etc.) and can control this entire website for you! Ask it to show motion designs, open reels, or start a project.</p>
       </div>
 
       <div class="ai-layout reveal">
@@ -665,47 +715,49 @@
           <div class="agent-overlay-top">
             <div class="agent-badge">
               <span class="pulse-light"></span>
-              <span>NEXUS-01 · 3D DROID</span>
+              <span>NEXUS-COPILOT · 3D DROID</span>
             </div>
-            <div class="agent-mood-tag" id="agentMood">STATE: ACTIVE</div>
+            <div class="agent-mood-tag" id="agentMood">STATE: READY</div>
           </div>
 
           <canvas id="agentCanvas" aria-label="Interactive 3D AI Robot Companion"></canvas>
 
           <div class="agent-overlay-bottom">
-            <h4>Fahim’s Autonomous Droid</h4>
-            <p>Drag or move your mouse to interact. Reacts with real-time expressions when speaking or thinking.</p>
+            <h4>Autonomous Website Controller</h4>
+            <p>Nexus listens to natural voice & commands. Try typing: <em>"Motion design দেখাও"</em> or <em>"Play reel"</em>.</p>
           </div>
         </div>
 
-        <!-- AI Chat Interface -->
+        <!-- AI Chat & Command Interface -->
         <div class="ai-chat-card">
           <div class="ai-topbar">
             <div class="agent-badge">
-              <span class="pulse-light" style="background:#b78aff;box-shadow:0 0 10px #b78aff;"></span>
-              <span>SYNCHRONIZED WITH FAHIM</span>
+              <span class="pulse-light" style="background:#00f2fe;box-shadow:0 0 10px #00f2fe;"></span>
+              <span>NEURAL COPILOT · MULTILINGUAL</span>
             </div>
-            <span class="mono" style="font-size: 10px; color:#aaa0bc;">NEURAL LINK v3.1</span>
+            <button class="voice-toggle-btn" id="voiceToggle" title="Toggle audio voice reading">
+              <span>🔊 Voice:</span> <b id="voiceStatus">OFF</b>
+            </button>
           </div>
 
           <div class="ai-chat-window" id="aiChatWindow">
             <div class="chat-bubble bot">
               <div class="chat-avatar">AI</div>
               <div>
-                Greetings! 🤖 I am <strong>Nexus</strong>, Fahim's autonomous 3D design agent. How can I assist your brand, motion project, or creative inquiry today?
+                Hello! 👋 I am <strong>Nexus</strong>, MD Fahim's website copilot. You can speak to me in <strong>যেকোনো ভাষায় (Bangla, English, etc.)</strong> and command me to run this website!
               </div>
             </div>
           </div>
 
           <div class="quick-prompts">
-            <button class="quick-chip" data-prompt="What creative software does Fahim use?">🛠 Creative Stack</button>
-            <button class="quick-chip" data-prompt="How long does a brand identity project take?">⏱ Project Timeline</button>
-            <button class="quick-chip" data-prompt="Give me a SaaS UI motion design concept idea">💡 SaaS Motion Idea</button>
-            <button class="quick-chip" data-prompt="How can I hire Fahim for a project?">🚀 Start Project</button>
+            <button class="quick-chip" data-prompt="Motion design er kaj gulo dekhao">🎬 Show Motion Work</button>
+            <button class="quick-chip" data-prompt="Watch motion reel video">▶ Play Video Reel</button>
+            <button class="quick-chip" data-prompt="Fahim er sathe kivabe jogajog korbo?">📩 Contact Fahim</button>
+            <button class="quick-chip" data-prompt="Branding er kaj gulo filter koro">🎨 Show Branding</button>
           </div>
 
           <form class="ai-input-wrap" id="aiForm">
-            <input type="text" class="ai-input" id="aiInput" placeholder="Message Nexus or ask a creative question..." autocomplete="off" required />
+            <input type="text" class="ai-input" id="aiInput" placeholder="যেকোনো ভাষায় প্রশ্ন করুন বা ওয়েবসাইট কন্ট্রোল কমান্ড দিন..." autocomplete="off" required />
             <button type="submit" class="ai-send-btn" aria-label="Send message">↗</button>
           </form>
         </div>
@@ -772,8 +824,11 @@
 
   <footer>
     <span>© 2026 MD FAHIM — IMAGINE. CREATE. INSPIRE.</span>
-    <span>DESIGNED WITH CREATIVE ENERGY</span>
+    <span>AUTONOMOUS SITE RUN BY NEXUS 3D AI</span>
   </footer>
+
+  <!-- Toast notification for Site Execution -->
+  <div id="actionToast">⚡ <span>Command Executed</span></div>
 
   <!-- Floating Back to Top Button -->
   <button id="backToTop" aria-label="Scroll back to top">↑</button>
@@ -953,7 +1008,6 @@
       agentCamera = new THREE.PerspectiveCamera(40, agentCanvas.clientWidth / agentCanvas.clientHeight, 0.1, 50);
       agentCamera.position.set(0, 0.3, 5.2);
 
-      // Lighting for character
       const amb = new THREE.AmbientLight(0x7025f5, 1.4);
       agentScene.add(amb);
       const topLight = new THREE.DirectionalLight(0x00f2fe, 3.2);
@@ -963,52 +1017,36 @@
       rimLight.position.set(-2, -1, -1);
       agentScene.add(rimLight);
 
-      // Root Bot Hierarchy
       agentBotGroup = new THREE.Group();
       agentScene.add(agentBotGroup);
 
-      // Materials
       const armorMat = new THREE.MeshStandardMaterial({
-        color: 0x180f2d,
-        metalness: 0.85,
-        roughness: 0.22,
-        emissive: 0x120726
+        color: 0x180f2d, metalness: 0.85, roughness: 0.22, emissive: 0x120726
       });
       const darkGlassMat = new THREE.MeshStandardMaterial({
-        color: 0x07040d,
-        metalness: 0.9,
-        roughness: 0.1
+        color: 0x07040d, metalness: 0.9, roughness: 0.1
       });
       const cyanGlowMat = new THREE.MeshStandardMaterial({
-        color: 0x00f2fe,
-        emissive: 0x00f2fe,
-        emissiveIntensity: 2.2,
-        roughness: 0.1
+        color: 0x00f2fe, emissive: 0x00f2fe, emissiveIntensity: 2.2, roughness: 0.1
       });
       const violetGlowMat = new THREE.MeshStandardMaterial({
-        color: 0xa855f7,
-        emissive: 0xa855f7,
-        emissiveIntensity: 1.8
+        color: 0xa855f7, emissive: 0xa855f7, emissiveIntensity: 1.8
       });
 
-      // --- 1. Bot Head ---
       botHead = new THREE.Group();
       botHead.position.set(0, 0.55, 0);
       agentBotGroup.add(botHead);
 
-      // Skull
       const skull = new THREE.Mesh(new THREE.SphereGeometry(0.72, 32, 28), armorMat);
       skull.scale.set(1.05, 1.0, 1.0);
       botHead.add(skull);
 
-      // Visor / Screen Face
       const visor = new THREE.Mesh(new THREE.SphereGeometry(0.68, 32, 20, 0, Math.PI), darkGlassMat);
       visor.rotation.y = -Math.PI / 2;
       visor.position.set(0, 0.05, 0.12);
       visor.scale.set(0.9, 0.65, 0.85);
       botHead.add(visor);
 
-      // Glowing Eyes
       eyeLeft = new THREE.Mesh(new THREE.CapsuleGeometry(0.08, 0.16, 6, 12), cyanGlowMat);
       eyeLeft.rotation.z = Math.PI / 2;
       eyeLeft.position.set(-0.24, 0.06, 0.7);
@@ -1019,7 +1057,6 @@
       eyeRight.position.set(0.24, 0.06, 0.7);
       botHead.add(eyeRight);
 
-      // Ear Pods
       const earL = new THREE.Mesh(new THREE.CylinderGeometry(0.18, 0.18, 0.12, 18), armorMat);
       earL.rotation.z = Math.PI / 2;
       earL.position.set(-0.8, 0.05, 0);
@@ -1030,7 +1067,6 @@
       earR.position.set(0.8, 0.05, 0);
       botHead.add(earR);
 
-      // Antenna on top
       const antStem = new THREE.Mesh(new THREE.CylinderGeometry(0.02, 0.02, 0.35), armorMat);
       antStem.position.set(0, 0.82, 0);
       botHead.add(antStem);
@@ -1038,13 +1074,11 @@
       antTip.position.set(0, 1.0, 0);
       botHead.add(antTip);
 
-      // --- 2. Floating Neck Halo ---
       const halo = new THREE.Mesh(new THREE.TorusGeometry(0.48, 0.02, 12, 36), violetGlowMat);
       halo.rotation.x = Math.PI / 2;
       halo.position.set(0, -0.22, 0);
       botHead.add(halo);
 
-      // --- 3. Floating Torso / Body ---
       botChest = new THREE.Group();
       botChest.position.set(0, -0.65, 0);
       agentBotGroup.add(botChest);
@@ -1053,18 +1087,15 @@
       torsoMesh.scale.set(0.9, 1.1, 0.85);
       botChest.add(torsoMesh);
 
-      // Glowing Reactor Core
       const coreGeo = new THREE.OctahedronGeometry(0.22, 0);
       botCoreLight = new THREE.Mesh(coreGeo, cyanGlowMat);
       botCoreLight.position.set(0, 0.15, 0.44);
       botChest.add(botCoreLight);
 
-      // Torso Ring
       const chestRing = new THREE.Mesh(new THREE.TorusGeometry(0.72, 0.015, 10, 48), violetGlowMat);
       chestRing.rotation.set(0.6, 0.3, 0);
       botChest.add(chestRing);
 
-      // --- 4. Floating Magnetic Cyber Hands ---
       leftHand = new THREE.Group();
       leftHand.position.set(-1.1, -0.4, 0.3);
       agentBotGroup.add(leftHand);
@@ -1083,9 +1114,7 @@
       handRingR.rotation.x = -Math.PI / 3;
       rightHand.add(handRingR);
 
-      // Blink timer
       let nextBlink = 2.5;
-
       const agentClock = new THREE.Clock();
 
       function animateAgent() {
@@ -1095,26 +1124,21 @@
         const delta = agentClock.getDelta();
         const time = agentClock.getElapsedTime();
 
-        // 1. Natural Floating Motion
         const bob = Math.sin(time * 2.2) * 0.12;
         agentBotGroup.position.y = bob;
         leftHand.position.y = -0.4 + Math.sin(time * 2.2 + 0.8) * 0.08;
         rightHand.position.y = -0.4 + Math.cos(time * 2.2 + 0.8) * 0.08;
 
-        // Hands spinning
         leftHand.rotation.y = time * 0.8;
         rightHand.rotation.y = -time * 0.8;
 
-        // Core Rotation
         botCoreLight.rotation.y = time * 2;
         botCoreLight.rotation.x = time * 1.5;
 
-        // 2. Head Look-At Cursor Tracking with Inertia
         botHead.rotation.y += (agentTargetRotY - botHead.rotation.y) * 0.08;
         botHead.rotation.x += (agentTargetRotX - botHead.rotation.x) * 0.08;
         botChest.rotation.y += (agentTargetRotY * 0.3 - botChest.rotation.y) * 0.05;
 
-        // 3. Thinking / Speaking State Reactivity
         if (isThinking) {
           botCoreLight.material.emissiveIntensity = 3.5 + Math.sin(time * 12) * 1.5;
           botHead.rotation.z = Math.sin(time * 5) * 0.06;
@@ -1125,7 +1149,6 @@
           agentBotGroup.rotation.y = 0;
         }
 
-        // 4. Blinking Logic
         nextBlink -= delta;
         if (nextBlink <= 0) {
           eyeLeft.scale.y = 0.1;
@@ -1150,13 +1173,10 @@
       }
       window.addEventListener('resize', resizeAgent, { passive: true });
 
-      // Mouse Look tracking for Agent
       window.addEventListener('pointermove', (e) => {
         const rect = agentCanvas.getBoundingClientRect();
-        // Calculate relative to agent canvas center
         const x = (e.clientX - (rect.left + rect.width / 2)) / (window.innerWidth / 2);
         const y = (e.clientY - (rect.top + rect.height / 2)) / (window.innerHeight / 2);
-
         agentTargetRotY = Math.max(-0.6, Math.min(0.6, x * 0.9));
         agentTargetRotX = Math.max(-0.4, Math.min(0.4, y * 0.6));
       }, { passive: true });
@@ -1166,17 +1186,15 @@
     }
 
     /* ========================================================
-       3. GENERAL UI INTERACTIONS (Filter, Modal, Chat)
+       3. GENERAL UI INTERACTIONS (Filter, Modal, Toast)
        ======================================================== */
-    // Filter
     const filterButtons = [...document.querySelectorAll('.filter-btn')];
     const projectCards = [...document.querySelectorAll('.project-card')];
     const workCount = document.querySelector('#workCount');
 
-    filterButtons.forEach(button => button.addEventListener('click', () => {
-      const filter = button.dataset.filter;
+    function applyFilter(filter) {
       filterButtons.forEach(item => {
-        const active = item === button;
+        const active = item.dataset.filter === filter;
         item.classList.toggle('active', active);
         item.setAttribute('aria-pressed', String(active));
       });
@@ -1190,7 +1208,19 @@
         }
       });
       workCount.textContent = `${visible} PROJECT${visible === 1 ? '' : 'S'}${filter === 'all' ? ' — COMPLETE BEHANCE COLLECTION' : ''}`;
+    }
+
+    filterButtons.forEach(button => button.addEventListener('click', () => {
+      applyFilter(button.dataset.filter);
     }));
+
+    // Toast
+    const actionToast = document.getElementById('actionToast');
+    function showToast(msg) {
+      actionToast.querySelector('span').textContent = msg;
+      actionToast.classList.add('show');
+      setTimeout(() => actionToast.classList.remove('show'), 2600);
+    }
 
     // Mobile Navigation
     const toggle = document.querySelector('#menuToggle'), nav = document.querySelector('#mainNav');
@@ -1242,43 +1272,124 @@
       videoIframe.src = '';
       document.body.style.overflow = '';
     }
-    heroReelBtn.addEventListener('click', () => openVideo("https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ"));
+    heroReelBtn.addEventListener('click', () => openVideo());
     videoTriggers.forEach(card => card.addEventListener('click', () => openVideo(card.dataset.video)));
     closeModal.addEventListener('click', closeVideo);
     videoModal.addEventListener('click', e => { if (e.target === videoModal) closeVideo(); });
     window.addEventListener('keydown', e => { if (e.key === 'Escape' && videoModal.classList.contains('active')) closeVideo(); });
 
     /* ========================================================
-       4. AI AGENT CHAT LOGIC WITH 3D BOT STATE SYNC
+       4. AI WEBSITE COPILOT (Multilingual & Site Automation Engine)
        ======================================================== */
     const aiChatWindow = document.getElementById('aiChatWindow');
     const aiForm = document.getElementById('aiForm');
     const aiInput = document.getElementById('aiInput');
     const quickChips = document.querySelectorAll('.quick-chip');
+    const voiceToggle = document.getElementById('voiceToggle');
+    const voiceStatus = document.getElementById('voiceStatus');
+    let isVoiceEnabled = false;
 
-    function getAssistantResponse(prompt) {
-      const p = prompt.toLowerCase();
-      if (p.includes('tool') || p.includes('software') || p.includes('stack')) {
-        return "MD Fahim's professional toolkit includes: <strong>Adobe After Effects</strong> (for UI/Motion animations), <strong>Premiere Pro</strong> (for video editing), <strong>Illustrator</strong> (for vector branding/logos), and <strong>Photoshop</strong> (for manipulation & poster design).";
+    // Toggle Voice Output
+    voiceToggle.addEventListener('click', () => {
+      isVoiceEnabled = !isVoiceEnabled;
+      voiceToggle.classList.toggle('active', isVoiceEnabled);
+      voiceStatus.textContent = isVoiceEnabled ? 'ON' : 'OFF';
+      if (isVoiceEnabled) {
+        speakResponse("Voice output activated. Nexus is ready to run this website.");
       }
-      if (p.includes('time') || p.includes('timeline') || p.includes('long') || p.includes('deadline')) {
-        return "Turnaround depends on project scope: standard motion graphics ads typically take <strong>3–5 business days</strong>, while complete brand identity packages take around <strong>1–2 weeks</strong> with revisions.";
-      }
-      if (p.includes('idea') || p.includes('concept') || p.includes('saas') || p.includes('motion')) {
-        return "✨ <strong>Nexus Recommendation:</strong> Open with a dark sleek isometric 3D UI card. Feature elements slide in with smooth spring physics, neon purple glowing accent highlights, followed by punchy kinetic typography highlighting user ROI!";
-      }
-      if (p.includes('hire') || p.includes('contact') || p.includes('cost') || p.includes('price')) {
-        return "Fahim is currently <strong>Available for select projects</strong>. Scroll to the <strong>Contact Section</strong> below to send a direct email, reach out on WhatsApp, or connect on Behance!";
-      }
-      return `Roger that! I've logged your inquiry: <em>"${prompt}"</em>. For detailed project estimates, feel free to use the direct email or WhatsApp buttons below!`;
+    });
+
+    function speakResponse(text) {
+      if (!isVoiceEnabled || !('speechSynthesis' in window)) return;
+      window.speechSynthesis.cancel();
+      // Strip HTML tags for speaking
+      const cleanText = text.replace(/<[^>]*>?/gm, '');
+      const utterance = new SpeechSynthesisUtterance(cleanText);
+      utterance.rate = 1.05;
+      utterance.pitch = 1.0;
+      window.speechSynthesis.speak(utterance);
     }
 
-    function appendMessage(sender, text) {
+    // Core Multilingual Parser & Website Command Engine
+    function processCopilotRequest(input) {
+      const p = input.toLowerCase();
+      let responseText = "";
+      let actionTaken = null;
+
+      // 1. ACTION: Filter Motion Design
+      if (p.includes('motion') || p.includes('animation') || p.includes('এনিমেশন') || p.includes('মোশন')) {
+        applyFilter('motion design');
+        document.querySelector('#design-portfolio').scrollIntoView({ behavior: 'smooth' });
+        actionTaken = "FILTER: Motion Design Projects";
+        
+        if (p.includes('dekhao') || p.includes('দেখাও') || p.includes('kaj')) {
+          responseText = "আমি প্রজেক্ট ফিল্টার করে **Motion Design** এর কাজগুলো স্ক্রিনে নিয়ে এসেছি! নিচে স্ক্রোল করে যেকোনো প্রজেক্টের Behance লিঙ্কে ক্লিক করতে পারেন।";
+        } else {
+          responseText = "Filtering portfolio specifically for **Motion Design & UI Animations**. Navigating down to showcase selected SaaS animation projects!";
+        }
+      }
+      // 2. ACTION: Filter Branding / Identity
+      else if (p.includes('brand') || p.includes('logo') || p.includes('ব্র্যান্ডিং') || p.includes('লোগো')) {
+        applyFilter('branding');
+        document.querySelector('#design-portfolio').scrollIntoView({ behavior: 'smooth' });
+        actionTaken = "FILTER: Brand Identity Projects";
+
+        if (p.includes('dekhao') || p.includes('দেখাও')) {
+          responseText = "অবশ্যই! ব্র্যান্ড আইডেন্টিটি এবং মনোগ্রাম লোগোর প্রজেক্টগুলো সামনে আনা হয়েছে।";
+        } else {
+          responseText = "Switched filter to **Brand Identity & Vector Logos**. Bringing you to curated brand guidelines and stationery designs!";
+        }
+      }
+      // 3. ACTION: Open Video Reel
+      else if (p.includes('reel') || p.includes('play') || p.includes('video') || p.includes('ভিডিও') || p.includes('প্লে')) {
+        openVideo();
+        actionTaken = "ACTION: Opened Video Lightbox";
+        responseText = p.includes('চালু') || p.includes('dekhao') 
+          ? "ভিডিও রিল চালু করে দেওয়া হয়েছে! উপভোগ করুন।"
+          : "Launching MD Fahim's official Motion & Video Reel popup right now!";
+      }
+      // 4. ACTION: Contact / Hire Fahim
+      else if (p.includes('contact') || p.includes('hire') || p.includes('jogajog') || p.includes('যোগাযোগ') || p.includes('email') || p.includes('whatsapp') || p.includes('dam') || p.includes('price')) {
+        document.querySelector('#contact').scrollIntoView({ behavior: 'smooth' });
+        actionTaken = "NAVIGATE: Contact Section";
+
+        if (p.includes('kivabe') || p.includes('ki bhabe') || p.includes('যোগাযোগ')) {
+          responseText = "ফাহিমের সাথে সরাসরি যোগাযোগ করতে আপনাকে কন্টাক্ট সেকশনে নিয়ে এসেছি। নিচের **Email Me Directly** বা **WhatsApp** বাটনে এক ক্লিকেই মেসেজ পাঠাতে পারবেন!";
+        } else {
+          responseText = "Navigated straight to the **Contact Section**! You can email Fahim directly, start a WhatsApp chat, or message on Behance.";
+        }
+      }
+      // 5. Tools & Software question
+      else if (p.includes('tool') || p.includes('software') || p.includes('stack') || p.includes('সফটওয়্যার') || p.includes('ব্যবহার')) {
+        document.querySelector('#about').scrollIntoView({ behavior: 'smooth' });
+        actionTaken = "NAVIGATE: Toolkit Section";
+        responseText = "ফাহিম প্রধানত **Adobe After Effects**, **Premiere Pro**, **Illustrator** এবং **Photoshop** ব্যবহার করে প্রিমিয়াম ডিজাইন ও মোশন তৈরি করেন।";
+      }
+      // 6. Generic Multilingual greetings
+      else if (p.includes('kemon') || p.includes('কেমন') || p.includes('ki obostha') || p.includes('hello') || p.includes('hi') || p.includes('hey')) {
+        responseText = "আমি ভালো আছি! 🤖 আমি যেকোনো ভাষা বুঝতে পারি এবং এই ওয়েবসাইটের সবকিছু আপনার নির্দেশে চালিয়ে দিতে পারি। আপনি কী দেখতে চান?";
+      }
+      // 7. Fallback Multilingual
+      else {
+        responseText = `বুঝেছি! আপনার কমান্ড: *"${input}"*। আপনি চাইলে আমাকে **"Motion design দেখাও"**, **"Play video reel"** অথবা **"Contact Fahim"** বলতে পারেন—আমি সাথে সাথে কাজ করে দেব!`;
+      }
+
+      return { responseText, actionTaken };
+    }
+
+    function appendMessage(sender, text, actionTag) {
       const bubble = document.createElement('div');
       bubble.className = `chat-bubble ${sender}`;
+
+      let content = text;
+      if (actionTag) {
+        content += `<br><span class="action-chip-pill">⚡ Action Executed: ${actionTag}</span>`;
+      }
+
       bubble.innerHTML = sender === 'bot' 
-        ? `<div class="chat-avatar">AI</div><div>${text}</div>`
-        : `<div>${text}</div>`;
+        ? `<div class="chat-avatar">AI</div><div>${content}</div>`
+        : `<div>${content}</div>`;
+      
       aiChatWindow.appendChild(bubble);
       aiChatWindow.scrollTop = aiChatWindow.scrollHeight;
     }
@@ -1288,27 +1399,36 @@
       appendMessage('user', userText);
       aiInput.value = '';
 
-      // Trigger 3D Agent THINKING Mode
+      // Set 3D Robot State to Thinking
       isThinking = true;
       agentMoodBadge.textContent = 'STATE: PROCESSING';
       agentMoodBadge.style.color = '#00f2fe';
 
       const typingBubble = document.createElement('div');
       typingBubble.className = 'chat-bubble bot';
-      typingBubble.innerHTML = `<div class="chat-avatar">AI</div><div><em>Nexus is processing response...</em></div>`;
+      typingBubble.innerHTML = `<div class="chat-avatar">AI</div><div><em>Nexus is processing site command...</em></div>`;
       aiChatWindow.appendChild(typingBubble);
       aiChatWindow.scrollTop = aiChatWindow.scrollHeight;
 
       setTimeout(() => {
         typingBubble.remove();
-        const botReply = getAssistantResponse(userText);
-        appendMessage('bot', botReply);
+        
+        // Execute Action and generate natural reply
+        const result = processCopilotRequest(userText);
+        appendMessage('bot', result.responseText, result.actionTaken);
 
-        // Reset 3D Agent back to ACTIVE
+        if (result.actionTaken) {
+          showToast(result.actionTaken);
+        }
+
+        // Voice speech
+        speakResponse(result.responseText);
+
+        // Reset Robot to Active
         isThinking = false;
-        agentMoodBadge.textContent = 'STATE: ACTIVE';
+        agentMoodBadge.textContent = 'STATE: READY';
         agentMoodBadge.style.color = '#fff';
-      }, 900);
+      }, 750);
     }
 
     aiForm.addEventListener('submit', (e) => {
