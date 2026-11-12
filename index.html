@@ -130,8 +130,14 @@
     }
     .primary-btn:hover{background:var(--purple);border-color:var(--purple-light);transform:translateY(-2px);box-shadow:0 0 30px var(--purple-glow);color:#fff}
     .round-arrow{width:28px;height:28px;border:1px solid rgba(255,255,255,.5);border-radius:50%;display:grid;place-items:center}
-    .watch-link{display:flex;align-items:center;gap:12px;font-size:12px;color:#ddd4e9;cursor:pointer;background:none;border:none;min-height:48px}
-    .play{width:40px;height:40px;border:1px solid var(--purple-light);border-radius:50%;display:grid;place-items:center;color:var(--white)}
+    
+    .watch-link{
+      display:inline-flex;align-items:center;gap:12px;font-size:12px;color:#ddd4e9;
+      cursor:pointer;background:none;border:none;min-height:48px;transition:.3s;
+    }
+    .watch-link:hover{color:var(--white);transform:translateY(-2px)}
+    .play{width:40px;height:40px;border:1px solid var(--purple-light);border-radius:50%;display:grid;place-items:center;color:var(--white);transition:.3s}
+    .watch-link:hover .play{background:rgba(168,85,247,.25);border-color:var(--gold);box-shadow:0 0 18px var(--purple-glow)}
     
     .hero-stats{display:flex;gap:clamp(20px, 4vw, 36px);margin-top:30px;padding-top:20px;border-top:1px solid var(--line);max-width:530px}
     .stat strong{display:block;font-size:clamp(18px, 3.5vw, 22px);letter-spacing:-.05em;color:var(--white)}.stat span{font-size:10px;color:var(--text-muted)}
@@ -437,7 +443,11 @@
         <p class="intro">I’m <strong>MD Fahim</strong> — a graphic and motion designer creating visual identities, digital experiences and memorable visual stories.</p>
         <div class="hero-actions">
           <a class="primary-btn" href="#spaces">Explore My Work <span class="round-arrow">↗</span></a>
-          <button class="watch-link" id="heroReelBtn"><span class="play">▶</span> Watch Reel</button>
+          
+          <!-- WATCH REEL LINK UPDATED TO YOUR SHORTS URL -->
+          <a class="watch-link" href="https://www.youtube.com/@motion-nest0.1/shorts" target="_blank" rel="noopener noreferrer">
+            <span class="play">▶</span> Watch Reel
+          </a>
         </div>
         <div class="hero-stats">
           <div class="stat"><strong>29</strong><span>Projects</span></div>
@@ -513,7 +523,6 @@
       </div>
 
       <div class="video-grid">
-        <!-- Card 1: Direct link to YouTube channel -->
         <a class="video-card-yt" href="https://www.youtube.com/@motion-nest0.1" target="_blank" rel="noopener noreferrer">
           <span class="video-play-yt">▶</span>
           <div>
@@ -523,7 +532,6 @@
           </div>
         </a>
 
-        <!-- Card 2: Direct link to YouTube channel -->
         <a class="video-card-yt" href="https://www.youtube.com/@motion-nest0.1" target="_blank" rel="noopener noreferrer">
           <span class="video-play-yt">▶</span>
           <div>
@@ -533,7 +541,6 @@
           </div>
         </a>
 
-        <!-- Card 3: Direct link to YouTube channel -->
         <a class="video-card-yt" href="https://www.youtube.com/@motion-nest0.1" target="_blank" rel="noopener noreferrer">
           <span class="video-play-yt">▶</span>
           <div>
@@ -729,7 +736,7 @@
       </div>
     </section>
 
-    <!-- CONTACT SECTION (UPDATED WITH GMAIL & FACEBOOK PROFILE) -->
+    <!-- CONTACT SECTION -->
     <section class="content-section" id="contact">
       <div class="contact-panel">
         <div>
@@ -1075,8 +1082,12 @@
       const p = input.toLowerCase();
       let res = "", act = null;
 
-      // Contact & Social Actions updated with User's Gmail and Facebook
-      if (p.includes('contact') || p.includes('hire') || p.includes('jogajog') || p.includes('যোগাযোগ') || p.includes('facebook') || p.includes('fb') || p.includes('ফেসবুক') || p.includes('email') || p.includes('mail') || p.includes('ইমেইল')) {
+      // Reel & Shorts Command -> Opens your Shorts URL in a new tab directly!
+      if (p.includes('reel') || p.includes('play') || p.includes('video') || p.includes('ভিডিও') || p.includes('shorts') || p.includes('শর্টস') || p.includes('রিল')) {
+        window.open("https://www.youtube.com/@motion-nest0.1/shorts", "_blank");
+        act = "OPENED: Official YouTube Shorts";
+        res = "ফাহিমের অফিসিয়াল মোশন রিল ও শর্টস উন্মোচন করা হলো! নতুন ট্যাবে দেখতে পারো।";
+      } else if (p.includes('contact') || p.includes('hire') || p.includes('jogajog') || p.includes('যোগাযোগ') || p.includes('facebook') || p.includes('fb') || p.includes('ফেসবুক') || p.includes('email') || p.includes('mail') || p.includes('ইমেইল')) {
         document.querySelector('#contact').scrollIntoView({ behavior: 'smooth' });
         act = "SUMMONED: Imperial Contact Sanctum";
         res = "ফাহিমের সাথে যোগাযোগের সকল পথ উন্মোচন করা হলো! তুমি সরাসরি mf16348011@gmail.com এ ইমেইল পাঠাতে পারো অথবা নিচের ফেসবুক বাটনে ক্লিক করে মেসেজ দাও!";
@@ -1092,11 +1103,6 @@
         document.querySelector('#design-portfolio').scrollIntoView({ behavior: 'smooth' });
         act = "IMPERIAL DECREE: Filtered Brand Identities";
         res = "লোগো এবং রাজকীয় ব্র্যান্ড আইডেন্টিটির কাজগুলো তোমার সামনে প্রদর্শন করা হলো!";
-      } else if (p.includes('reel') || p.includes('play') || p.includes('video') || p.includes('ভিডিও')) {
-        document.getElementById('videoModal').classList.add('active');
-        document.getElementById('videoIframe').src = "https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ?autoplay=1";
-        act = "IMPERIAL DECREE: Unveiled Video Reel";
-        res = "স্বর্গীয় মোশন রিল উন্মোচন করা হলো! নীরবে অবলোকন করো।";
       } else if (p.includes('kemon') || p.includes('কেমন') || p.includes('hello') || p.includes('hi')) {
         res = "হুম্ফ... আমার সাম্রাজ্যে তোমাকে স্বাগত। আমার সময় অত্যন্ত মূল্যবান, বলো তোমার কী আর্জি?";
       } else {
@@ -1143,7 +1149,6 @@
     const modal = document.getElementById('videoModal');
     const iframe = document.getElementById('videoIframe');
     document.getElementById('closeModal').onclick = () => { modal.classList.remove('active'); iframe.src = ''; };
-    document.getElementById('heroReelBtn').onclick = () => { modal.classList.add('active'); iframe.src = "https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ?autoplay=1"; };
 
     const btt = document.getElementById('backToTop');
     window.addEventListener('scroll', () => { btt.style.display = window.scrollY > 400 ? 'grid' : 'none'; }, { passive: true });
