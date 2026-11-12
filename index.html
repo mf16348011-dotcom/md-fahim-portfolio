@@ -341,7 +341,7 @@
     }
 
     /* ========================================================
-       REFINED ABOUT ME (1200x800px EXACT SPEC THUMBNAIL SHOWCASE)
+       REFINED ABOUT ME (1200x800 LOCKED PERMANENT BANNER)
        ======================================================== */
     .about-wrap{
       display:grid;
@@ -350,11 +350,11 @@
       align-items:start;
     }
 
-    /* 1200 / 800 PX EXACT SPECIFICATION THUMBNAIL SHOWCASE */
+    /* 1200 / 800 PX LOCKED BANNER (NO UPLOAD BUTTON / PROTECTED) */
     .about-thumbnail-card{
       width:100%;
       max-width:1200px;
-      aspect-ratio:1200 / 800; /* Exactly 1200x800 Ratio (3:2) */
+      aspect-ratio:1200 / 800; /* Exactly 1200x800 Ratio */
       margin:36px auto 0;
       border:1px solid var(--panel-border);
       border-radius:24px;
@@ -365,12 +365,8 @@
       flex-direction:column;
       justify-content:space-between;
       box-shadow:0 25px 70px rgba(0,0,0,0.65), 0 0 35px var(--purple-glow);
-      transition:transform .35s, border-color .35s, box-shadow .35s;
-    }
-    .about-thumbnail-card:hover{
-      transform:translateY(-4px);
-      border-color:var(--gold);
-      box-shadow:0 30px 80px rgba(0,0,0,0.8), 0 0 45px var(--gold-glow);
+      user-select: none;
+      -webkit-user-select: none;
     }
     
     .thumbnail-stage-wrap{
@@ -390,10 +386,8 @@
       height:100%;
       object-fit:cover;
       object-position:center;
-      transition:transform .6s cubic-bezier(0.2, 0.8, 0.2, 1);
-    }
-    .about-thumbnail-card:hover .about-thumb-img{
-      transform:scale(1.05);
+      pointer-events:none;
+      -webkit-user-drag:none;
     }
 
     .thumb-badge-floating{
@@ -411,26 +405,19 @@
       z-index:2;
     }
 
-    /* Change Thumbnail Pill */
-    .thumb-upload-pill{
+    .thumb-lock-badge{
       position:absolute;
       top:16px;
       right:16px;
-      z-index:10;
-      background:rgba(15,7,26,0.92);
+      z-index:2;
+      background:rgba(6,3,10,0.85);
       border:1px solid var(--purple-light);
       color:var(--purple-light);
-      padding:7px 16px;
-      border-radius:24px;
-      font:600 10px 'DM Mono', monospace;
-      cursor:pointer;
+      font-size:10px;
+      letter-spacing:.12em;
+      padding:5px 12px;
+      border-radius:20px;
       backdrop-filter:blur(10px);
-      transition:.25s;
-    }
-    .thumb-upload-pill:hover{
-      background:var(--purple);
-      color:#fff;
-      border-color:var(--gold);
     }
 
     .about-thumb-footer{
@@ -528,7 +515,6 @@
       .medusa-card{min-height:340px;height:340px}
       .medusa-svg{max-height:320px}
       .thumb-badge-floating{font-size:8px;padding:4px 8px;bottom:10px;left:10px}
-      .thumb-upload-pill{padding:5px 12px;font-size:9px}
     }
   </style>
 
@@ -830,7 +816,7 @@
     </section>
 
     <!-- ========================================================
-         REFINED ABOUT ME (WITH EXACT 1200x800 THUMBNAIL SHOWCASE)
+         REFINED ABOUT ME (1200x800 LOCKED OFFICIAL BANNER)
          ======================================================== -->
     <section class="content-section" id="about">
       <!-- Upper Area: Story & Skills -->
@@ -872,25 +858,24 @@
         </div>
       </div>
 
-      <!-- LOWER AREA: EXACT 1200x800 PX PROPORTION THUMBNAIL SHOWCASE -->
+      <!-- LOWER AREA: EXACT 1200x800 PX PROPORTION LOCKED OFFICIAL BANNER -->
       <div class="about-thumbnail-card">
-        <!-- Change Thumbnail Button -->
-        <button type="button" class="thumb-upload-pill mono" id="changeThumbBtn" title="Choose 1200x800 thumbnail from computer">🖼️ Change Thumbnail</button>
-        <input type="file" id="aboutThumbUpload" accept="image/*" style="opacity:0;position:absolute;z-index:-1;width:1px;height:1px;pointer-events:none;" />
-        
+        <div class="thumb-lock-badge mono">🔒 OFFICIAL DESIGN BANNER</div>
+
         <div class="thumbnail-stage-wrap">
           <img 
             src="thumbnail.jpg" 
             class="about-thumb-img" 
             id="aboutThumbImg" 
-            alt="Featured 1200x800 Design Thumbnail" 
+            alt="Official 1200x800 Design Banner · Md Fahim" 
+            draggable="false"
             onerror="this.onerror=null; this.src='https://mir-s3-cdn-cf.behance.net/projects/404/bad8f2248101115.Y3JvcCwxOTIwLDE1MDEsMCwzMzM2.jpg';"
           />
-          <div class="thumb-badge-floating mono">FEATURED THUMBNAIL · 1200 × 800 PX</div>
+          <div class="thumb-badge-floating mono">FEATURED BANNER · 1200 × 800 PX</div>
         </div>
 
         <div class="about-thumb-footer">
-          <span class="about-img-tag mono"><span>✦</span> HIGH CTR VISUAL DESIGN · 1200 / 800 SPECIFICATION</span>
+          <span class="about-img-tag mono"><span>✦</span> OFFICIAL BRAND SHOWCASE · MD FAHIM CREATIVE DESIGN</span>
         </div>
       </div>
     </section>
@@ -950,7 +935,7 @@
     </div>
   </div>
 
-  <!-- JAVASCRIPT LOGIC (1200x800 COMPRESSOR & LOCALSTORAGE PERSISTENCE) -->
+  <!-- JAVASCRIPT LOGIC (PERMANENTLY LOCKED BANNER & ROBUST SPEECH) -->
   <script type="module">
     import * as THREE from 'three';
 
@@ -1103,64 +1088,16 @@
     }
 
     /* ========================================================
-       3. 1200x800 THUMBNAIL SHOWCASE: LOCALSTORAGE PERSISTENCE
+       3. PERMANENTLY LOCKED OFFICIAL BANNER RESTORATION
        ======================================================== */
-    const aboutThumbUpload = document.getElementById('aboutThumbUpload');
     const aboutThumbImg = document.getElementById('aboutThumbImg');
-    const changeThumbBtn = document.getElementById('changeThumbBtn');
-
-    // 1. Restore persistent 1200x800 thumbnail from browser storage on load
     try {
       const savedUserThumb = localStorage.getItem('user_fahim_thumbnail_storage');
       if (savedUserThumb && aboutThumbImg) {
         aboutThumbImg.src = savedUserThumb;
       }
     } catch(err) {
-      console.log("Thumbnail storage access notice:", err);
-    }
-
-    // 2. Click button triggers file selector reliably
-    if (changeThumbBtn && aboutThumbUpload) {
-      changeThumbBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        aboutThumbUpload.click();
-      });
-    }
-
-    // 3. Instant Display + 1200x800 Proportional Background Storage
-    if (aboutThumbUpload && aboutThumbImg) {
-      aboutThumbUpload.addEventListener('change', function() {
-        const file = this.files && this.files[0];
-        if (!file) return;
-
-        const reader = new FileReader();
-        reader.onload = function(e) {
-          const rawData = e.target.result;
-          
-          // Instant Display (Zero Lag!)
-          aboutThumbImg.src = rawData;
-          toast("1200×800 Thumbnail Updated! ✦");
-
-          // Save and compress in localStorage at exactly 1200/800 ratio
-          const tempImg = new Image();
-          tempImg.onload = function() {
-            try {
-              const canvas = document.createElement('canvas');
-              canvas.width = 1200;
-              canvas.height = 800;
-              const ctx = canvas.getContext('2d');
-              ctx.drawImage(tempImg, 0, 0, 1200, 800);
-              
-              const compressedBase64 = canvas.toDataURL('image/jpeg', 0.88);
-              localStorage.setItem('user_fahim_thumbnail_storage', compressedBase64);
-            } catch(quotaErr) {
-              console.warn("Storage quota warning:", quotaErr);
-            }
-          };
-          tempImg.src = rawData;
-        };
-        reader.readAsDataURL(file);
-      });
+      console.log("Banner access notice:", err);
     }
 
     /* ========================================================
