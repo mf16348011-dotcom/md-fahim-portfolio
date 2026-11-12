@@ -196,7 +196,7 @@
     .project-meta h3{font-size:15px;line-height:1.4;letter-spacing:-.02em;color:var(--white)}
     .project-meta p{margin-top:8px;font:9px 'DM Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:#c0a2e0}
 
-    /* YouTube Section (Red & White Theme) */
+    /* YouTube Section (Red & White Theme + Direct Cards) */
     .yt-section{
       background: radial-gradient(ellipse at 50% 25%, rgba(255, 0, 51, 0.16), transparent 65%), linear-gradient(180deg, #06030a, #0d0205 60%, #06030a);
       border-top: 1px solid rgba(255,0,51,0.22);border-bottom: 1px solid rgba(255,0,51,0.22);
@@ -341,62 +341,76 @@
     }
 
     /* ========================================================
-       REFINED ABOUT ME (WITH RELIABLE PERSISTENT PROFILE ART)
+       REFINED ABOUT ME (FEATURING 16:9 THUMBNAIL SHOWCASE)
        ======================================================== */
     .about-wrap{
       display:grid;
-      grid-template-columns: 0.9fr 1.2fr 1fr;
+      grid-template-columns: 1fr 1.25fr 1fr;
       gap: clamp(20px, 3vw, 36px);
       align-items: stretch;
     }
     
-    .about-image-card{
+    /* Dedicated 16:9 Thumbnail Showcase Card */
+    .about-thumbnail-card{
       border: 1px solid var(--panel-border);
       border-radius: 22px;
       background: radial-gradient(circle at 50% 30%, #170a24, #0a0412);
       overflow: hidden;
       position: relative;
-      min-height: 420px;
+      min-height: 400px;
       display: flex;
       flex-direction: column;
-      justify-content: flex-end;
+      justify-content: space-between;
       box-shadow: 0 20px 50px rgba(0,0,0,0.6), 0 0 25px var(--purple-glow);
       transition: transform .35s, border-color .35s;
     }
-    .about-image-card:hover{
+    .about-thumbnail-card:hover{
       transform: translateY(-5px);
       border-color: var(--gold);
       box-shadow: 0 25px 60px rgba(0,0,0,0.8), 0 0 35px var(--gold-glow);
     }
-    .about-profile-img{
+    
+    .thumbnail-stage-wrap{
+      position: relative;
+      width: 100%;
+      height: 100%;
+      min-height: 260px;
+      flex: 1;
+      overflow: hidden;
+      background: #140d24;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .about-thumb-img{
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: center top;
+      object-position: center;
+      transition: transform .6s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+    .about-thumbnail-card:hover .about-thumb-img{
+      transform: scale(1.06);
+    }
+
+    .thumb-badge-floating{
       position: absolute;
-      inset: 0;
-      transition: transform .6s ease;
-    }
-    .about-image-card:hover .about-profile-img{
-      transform: scale(1.04);
-    }
-    .about-img-overlay{
-      position: relative;
-      z-index: 2;
-      padding: 20px 18px;
-      background: linear-gradient(0deg, rgba(6,3,10,0.95) 25%, transparent);
-    }
-    .about-img-tag{
-      font: 600 10px 'DM Mono', monospace;
+      bottom: 14px;
+      left: 14px;
+      background: rgba(6,3,10,0.88);
+      border: 1px solid var(--gold);
       color: var(--gold);
-      letter-spacing: .14em;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
+      font-size: 9px;
+      letter-spacing: .12em;
+      padding: 5px 11px;
+      border-radius: 8px;
+      backdrop-filter: blur(8px);
+      z-index: 2;
     }
 
     /* Clickable Upload Pill (Directly Triggers File Dialog) */
-    .img-upload-pill{
+    .thumb-upload-pill{
       position: absolute;
       top: 14px;
       right: 14px;
@@ -410,11 +424,28 @@
       cursor: pointer;
       backdrop-filter: blur(10px);
       transition: .25s;
+      border: 1px solid var(--purple-light);
     }
-    .img-upload-pill:hover{
+    .thumb-upload-pill:hover{
       background: var(--purple);
       color: #fff;
       border-color: var(--gold);
+    }
+
+    .about-thumb-footer{
+      position: relative;
+      z-index: 2;
+      padding: 18px 20px;
+      border-top: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(17,10,31,0.7), #07030e);
+    }
+    .about-img-tag{
+      font: 600 10px 'DM Mono', monospace;
+      color: var(--gold);
+      letter-spacing: .14em;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
     }
 
     .about-role-badge{
@@ -468,7 +499,7 @@
     /* Media Queries */
     @media(max-width:1100px){
       .about-wrap{grid-template-columns: 1fr 1fr; gap:24px}
-      .about-image-card{grid-column: 1 / -1; max-height: 440px}
+      .about-thumbnail-card{grid-column: 1 / -1; min-height: 320px}
     }
     @media(max-width:960px){
       .hero{grid-template-columns:1fr;min-height:auto;padding-top:100px;padding-bottom:50px}
@@ -800,27 +831,29 @@
     </section>
 
     <!-- ========================================================
-         REFINED ABOUT ME SECTION (WITH INSTANT-UPDATE PROFILE IMAGE)
-         ======================================================== -->
+         REFINED ABOUT ME (FEATURING 16:9 THUMBNAIL SHOWCASE)
+         ======================================================== */ -->
     <section class="content-section" id="about">
       <div class="about-wrap">
         
-        <!-- User Profile Artwork Card -->
-        <div class="about-image-card">
-          <!-- Button directly triggers the file upload -->
-          <button type="button" class="img-upload-pill mono" id="changeImgBtn" title="Choose image from computer">📷 Change Image</button>
-          <input type="file" id="aboutImgUpload" accept="image/*" style="opacity:0;position:absolute;z-index:-1;width:1px;height:1px;pointer-events:none;" />
+        <!-- NEW: Dedicated 16:9 Thumbnail Showcase Card -->
+        <div class="about-thumbnail-card">
+          <button type="button" class="thumb-upload-pill mono" id="changeThumbBtn" title="Choose thumbnail from computer">🖼️ Change Thumbnail</button>
+          <input type="file" id="aboutThumbUpload" accept="image/*" style="opacity:0;position:absolute;z-index:-1;width:1px;height:1px;pointer-events:none;" />
           
-          <img 
-            src="me.jpg" 
-            class="about-profile-img" 
-            id="aboutProfileImg" 
-            alt="MD Fahim Portrait" 
-            onerror="this.onerror=null; this.src='https://mir-s3-cdn-cf.behance.net/projects/404/44853a248637103.Y3JvcCwzNjAwLDI4MTUsMCw5ODk.jpg';"
-          />
+          <div class="thumbnail-stage-wrap">
+            <img 
+              src="thumbnail.jpg" 
+              class="about-thumb-img" 
+              id="aboutThumbImg" 
+              alt="Featured Design Thumbnail" 
+              onerror="this.onerror=null; this.src='https://mir-s3-cdn-cf.behance.net/projects/404/bad8f2248101115.Y3JvcCwxOTIwLDE1MDEsMCwzMzM2.jpg';"
+            />
+            <div class="thumb-badge-floating mono">FEATURED THUMBNAIL</div>
+          </div>
 
-          <div class="about-img-overlay">
-            <span class="about-img-tag mono"><span>✦</span> THE CREATOR OF MY OWN STORY</span>
+          <div class="about-thumb-footer">
+            <span class="about-img-tag mono"><span>✦</span> HIGH CTR VISUAL DESIGN</span>
           </div>
         </div>
 
@@ -919,7 +952,7 @@
     </div>
   </div>
 
-  <!-- JAVASCRIPT LOGIC (CROSS-DEVICE OPTIMIZED + INSTANT IMAGE SAVING) -->
+  <!-- JAVASCRIPT LOGIC (CROSS-DEVICE OPTIMIZED + AUTO-PERSISTENT THUMBNAIL STORAGE) -->
   <script type="module">
     import * as THREE from 'three';
 
@@ -1072,33 +1105,33 @@
     }
 
     /* ========================================================
-       3. ABOUT PROFILE IMAGE: INSTANT & PERMANENT UPDATE
+       3. ABOUT THUMBNAIL SHOWCASE: INSTANT & PERSISTENT STORAGE
        ======================================================== */
-    const aboutImgUpload = document.getElementById('aboutImgUpload');
-    const aboutProfileImg = document.getElementById('aboutProfileImg');
-    const changeImgBtn = document.getElementById('changeImgBtn');
+    const aboutThumbUpload = document.getElementById('aboutThumbUpload');
+    const aboutThumbImg = document.getElementById('aboutThumbImg');
+    const changeThumbBtn = document.getElementById('changeThumbBtn');
 
-    // 1. Restore from browser storage on load
+    // 1. Restore persistent thumbnail from browser storage on load
     try {
-      const savedUserImg = localStorage.getItem('user_fahim_artwork_storage');
-      if (savedUserImg && aboutProfileImg) {
-        aboutProfileImg.src = savedUserImg;
+      const savedUserThumb = localStorage.getItem('user_fahim_thumbnail_storage');
+      if (savedUserThumb && aboutThumbImg) {
+        aboutThumbImg.src = savedUserThumb;
       }
     } catch(err) {
-      console.log("Storage access notice:", err);
+      console.log("Thumbnail storage access notice:", err);
     }
 
-    // 2. Click button to trigger file dialog (100% reliable)
-    if (changeImgBtn && aboutImgUpload) {
-      changeImgBtn.addEventListener('click', (e) => {
+    // 2. Click button triggers file selector reliably
+    if (changeThumbBtn && aboutThumbUpload) {
+      changeThumbBtn.addEventListener('click', (e) => {
         e.preventDefault();
-        aboutImgUpload.click();
+        aboutThumbUpload.click();
       });
     }
 
     // 3. Instant Display + Background Storage
-    if (aboutImgUpload && aboutProfileImg) {
-      aboutImgUpload.addEventListener('change', function() {
+    if (aboutThumbUpload && aboutThumbImg) {
+      aboutThumbUpload.addEventListener('change', function() {
         const file = this.files && this.files[0];
         if (!file) return;
 
@@ -1107,25 +1140,25 @@
           const rawData = e.target.result;
           
           // Instant Display (Zero Lag!)
-          aboutProfileImg.src = rawData;
-          toast("Artwork Updated Instantly! ✦");
+          aboutThumbImg.src = rawData;
+          toast("Thumbnail Updated Instantly! ✦");
 
-          // Save and compress into localStorage for permanent memory
+          // Save and compress in localStorage for permanent memory
           const tempImg = new Image();
           tempImg.onload = function() {
             try {
               const canvas = document.createElement('canvas');
-              const maxDim = 1200;
+              const maxDim = 1280;
               const scale = Math.min(1, maxDim / Math.max(tempImg.width, tempImg.height));
               canvas.width = tempImg.width * scale;
               canvas.height = tempImg.height * scale;
               const ctx = canvas.getContext('2d');
               ctx.drawImage(tempImg, 0, 0, canvas.width, canvas.height);
               
-              const compressedBase64 = canvas.toDataURL('image/jpeg', 0.85);
-              localStorage.setItem('user_fahim_artwork_storage', compressedBase64);
+              const compressedBase64 = canvas.toDataURL('image/jpeg', 0.88);
+              localStorage.setItem('user_fahim_thumbnail_storage', compressedBase64);
             } catch(quotaErr) {
-              console.warn("Storage quota warning:", quotaErr);
+              console.warn("Thumbnail storage quota warning:", quotaErr);
             }
           };
           tempImg.src = rawData;
