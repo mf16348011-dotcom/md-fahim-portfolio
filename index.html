@@ -6,8 +6,8 @@
   <meta name="color-scheme" content="dark" />
   <meta name="theme-color" content="#06030a" />
   
-  <title>MD FAHIM — Creative Portfolio | Graphic & Motion Designer</title>
-  <meta name="description" content="MD Fahim — Graphic Designer & Motion Designer. Ruled by Queen Medusa AI Empress." />
+  <title>MD FAHIM — Creative Designer & Motion Artist | Portfolio</title>
+  <meta name="description" content="MD Fahim — Graphic Designer & Motion Graphics Artist specializing in visual storytelling, branding, and SaaS animation. Ruled by Queen Medusa AI." />
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👑</text></svg>">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -344,10 +344,31 @@
       border-radius:50%;cursor:pointer;display:grid;place-items:center;flex-shrink:0;
     }
 
-    /* About, Process, Contact */
-    .about-wrap{display:grid;grid-template-columns:repeat(auto-fit, minmax(min(100%, 300px), 1fr));gap:32px;align-items:center}
-    .about-panel{border:1px solid var(--line);border-radius:22px;padding:clamp(20px, 3.5vw, 32px);background:var(--panel)}
-    .skill-list{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}.skill-list span{border:1px solid var(--line);padding:8px 12px;border-radius:30px;font:10px 'DM Mono',monospace;color:#dfd6ed}
+    /* ========================================================
+       REFINED ABOUT ME SECTION (NEW BIO & EXPERTISE)
+       ======================================================== */
+    .about-wrap{display:grid;grid-template-columns:1.15fr 0.85fr;gap:clamp(24px, 4vw, 44px);align-items:start}
+    .about-role-badge{
+      display:inline-block;font-size:11px;color:var(--gold);letter-spacing:.12em;
+      margin-bottom:18px;padding:6px 14px;background:rgba(255,215,0,0.08);
+      border:1px solid rgba(255,215,0,0.28);border-radius:20px;
+    }
+    .about-bio-text{color:var(--white);font-size:clamp(14px, 1.6vw, 15px);line-height:1.8;margin-bottom:14px;}
+    .about-bio-sub{color:var(--text-muted);font-size:clamp(13px, 1.4vw, 14px);line-height:1.75;margin-bottom:12px;}
+    
+    .about-panel{border:1px solid var(--panel-border);border-radius:22px;padding:clamp(22px, 3.5vw, 34px);background:var(--panel)}
+    
+    .expertise-chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;margin-bottom:20px;}
+    .expertise-chips span{
+      font:500 11px 'DM Mono', monospace;color:#f3ecfc;padding:7px 12px;
+      border-radius:12px;background:rgba(168,85,247,0.12);border:1px solid rgba(168,85,247,0.28);
+      transition:.25s;
+    }
+    .expertise-chips span:hover{border-color:var(--gold);color:var(--gold)}
+
+    .skill-list{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+    .skill-list span{border:1px solid var(--line);padding:7px 12px;border-radius:20px;font:10px 'DM Mono',monospace;color:#dfd6ed}
+    
     .process-grid{display:grid;grid-template-columns:repeat(auto-fit, minmax(min(100%, 220px), 1fr));gap:14px;margin-top:30px}
     .process-item{padding:20px;border-top:1px solid var(--purple);background:rgba(168,85,247,.06);border-radius:0 0 12px 12px}
     
@@ -378,7 +399,7 @@
     /* Media Queries */
     @media(max-width:960px){
       .hero{grid-template-columns:1fr;min-height:auto;padding-top:100px;padding-bottom:50px}
-      .ai-layout{grid-template-columns:1fr;gap:16px}
+      .ai-layout,.about-wrap{grid-template-columns:1fr;gap:20px}
       .medusa-card{min-height:380px;height:380px}
       .assistant-chip{display:none}
     }
@@ -563,7 +584,7 @@
       </div>
     </section>
 
-    <!-- QUEEN MEDUSA (CAI LIN · BTTH) IMPERIAL AI SANCTUM (NATURAL HUMAN GIRL VOICE) -->
+    <!-- QUEEN MEDUSA (CAI LIN · BTTH) IMPERIAL AI SANCTUM -->
     <section class="content-section ai-section" id="ai-assistant">
       <div>
         <div class="section-kicker">Imperial Sanctuary / Queen Medusa (BTTH)</div>
@@ -706,19 +727,44 @@
       </div>
     </section>
 
-    <!-- ABOUT SECTION -->
+    <!-- ========================================================
+         REFINED ABOUT ME SECTION (INTEGRATING YOUR NEW COPY)
+         ======================================================== -->
     <section class="content-section" id="about">
       <div class="about-wrap">
         <div>
           <div class="section-kicker">A little about me</div>
           <h2 class="section-title">Design with<br><span class="gradient-text">purpose.</span></h2>
-          <p class="section-desc">I’m MD Fahim, a graphic and motion designer focused on turning ideas into clear visual experiences. I combine design thinking, storytelling and motion to help brands communicate with impact.</p>
+          <div class="about-role-badge mono">Creative Designer · Graphic Designer · Motion Artist</div>
+          <p class="about-bio-text">
+            I’m a passionate Graphic Designer and Motion Graphics Artist with a strong interest in visual storytelling, branding, and digital creativity. I specialize in creating visually engaging designs and motion-driven content that communicate ideas, strengthen brand identities, and capture attention.
+          </p>
+          <p class="about-bio-sub">
+            Currently, I’m expanding my professional experience in Brand & Marketing while continuously developing my creative and technical skills. I believe great design is not just about aesthetics — it's about delivering meaningful messages, solving problems, and creating memorable experiences.
+          </p>
+          <p class="about-bio-sub" style="margin-top:10px;">
+            I'm always eager to explore new ideas, embrace creative challenges, and transform concepts into impactful visual experiences.
+          </p>
         </div>
+        
         <div class="about-panel">
-          <div class="section-kicker">Creative toolkit</div>
-          <h3 style="font-size:24px;margin-bottom:15px;color:#fff">Ideas into visuals.</h3>
+          <div class="section-kicker" style="color:var(--gold);">Core Expertise</div>
+          <h3 style="font-size:22px;margin-bottom:8px;color:#fff">Ideas into visuals.</h3>
+          
+          <div class="expertise-chips">
+            <span>Brand Identity Design</span>
+            <span>Social Media Graphics</span>
+            <span>Marketing Creatives</span>
+            <span>Logo Animation</span>
+            <span>2D Motion Graphics</span>
+            <span>Product Promotional Videos</span>
+            <span>SaaS Animations</span>
+            <span>Kinetic Typography</span>
+          </div>
+
+          <div class="section-kicker" style="margin-top:22px;color:var(--purple-light);">Software Toolkit</div>
           <div class="skill-list">
-            <span>PHOTOSHOP</span><span>ILLUSTRATOR</span><span>AFTER EFFECTS</span><span>PREMIERE PRO</span><span>BRANDING</span><span>MOTION GRAPHICS</span>
+            <span>AFTER EFFECTS</span><span>PREMIERE PRO</span><span>PHOTOSHOP</span><span>ILLUSTRATOR</span><span>BRANDING</span><span>MOTION GRAPHICS</span>
           </div>
         </div>
       </div>
@@ -1030,20 +1076,17 @@
       setTimeout(() => actionToast.classList.remove('show'), 2500);
     }
 
-    // Advanced Priority Ranker for Studio-Grade Natural Female Voices
     function getNaturalFemaleVoice() {
       if (!('speechSynthesis' in window)) return null;
       const v = window.speechSynthesis.getVoices();
       if (!v || !v.length) return null;
 
-      // 1. Ultra-Realistic Microsoft Edge Natural Female Voices (Jenny / Aria / Michelle)
       const edgeNatural = v.find(x => 
         (x.name.includes('Natural') || x.name.includes('Online')) && 
         (x.name.includes('Jenny') || x.name.includes('Aria') || x.name.includes('Michelle') || x.name.includes('Ana'))
       );
       if (edgeNatural) return edgeNatural;
 
-      // 2. Google US / UK Natural Voices (Chrome)
       const googleNatural = v.find(x => 
         x.name.includes('Google UK English Female') || 
         x.name.includes('Google US English') ||
@@ -1051,21 +1094,18 @@
       );
       if (googleNatural) return googleNatural;
 
-      // 3. Apple iOS / macOS Premium Female Voices (Samantha / Ava / Victoria)
       const appleNatural = v.find(x => 
         (x.name.includes('Ava') || x.name.includes('Samantha') || x.name.includes('Victoria') || x.name.includes('Serena')) &&
         !x.name.includes('Compact')
       );
       if (appleNatural) return appleNatural;
 
-      // 4. Any English voice containing 'Female' or 'Woman'
       const anyFemale = v.find(x => 
         x.lang.startsWith('en') && 
         (x.name.toLowerCase().includes('female') || x.name.toLowerCase().includes('woman') || x.name.includes('Zira'))
       );
       if (anyFemale) return anyFemale;
 
-      // 5. Exclude explicit male names (David, Mark, George, Daniel, Guy)
       const nonMale = v.find(x => 
         x.lang.startsWith('en') && 
         !['david', 'mark', 'george', 'daniel', 'guy', 'male'].some(m => x.name.toLowerCase().includes(m))
@@ -1078,7 +1118,6 @@
     function initVoice() {
       selectedFemaleVoice = getNaturalFemaleVoice();
       if (selectedFemaleVoice && voiceBadgeText) {
-        // Display active natural voice type
         const isStudio = selectedFemaleVoice.name.includes('Natural') || selectedFemaleVoice.name.includes('Google') || selectedFemaleVoice.name.includes('Ava');
         voiceBadgeText.textContent = isStudio ? "🌸 VOICE: STUDIO NATURAL GIRL" : "👑 VOICE: IMPERIAL GIRL";
       }
@@ -1105,7 +1144,6 @@
       if (!isVoiceOn || !('speechSynthesis' in window)) return;
       window.speechSynthesis.cancel();
 
-      // Clean markdown, brackets, and emojis for smooth human cadence
       const clean = text
         .replace(/<[^>]*>?/gm, '')
         .replace(/[*_#`~]/g, '')
@@ -1115,9 +1153,8 @@
       if (!selectedFemaleVoice) selectedFemaleVoice = getNaturalFemaleVoice();
       if (selectedFemaleVoice) utt.voice = selectedFemaleVoice;
 
-      // Realistic Human Girl Tuning (Natural pitch, avoid robot distortion)
-      utt.pitch = 1.03;  // Natural human frequency (not over-pitched)
-      utt.rate = 0.98;   // Natural comfortable speech rate
+      utt.pitch = 1.03;
+      utt.rate = 0.98;
 
       utt.onstart = () => {
         agentMood.textContent = 'DECREEING... 👑';
@@ -1142,41 +1179,34 @@
       const p = input.toLowerCase();
       let res = "", act = null;
 
-      // 1. YouTube Shorts / Reels
       if (p.includes('reel') || p.includes('play') || p.includes('video') || p.includes('short') || p.includes('watch')) {
         window.open("https://www.youtube.com/@motion-nest0.1/shorts", "_blank");
         act = "OPENED: Official YouTube Shorts";
         res = "By imperial decree, Fahim's official motion reels and YouTube Shorts have been unveiled in a new tab! Behold their brilliance, mortal.";
       } 
-      // 2. Contact & Hire
       else if (p.includes('contact') || p.includes('hire') || p.includes('facebook') || p.includes('fb') || p.includes('email') || p.includes('mail') || p.includes('reach') || p.includes('touch')) {
         document.querySelector('#contact').scrollIntoView({ behavior: 'smooth' });
         act = "SUMMONED: Imperial Contact Sanctum";
         res = "Seeking an alliance with Fahim? I have summoned the Imperial Contact Sanctum! Send a scroll directly to mf16348011@gmail.com or strike a pact through his Facebook profile below.";
       } 
-      // 3. Identity / Lore
       else if (p.includes('who') || p.includes('name') || p.includes('medusa') || p.includes('cai lin') || p.includes('queen')) {
         res = "Hmph, insolent mortal! I am Queen Medusa (Cai Lin), Empress of the Snake Tribe! Wielding the celestial power of the Seven-Colored Swallowing Python, I guard and rule over Fahim's greatest visual creations!";
       } 
-      // 4. Motion Design Filter
       else if (p.includes('motion') || p.includes('animation') || p.includes('saas') || p.includes('work') || p.includes('project')) {
         renderProjects('motion design');
         document.querySelector('#design-portfolio').scrollIntoView({ behavior: 'smooth' });
         act = "IMPERIAL DECREE: Filtered Motion Works";
         res = "By my imperial decree, the realm has filtered to showcase Fahim's heavenly motion design and SaaS animations! Gaze upon them below!";
       } 
-      // 5. Branding / Logo Filter
       else if (p.includes('brand') || p.includes('logo') || p.includes('identity')) {
         renderProjects('branding');
         document.querySelector('#design-portfolio').scrollIntoView({ behavior: 'smooth' });
         act = "IMPERIAL DECREE: Filtered Brand Identities";
         res = "Behold! The royal brand identities and modern monogram sigils crafted by Fahim have been summoned for your inspection.";
       } 
-      // 6. Greetings
       else if (p.includes('hello') || p.includes('hi') || p.includes('hey') || p.includes('greetings') || p.includes('how are you')) {
         res = "Hmph... You stand before the Empress. State your purpose quickly, for my time is exceedingly precious.";
       } 
-      // 7. Fallback
       else {
         res = `I have noted your words, mortal. You may command me to **"Show motion work"**, **"Play reel"**, or **"Contact Fahim"**!`;
       }
