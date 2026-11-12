@@ -341,7 +341,7 @@
     }
 
     /* ========================================================
-       REFINED ABOUT ME (1200x800 LOCKED OFFICIAL BANNER)
+       REFINED ABOUT ME (1200x800 LOCKED INVISIBLE BANNER)
        ======================================================== */
     .about-wrap{
       display:grid;
@@ -350,7 +350,7 @@
       align-items:start;
     }
 
-    /* 1200 / 800 PX LOCKED BANNER */
+    /* 1200 / 800 PX LOCKED BANNER (INVISIBLE LOCK & PROTECTED) */
     .about-thumbnail-card{
       width:100%;
       max-width:1200px;
@@ -387,6 +387,7 @@
       object-fit:cover;
       object-position:center;
       pointer-events:none;
+      user-select:none;
       -webkit-user-drag:none;
     }
 
@@ -403,21 +404,6 @@
       border-radius:10px;
       backdrop-filter:blur(10px);
       z-index:2;
-    }
-
-    .thumb-lock-badge{
-      position:absolute;
-      top:16px;
-      right:16px;
-      z-index:2;
-      background:rgba(6,3,10,0.85);
-      border:1px solid var(--purple-light);
-      color:var(--purple-light);
-      font-size:10px;
-      letter-spacing:.12em;
-      padding:5px 12px;
-      border-radius:20px;
-      backdrop-filter:blur(10px);
     }
 
     .about-thumb-footer{
@@ -816,8 +802,8 @@
     </section>
 
     <!-- ========================================================
-         REFINED ABOUT ME (1200x800 LOCKED OFFICIAL BANNER)
-         ======================================================== -->
+       REFINED ABOUT ME (1200x800 LOCKED INVISIBLE BANNER)
+       ======================================================== -->
     <section class="content-section" id="about">
       <!-- Upper Area: Story & Skills -->
       <div class="about-wrap">
@@ -858,10 +844,8 @@
         </div>
       </div>
 
-      <!-- LOWER AREA: EXACT 1200x800 PX LOCKED BANNER (POINTED DIRECTLY TO YOUR GITHUB PNG) -->
-      <div class="about-thumbnail-card">
-        <div class="thumb-lock-badge mono">🔒 OFFICIAL DESIGN BANNER</div>
-
+      <!-- LOWER AREA: 1200x800 PX LOCKED BANNER (INVISIBLE LOCK & PROTECTED) -->
+      <div class="about-thumbnail-card" oncontextmenu="return false;">
         <div class="thumbnail-stage-wrap">
           <img 
             src="Md. Fahim_ Visual Storyteller.png" 
@@ -934,9 +918,23 @@
     </div>
   </div>
 
-  <!-- JAVASCRIPT LOGIC -->
+  <!-- JAVASCRIPT LOGIC (WITH ALWAYS-OPEN-AT-TOP FIX) -->
   <script type="module">
     import * as THREE from 'three';
+
+    /* ========================================================
+       0. FORCE PAGE TO ALWAYS OPEN AT TOP (NO AUTO-SCROLL DOWN)
+       ======================================================== */
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
+    if (window.location.hash) {
+      history.replaceState(null, null, window.location.pathname + window.location.search);
+    }
+    window.scrollTo(0, 0);
+    window.addEventListener('load', () => {
+      setTimeout(() => window.scrollTo(0, 0), 10);
+    });
 
     /* ========================================================
        1. 29 BEHANCE PROJECTS DATASET (COMPACT & ROBUST)
@@ -1177,7 +1175,7 @@
     const actionToast = document.getElementById('actionToast');
     const voiceBadgeText = document.getElementById('voiceBadgeText');
     let isVoiceOn = true;
-    let selectedFemaleVoice = null;
+    let femaleVoice = null;
 
     function toast(msg) {
       actionToast.querySelector('span').textContent = msg;
@@ -1225,9 +1223,9 @@
     }
 
     function initVoice() {
-      selectedFemaleVoice = getNaturalFemaleVoice();
-      if (selectedFemaleVoice && voiceBadgeText) {
-        const isStudio = selectedFemaleVoice.name.includes('Natural') || selectedFemaleVoice.name.includes('Google') || selectedFemaleVoice.name.includes('Ava');
+      femaleVoice = getNaturalFemaleVoice();
+      if (femaleVoice && voiceBadgeText) {
+        const isStudio = femaleVoice.name.includes('Natural') || femaleVoice.name.includes('Google') || femaleVoice.name.includes('Ava');
         voiceBadgeText.textContent = isStudio ? "🌸 VOICE: STUDIO NATURAL GIRL" : "👑 VOICE: IMPERIAL GIRL";
       }
     }
@@ -1238,7 +1236,7 @@
     }
 
     window.addEventListener('touchstart', () => {
-      if ('speechSynthesis' in window && !selectedFemaleVoice) initVoice();
+      if ('speechSynthesis' in window && !femaleVoice) initVoice();
     }, { once: true, passive: true });
 
     voiceToggle.addEventListener('click', () => {
@@ -1259,8 +1257,8 @@
         .replace(/[\u{1F600}-\u{1F64F}\u{1F300}-\u{1F5FF}\u{1F680}-\u{1F6FF}\u{1F1E0}-\u{1F1FF}\u{2600}-\u{26FF}\u{2700}-\u{27BF}]/gu, '');
 
       const utt = new SpeechSynthesisUtterance(clean);
-      if (!selectedFemaleVoice) selectedFemaleVoice = getNaturalFemaleVoice();
-      if (selectedFemaleVoice) utt.voice = selectedFemaleVoice;
+      if (!femaleVoice) femaleVoice = getNaturalFemaleVoice();
+      if (femaleVoice) utt.voice = femaleVoice;
 
       utt.pitch = 1.03;
       utt.rate = 0.98;
