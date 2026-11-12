@@ -196,7 +196,7 @@
     .project-meta h3{font-size:15px;line-height:1.4;letter-spacing:-.02em;color:var(--white)}
     .project-meta p{margin-top:8px;font:9px 'DM Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:#c0a2e0}
 
-    /* YouTube Section (Red & White Theme + Direct Cards) */
+    /* YouTube Section (Red & White Theme) */
     .yt-section{
       background: radial-gradient(ellipse at 50% 25%, rgba(255, 0, 51, 0.16), transparent 65%), linear-gradient(180deg, #06030a, #0d0205 60%, #06030a);
       border-top: 1px solid rgba(255,0,51,0.22);border-bottom: 1px solid rgba(255,0,51,0.22);
@@ -341,7 +341,7 @@
     }
 
     /* ========================================================
-       REFINED ABOUT ME (WITH DEDICATED IMAGE SHOWCASE FRAME)
+       REFINED ABOUT ME (WITH RELIABLE PERSISTENT PROFILE ART)
        ======================================================== */
     .about-wrap{
       display:grid;
@@ -350,7 +350,6 @@
       align-items: stretch;
     }
     
-    /* User Profile Artwork Card */
     .about-image-card{
       border: 1px solid var(--panel-border);
       border-radius: 22px;
@@ -396,22 +395,27 @@
       gap: 6px;
     }
 
+    /* Clickable Upload Pill (Directly Triggers File Dialog) */
     .img-upload-pill{
       position: absolute;
       top: 14px;
       right: 14px;
-      z-index: 3;
-      background: rgba(15,7,26,0.85);
+      z-index: 10;
+      background: rgba(15,7,26,0.92);
       border: 1px solid var(--purple);
       color: var(--purple-light);
-      padding: 5px 12px;
-      border-radius: 18px;
-      font: 9px 'DM Mono', monospace;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font: 600 10px 'DM Mono', monospace;
       cursor: pointer;
-      backdrop-filter: blur(8px);
+      backdrop-filter: blur(10px);
       transition: .25s;
     }
-    .img-upload-pill:hover{background:var(--purple);color:#fff}
+    .img-upload-pill:hover{
+      background: var(--purple);
+      color: #fff;
+      border-color: var(--gold);
+    }
 
     .about-role-badge{
       display:inline-block;font-size:11px;color:var(--gold);letter-spacing:.12em;
@@ -796,15 +800,16 @@
     </section>
 
     <!-- ========================================================
-         REFINED ABOUT ME SECTION (WITH AUTO-SAVE PROFILE IMAGE)
+         REFINED ABOUT ME SECTION (WITH INSTANT-UPDATE PROFILE IMAGE)
          ======================================================== -->
     <section class="content-section" id="about">
       <div class="about-wrap">
         
-        <!-- User Profile Artwork Card (Auto-saved via localStorage) -->
+        <!-- User Profile Artwork Card -->
         <div class="about-image-card">
-          <label for="aboutImgUpload" class="img-upload-pill mono" title="Choose image from computer">📷 Change Image</label>
-          <input type="file" id="aboutImgUpload" accept="image/*" style="display:none;" />
+          <!-- Button directly triggers the file upload -->
+          <button type="button" class="img-upload-pill mono" id="changeImgBtn" title="Choose image from computer">📷 Change Image</button>
+          <input type="file" id="aboutImgUpload" accept="image/*" style="opacity:0;position:absolute;z-index:-1;width:1px;height:1px;pointer-events:none;" />
           
           <img 
             src="me.jpg" 
@@ -914,7 +919,7 @@
     </div>
   </div>
 
-  <!-- JAVASCRIPT LOGIC (CROSS-DEVICE OPTIMIZED + AUTO-PERSISTENT IMAGE STORAGE) -->
+  <!-- JAVASCRIPT LOGIC (CROSS-DEVICE OPTIMIZED + INSTANT IMAGE SAVING) -->
   <script type="module">
     import * as THREE from 'three';
 
@@ -1067,7 +1072,351 @@
     }
 
     /* ========================================================
-       3. ABOUT PROFILE IMAGE: PERMANENT STORAGE IN LOCALSTORAGE
+       3. ABOUT PROFILE IMAGE: INSTANT & PERMANENT UPDATE
        ======================================================== */
     const aboutImgUpload = document.getElementById('aboutImgUpload');
-    const aboutProfileImg = doc
+    const aboutProfileImg = document.getElementById('aboutProfileImg');
+    const changeImgBtn = document.getElementById('changeImgBtn');
+
+    // 1. Restore from browser storage on load
+    try {
+      const savedUserImg = localStorage.getItem('user_fahim_artwork_storage');
+      if (savedUserImg && aboutProfileImg) {
+        aboutProfileImg.src = savedUserImg;
+      }
+    } catch(err) {
+      console.log("Storage access notice:", err);
+    }
+
+    // 2. Click button to trigger file dialog (100% reliable)
+    if (changeImgBtn && aboutImgUpload) {
+      changeImgBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        aboutImgUpload.click();
+      });
+    }
+
+    // 3. Instant Display + Background Storage
+    if (aboutImgUpload && aboutProfileImg) {
+      aboutImgUpload.addEventListener('change', function() {
+        const file = this.files && this.files[0];
+        if (!file) return;
+
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          const rawData = e.target.result;
+          
+          // Instant Display (Zero Lag!)
+          aboutProfileImg.src = rawData;
+          toast("Artwork Updated Instantly! ✦");
+
+          // Save and compress into localStorage for permanent memory
+          const tempImg = new Image();
+          tempImg.onload = function() {
+            try {
+              const canvas = document.createElement('canvas');
+              const maxDim = 1200;
+              const scale = Math.min(1, maxDim / Math.max(tempImg.width, tempImg.height));
+              canvas.width = tempImg.width * scale;
+              canvas.height = tempImg.height * scale;
+              const ctx = canvas.getContext('2d');
+              ctx.drawImage(tempImg, 0, 0, canvas.width, canvas.height);
+              
+              const compressedBase64 = canvas.toDataURL('image/jpeg', 0.85);
+              localStorage.setItem('user_fahim_artwork_storage', compressedBase64);
+            } catch(quotaErr) {
+              console.warn("Storage quota warning:", quotaErr);
+            }
+          };
+          tempImg.src = rawData;
+        };
+        reader.readAsDataURL(file);
+      });
+    }
+
+    /* ========================================================
+       4. QUEEN MEDUSA SERPENT EYES TRACKING (UNIFIED DESKTOP & TOUCH)
+       ======================================================== */
+    const leftPupil = document.getElementById('leftPupil');
+    const rightPupil = document.getElementById('rightPupil');
+    const leftEyeGroup = document.getElementById('leftEyeGroup');
+    const rightEyeGroup = document.getElementById('rightEyeGroup');
+    const medusaMouth = document.getElementById('medusaMouth');
+    const medusaWrap = document.getElementById('medusaWrap');
+
+    const updateTracking = (clientX, clientY) => {
+      const x = (clientX / window.innerWidth - 0.5) * 8;
+      const y = (clientY / window.innerHeight - 0.5) * 6;
+      if (leftPupil && rightPupil) {
+        leftPupil.style.transform = `translate(${x}px, ${y}px)`;
+        rightPupil.style.transform = `translate(${x}px, ${y}px)`;
+      }
+      if (medusaWrap) {
+        medusaWrap.style.transform = `translate(${x * 0.25}px, ${y * 0.2}px)`;
+      }
+      pointerX = (clientX / window.innerWidth - .5) * 2;
+      pointerY = (clientY / window.innerHeight - .5) * 2;
+    };
+
+    window.addEventListener('pointermove', e => updateTracking(e.clientX, e.clientY), { passive: true });
+    window.addEventListener('touchmove', e => {
+      if (e.touches && e.touches[0]) updateTracking(e.touches[0].clientX, e.touches[0].clientY);
+    }, { passive: true });
+
+    function triggerMedusaBlink() {
+      if (leftEyeGroup && rightEyeGroup) {
+        leftEyeGroup.classList.add('blinking');
+        rightEyeGroup.classList.add('blinking');
+        setTimeout(() => {
+          leftEyeGroup.classList.remove('blinking');
+          rightEyeGroup.classList.remove('blinking');
+        }, 130);
+      }
+      setTimeout(triggerMedusaBlink, 3200 + Math.random() * 4500);
+    }
+    setTimeout(triggerMedusaBlink, 2200);
+
+    /* ========================================================
+       5. CROSS-DEVICE VOICE INPUT (MIC 🎙️) - ENGLISH RECOGNITION
+       ======================================================== */
+    const micBtn = document.getElementById('micBtn');
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+    if (SpeechRecognition) {
+      const recognition = new SpeechRecognition();
+      recognition.continuous = false;
+      recognition.interimResults = false;
+      recognition.lang = 'en-US';
+
+      micBtn.addEventListener('click', () => {
+        try {
+          recognition.start();
+          micBtn.classList.add('listening');
+          toast("Her Majesty is listening... Speak! 👑");
+        } catch(err) {
+          recognition.stop();
+          micBtn.classList.remove('listening');
+        }
+      });
+
+      recognition.onresult = (e) => {
+        const transcript = e.results[0][0].transcript;
+        aiInput.value = transcript;
+        micBtn.classList.remove('listening');
+        handleChat(transcript);
+      };
+
+      recognition.onerror = () => micBtn.classList.remove('listening');
+      recognition.onend = () => micBtn.classList.remove('listening');
+    } else {
+      micBtn.style.opacity = "0.4";
+      micBtn.title = "Voice recognition not supported on this browser";
+    }
+
+    /* ========================================================
+       6. ULTRA-NATURAL HUMAN FEMALE VOICE ENGINE
+       ======================================================== */
+    const aiChatWindow = document.getElementById('aiChatWindow');
+    const aiForm = document.getElementById('aiForm');
+    const aiInput = document.getElementById('aiInput');
+    const agentMood = document.getElementById('agentMood');
+    const voiceToggle = document.getElementById('voiceToggle');
+    const voiceStatus = document.getElementById('voiceStatus');
+    const actionToast = document.getElementById('actionToast');
+    const voiceBadgeText = document.getElementById('voiceBadgeText');
+    let isVoiceOn = true;
+    let selectedFemaleVoice = null;
+
+    function toast(msg) {
+      actionToast.querySelector('span').textContent = msg;
+      actionToast.classList.add('show');
+      setTimeout(() => actionToast.classList.remove('show'), 2500);
+    }
+
+    function getNaturalFemaleVoice() {
+      if (!('speechSynthesis' in window)) return null;
+      const v = window.speechSynthesis.getVoices();
+      if (!v || !v.length) return null;
+
+      const edgeNatural = v.find(x => 
+        (x.name.includes('Natural') || x.name.includes('Online')) && 
+        (x.name.includes('Jenny') || x.name.includes('Aria') || x.name.includes('Michelle') || x.name.includes('Ana'))
+      );
+      if (edgeNatural) return edgeNatural;
+
+      const googleNatural = v.find(x => 
+        x.name.includes('Google UK English Female') || 
+        x.name.includes('Google US English') ||
+        (x.name.includes('Google') && x.lang.startsWith('en'))
+      );
+      if (googleNatural) return googleNatural;
+
+      const appleNatural = v.find(x => 
+        (x.name.includes('Ava') || x.name.includes('Samantha') || x.name.includes('Victoria') || x.name.includes('Serena')) &&
+        !x.name.includes('Compact')
+      );
+      if (appleNatural) return appleNatural;
+
+      const anyFemale = v.find(x => 
+        x.lang.startsWith('en') && 
+        (x.name.toLowerCase().includes('female') || x.name.toLowerCase().includes('woman') || x.name.includes('Zira'))
+      );
+      if (anyFemale) return anyFemale;
+
+      const nonMale = v.find(x => 
+        x.lang.startsWith('en') && 
+        !['david', 'mark', 'george', 'daniel', 'guy', 'male'].some(m => x.name.toLowerCase().includes(m))
+      );
+      if (nonMale) return nonMale;
+
+      return v.find(x => x.lang.startsWith('en')) || v[0];
+    }
+
+    function initVoice() {
+      selectedFemaleVoice = getNaturalFemaleVoice();
+      if (selectedFemaleVoice && voiceBadgeText) {
+        const isStudio = selectedFemaleVoice.name.includes('Natural') || selectedFemaleVoice.name.includes('Google') || selectedFemaleVoice.name.includes('Ava');
+        voiceBadgeText.textContent = isStudio ? "🌸 VOICE: STUDIO NATURAL GIRL" : "👑 VOICE: IMPERIAL GIRL";
+      }
+    }
+
+    if ('speechSynthesis' in window) {
+      initVoice();
+      window.speechSynthesis.onvoiceschanged = initVoice;
+    }
+
+    window.addEventListener('touchstart', () => {
+      if ('speechSynthesis' in window && !selectedFemaleVoice) initVoice();
+    }, { once: true, passive: true });
+
+    voiceToggle.addEventListener('click', () => {
+      isVoiceOn = !isVoiceOn;
+      voiceToggle.classList.toggle('active', isVoiceOn);
+      voiceStatus.textContent = isVoiceOn ? 'ON' : 'OFF';
+      if (isVoiceOn) speak("Hmph. You shall hear my imperial decree.");
+      else window.speechSynthesis.cancel();
+    });
+
+    function speak(text) {
+      if (!isVoiceOn || !('speechSynthesis' in window)) return;
+      window.speechSynthesis.cancel();
+
+      const clean = text
+        .replace(/<[^>]*>?/gm, '')
+        .replace(/[*_#`~]/g, '')
+        .replace(/[\u{1F600}-\u{1F64F}\u{1F300}-\u{1F5FF}\u{1F680}-\u{1F6FF}\u{1F1E0}-\u{1F1FF}\u{2600}-\u{26FF}\u{2700}-\u{27BF}]/gu, '');
+
+      const utt = new SpeechSynthesisUtterance(clean);
+      if (!selectedFemaleVoice) selectedFemaleVoice = getNaturalFemaleVoice();
+      if (selectedFemaleVoice) utt.voice = selectedFemaleVoice;
+
+      utt.pitch = 1.03;
+      utt.rate = 0.98;
+
+      utt.onstart = () => {
+        agentMood.textContent = 'DECREEING... 👑';
+        agentMood.style.color = '#ffd700';
+        if (medusaMouth) medusaMouth.classList.add('speaking-mouth');
+      };
+      utt.onend = () => {
+        agentMood.textContent = 'IMPERIAL MAJESTY 👑';
+        agentMood.style.color = '#fff';
+        if (medusaMouth) medusaMouth.classList.remove('speaking-mouth');
+      };
+      utt.onerror = () => {
+        agentMood.textContent = 'IMPERIAL MAJESTY 👑';
+        if (medusaMouth) medusaMouth.classList.remove('speaking-mouth');
+      };
+
+      window.speechSynthesis.speak(utt);
+    }
+
+    // Pure English Imperial Commands & Dialogue
+    function executeImperialCommand(input) {
+      const p = input.toLowerCase();
+      let res = "", act = null;
+
+      if (p.includes('reel') || p.includes('play') || p.includes('video') || p.includes('short') || p.includes('watch')) {
+        window.open("https://www.youtube.com/@motion-nest0.1/shorts", "_blank");
+        act = "OPENED: Official YouTube Shorts";
+        res = "By imperial decree, Fahim's official motion reels and YouTube Shorts have been unveiled in a new tab! Behold their brilliance, mortal.";
+      } 
+      else if (p.includes('contact') || p.includes('hire') || p.includes('facebook') || p.includes('fb') || p.includes('email') || p.includes('mail') || p.includes('reach') || p.includes('touch')) {
+        document.querySelector('#contact').scrollIntoView({ behavior: 'smooth' });
+        act = "SUMMONED: Imperial Contact Sanctum";
+        res = "Seeking an alliance with Fahim? I have summoned the Imperial Contact Sanctum! Send a scroll directly to mf16348011@gmail.com or strike a pact through his Facebook profile below.";
+      } 
+      else if (p.includes('who') || p.includes('name') || p.includes('medusa') || p.includes('cai lin') || p.includes('queen')) {
+        res = "Hmph, insolent mortal! I am Queen Medusa (Cai Lin), Empress of the Snake Tribe! Wielding the celestial power of the Seven-Colored Swallowing Python, I guard and rule over Fahim's greatest visual creations!";
+      } 
+      else if (p.includes('motion') || p.includes('animation') || p.includes('saas') || p.includes('work') || p.includes('project')) {
+        renderProjects('motion design');
+        document.querySelector('#design-portfolio').scrollIntoView({ behavior: 'smooth' });
+        act = "IMPERIAL DECREE: Filtered Motion Works";
+        res = "By my imperial decree, the realm has filtered to showcase Fahim's heavenly motion design and SaaS animations! Gaze upon them below!";
+      } 
+      else if (p.includes('brand') || p.includes('logo') || p.includes('identity')) {
+        renderProjects('branding');
+        document.querySelector('#design-portfolio').scrollIntoView({ behavior: 'smooth' });
+        act = "IMPERIAL DECREE: Filtered Brand Identities";
+        res = "Behold! The royal brand identities and modern monogram sigils crafted by Fahim have been summoned for your inspection.";
+      } 
+      else if (p.includes('hello') || p.includes('hi') || p.includes('hey') || p.includes('greetings') || p.includes('how are you')) {
+        res = "Hmph... You stand before the Empress. State your purpose quickly, for my time is exceedingly precious.";
+      } 
+      else {
+        res = `I have noted your words, mortal. You may command me to **"Show motion work"**, **"Play reel"**, or **"Contact Fahim"**!`;
+      }
+      return { res, act };
+    }
+
+    function addMsg(sender, text, action) {
+      const bubble = document.createElement('div');
+      bubble.className = `chat-bubble ${sender}`;
+      let content = text;
+      if (action) content += `<br><span class="action-chip-pill">👑 ${action}</span>`;
+      bubble.innerHTML = sender === 'bot' ? `<div class="chat-avatar">👑</div><div>${content}</div>` : `<div>${content}</div>`;
+      aiChatWindow.appendChild(bubble);
+      aiChatWindow.scrollTop = aiChatWindow.scrollHeight;
+    }
+
+    function handleChat(txt) {
+      if (!txt.trim()) return;
+      addMsg('user', txt);
+      aiInput.value = '';
+
+      agentMood.textContent = 'HEEDING... ✨';
+      const typing = document.createElement('div');
+      typing.className = 'chat-bubble bot';
+      typing.innerHTML = `<div class="chat-avatar">👑</div><div><em>Queen Medusa is contemplating...</em></div>`;
+      aiChatWindow.appendChild(typing);
+      aiChatWindow.scrollTop = aiChatWindow.scrollHeight;
+
+      setTimeout(() => {
+        typing.remove();
+        const { res, act } = executeImperialCommand(txt);
+        addMsg('bot', res, act);
+        if (act) toast(act);
+        speak(res);
+      }, 650);
+    }
+
+    aiForm.addEventListener('submit', e => { e.preventDefault(); handleChat(aiInput.value); });
+    document.querySelectorAll('.quick-chip').forEach(c => c.addEventListener('click', () => handleChat(c.dataset.prompt)));
+
+    // Modal, BackToTop, Responsive Drawer
+    const modal = document.getElementById('videoModal');
+    const iframe = document.getElementById('videoIframe');
+    document.getElementById('closeModal').onclick = () => { modal.classList.remove('active'); iframe.src = ''; };
+
+    const btt = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => { btt.style.display = window.scrollY > 400 ? 'grid' : 'none'; }, { passive: true });
+    btt.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    const toggle = document.getElementById('menuToggle');
+    const nav = document.getElementById('mainNav');
+    toggle.onclick = () => nav.classList.toggle('open');
+    nav.querySelectorAll('a').forEach(a => a.onclick = () => nav.classList.remove('open'));
+  </script>
+</body>
+</html>
