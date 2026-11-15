@@ -7,8 +7,8 @@
   <meta name="theme-color" content="#06030a" />
   
   <title>MD FAHIM — Creative Designer & Motion Artist | Portfolio</title>
-  <meta name="description" content="MD Fahim — Graphic Designer & Motion Graphics Artist specializing in visual storytelling, branding, and SaaS animation. Ruled by Queen Medusa AI." />
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👑</text></svg>">
+  <meta name="description" content="MD Fahim — Graphic Designer & Motion Graphics Artist specializing in visual storytelling, branding, and SaaS animation. Guided by Grandmaster Xuan Yi AI." />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✨</text></svg>">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -27,8 +27,8 @@
       --purple: #a855f7;
       --purple-light: #d8b4fe;
       --violet: #7928ca;
-      --crimson: #be123c;
-      --crimson-glow: rgba(225, 29, 72, 0.35);
+      --teal: #14b8a6;
+      --teal-glow: rgba(20, 184, 166, 0.35);
       --gold: #ffd700;
       --gold-glow: rgba(255, 215, 0, 0.35);
       --purple-glow: rgba(168, 85, 247, 0.35);
@@ -305,7 +305,7 @@
       width: 32px;
       height: 32px;
       border-radius: 10px;
-      background: linear-gradient(135deg, var(--gold), #a855f7);
+      background: linear-gradient(135deg, var(--gold), #14b8a6);
       display: grid;
       place-items: center;
     }
@@ -502,9 +502,11 @@
     }
     .yt-btn:hover { background: var(--yt-red); }
 
-    /* Queen Medusa (Cai Lin · BTTH) Imperial AI Sanctum */
+    /* ========================================================
+       XUAN YI (PILL TOWER · BTTH) 3D SANCTUM
+       ======================================================== */
     .ai-section {
-      background: radial-gradient(ellipse at 50% 20%, rgba(168, 85, 247, 0.2), transparent 60%), #06030a;
+      background: radial-gradient(ellipse at 50% 20%, rgba(20, 184, 166, 0.18), transparent 60%), #06030a;
     }
     .ai-layout {
       display: grid;
@@ -515,9 +517,9 @@
     }
     
     .medusa-card {
-      border: 1px solid rgba(255, 215, 0, 0.45);
+      border: 1px solid rgba(20, 184, 166, 0.45);
       border-radius: 24px;
-      background: radial-gradient(circle at 50% 30%, #200824, #08020d);
+      background: radial-gradient(circle at 50% 30%, #082124, #040810);
       position: relative;
       overflow: hidden;
       min-height: 480px;
@@ -525,8 +527,9 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      box-shadow: 0 25px 70px rgba(0, 0, 0, .7), 0 0 35px var(--gold-glow);
+      box-shadow: 0 25px 70px rgba(0, 0, 0, .7), 0 0 35px var(--teal-glow);
     }
+    
     .medusa-stage {
       position: absolute;
       inset: 0;
@@ -536,28 +539,26 @@
       display: flex;
       align-items: center;
       justify-content: center;
+    }
+    #medusa3dCanvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+      outline: none;
+    }
+
+    .medusa-loader-msg {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font: 500 11px 'DM Mono', monospace;
+      color: #5eead4;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      z-index: 2;
       pointer-events: none;
-    }
-    .medusa-svg {
-      width: min(340px, 86%);
-      height: auto;
-      max-height: 450px;
-      filter: drop-shadow(0 20px 40px rgba(225, 29, 72, 0.35));
-    }
-    
-    .serpent-pupil { transition: transform 0.1s ease-out; }
-    .serpent-lid { transform-origin: center; transition: transform 0.08s ease; }
-    .blinking .serpent-lid { transform: scaleY(0.08); }
-    .medusa-mouth { transform-origin: 165px 238px; transition: transform 0.1s ease; }
-    .speaking-mouth { animation: medusaSpeak 0.2s infinite alternate ease-in-out; }
-    @keyframes medusaSpeak {
-      0% { transform: scaleY(0.5) scaleX(0.9); }
-      100% { transform: scaleY(2.0) scaleX(1.15); }
-    }
-    .floating-empress { animation: empressAura 4s infinite ease-in-out; }
-    @keyframes empressAura {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-8px); }
+      transition: opacity .4s ease;
     }
 
     .agent-overlay-top {
@@ -567,23 +568,24 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: linear-gradient(180deg, rgba(9, 2, 14, .92), transparent);
+      background: linear-gradient(180deg, rgba(6, 18, 20, .92), transparent);
       gap: 10px;
+      pointer-events: none;
     }
     .agent-badge {
       display: flex;
       align-items: center;
       gap: 8px;
       font: 10px 'DM Mono', monospace;
-      color: var(--gold);
+      color: #5eead4;
       letter-spacing: .12em;
     }
     .pulse-light {
       width: 8px;
       height: 8px;
       border-radius: 50%;
-      background: var(--gold);
-      box-shadow: 0 0 12px var(--gold);
+      background: #14b8a6;
+      box-shadow: 0 0 12px #14b8a6;
       flex-shrink: 0;
     }
     .agent-mood-tag {
@@ -591,8 +593,8 @@
       letter-spacing: .12em;
       padding: 4px 10px;
       border-radius: 12px;
-      background: rgba(255, 215, 0, .18);
-      border: 1px solid var(--gold);
+      background: rgba(20, 184, 166, .18);
+      border: 1px solid #14b8a6;
       color: #fff;
       white-space: nowrap;
     }
@@ -600,7 +602,8 @@
       position: relative;
       z-index: 3;
       padding: 18px;
-      background: linear-gradient(0deg, rgba(9, 2, 14, .96) 40%, transparent);
+      background: linear-gradient(0deg, rgba(6, 18, 20, .96) 40%, transparent);
+      pointer-events: none;
     }
     
     /* AI Chat Card */
@@ -661,9 +664,9 @@
     }
     .chat-bubble.bot {
       align-self: flex-start;
-      background: rgba(28, 11, 42, .88);
-      border: 1px solid rgba(255, 215, 0, .3);
-      color: #f5ebfa;
+      background: rgba(10, 24, 28, .88);
+      border: 1px solid rgba(20, 184, 166, .4);
+      color: #e6fcf8;
     }
     .chat-bubble.user {
       align-self: flex-end;
@@ -674,12 +677,12 @@
       width: 28px;
       height: 28px;
       border-radius: 8px;
-      background: linear-gradient(135deg, var(--gold), var(--crimson));
+      background: linear-gradient(135deg, #14b8a6, var(--gold));
       display: grid;
       place-items: center;
       font-size: 13px;
       flex-shrink: 0;
-      color: #fff;
+      color: #000;
       font-weight: 900;
     }
     .action-chip-pill {
@@ -688,9 +691,9 @@
       padding: 3px 8px;
       border-radius: 8px;
       font: 10px 'DM Mono', monospace;
-      background: rgba(255, 215, 0, .2);
-      border: 1px solid var(--gold);
-      color: #ffd700;
+      background: rgba(20, 184, 166, .2);
+      border: 1px solid #14b8a6;
+      color: #5eead4;
     }
     
     .quick-prompts {
@@ -768,8 +771,8 @@
     
     .ai-send-btn {
       border: none;
-      background: linear-gradient(120deg, var(--gold), var(--crimson));
-      color: #fff;
+      background: linear-gradient(120deg, #14b8a6, var(--gold));
+      color: #000;
       font-weight: 900;
       width: 42px;
       height: 42px;
@@ -973,8 +976,8 @@
       bottom: 80px;
       left: 50%;
       transform: translateX(-50%) translateY(30px);
-      background: rgba(18, 7, 30, .96);
-      border: 1px solid var(--gold);
+      background: rgba(8, 33, 36, .96);
+      border: 1px solid #14b8a6;
       color: #fff;
       padding: 9px 18px;
       border-radius: 30px;
@@ -1054,7 +1057,7 @@
       }
       .hero-copy { max-width: 100%; }
       .ai-layout, .about-wrap { grid-template-columns: 1fr; gap: 20px; }
-      .medusa-card { min-height: 420px; height: 420px; }
+      .medusa-card { min-height: 440px; height: 440px; }
       .assistant-chip { display: none; }
       .about-thumbnail-card { margin-top: 24px; }
     }
@@ -1090,8 +1093,7 @@
       .primary-btn, .watch-link { justify-content: center; }
       .ai-input-wrap { padding: 10px 12px; }
       .chat-bubble { max-width: 96%; }
-      .medusa-card { min-height: 360px; height: 360px; }
-      .medusa-svg { max-height: 330px; }
+      .medusa-card { min-height: 390px; height: 390px; }
       .thumb-badge-floating { font-size: 8px; padding: 4px 8px; bottom: 10px; left: 10px; }
     }
   </style>
@@ -1099,7 +1101,8 @@
   <script type="importmap">
     {
       "imports": {
-        "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js"
+        "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
       }
     }
   </script>
@@ -1109,12 +1112,12 @@
     <a class="logo" href="#home">MF<span>.</span></a>
     <nav class="nav" id="mainNav">
       <a href="#spaces">Portfolio</a>
-      <a href="#ai-assistant" class="ai-nav">👑 Queen Medusa</a>
+      <a href="#ai-assistant" class="ai-nav">✨ Xuan Yi</a>
       <a href="#youtube-work">Videos</a>
       <a href="#about">About</a>
       <a href="#contact">Contact</a>
     </nav>
-    <div class="availability"><i class="status-dot"></i> Imperial Realm</div>
+    <div class="availability"><i class="status-dot"></i> Pill Tower Realm</div>
     <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">☰</button>
   </header>
 
@@ -1143,8 +1146,8 @@
         </div>
       </div>
       <a class="assistant-chip" href="#ai-assistant">
-        <span class="assistant-icon">👑</span>
-        <span><b>Queen Medusa ✦</b><small>Enter the Imperial Domain</small></span>
+        <span class="assistant-icon">✨</span>
+        <span><b>Grandmaster Xuan Yi ✦</b><small>Enter the Pill Tower</small></span>
         <span>↓</span>
       </a>
     </section>
@@ -1180,7 +1183,7 @@
       <div>
         <div class="section-kicker">Selected work / 001—029</div>
         <h2 class="section-title">Made to make<br><span class="gradient-text">an impact.</span></h2>
-        <p class="section-desc">A curated collection of my 29 graphic design projects. Select any category or command Queen Medusa to summon them!</p>
+        <p class="section-desc">A curated collection of my 29 graphic design projects. Select any category or consult Grandmaster Xuan Yi to summon them!</p>
       </div>
 
       <div class="work-toolbar" id="filterBar">
@@ -1250,166 +1253,67 @@
       </div>
     </section>
 
-    <!-- QUEEN MEDUSA (CAI LIN · BTTH) IMPERIAL AI SANCTUM -->
+    <!-- XUAN YI (PILL TOWER · BTTH) 3D ANIMATED SANCTUM -->
     <section class="content-section ai-section" id="ai-assistant">
       <div>
-        <div class="section-kicker">Imperial Sanctuary / Queen Medusa (BTTH)</div>
-        <h2 class="section-title">Audience with the <span class="gradient-text">Empress.</span></h2>
-        <p class="section-desc">Address Her Imperial Majesty in English using your voice (Mic 🎙️) or text, and listen to her captivating voice!</p>
+        <div class="section-kicker">Pill Tower Sanctuary / Xuan Yi (BTTH)</div>
+        <h2 class="section-title">Audience with <span class="gradient-text">Xuan Yi.</span></h2>
+        <p class="section-desc">Consult with Grandmaster Xuan Yi in English using voice (Mic 🎙️) or text, and watch her naturally interact in 3D!</p>
       </div>
 
       <div class="ai-layout">
-        <!-- Queen Medusa Serpentine Card with Anime-Accurate Visuals -->
+        <!-- 3D Model Card -->
         <div class="medusa-card">
           <div class="agent-overlay-top">
             <div class="agent-badge">
               <span class="pulse-light"></span>
-              <span>QUEEN MEDUSA · CAI LIN (BTTH)</span>
+              <span>XUAN YI · PILL TOWER GIANT (3D)</span>
             </div>
-            <div class="agent-mood-tag" id="agentMood">IMPERIAL MAJESTY 👑</div>
+            <div class="agent-mood-tag" id="agentMood">GRANDMASTER ✨</div>
           </div>
 
           <div class="medusa-stage">
-            <div class="floating-empress" id="medusaWrap">
-              <svg class="medusa-svg" viewBox="0 0 330 460" xmlns="http://www.w3.org/2000/svg">
-                <defs>
-                  <!-- Seven-Colored Swallowing Python Halo Aura -->
-                  <radialGradient id="sevenColoredAura" cx="50%" cy="50%" r="50%">
-                    <stop offset="0%" stop-color="#ffd700" stop-opacity="0.35"/>
-                    <stop offset="35%" stop-color="#e11d48" stop-opacity="0.3"/>
-                    <stop offset="70%" stop-color="#a855f7" stop-opacity="0.25"/>
-                    <stop offset="100%" stop-color="#06030a" stop-opacity="0"/>
-                  </radialGradient>
-                  
-                  <!-- BTTH Empress Crimson Silk Robe -->
-                  <linearGradient id="empressRedRobe" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stop-color="#e11d48"/>
-                    <stop offset="45%" stop-color="#9f1239"/>
-                    <stop offset="100%" stop-color="#4c0519"/>
-                  </linearGradient>
-
-                  <!-- Gold Trim Gradient -->
-                  <linearGradient id="imperialGold" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stop-color="#fff5a5"/>
-                    <stop offset="50%" stop-color="#ffd700"/>
-                    <stop offset="100%" stop-color="#b45309"/>
-                  </linearGradient>
-
-                  <radialGradient id="gemGlow" cx="50%" cy="50%" r="50%">
-                    <stop offset="0%" stop-color="#ff4d6d"/>
-                    <stop offset="100%" stop-color="#880d1e"/>
-                  </radialGradient>
-                </defs>
-
-                <!-- Swallowing Python Aura Backdrop -->
-                <circle cx="165" cy="180" r="145" fill="url(#sevenColoredAura)" opacity="0.85"/>
-
-                <!-- Dark Flowing Silk Hair -->
-                <path d="M72,110 C35,230 20,350 35,425 C55,455 100,455 115,395 C120,310 115,240 115,200 Z" fill="#08030f"/>
-                <path d="M258,110 C295,230 310,350 295,425 C275,455 230,455 215,395 C210,310 215,240 215,200 Z" fill="#08030f"/>
-                <path d="M60,95 C45,260 75,400 165,420 C255,400 285,260 270,95 Z" fill="#12061e"/>
-
-                <!-- Medusa Crimson & Gold Robes (BTTH Iconic Dress) -->
-                <path d="M105,265 L60,420 L270,420 L225,265 Z" fill="url(#empressRedRobe)"/>
-                <path d="M130,265 L110,360 L220,360 L200,265 Z" fill="url(#imperialGold)" opacity="0.95"/>
-                <path d="M142,265 L130,340 L198,340 L188,265 Z" fill="#881337"/>
-                
-                <!-- Center Imperial Brooch -->
-                <polygon points="165,255 174,272 165,290 156,272" fill="url(#imperialGold)"/>
-                <circle cx="165" cy="272" r="4" fill="url(#gemGlow)"/>
-
-                <!-- Slender Neck & Face Structure -->
-                <rect x="151" y="210" width="28" height="38" rx="6" fill="#fcebe6"/>
-                <path d="M102,135 C102,72 228,72 228,135 C228,198 188,242 165,246 C142,242 102,198 102,135 Z" fill="#fff5f0"/>
-
-                <!-- BTTH Medusa Forehead Huadian (Serpent Lotus Mark) -->
-                <path d="M165,108 C160,116 156,122 165,128 C174,122 170,116 165,108 Z" fill="#be123c"/>
-                <circle cx="165" cy="118" r="1.8" fill="#ffd700"/>
-
-                <!-- Seductive Blush & Alluring Lips -->
-                <ellipse cx="123" cy="186" rx="15" ry="7" fill="#f43f5e" opacity="0.28"/>
-                <ellipse cx="207" cy="186" rx="15" ry="7" fill="#f43f5e" opacity="0.28"/>
-                <g class="medusa-mouth" id="medusaMouth">
-                  <path d="M152,208 Q165,214 178,208 Q165,222 152,208 Z" fill="#9f1239"/>
-                  <path d="M156,209 Q165,212 174,209" stroke="#fff" stroke-width="0.8" fill="none" opacity="0.6"/>
-                </g>
-
-                <!-- Slanted Left Serpent Eye -->
-                <g id="leftEyeGroup">
-                  <ellipse cx="134" cy="164" rx="17" ry="13" fill="#ffffff"/>
-                  <g class="serpent-pupil" id="leftPupil">
-                    <ellipse cx="134" cy="164" rx="11" ry="11" fill="url(#imperialGold)"/>
-                    <polygon points="134,153 137,164 134,175 131,164" fill="#000000"/>
-                    <circle cx="130" cy="160" r="2.8" fill="#ffffff"/>
-                  </g>
-                  <path class="serpent-lid" d="M114,148 Q134,144 154,148 Q134,188 114,148 Z" fill="#fff5f0"/>
-                  <!-- Elongated Phoenix/Serpent Winged Liner -->
-                  <path d="M112,158 Q134,144 156,152 Q162,146 165,142" stroke="#12061e" stroke-width="3.8" fill="none" stroke-linecap="round"/>
-                </g>
-
-                <!-- Slanted Right Serpent Eye -->
-                <g id="rightEyeGroup">
-                  <ellipse cx="196" cy="164" rx="17" ry="13" fill="#ffffff"/>
-                  <g class="serpent-pupil" id="rightPupil">
-                    <ellipse cx="196" cy="164" rx="11" ry="11" fill="url(#imperialGold)"/>
-                    <polygon points="196,153 199,164 196,175 193,164" fill="#000000"/>
-                    <circle cx="192" cy="160" r="2.8" fill="#ffffff"/>
-                  </g>
-                  <path class="serpent-lid" d="M176,148 Q196,144 216,148 Q196,188 176,148 Z" fill="#fff5f0"/>
-                  <!-- Elongated Phoenix/Serpent Winged Liner -->
-                  <path d="M165,142 Q168,146 174,152 Q196,144 218,158" stroke="#12061e" stroke-width="3.8" fill="none" stroke-linecap="round"/>
-                </g>
-
-                <!-- Medusa Imperial Golden Tiara & Headdress -->
-                <path d="M92,130 C82,205 92,260 102,295 C106,295 110,245 108,185 Z" fill="#180724"/>
-                <path d="M238,130 C248,205 238,260 228,295 C224,295 220,245 222,185 Z" fill="#180724"/>
-                <path d="M110,95 L132,60 L148,82 L165,42 L182,82 L198,60 L220,95 Q165,80 110,95 Z" fill="url(#imperialGold)"/>
-                
-                <!-- Crown Ruby Ornaments -->
-                <circle cx="165" cy="58" r="4.5" fill="url(#gemGlow)"/>
-                <circle cx="132" cy="74" r="3" fill="url(#gemGlow)"/>
-                <circle cx="198" cy="74" r="3" fill="url(#gemGlow)"/>
-              </svg>
-            </div>
+            <div class="medusa-loader-msg" id="medusaLoader">Summoning Xuan Yi... ✨</div>
+            <canvas id="medusa3dCanvas"></canvas>
           </div>
 
           <div class="agent-overlay-bottom">
-            <h4 style="font-size:16px;color:#fff;margin-bottom:4px">Queen Medusa — Supreme Empress</h4>
-            <p style="font-size:11px;color:var(--text-muted)">Her serpentine eyes track your cursor. Speak or type: <em>"Show motion work"</em>.</p>
+            <h4 style="font-size:16px;color:#fff;margin-bottom:4px">Xuan Yi — Pill Tower Supreme Giant</h4>
+            <p style="font-size:11px;color:var(--text-muted)">Her gaze naturally follows your cursor. Speak or type: <em>"Show motion work"</em>.</p>
           </div>
         </div>
 
-        <!-- Imperial Dialogue Interface -->
+        <!-- Dialogue Interface -->
         <div class="ai-chat-card">
           <div class="ai-topbar">
             <div class="agent-badge">
               <span class="pulse-light"></span>
-              <span id="voiceBadgeText">🌸 VOICE: NATURAL GIRL</span>
+              <span id="voiceBadgeText">🌸 VOICE: ELEGANT MASTER</span>
             </div>
             <button class="voice-toggle-btn active" id="voiceToggle">
-              <span>👑 Voice:</span> <b id="voiceStatus">ON</b>
+              <span>✨ Voice:</span> <b id="voiceStatus">ON</b>
             </button>
           </div>
 
           <div class="ai-chat-window" id="aiChatWindow">
             <div class="chat-bubble bot">
-              <div class="chat-avatar">👑</div>
+              <div class="chat-avatar">✨</div>
               <div>
-                Hmph... You dare enter my imperial sanctuary, mortal? I am <strong>Queen Medusa (Cai Lin)</strong>. Speak your desires in <strong>English</strong>! Do you wish to witness Fahim's supreme motion creations or forge an imperial design alliance? ✨
+                Welcome, traveler. I am <strong>Xuan Yi</strong> of the Pill Tower. Whether you seek guidance on Fahim's finest motion design creations or wish to forge a creative alchemy alliance, speak your mind in <strong>English</strong>. ✨
               </div>
             </div>
           </div>
 
           <div class="quick-prompts">
-            <button class="quick-chip" data-prompt="Who are you, Queen Medusa?">👑 Who are you?</button>
-            <button class="quick-chip" data-prompt="Show motion design projects">🔥 Heavenly Motion</button>
+            <button class="quick-chip" data-prompt="Who are you, Xuan Yi?">✨ Who are you?</button>
+            <button class="quick-chip" data-prompt="Show motion design projects">🔥 Motion Creations</button>
             <button class="quick-chip" data-prompt="Play motion design video reel">▶ Play Reel</button>
-            <button class="quick-chip" data-prompt="How can I contact Fahim?">📜 Imperial Alliance</button>
+            <button class="quick-chip" data-prompt="How can I contact Fahim?">📜 Contact Fahim</button>
           </div>
 
           <form class="ai-input-wrap" id="aiForm">
-            <button type="button" class="mic-btn" id="micBtn" title="Speak to Her Majesty (English Voice Recognition)">🎙️</button>
-            <input type="text" class="ai-input" id="aiInput" placeholder="Address Queen Medusa or command Her Majesty in English..." autocomplete="off" required />
+            <button type="button" class="mic-btn" id="micBtn" title="Speak to Grandmaster Xuan Yi (English Voice Recognition)">🎙️</button>
+            <input type="text" class="ai-input" id="aiInput" placeholder="Consult Grandmaster Xuan Yi in English..." autocomplete="off" required />
             <button type="submit" class="ai-send-btn">↗</button>
           </form>
         </div>
@@ -1515,10 +1419,10 @@
 
   <footer>
     <span>© 2026 MD FAHIM — IMAGINE. CREATE. INSPIRE.</span>
-    <span>RULED BY QUEEN MEDUSA (BTTH) AI</span>
+    <span>GUIDED BY GRANDMASTER XUAN YI (BTTH) AI</span>
   </footer>
 
-  <div id="actionToast">👑 <span>Imperial Decree Executed</span></div>
+  <div id="actionToast">✨ <span>Command Executed</span></div>
   <button id="backToTop" aria-label="Back to top">↑</button>
 
   <div class="video-modal" id="videoModal">
@@ -1533,6 +1437,7 @@
   <!-- JAVASCRIPT LOGIC -->
   <script type="module">
     import * as THREE from 'three';
+    import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 
     /* ========================================================
        0. FORCE PAGE TO ALWAYS OPEN AT TOP
@@ -1707,46 +1612,141 @@
     }
 
     /* ========================================================
-       3. QUEEN MEDUSA SERPENT EYES TRACKING
+       3. XUAN YI (3D GLB REALISTIC HUMAN ANIMATION ENGINE)
        ======================================================== */
-    const leftPupil = document.getElementById('leftPupil');
-    const rightPupil = document.getElementById('rightPupil');
-    const leftEyeGroup = document.getElementById('leftEyeGroup');
-    const rightEyeGroup = document.getElementById('rightEyeGroup');
-    const medusaMouth = document.getElementById('medusaMouth');
-    const medusaWrap = document.getElementById('medusaWrap');
+    const mCanvas = document.getElementById('medusa3dCanvas');
+    const xuanYiLoaderText = document.getElementById('medusaLoader');
+    let mScene, mCamera, mRenderer, xuanYiModel, xuanYiMixer;
+    let headBone = null, neckBone = null, spineBone = null;
+    let mTargetX = 0, mTargetY = 0;
+    let basePosY = 0;
 
-    const updateTracking = (clientX, clientY) => {
-      const x = (clientX / window.innerWidth - 0.5) * 8;
-      const y = (clientY / window.innerHeight - 0.5) * 6;
-      if (leftPupil && rightPupil) {
-        leftPupil.style.transform = `translate(${x}px, ${y}px)`;
-        rightPupil.style.transform = `translate(${x}px, ${y}px)`;
-      }
-      if (medusaWrap) {
-        medusaWrap.style.transform = `translate(${x * 0.25}px, ${y * 0.2}px)`;
-      }
-      pointerX = (clientX / window.innerWidth - .5) * 2;
-      pointerY = (clientY / window.innerHeight - .5) * 2;
-    };
+    if (mCanvas) {
+      mScene = new THREE.Scene();
+      mCamera = new THREE.PerspectiveCamera(38, mCanvas.clientWidth / mCanvas.clientHeight, 0.1, 100);
+      mCamera.position.set(0, 1.25, 2.7);
 
-    window.addEventListener('pointermove', e => updateTracking(e.clientX, e.clientY), { passive: true });
-    window.addEventListener('touchmove', e => {
-      if (e.touches && e.touches[0]) updateTracking(e.touches[0].clientX, e.touches[0].clientY);
-    }, { passive: true });
+      mRenderer = new THREE.WebGLRenderer({ canvas: mCanvas, alpha: true, antialias: true });
+      mRenderer.setSize(mCanvas.clientWidth, mCanvas.clientHeight, false);
+      mRenderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      mRenderer.toneMapping = THREE.ACESFilmicToneMapping;
+      mRenderer.toneMappingExposure = 1.35;
 
-    function triggerMedusaBlink() {
-      if (leftEyeGroup && rightEyeGroup) {
-        leftEyeGroup.classList.add('blinking');
-        rightEyeGroup.classList.add('blinking');
-        setTimeout(() => {
-          leftEyeGroup.classList.remove('blinking');
-          rightEyeGroup.classList.remove('blinking');
-        }, 130);
+      // Pill Tower Ethereal Cyan & Teal Studio Lighting
+      const ambLight = new THREE.AmbientLight(0xffffff, 1.4);
+      mScene.add(ambLight);
+
+      const tealSun = new THREE.DirectionalLight(0x5eead4, 2.5);
+      tealSun.position.set(2.5, 4, 3);
+      mScene.add(tealSun);
+
+      const jadeRim = new THREE.PointLight(0x14b8a6, 5, 8);
+      jadeRim.position.set(-2, 1.8, -1.2);
+      mScene.add(jadeRim);
+
+      const purpleFill = new THREE.PointLight(0xa855f7, 2.8, 6);
+      purpleFill.position.set(1.8, -0.5, 1);
+      mScene.add(purpleFill);
+
+      // Load 3D GLB Model (Xuan Yi)
+      const loader = new GLTFLoader();
+      loader.load(
+        'xuanyi.glb', // <--- Your downloaded file
+        (gltf) => {
+          xuanYiModel = gltf.scene;
+
+          // Auto-Center and Auto-Scale ANY 3D model
+          const box = new THREE.Box3().setFromObject(xuanYiModel);
+          const size = box.getSize(new THREE.Vector3());
+          const center = box.getCenter(new THREE.Vector3());
+
+          const maxDim = Math.max(size.x, size.y, size.z);
+          const scaleFactor = 2.2 / (maxDim || 1);
+          xuanYiModel.scale.setScalar(scaleFactor);
+
+          xuanYiModel.position.x = -center.x * scaleFactor;
+          xuanYiModel.position.y = (-center.y * scaleFactor) - 0.15;
+          xuanYiModel.position.z = -center.z * scaleFactor;
+          basePosY = xuanYiModel.position.y;
+
+          mScene.add(xuanYiModel);
+
+          // Locate Bones for natural human motion
+          xuanYiModel.traverse((child) => {
+            if (child.isBone) {
+              const bName = child.name.toLowerCase();
+              if (bName.includes('head')) headBone = child;
+              else if (bName.includes('neck')) neckBone = child;
+              else if (bName.includes('spine') || bName.includes('chest')) spineBone = child;
+            }
+          });
+
+          // Play Embedded Animations if present
+          if (gltf.animations && gltf.animations.length > 0) {
+            xuanYiMixer = new THREE.AnimationMixer(xuanYiModel);
+            const action = xuanYiMixer.clipAction(gltf.animations[0]);
+            action.play();
+          }
+
+          if (xuanYiLoaderText) xuanYiLoaderText.style.display = 'none';
+        },
+        undefined,
+        (err) => {
+          console.error("3D Xuan Yi load error:", err);
+          if (xuanYiLoaderText) {
+            xuanYiLoaderText.textContent = "Please serve via Live Server (xuanyi.glb)";
+          }
+        }
+      );
+
+      // Mouse Tracking
+      window.addEventListener('pointermove', (e) => {
+        const rect = mCanvas.getBoundingClientRect();
+        mTargetX = ((e.clientX - rect.left) / rect.width) * 2 - 1;
+        mTargetY = -((e.clientY - rect.top) / rect.height) * 2 + 1;
+        pointerX = (e.clientX / window.innerWidth - .5) * 2;
+        pointerY = (e.clientY / window.innerHeight - .5) * 2;
+      }, { passive: true });
+
+      // Procedural Human Motion Loop
+      const mClock = new THREE.Clock();
+      function animateXuanYi3D() {
+        requestAnimationFrame(animateXuanYi3D);
+        const delta = mClock.getDelta();
+        const time = mClock.getElapsedTime();
+
+        if (xuanYiMixer) xuanYiMixer.update(delta);
+
+        if (xuanYiModel) {
+          // 1. Natural Breathing Simulation
+          const breath = Math.sin(time * 2.2) * 0.007;
+          xuanYiModel.position.y = basePosY + breath;
+
+          // 2. Natural Weight Shift & Gentle Idle Sway
+          const sway = Math.sin(time * 1.1) * 0.012;
+          xuanYiModel.rotation.z = THREE.MathUtils.lerp(xuanYiModel.rotation.z, sway, 0.05);
+
+          // 3. Human Head / Torso Turning
+          if (headBone) {
+            headBone.rotation.y = THREE.MathUtils.lerp(headBone.rotation.y, mTargetX * 0.38, 0.08);
+            headBone.rotation.x = THREE.MathUtils.lerp(headBone.rotation.x, -mTargetY * 0.22, 0.08);
+          } else {
+            xuanYiModel.rotation.y = THREE.MathUtils.lerp(xuanYiModel.rotation.y, mTargetX * 0.35, 0.05);
+            xuanYiModel.rotation.x = THREE.MathUtils.lerp(xuanYiModel.rotation.x, -mTargetY * 0.15, 0.05);
+          }
+        }
+
+        mRenderer.render(mScene, mCamera);
       }
-      setTimeout(triggerMedusaBlink, 3200 + Math.random() * 4500);
+      animateXuanYi3D();
+
+      const handleXuanYiResize = () => {
+        mCamera.aspect = mCanvas.clientWidth / mCanvas.clientHeight;
+        mCamera.updateProjectionMatrix();
+        mRenderer.setSize(mCanvas.clientWidth, mCanvas.clientHeight, false);
+      };
+      window.addEventListener('resize', handleXuanYiResize, { passive: true });
     }
-    setTimeout(triggerMedusaBlink, 2200);
 
     /* ========================================================
        4. CROSS-DEVICE VOICE INPUT (MIC 🎙️)
@@ -1764,7 +1764,7 @@
         try {
           recognition.start();
           micBtn.classList.add('listening');
-          toast("Her Majesty is listening... Speak! 👑");
+          toast("Grandmaster Xuan Yi is listening... ✨");
         } catch(err) {
           recognition.stop();
           micBtn.classList.remove('listening');
@@ -1847,8 +1847,7 @@
     function initVoice() {
       femaleVoice = getNaturalFemaleVoice();
       if (femaleVoice && voiceBadgeText) {
-        const isStudio = femaleVoice.name.includes('Natural') || femaleVoice.name.includes('Google') || femaleVoice.name.includes('Ava');
-        voiceBadgeText.textContent = isStudio ? "🌸 VOICE: STUDIO NATURAL GIRL" : "👑 VOICE: IMPERIAL GIRL";
+        voiceBadgeText.textContent = "🌸 VOICE: ELEGANT MASTER";
       }
     }
 
@@ -1865,7 +1864,7 @@
       isVoiceOn = !isVoiceOn;
       voiceToggle.classList.toggle('active', isVoiceOn);
       voiceStatus.textContent = isVoiceOn ? 'ON' : 'OFF';
-      if (isVoiceOn) speak("Hmph. You shall hear my imperial decree.");
+      if (isVoiceOn) speak("I am listening. What would you like to explore?");
       else window.speechSynthesis.cancel();
     });
 
@@ -1882,62 +1881,60 @@
       if (!femaleVoice) femaleVoice = getNaturalFemaleVoice();
       if (femaleVoice) utt.voice = femaleVoice;
 
-      utt.pitch = 1.03;
-      utt.rate = 0.98;
+      utt.pitch = 1.0;
+      utt.rate = 0.96;
 
       utt.onstart = () => {
-        agentMood.textContent = 'DECREEING... 👑';
-        agentMood.style.color = '#ffd700';
-        if (medusaMouth) medusaMouth.classList.add('speaking-mouth');
+        agentMood.textContent = 'CONSULTING... ✨';
+        agentMood.style.color = '#5eead4';
       };
       utt.onend = () => {
-        agentMood.textContent = 'IMPERIAL MAJESTY 👑';
+        agentMood.textContent = 'GRANDMASTER ✨';
         agentMood.style.color = '#fff';
-        if (medusaMouth) medusaMouth.classList.remove('speaking-mouth');
       };
       utt.onerror = () => {
-        agentMood.textContent = 'IMPERIAL MAJESTY 👑';
-        if (medusaMouth) medusaMouth.classList.remove('speaking-mouth');
+        agentMood.textContent = 'GRANDMASTER ✨';
+        agentMood.style.color = '#fff';
       };
 
       window.speechSynthesis.speak(utt);
     }
 
-    // Imperial Commands & Dialogue
+    // Xuan Yi Alchemy & Design Commands
     function executeImperialCommand(input) {
       const p = input.toLowerCase();
       let res = "", act = null;
 
       if (p.includes('reel') || p.includes('play') || p.includes('video') || p.includes('short') || p.includes('watch')) {
         window.open("https://www.youtube.com/@motion-nest0.1/shorts", "_blank");
-        act = "OPENED: Official YouTube Shorts";
-        res = "By imperial decree, Fahim's official motion reels and YouTube Shorts have been unveiled in a new tab! Behold their brilliance, mortal.";
+        act = "OPENED: Motion Nest Shorts";
+        res = "Fahim's video realm and motion reels have been opened in a new tab. Witness the precision of his digital alchemy!";
       } 
       else if (p.includes('contact') || p.includes('hire') || p.includes('facebook') || p.includes('fb') || p.includes('email') || p.includes('mail') || p.includes('reach') || p.includes('touch')) {
         document.querySelector('#contact').scrollIntoView({ behavior: 'smooth' });
-        act = "SUMMONED: Imperial Contact Sanctum";
-        res = "Seeking an alliance with Fahim? I have summoned the Imperial Contact Sanctum! Send a scroll directly to mf16348011@gmail.com or strike a pact through his Facebook profile below.";
+        act = "SUMMONED: Contact Sanctuary";
+        res = "If you wish to forge a creative alliance with Fahim, reach out directly via Email at mf16348011@gmail.com or through his Facebook profile below.";
       } 
-      else if (p.includes('who') || p.includes('name') || p.includes('medusa') || p.includes('cai lin') || p.includes('queen')) {
-        res = "Hmph, insolent mortal! I am Queen Medusa (Cai Lin), Empress of the Snake-People Tribe! Wielding the celestial power of the Seven-Colored Swallowing Python, I guard and rule over Fahim's greatest visual creations!";
+      else if (p.includes('who') || p.includes('name') || p.includes('xuan yi') || p.includes('xuanyi') || p.includes('pill')) {
+        res = "I am Grandmaster Xuan Yi, one of the three giants of the Pill Tower. With refined spiritual perception, I guide travelers through Fahim's creative motion and design artifacts.";
       } 
       else if (p.includes('motion') || p.includes('animation') || p.includes('saas') || p.includes('work') || p.includes('project')) {
         renderProjects('motion design');
         document.querySelector('#design-portfolio').scrollIntoView({ behavior: 'smooth' });
-        act = "IMPERIAL DECREE: Filtered Motion Works";
-        res = "By my imperial decree, the realm has filtered to showcase Fahim's heavenly motion design and SaaS animations! Gaze upon them below!";
+        act = "FILTERED: Motion Design Works";
+        res = "I have filtered the archives to reveal Fahim's motion design and SaaS animations. Behold their smooth transitions below.";
       } 
       else if (p.includes('brand') || p.includes('logo') || p.includes('identity')) {
         renderProjects('branding');
         document.querySelector('#design-portfolio').scrollIntoView({ behavior: 'smooth' });
-        act = "IMPERIAL DECREE: Filtered Brand Identities";
-        res = "Behold! The royal brand identities and modern monogram sigils crafted by Fahim have been summoned for your inspection.";
+        act = "FILTERED: Brand Identities";
+        res = "The brand identity seals and monogram insignias crafted by Fahim are now on display for your review.";
       } 
       else if (p.includes('hello') || p.includes('hi') || p.includes('hey') || p.includes('greetings') || p.includes('how are you')) {
-        res = "Hmph... You stand before the Empress. State your purpose quickly, for my time is exceedingly precious.";
+        res = "Greetings, traveler. Peace be upon your journey. What aspect of Fahim's creations would you like to explore today?";
       } 
       else {
-        res = `I have noted your words, mortal. You may command me to **"Show motion work"**, **"Play reel"**, or **"Contact Fahim"**!`;
+        res = `I hear your words. You may ask me to **"Show motion work"**, **"Play reel"**, or **"Contact Fahim"**!`;
       }
       return { res, act };
     }
@@ -1946,8 +1943,8 @@
       const bubble = document.createElement('div');
       bubble.className = `chat-bubble ${sender}`;
       let content = text;
-      if (action) content += `<br><span class="action-chip-pill">👑 ${action}</span>`;
-      bubble.innerHTML = sender === 'bot' ? `<div class="chat-avatar">👑</div><div>${content}</div>` : `<div>${content}</div>`;
+      if (action) content += `<br><span class="action-chip-pill">✨ ${action}</span>`;
+      bubble.innerHTML = sender === 'bot' ? `<div class="chat-avatar">✨</div><div>${content}</div>` : `<div>${content}</div>`;
       aiChatWindow.appendChild(bubble);
       aiChatWindow.scrollTop = aiChatWindow.scrollHeight;
     }
@@ -1957,10 +1954,10 @@
       addMsg('user', txt);
       aiInput.value = '';
 
-      agentMood.textContent = 'HEEDING... ✨';
+      agentMood.textContent = 'CONSULTING... ✨';
       const typing = document.createElement('div');
       typing.className = 'chat-bubble bot';
-      typing.innerHTML = `<div class="chat-avatar">👑</div><div><em>Queen Medusa is contemplating...</em></div>`;
+      typing.innerHTML = `<div class="chat-avatar">✨</div><div><em>Xuan Yi is contemplating...</em></div>`;
       aiChatWindow.appendChild(typing);
       aiChatWindow.scrollTop = aiChatWindow.scrollHeight;
 
