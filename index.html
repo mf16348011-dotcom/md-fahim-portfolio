@@ -1613,7 +1613,7 @@
 
     /* ========================================================
        3. XUAN YI (3D GLB REALISTIC HUMAN ANIMATION ENGINE)
-          PERFECTLY CENTERED & ELEVATED PORTRAIT
+          PERFECTLY FACING FRONT & BEAUTIFULLY CENTERED
        ======================================================== */
     const mCanvas = document.getElementById('medusa3dCanvas');
     const xuanYiLoaderText = document.getElementById('medusaLoader');
@@ -1621,13 +1621,14 @@
     let headBone = null, neckBone = null, spineBone = null;
     let mTargetX = 0, mTargetY = 0;
     let basePosY = 0;
+    const baseRotationY = -Math.PI * 0.45; // Front-facing orientation for this specific model
 
     if (mCanvas) {
       mScene = new THREE.Scene();
       
-      // Camera set closer to chest & face level
+      // Camera positioned at face/chest level
       mCamera = new THREE.PerspectiveCamera(38, mCanvas.clientWidth / mCanvas.clientHeight, 0.1, 100);
-      mCamera.position.set(0, 1.1, 2.2);
+      mCamera.position.set(0, 1.2, 2.6);
 
       mRenderer = new THREE.WebGLRenderer({ canvas: mCanvas, alpha: true, antialias: true });
       mRenderer.setSize(mCanvas.clientWidth, mCanvas.clientHeight, false);
@@ -1635,11 +1636,11 @@
       mRenderer.toneMapping = THREE.ACESFilmicToneMapping;
       mRenderer.toneMappingExposure = 1.35;
 
-      // Studio Lighting
+      // Pill Tower Studio Lighting Setup
       const ambLight = new THREE.AmbientLight(0xffffff, 1.4);
       mScene.add(ambLight);
 
-      const tealSun = new THREE.DirectionalLight(0x5eead4, 2.5);
+      const tealSun = new THREE.DirectionalLight(0x5eead4, 2.6);
       tealSun.position.set(2.5, 4, 3);
       mScene.add(tealSun);
 
@@ -1663,15 +1664,19 @@
           const size = box.getSize(new THREE.Vector3());
           const center = box.getCenter(new THREE.Vector3());
 
-          // Scale and height elevation for portrait placement
+          // Scaling down from 3.6 to 2.1 so head is never cut off
           const maxDim = Math.max(size.x, size.y, size.z);
-          const scaleFactor = 3.6 / (maxDim || 1);
+          const scaleFactor = 2.1 / (maxDim || 1);
           xuanYiModel.scale.setScalar(scaleFactor);
 
+          // Position centered and lowered slightly into frame
           xuanYiModel.position.x = -center.x * scaleFactor;
-          xuanYiModel.position.y = (-center.y * scaleFactor) + 0.45; 
+          xuanYiModel.position.y = (-center.y * scaleFactor) - 0.25;
           xuanYiModel.position.z = -center.z * scaleFactor;
           basePosY = xuanYiModel.position.y;
+
+          // Turn model toward the camera
+          xuanYiModel.rotation.y = baseRotationY;
 
           mScene.add(xuanYiModel);
 
@@ -1730,12 +1735,12 @@
           const sway = Math.sin(time * 1.1) * 0.012;
           xuanYiModel.rotation.z = THREE.MathUtils.lerp(xuanYiModel.rotation.z, sway, 0.05);
 
-          // 3. Human Head / Torso Turning
+          // 3. Human Head / Torso Turning (Aligned with base front-facing rotation)
           if (headBone) {
             headBone.rotation.y = THREE.MathUtils.lerp(headBone.rotation.y, mTargetX * 0.38, 0.08);
             headBone.rotation.x = THREE.MathUtils.lerp(headBone.rotation.x, -mTargetY * 0.22, 0.08);
           } else {
-            xuanYiModel.rotation.y = THREE.MathUtils.lerp(xuanYiModel.rotation.y, mTargetX * 0.35, 0.05);
+            xuanYiModel.rotation.y = THREE.MathUtils.lerp(xuanYiModel.rotation.y, baseRotationY + (mTargetX * 0.35), 0.05);
             xuanYiModel.rotation.x = THREE.MathUtils.lerp(xuanYiModel.rotation.x, -mTargetY * 0.15, 0.05);
           }
         }
