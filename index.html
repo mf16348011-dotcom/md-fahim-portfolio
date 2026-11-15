@@ -1613,6 +1613,7 @@
 
     /* ========================================================
        3. XUAN YI (3D GLB REALISTIC HUMAN ANIMATION ENGINE)
+          PERFECTLY CENTERED & ELEVATED PORTRAIT
        ======================================================== */
     const mCanvas = document.getElementById('medusa3dCanvas');
     const xuanYiLoaderText = document.getElementById('medusaLoader');
@@ -1623,8 +1624,10 @@
 
     if (mCanvas) {
       mScene = new THREE.Scene();
+      
+      // Camera set closer to chest & face level
       mCamera = new THREE.PerspectiveCamera(38, mCanvas.clientWidth / mCanvas.clientHeight, 0.1, 100);
-      mCamera.position.set(0, 1.25, 2.7);
+      mCamera.position.set(0, 1.1, 2.2);
 
       mRenderer = new THREE.WebGLRenderer({ canvas: mCanvas, alpha: true, antialias: true });
       mRenderer.setSize(mCanvas.clientWidth, mCanvas.clientHeight, false);
@@ -1632,7 +1635,7 @@
       mRenderer.toneMapping = THREE.ACESFilmicToneMapping;
       mRenderer.toneMappingExposure = 1.35;
 
-      // Pill Tower Ethereal Cyan & Teal Studio Lighting
+      // Studio Lighting
       const ambLight = new THREE.AmbientLight(0xffffff, 1.4);
       mScene.add(ambLight);
 
@@ -1651,27 +1654,28 @@
       // Load 3D GLB Model (Xuan Yi)
       const loader = new GLTFLoader();
       loader.load(
-        'xuanyi.glb', // <--- Your downloaded file
+        'xuanyi.glb',
         (gltf) => {
           xuanYiModel = gltf.scene;
 
-          // Auto-Center and Auto-Scale ANY 3D model
+          // Bounding Box Calculation for Centering
           const box = new THREE.Box3().setFromObject(xuanYiModel);
           const size = box.getSize(new THREE.Vector3());
           const center = box.getCenter(new THREE.Vector3());
 
+          // Scale and height elevation for portrait placement
           const maxDim = Math.max(size.x, size.y, size.z);
-          const scaleFactor = 2.2 / (maxDim || 1);
+          const scaleFactor = 3.6 / (maxDim || 1);
           xuanYiModel.scale.setScalar(scaleFactor);
 
           xuanYiModel.position.x = -center.x * scaleFactor;
-          xuanYiModel.position.y = (-center.y * scaleFactor) - 0.15;
+          xuanYiModel.position.y = (-center.y * scaleFactor) + 0.45; 
           xuanYiModel.position.z = -center.z * scaleFactor;
           basePosY = xuanYiModel.position.y;
 
           mScene.add(xuanYiModel);
 
-          // Locate Bones for natural human motion
+          // Locate Bones for procedural human life simulation
           xuanYiModel.traverse((child) => {
             if (child.isBone) {
               const bName = child.name.toLowerCase();
